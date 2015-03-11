@@ -22,6 +22,7 @@
   "dependencies": {
     "jquery": "~2.1.3",
     "layout": "allpro/layout#~1.4.3",
-    "ace-builds": "master"
+    "ace-builds": "master",
+    "jquery-ui": null
   }
 }
