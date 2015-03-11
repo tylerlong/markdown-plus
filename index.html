@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link type="text/css" rel="stylesheet" href="bower_components/layout/source/stable/layout-default.css" />
+    <link rel="stylesheet" media="all" href="bower_components/layout/source/stable/layout-default.css" />
+    <link rel="stylesheet" media="all" href="index.css" />
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
     <script src="bower_components/layout/source/stable/jquery.layout.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('body').layout({
-          livePaneResizing: true,
-          east__size: "50%"
-        });
-      });
-    </script>
+    <script src="index.js"></script>
   </head>
   <body>
-    <div class="ui-layout-center">Center</div>
-    <div class="ui-layout-east">East</div>
+    <div class="ui-layout-center">Left</div>
+    <div class="ui-layout-east">Right</div>
   </body>
 </html>
