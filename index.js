@@ -11,8 +11,9 @@ $(document).ready(function () {
 
   var editor = ace.edit("editor");
   editor.$blockScrolling = Infinity;
-  editor.getSession().setMode("ace/mode/markdown");
   editor.renderer.setShowPrintMargin(false);
+  editor.session.setMode("ace/mode/markdown");
+  editor.session.setUseWrapMode(true);
 
   marked.setOptions({
     renderer: new marked.Renderer(),
