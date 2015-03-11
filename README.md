@@ -12,6 +12,16 @@ Navigate to `index.html`
 
 ## Content for testing
 
+- [x] test
+- [ ] test
+    - [ ] test
+    - [x] test
+
+1. [x] test
+2. [ ] test
+    1. [ ] test
+    2. [x] test
+
 ```javascript
 function hello(){
     alert('Hello editor.markdown');
