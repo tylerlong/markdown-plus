@@ -31,13 +31,9 @@ $(document).ready(function () {
   var renderer = new marked.Renderer();
   renderer.listitem = function(text) {
     var taskListRegex1 = /^\[ \]\s/
-    if(taskListRegex1.test(text)) { // uncompleted task list
-      text = text.replace(taskListRegex1, '<input type="checkbox" disabled/> ');
-    }
     var taskListRegex2 = /^\[x\]\s/
-    if(taskListRegex2.test(text)) { // completed task list
-      text = text.replace(taskListRegex2, '<input type="checkbox" disabled checked/> ');
-    }
+    text = text.replace(taskListRegex1, '<input type="checkbox" disabled/> ')
+               .replace(taskListRegex2, '<input type="checkbox" disabled checked/> ');
     return marked.Renderer.prototype.listitem.apply(this, arguments);
   }
   marked.setOptions({
