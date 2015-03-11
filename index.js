@@ -1,8 +1,12 @@
 $(document).ready(function () {
 
   myLayout = $('body').layout({
-    livePaneResizing: true,
-    east__size: '50%'
+    east: {
+      size: '50%',
+      resizable: false,
+      togglerLength_open: 0,
+      spacing_open: 1
+    }
   });
 
 });
