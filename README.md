@@ -3,6 +3,13 @@
 A lightweight markdown editor.
 
 
+## Setup & Run
+
+`bower install`
+
+Navigate to `index.html`
+
+
 ## Content for testing
 
 ```javascript
