@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  myLayout = $('body').layout({
+  var myLayout = $('body').layout({
     east: {
       size: '50%',
       resizable: false,
@@ -9,4 +9,7 @@ $(document).ready(function () {
     }
   });
 
+  var editor = ace.edit("editor");
+  editor.getSession().setMode("ace/mode/markdown");
+  editor.renderer.setShowPrintMargin(false);
 });

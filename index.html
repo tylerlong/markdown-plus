@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>editor.markdown</title>
     <link rel="stylesheet" media="all" href="bower_components/layout/source/stable/layout-default.css" />
     <link rel="stylesheet" media="all" href="index.css" />
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
     <script src="bower_components/layout/source/stable/jquery.layout.min.js"></script>
+    <script src="bower_components/ace-builds/src-min-noconflict/ace.js" charset="utf-8"></script>
     <script src="index.js"></script>
   </head>
   <body>
-    <div class="ui-layout-center">Left</div>
-    <div class="ui-layout-east">Right</div>
+    <div class="ui-layout-center">
+      <div id="editor"># hello editor.markdown</div>
+    </div>
+    <div class="ui-layout-east">Here is the preview.</div>
   </body>
 </html>
