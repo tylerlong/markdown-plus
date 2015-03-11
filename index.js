@@ -32,9 +32,13 @@ $(document).ready(function () {
   renderer.listitem = function(text) {
     var taskListRegex1 = /^\[ \]\s/
     var taskListRegex2 = /^\[x\]\s/
-    text = text.replace(taskListRegex1, '<input type="checkbox" disabled/> ')
+    var _text = text.replace(taskListRegex1, '<input type="checkbox" disabled/> ')
                .replace(taskListRegex2, '<input type="checkbox" disabled checked/> ');
-    return marked.Renderer.prototype.listitem.apply(this, arguments);
+    var result = marked.Renderer.prototype.listitem(_text);
+    if(_text !== text) {
+      result = $(result).addClass('none-style')[0].outerHTML;
+    }
+    return result
   }
   marked.setOptions({
     renderer: renderer,
