@@ -3,6 +3,7 @@ var editor;
 
 $(document).ready(function () {
 
+  // 构造左右两个面板
   myLayout = $('body').layout({
     east: {
       size: '50%',
@@ -17,6 +18,7 @@ $(document).ready(function () {
     }
   });
 
+  // 左侧编辑器
   editor = ace.edit("editor");
   editor.$blockScrolling = Infinity;
   editor.renderer.setShowPrintMargin(false);
@@ -25,6 +27,7 @@ $(document).ready(function () {
   editor.setFontSize('14px');
   editor.focus();
 
+  // 设置marked
   marked.setOptions({
     renderer: new marked.Renderer(),
     gfm: true,
@@ -36,10 +39,11 @@ $(document).ready(function () {
     smartypants: true
   });
 
+  // 实时监听用户的编辑
   editor.session.on('change', function(){
-    $('.markdown-body').html(marked(editor.session.getValue()));
+    $('.markdown-body').html(marked(editor.session.getValue())); // 实时预览
     $('pre').addClass('prettyprint').addClass('linenums');
-    prettyPrint();
+    prettyPrint(); // 语法高亮
   });
 
 });

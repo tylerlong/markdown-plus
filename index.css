@@ -5,14 +5,6 @@ body{
 
 .ui-layout-pane {
   border-width: 0;
-}
-
-.ui-layout-center {
-  padding: 0;
-  margin: 0;
-}
-
-.ui-layout-east {
   padding: 0;
   margin: 0;
 }
@@ -35,6 +27,6 @@ li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
 }
 
 .markdown-body ol.linenums {
-  padding-left: 4em;
+  padding-left: 4em; /* 给行号留出位置 */
   color: #bbbbbb;
 }
