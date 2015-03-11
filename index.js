@@ -22,6 +22,7 @@ $(document).ready(function () {
   editor.renderer.setShowPrintMargin(false);
   editor.session.setMode("ace/mode/markdown");
   editor.session.setUseWrapMode(true);
+  editor.setFontSize('15px');
   editor.focus();
 
   marked.setOptions({
@@ -36,7 +37,7 @@ $(document).ready(function () {
   });
 
   editor.session.on('change', function(){
-    $('.ui-layout-east').html(marked(editor.session.getValue()));
+    $('.markdown-body').html(marked(editor.session.getValue()));
   });
 
 });

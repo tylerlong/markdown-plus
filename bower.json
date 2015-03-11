@@ -24,6 +24,7 @@
     "layout": "allpro/layout#~1.4.3",
     "ace-builds": "master",
     "jquery-ui": null,
-    "marked": null
+    "marked": null,
+    "github-markdown-css": null
   }
 }
