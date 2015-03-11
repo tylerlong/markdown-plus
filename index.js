@@ -22,7 +22,7 @@ $(document).ready(function () {
   editor.renderer.setShowPrintMargin(false);
   editor.session.setMode("ace/mode/markdown");
   editor.session.setUseWrapMode(true);
-  editor.setFontSize('15px');
+  editor.setFontSize('14px');
   editor.focus();
 
   marked.setOptions({
