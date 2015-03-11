@@ -38,7 +38,7 @@ $(document).ready(function () {
 
   editor.session.on('change', function(){
     $('.markdown-body').html(marked(editor.session.getValue()));
-    $('pre').addClass('prettyprint');
+    $('pre').addClass('prettyprint').addClass('linenums');
     prettyPrint();
   });
 
