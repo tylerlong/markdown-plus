@@ -3,6 +3,15 @@
 A lightweight markdown editor.
 
 
+## Content for testing
+
+```javascript
+function hello(){
+    alert('Hello editor.markdown');
+}
+```
+
+
 ## Screenshot
 
 ![editor.markdown](https://github.com/tylerlong/editor.markdown/raw/master/screenshot.png)
