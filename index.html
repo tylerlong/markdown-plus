@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/layout/source/stable/jquery.layout.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('body').layout({ applyDemoStyles: true });
+			});
+		</script>
+	</head>
+	<body>
+		<div class="ui-layout-center">
+			Center
+			<p>* Pane-resizing is disabled because ui.draggable.js is not linked</p>
+			<p>* Pane-animation is disabled because ui.effects.js is not linked</p>
+		</div>
+		<div class="ui-layout-north">North</div>
+		<div class="ui-layout-south">South</div>
+		<div class="ui-layout-east">East</div>
+		<div class="ui-layout-west">West</div>
+	</body>
+</html>
