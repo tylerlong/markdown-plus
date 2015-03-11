@@ -19,6 +19,9 @@ column 1 | column 2
 4.1 | 4.2
 
 
+<strong>html tag test</strong>
+
+
 ## Screenshot
 
 ![editor.markdown](https://github.com/tylerlong/editor.markdown/raw/master/screenshot.png)

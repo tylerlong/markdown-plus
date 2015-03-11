@@ -29,11 +29,11 @@ $(document).ready(function () {
     renderer: new marked.Renderer(),
     gfm: true,
     tables: true,
-    breaks: false,
+    breaks: true,
     pedantic: false,
-    sanitize: true,
+    sanitize: false,
     smartLists: true,
-    smartypants: false
+    smartypants: true
   });
 
   editor.session.on('change', function(){
