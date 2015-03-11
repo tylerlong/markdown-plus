@@ -3,6 +3,11 @@
 A lightweight markdown editor.
 
 
+## Screenshot
+
+![editor.markdown](https://github.com/tylerlong/editor.markdown/raw/master/screenshot.png)
+
+
 ## License
 
 The MIT License (MIT)
