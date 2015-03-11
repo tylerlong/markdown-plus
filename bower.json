@@ -20,9 +20,10 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.3",
+    "jquery": null,
     "layout": "allpro/layout#~1.4.3",
     "ace-builds": "master",
-    "jquery-ui": null
+    "jquery-ui": null,
+    "marked": null
   }
 }
