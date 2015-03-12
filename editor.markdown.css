@@ -71,3 +71,7 @@ i.dividor {
   color: #dddddd;
   margin: 0 6px;
 }
+
+.taskbox {
+  margin-right: 8px !important;
+}

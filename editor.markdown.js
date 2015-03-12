@@ -37,15 +37,15 @@ $(document).ready(function() {
   // 设置marked
   var renderer = new marked.Renderer();
   renderer.listitem = function(text) {
-    var taskListRegex1 = /^\[ \]\s/;
-    var taskListRegex2 = /^\[x\]\s/;
-    var _text = text.replace(taskListRegex1, '<input type="checkbox" disabled/> ')
-               .replace(taskListRegex2, '<input type="checkbox" disabled checked/> ');
-    var result = marked.Renderer.prototype.listitem(_text);
-    if(_text !== text) {
-      result = $(result).addClass('none-style')[0].outerHTML;
+    if(!/^\[[ x]\]\s/.test(text)) {
+      return marked.Renderer.prototype.listitem(text);
     }
-    return result;
+    // 任务列表
+    var checkbox = $('<input type="checkbox" class="taskbox" disabled="disabled"/>');
+    if(/^\[x\]\s/.test(text)) { // 完成的任务列表
+      checkbox.attr('checked', true);
+    }
+    return $(marked.Renderer.prototype.listitem(text.substring(4))).addClass('none-style').prepend(checkbox)[0].outerHTML;
   }
   marked.setOptions({
     renderer: renderer,
