@@ -52,7 +52,8 @@ column 1 | column 2
 
 ## todo list
 
-- 分为上、中、右三块。 上面是toolbar，右边是预览，中间是编辑器。 上和右都提供隐藏和显示的按钮。
+- Refactor code of task lists.
+- Add functions to toolbar icons.
 
 
 ## License

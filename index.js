@@ -1,34 +1,24 @@
-var myLayout;
 var editor;
 
-$(document).ready(function () {
+$(document).ready(function() {
 
   // 构造上中右三个面板
-  myLayout = $('body').layout({
+  $('body').layout({
     resizerDblClickToggle: false,
     resizable: false,
     slidable: false,
     togglerLength_open: '100%',
     togglerLength_closed: '100%',
-    center: {
-      childOptions: {
-        resizerDblClickToggle: false,
-        resizable: false,
-        slidable: false,
-        togglerLength_open: '100%',
-        togglerLength_closed: '100%',
-        north: {
-          size: '1px', // 只是占位，真实大小由内容决定
-          togglerTip_open: 'Hide Toolbar',
-          togglerTip_closed: 'Show Toolbar'
-        }
-      }
+    north: {
+      size: '1px', // 只是占位，真实大小由内容决定
+      togglerTip_open: 'Hide Toolbar',
+      togglerTip_closed: 'Show Toolbar'
     },
     east: {
       size: '50%',
       togglerTip_open: 'Hide Preview',
       togglerTip_closed: 'Show Preview',
-      onresize: function(){
+      onresize: function() {
         editor.session.setUseWrapMode(false); // ACE的wrap貌似有问题，这里手动触发一下。
         editor.session.setUseWrapMode(true);
       }
