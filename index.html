@@ -13,21 +13,22 @@
     <script src="bower_components/ace-builds/src-min-noconflict/ace.js" charset="utf-8"></script>
     <script src="bower_components/marked/marked.min.js"></script>
     <script src="bower_components/google-code-prettify/bin/prettify.min.js"></script>
+    <script src="extensions.js"></script>
     <script src="editor.markdown.js"></script>
   </head>
   <body>
     <div class="ui-layout-north">
-      <div id="toolbar">
+      <div id="toolbar" class="noneselect">
         <i class="fa fa-bold"></i>
         <i class="fa fa-italic"></i>
         <i class="fa fa-strikethrough"></i>
         <i class="dividor">|</i>
-        <i class="fa f-h1">h1</i>
-        <i class="fa f-h2">h2</i>
-        <i class="fa f-h3">h3</i>
-        <i class="fa f-h4">h4</i>
-        <i class="fa f-h5">h5</i>
-        <i class="fa f-h6">h6</i>
+        <i class="fa heading-icon" data-level="1">h1</i>
+        <i class="fa heading-icon" data-level="2">h2</i>
+        <i class="fa heading-icon" data-level="3">h3</i>
+        <i class="fa heading-icon" data-level="4">h4</i>
+        <i class="fa heading-icon" data-level="5">h5</i>
+        <i class="fa heading-icon" data-level="6">h6</i>
         <i class="dividor">|</i>
         <i class="fa fa-minus"></i>
         <i class="fa fa-list-ul"></i>

@@ -52,7 +52,6 @@ column 1 | column 2
 
 ## todo list
 
-- Refactor code of task lists.
 - Add functions to toolbar icons.
 
 

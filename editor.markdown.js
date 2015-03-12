@@ -65,4 +65,11 @@ $(document).ready(function() {
     prettyPrint(); // 语法高亮
   });
 
+  // toolbar actions
+  $('.heading-icon').click(function(){ // h1 - h6 heading
+    editor.navigateLineStart();
+    editor.insert('#'.repeat($(this).data('level')) + ' ');
+    editor.focus();
+  });
+
 });

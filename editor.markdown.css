@@ -62,7 +62,7 @@ li.none-style {
   background-color: #add8e6;
 }
 
-.f-h1, .f-h2, .f-h3, .f-h4, .f-h5, .f-h6 {
+.heading-icon {
   font-weight: bold;
 }
 
@@ -74,4 +74,13 @@ i.dividor {
 
 .taskbox {
   margin-right: 8px !important;
+}
+
+.noneselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
