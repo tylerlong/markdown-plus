@@ -9,6 +9,10 @@ body{
   margin: 0;
 }
 
+.ui-layout-north {
+  background-color: #eeeeee;
+}
+
 #editor {
   position: absolute;
   width: 100%;
@@ -36,7 +40,7 @@ li.none-style {
 }
 
 #toolbar {
-  padding-left: 48px;
+  padding-left: 32px;
   color: #666666;
 }
 
@@ -46,8 +50,9 @@ li.none-style {
 }
 
 #toolbar .fa:hover {
-  background-color: #eeeeee;
-  border-color: #dddddd;
+  background-color: #dddddd;
+  border-color: #cccccc;
+  cursor: pointer;
 }
 
 .ui-layout-toggler {
@@ -55,4 +60,14 @@ li.none-style {
 }
 .ui-layout-toggler:hover {
   background-color: #ADD8E6;
+}
+
+.f-h1, .f-h2, .f-h3, .f-h4, .f-h5, .f-h6 {
+  font-weight: bold;
+}
+
+i.dividor {
+  font-style: normal;
+  color: #dddddd;
+  margin: 0 6px;
 }
