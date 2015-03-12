@@ -71,5 +71,12 @@ $(document).ready(function() {
     editor.insert('#'.repeat($(this).data('level')) + ' ');
     editor.focus();
   });
+  $('.styling-icon').click(function(){ // styling icons
+    var selectionRange = editor.selection.getRange();
+    var selectedText = editor.session.getTextRange(selectionRange);
+    var modifier = $(this).data('modifier');
+    editor.session.replace(selectionRange, modifier + selectedText + modifier);
+    editor.focus();
+  });
 
 });
