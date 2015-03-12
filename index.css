@@ -37,12 +37,22 @@ li.none-style {
 
 #toolbar {
   padding-left: 48px;
+  color: #666666;
 }
 
 #toolbar .fa {
-  padding: 3px;
+  padding: 2px;
+  border: 1px solid transparent;
 }
 
 #toolbar .fa:hover {
-  background-color: #dddddd;
+  background-color: #eeeeee;
+  border-color: #dddddd;
+}
+
+.ui-layout-toggler {
+  background-color: #cccccc;
+}
+.ui-layout-toggler:hover {
+  background-color: #ADD8E6;
 }
