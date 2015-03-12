@@ -3,8 +3,14 @@ var editor;
 
 $(document).ready(function () {
 
-  // 构造左右两个面板
+  // 构造上中右三个面板
   myLayout = $('body').layout({
+    north: {
+      size: '20px',
+      resizable: false,
+      togglerTip_open: 'Hide Toolbar',
+      togglerTip_closed: 'Show Toolbar'
+    },
     east: {
       size: '50%',
       resizable: false,
