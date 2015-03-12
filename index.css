@@ -36,7 +36,11 @@ li.none-style {
 }
 
 #toolbar {
-  padding-left: 64px;
+  padding-left: 48px;
+}
+
+#toolbar .fa {
+  padding: 3px;
 }
 
 #toolbar .fa:hover {

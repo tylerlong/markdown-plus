@@ -8,7 +8,7 @@ $(document).ready(function () {
     center: {
       childOptions: {
         north: {
-          size: '20px',
+          size: '1px', // 只是占位，真实大小由内容决定
           resizable: false,
           togglerTip_open: 'Hide Toolbar',
           togglerTip_closed: 'Show Toolbar'
