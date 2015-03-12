@@ -26,6 +26,7 @@
     "jquery-ui": null,
     "marked": null,
     "github-markdown-css": null,
-    "google-code-prettify": null
+    "google-code-prettify": null,
+    "font-awesome": null
   }
 }
