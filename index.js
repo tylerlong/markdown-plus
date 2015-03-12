@@ -8,8 +8,8 @@ $(document).ready(function () {
     east: {
       size: '50%',
       resizable: false,
-      togglerLength_open: 0,
-      spacing_open: 1,
+      togglerTip_open: 'Hide Preview',
+      togglerTip_closed: 'Show Preview',
       onresize: function(){
         // ACE的wrap貌似有问题，这里手动触发一下。
         editor.session.setUseWrapMode(false);

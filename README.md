@@ -22,6 +22,12 @@ Navigate to `index.html`
     1. [ ] test
     2. [x] test
 
+- first
+- second
+
+1. first
+2. second
+
 ```javascript
 function hello(){
     alert('Hello editor.markdown');
@@ -42,6 +48,11 @@ column 1 | column 2
 ## Screenshot
 
 ![editor.markdown](https://github.com/tylerlong/editor.markdown/raw/master/screenshot.png)
+
+
+## todo list
+
+- 分为上、中、右三块。 上面是toolbar，右边是预览，中间是编辑器。 上和右都提供隐藏和显示的按钮。
 
 
 ## License
