@@ -47,7 +47,7 @@ column 1 | column 2
 
 ## Screenshot
 
-![editor.markdown](https://github.com/tylerlong/editor.markdown/raw/master/screenshot.png)
+![editor.markdown](https://github.com/tylerlong/editor.markdown/raw/master/editor.markdown.png)
 
 
 ## todo list
