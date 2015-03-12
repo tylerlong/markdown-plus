@@ -38,3 +38,7 @@ li.none-style {
 #toolbar {
   padding-left: 64px;
 }
+
+#toolbar .fa:hover {
+  background-color: #dddddd;
+}

@@ -5,11 +5,15 @@ $(document).ready(function () {
 
   // 构造上中右三个面板
   myLayout = $('body').layout({
-    north: {
-      size: '20px',
-      resizable: false,
-      togglerTip_open: 'Hide Toolbar',
-      togglerTip_closed: 'Show Toolbar'
+    center: {
+      childOptions: {
+        north: {
+          size: '20px',
+          resizable: false,
+          togglerTip_open: 'Hide Toolbar',
+          togglerTip_closed: 'Show Toolbar'
+        },
+      }
     },
     east: {
       size: '50%',
