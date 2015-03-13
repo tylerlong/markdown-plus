@@ -2,6 +2,8 @@
 
 A lightweight markdown editor.
 
+![editor.markdown](https://github.com/tylerlong/editor.markdown/raw/master/editor.markdown.png)
+
 
 ## Setup & Run
 
@@ -43,11 +45,6 @@ column 1 | column 2
 
 
 <strong>html tag test</strong>
-
-
-## Screenshot
-
-![editor.markdown](https://github.com/tylerlong/editor.markdown/raw/master/editor.markdown.png)
 
 
 ## todo list
