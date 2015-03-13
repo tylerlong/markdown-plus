@@ -144,7 +144,12 @@ $(document).ready(function() {
 
   // image icon
   $('#image-icon').click(function() {
-    editor.insert('![image description](http://example.com/example.png)');
+    var range = editor.selection.getRange();
+    var text = editor.session.getTextRange(range).trim();
+    if(text.length == 0) {
+      text = 'image description';
+    }
+    editor.session.replace(range, '![' + text + '](http://example.com/example.png)');
     editor.focus();
   });
 
