@@ -76,9 +76,12 @@ $(document).ready(function() {
   // 实时监听用户的编辑
   // todo: 改成underscore debounce方法来减少执行次数、提升性能？
   editor.session.on('change', function() {
-    $('.markdown-body').html(marked(editor.session.getValue())); // 实时预览
+    $('.markdown-body').empty().append(marked(editor.session.getValue())); // 实时预览
     $('pre').addClass('prettyprint').addClass('linenums');
     prettyPrint(); // 语法高亮
+    $('img[src^="emoji/"]').each(function() { // 转换emoji路径
+      $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
+    });
   });
 
   // h1 - h6 heading
@@ -182,7 +185,7 @@ $(document).ready(function() {
   // emoji icon
   $('#emoji-icon').click(function() {
     var emoji = prompt('Emoji name, "smile" for example:');
-    editor.insert('<img src="http://www.emoji-cheat-sheet.com/graphics/emojis/' + emoji + '.png" width="32"/>');
+    editor.insert('<img src="emoji/' + emoji + '" width="18"/>');
     editor.focus();
   });
 

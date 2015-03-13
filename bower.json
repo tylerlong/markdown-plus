@@ -1,6 +1,6 @@
 {
   "name": "editor.markdown",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "authors": [
     "Tyler Long <tyler4long@gmail.com>"
   ],
@@ -27,6 +27,7 @@
     "marked": null,
     "github-markdown-css": null,
     "google-code-prettify": null,
-    "font-awesome": null
+    "font-awesome": null,
+    "emoji-icons": null
   }
 }
