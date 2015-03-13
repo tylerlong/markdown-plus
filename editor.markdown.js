@@ -76,10 +76,12 @@ $(document).ready(function() {
     if(range.isEmpty()) { // 没有选中任何东西
       range = editor.selection.getWordRange(range.start.row, range.start.column) // 当前单词的range
     }
-    var selectedText = editor.session.getTextRange(range);
+    var p = editor.getCursorPosition()
     var modifier = $(this).data('modifier');
-    editor.session.replace(range, modifier + selectedText + modifier);
-    editor.navigateLeft(modifier.length);
+    p.column += modifier.length; // 光标位置会产生偏移
+    editor.session.replace(range, modifier + editor.session.getTextRange(range) + modifier);
+    editor.moveCursorToPosition(p); // 恢复光标位置
+    editor.selection.clearSelection();
     editor.focus();
   });
 
