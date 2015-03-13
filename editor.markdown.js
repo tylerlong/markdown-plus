@@ -107,7 +107,14 @@ $(document).ready(function() {
   // list icons
   $('.list-icon').click(function(){
     var prefix = $(this).data('prefix');
-    editor.insert(prefix);
+    var p = editor.getCursorPosition();
+    p.column += prefix.length; // 光标位置会产生偏移
+    var range = editor.selection.getRange();
+    for(var i = range.start.row + 1; i < range.end.row + 2; i++) {
+      editor.gotoLine(i);
+      editor.insert(prefix);
+    }
+    editor.moveCursorToPosition(p); // 恢复光标位置
     editor.focus();
   });
 

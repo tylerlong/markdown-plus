@@ -53,6 +53,7 @@ column 1 | column 2
 ## todo list
 
 - Add functions to toolbar icons.
+- ACE 换行自动插入list prefix的特性需要斟酌。
 
 
 ## License
