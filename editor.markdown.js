@@ -91,4 +91,16 @@ $(document).ready(function() {
     editor.focus();
   });
 
+  // <hr/>
+  $('.fa-minus').click(function(){
+    var p = editor.getCursorPosition();
+    if(p.column == 0) { // 光标在行首
+      editor.insert('\n---\n');
+    } else {
+      editor.navigateLineEnd();
+      editor.insert('\n\n---\n');
+    }
+    editor.focus();
+  });
+
 });
