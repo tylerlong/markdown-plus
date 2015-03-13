@@ -65,23 +65,29 @@ $(document).ready(function() {
     prettyPrint(); // 语法高亮
   });
 
-  // toolbar actions
-  $('.heading-icon').click(function(){ // h1 - h6 heading
+  // h1 - h6 heading
+  $('.heading-icon').click(function(){
+    var level = $(this).data('level');
+    var p = editor.getCursorPosition();
+    p.column += level + 1; // 光标位置会产生偏移
     editor.navigateLineStart();
-    editor.insert('#'.repeat($(this).data('level')) + ' ');
+    editor.insert('#'.repeat(level) + ' ');
+    editor.moveCursorToPosition(p); // 恢复光标位置
     editor.focus();
   });
-  $('.styling-icon').click(function(){ // styling icons
+
+  // styling icons
+  $('.styling-icon').click(function(){
+    var modifier = $(this).data('modifier');
     var range = editor.selection.getRange();
     if(range.isEmpty()) { // 没有选中任何东西
       range = editor.selection.getWordRange(range.start.row, range.start.column) // 当前单词的range
     }
-    var p = editor.getCursorPosition()
-    var modifier = $(this).data('modifier');
+    var p = editor.getCursorPosition();
     p.column += modifier.length; // 光标位置会产生偏移
     editor.session.replace(range, modifier + editor.session.getTextRange(range) + modifier);
     editor.moveCursorToPosition(p); // 恢复光标位置
-    editor.selection.clearSelection();
+    editor.selection.clearSelection(); // 不知为何上一个语句会选中一部分文字
     editor.focus();
   });
 
