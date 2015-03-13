@@ -118,7 +118,7 @@ $(document).ready(function() {
   });
 
   // list icons
-  $('.list-icon').click(function(){
+  $('.list-icon').click(function() {
     var prefix = $(this).data('prefix');
     var p = editor.getCursorPosition();
     p.column += prefix.length; // 光标位置会产生偏移
@@ -139,6 +139,12 @@ $(document).ready(function() {
       text = 'link description';
     }
     editor.session.replace(range, '[' + text +'](http://example.com/ "optional title")');
+    editor.focus();
+  });
+
+  // image icon
+  $('#image-icon').click(function() {
+    editor.insert('![image description](http://example.com/example.png)');
     editor.focus();
   });
 
