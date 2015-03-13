@@ -79,6 +79,7 @@ $(document).ready(function() {
     var selectedText = editor.session.getTextRange(range);
     var modifier = $(this).data('modifier');
     editor.session.replace(range, modifier + selectedText + modifier);
+    editor.navigateLeft(modifier.length);
     editor.focus();
   });
 
