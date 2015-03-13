@@ -166,12 +166,23 @@ $(document).ready(function() {
 
   // table icon
   $('#table-icon').click(function() {
-    console.log('table');
+    var tableTemplate = 'header 1 | header 2\n---|---\nrow 1 col 1 | row 1 col 2\nrow 2 col 1 | row 2 col 2';
+    editor.insert(''); // 删除选中的部分
+    var p = editor.getCursorPosition();
+    if(p.column == 0) { // 光标在行首
+      editor.navigateLineStart();
+      editor.insert('\n' + tableTemplate + '\n\n');
+    } else {
+      editor.navigateLineEnd();
+      editor.insert('\n\n' + tableTemplate + '\n');
+    }
+    editor.focus();
   });
 
   // emoji icon
   $('#emoji-icon').click(function() {
     console.log('emoji');
+    editor.focus();
   });
 
   // help icon
