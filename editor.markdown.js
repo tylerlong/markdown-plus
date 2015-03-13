@@ -181,7 +181,8 @@ $(document).ready(function() {
 
   // emoji icon
   $('#emoji-icon').click(function() {
-    console.log('emoji');
+    var emoji = prompt('Emoji name, "smile" for example:');
+    editor.insert('<img src="http://www.emoji-cheat-sheet.com/graphics/emojis/' + emoji + '.png" width="32"/>');
     editor.focus();
   });
 
