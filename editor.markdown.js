@@ -34,6 +34,21 @@ $(document).ready(function() {
   editor.setFontSize('14px');
   editor.focus();
 
+  // 编辑器的一些拓展方法
+  editor.selection.smartRange = function() {
+    var range = editor.selection.getRange();
+    if(!range.isEmpty()) {
+      return range; // 用户手动选中了一些文字，直接用这个
+    }
+    // 没有选中任何东西
+    var _range = range; // 备份原始range
+    range = editor.selection.getWordRange(range.start.row, range.start.column); // 当前单词的range
+    if(editor.session.getTextRange(range).trim().length == 0) { // 选中的东西是空或者全空白
+      range = _range; // 还使用原始的range
+    }
+    return range;
+  };
+
   // 设置marked
   var renderer = new marked.Renderer();
   renderer.listitem = function(text) {
@@ -80,10 +95,7 @@ $(document).ready(function() {
   // styling icons
   $('.styling-icon').click(function() {
     var modifier = $(this).data('modifier');
-    var range = editor.selection.getRange();
-    if(range.isEmpty()) { // 没有选中任何东西
-      range = editor.selection.getWordRange(range.start.row, range.start.column); // 当前单词的range
-    }
+    var range = editor.selection.smartRange();
     var p = editor.getCursorPosition();
     p.column += modifier.length; // 光标位置会产生偏移
     editor.session.replace(range, modifier + editor.session.getTextRange(range) + modifier);
@@ -116,6 +128,17 @@ $(document).ready(function() {
       editor.insert(prefix);
     }
     editor.moveCursorToPosition(p); // 恢复光标位置
+    editor.focus();
+  });
+
+  // link icon
+  $('#link-icon').click(function() {
+    var range = editor.selection.smartRange();
+    var text = editor.session.getTextRange(range);
+    if(text.trim().length == 0) {
+      text = 'link description';
+    }
+    editor.session.replace(range, '[' + text +'](http://example.com/ "optional title")');
     editor.focus();
   });
 
