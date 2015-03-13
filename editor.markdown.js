@@ -59,14 +59,14 @@ $(document).ready(function() {
   });
 
   // 实时监听用户的编辑
-  editor.session.on('change', function(){
+  editor.session.on('change', function() {
     $('.markdown-body').html(marked(editor.session.getValue())); // 实时预览
     $('pre').addClass('prettyprint').addClass('linenums');
     prettyPrint(); // 语法高亮
   });
 
   // h1 - h6 heading
-  $('.heading-icon').click(function(){
+  $('.heading-icon').click(function() {
     var level = $(this).data('level');
     var p = editor.getCursorPosition();
     p.column += level + 1; // 光标位置会产生偏移
@@ -77,7 +77,7 @@ $(document).ready(function() {
   });
 
   // styling icons
-  $('.styling-icon').click(function(){
+  $('.styling-icon').click(function() {
     var modifier = $(this).data('modifier');
     var range = editor.selection.getRange();
     if(range.isEmpty()) { // 没有选中任何东西
@@ -92,7 +92,7 @@ $(document).ready(function() {
   });
 
   // <hr/>
-  $('.fa-minus').click(function(){
+  $('#horizontal-rule').click(function() {
     var p = editor.getCursorPosition();
     if(p.column == 0) { // 光标在行首
       editor.insert('\n---\n');
