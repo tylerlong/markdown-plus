@@ -72,10 +72,13 @@ $(document).ready(function() {
     editor.focus();
   });
   $('.styling-icon').click(function(){ // styling icons
-    var selectionRange = editor.selection.getRange();
-    var selectedText = editor.session.getTextRange(selectionRange);
+    var range = editor.selection.getRange();
+    if(range.isEmpty()) { // 没有选中任何东西
+      range = editor.selection.getWordRange(range.start.row, range.start.column) // 当前单词的range
+    }
+    var selectedText = editor.session.getTextRange(range);
     var modifier = $(this).data('modifier');
-    editor.session.replace(selectionRange, modifier + selectedText + modifier);
+    editor.session.replace(range, modifier + selectedText + modifier);
     editor.focus();
   });
 
