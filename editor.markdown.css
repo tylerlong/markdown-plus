@@ -9,7 +9,7 @@ body{
   margin: 0;
 }
 
-.ui-layout-north {
+.ui-layout-north { /* 工具栏背景色 */
   background-color: #eeeeee;
 }
 
@@ -19,7 +19,7 @@ body{
   height: 100%;
 }
 
-.markdown-body {
+.markdown-body { /* 模拟GitHub的页面设置 */
   min-width: 200px;
   max-width: 790px;
   margin: 0 auto;
@@ -27,7 +27,7 @@ body{
 }
 
 li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
-  list-style-type: decimal !important;
+  list-style-type: decimal !important; /* 强制每行都显示行号 */
 }
 
 .markdown-body ol.linenums {
@@ -59,14 +59,14 @@ li.none-style {
   background-color: #cccccc;
 }
 .ui-layout-toggler:hover {
-  background-color: #add8e6;
+  background-color: #add8e6; /* 浅蓝色 */
 }
 
 .heading-icon {
   font-weight: bold;
 }
 
-i.dividor {
+i.dividor { /* toolbar 上面的分隔竖线 */
   font-style: normal;
   color: #dddddd;
   margin: 0 6px;
@@ -76,7 +76,7 @@ i.dividor {
   margin-right: 8px !important;
 }
 
-.noneselect {
+.noneselect { /* toolbar上面的按钮无论怎样点击都不应该选中 */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

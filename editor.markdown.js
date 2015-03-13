@@ -59,6 +59,7 @@ $(document).ready(function() {
   });
 
   // 实时监听用户的编辑
+  // todo: 改成underscore debounce方法来减少执行次数、提升性能？
   editor.session.on('change', function() {
     $('.markdown-body').html(marked(editor.session.getValue())); // 实时预览
     $('pre').addClass('prettyprint').addClass('linenums');

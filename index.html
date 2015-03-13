@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>editor.markdown</title>
     <link rel="stylesheet" href="bower_components/layout/source/stable/layout-default.css"/>
     <link rel="stylesheet" href="bower_components/github-markdown-css/github-markdown.css"/>
@@ -18,7 +19,7 @@
   </head>
   <body>
     <div class="ui-layout-north">
-      <div id="toolbar" class="noneselect">
+      <div id="toolbar" class="noneselect"> <!-- 工具栏 -->
         <i title="Bold" class="fa fa-bold styling-icon" data-modifier="**"></i>
         <i title="Italic" class="fa fa-italic styling-icon" data-modifier="_"></i>
         <i title="Strikethrough" class="fa fa-strikethrough styling-icon" data-modifier="~~"></i>
@@ -48,10 +49,10 @@
       </div>
     </div>
     <div class="ui-layout-center">
-      <div id="editor"></div>
+      <div id="editor"></div> <!-- 编辑器 -->
     </div>
     <div class="ui-layout-east">
-      <article class="markdown-body"></article>
+      <article class="markdown-body"></article> <!-- 预览 -->
     </div>
   </body>
 </html>
