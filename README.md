@@ -19,29 +19,16 @@ Navigate to `index.html`
     - [ ] test
     - [x] test
 
-1. [x] test
-2. [ ] test
-    1. [ ] test
-    2. [x] test
-
-- first
-- second
-
-1. first
-2. second
-
 ```javascript
 function hello(){
     alert('Hello editor.markdown');
 }
 ```
 
-column 1 | column 2
-:---------:|---------
-1.1 | 1.2
-2.1 | 2.2
-3.1 | 3.2
-4.1 | 4.2
+header 1 | header 2
+---|---
+row 1 col 1 | row 1 col 2
+row 2 col 1 | row 2 col 2
 
 
 <strong>html tag test</strong>
