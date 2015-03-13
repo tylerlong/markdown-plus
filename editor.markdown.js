@@ -81,7 +81,7 @@ $(document).ready(function() {
     var modifier = $(this).data('modifier');
     var range = editor.selection.getRange();
     if(range.isEmpty()) { // 没有选中任何东西
-      range = editor.selection.getWordRange(range.start.row, range.start.column) // 当前单词的range
+      range = editor.selection.getWordRange(range.start.row, range.start.column); // 当前单词的range
     }
     var p = editor.getCursorPosition();
     p.column += modifier.length; // 光标位置会产生偏移
@@ -95,11 +95,19 @@ $(document).ready(function() {
   $('#horizontal-rule').click(function() {
     var p = editor.getCursorPosition();
     if(p.column == 0) { // 光标在行首
+      editor.selection.clearSelection();
       editor.insert('\n---\n');
     } else {
       editor.navigateLineEnd();
       editor.insert('\n\n---\n');
     }
+    editor.focus();
+  });
+
+  // list icons
+  $('.list-icon').click(function(){
+    var prefix = $(this).data('prefix');
+    editor.insert(prefix);
     editor.focus();
   });
 
