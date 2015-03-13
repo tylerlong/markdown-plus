@@ -164,4 +164,24 @@ $(document).ready(function() {
     editor.focus();
   });
 
+  // table icon
+  $('#table-icon').click(function() {
+    console.log('table');
+  });
+
+  // emoji icon
+  $('#emoji-icon').click(function() {
+    console.log('emoji');
+  });
+
+  // help icon
+  $('#help-icon').click(function() {
+    console.log('help');
+  });
+
+  // about icon
+  $('#about-icon').click(function() {
+    console.log('about');
+  });
+
 });
