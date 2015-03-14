@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="bower_components/github-markdown-css/github-markdown.css"/>
     <link rel="stylesheet" href="bower_components/google-code-prettify/bin/prettify.min.css"/>
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="bower_components/remodal/dist/jquery.remodal.css"/>
     <link rel="stylesheet" href="editor.markdown.css"/>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -14,6 +15,7 @@
     <script src="bower_components/ace-builds/src-min-noconflict/ace.js" charset="utf-8"></script>
     <script src="bower_components/marked/marked.min.js"></script>
     <script src="bower_components/google-code-prettify/bin/prettify.min.js"></script>
+    <script src="bower_components/remodal/dist/jquery.remodal.min.js"></script>
     <script src="extensions.js"></script>
     <script src="editor.markdown.js"></script>
   </head>
@@ -44,12 +46,22 @@
         <i title="Table" class="fa fa-table" id="table-icon"></i>
         <i title="Emoji" class="fa fa-smile-o" id="emoji-icon"></i>
         <i class="dividor">|</i>
-        <i title="Help" class="fa fa-question-circle" id="help-icon"></i>
+        <i title="Help" class="fa fa-question-circle" id="help-icon" data-remodal-target="help-modal"></i>
         <i title="About" class="fa fa-info-circle" id="about-icon"></i>
       </div>
     </div>
     <div class="ui-layout-center">
       <div id="editor"></div> <!-- 编辑器 -->
+      <div class="remodal" data-remodal-id="help-modal">
+        <h1>Help modal</h1>
+        <p>
+          Flat, responsive, lightweight, fast, easy customizable modal window plugin
+          with declarative state notation and hash tracking.
+        </p>
+        <br>
+        <a class="remodal-cancel" href="#">Cancel</a>
+        <a class="remodal-confirm" href="#">OK</a>
+      </div>
     </div>
     <div class="ui-layout-east">
       <article class="markdown-body"></article> <!-- 预览 -->
