@@ -14,18 +14,25 @@ open index.html
 ```
 
 
+## 如何嵌入到自己的项目
+
+参考`index.html`，比葫芦画瓢。
+
+
 ## todo list
 
 - ACE 换行自动插入list prefix的特性需要斟酌。
 - rename to Markdown Plus
 - submit to OSChina
+- create help content
+- create about content
 
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2015 https://tylingsoft.com
+Copyright (c) 2015 Tylingsoft
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
