@@ -7,45 +7,25 @@ A lightweight markdown editor.
 
 ## Setup & Run
 
-`bower install`
-
-Navigate to `index.html`
-
-
-## Content for testing
-
-- [x] test
-- [ ] test
-    - [ ] test
-    - [x] test
-
-```javascript
-function hello(){
-    alert('Hello editor.markdown');
-}
+```shell
+git clone git@github.com:tylerlong/editor.markdown.git && cd editor.markdown
+bower install
+open index.html
 ```
-
-header 1 | header 2
----|---
-row 1 col 1 | row 1 col 2
-row 2 col 1 | row 2 col 2
-
-
-<strong>html tag test</strong>
 
 
 ## todo list
 
-- Add functions to toolbar icons.
 - ACE 换行自动插入list prefix的特性需要斟酌。
-- Emoji
+- rename to Markdown Plus
+- submit to OSChina
 
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Tyler Long
+Copyright (c) 2015 https://tylingsoft.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
