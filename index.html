@@ -16,7 +16,6 @@
     <script src="bower_components/marked/marked.min.js"></script>
     <script src="bower_components/google-code-prettify/bin/prettify.min.js"></script>
     <script src="bower_components/remodal/dist/jquery.remodal.min.js"></script>
-    <script src="extensions.js"></script>
     <script src="editor.markdown.js"></script>
   </head>
   <body>
@@ -44,7 +43,7 @@
         <i title="Image" class="fa fa-image" id="image-icon"></i>
         <i title="Code" class="fa fa-code" id="code-icon"></i>
         <i title="Table" class="fa fa-table" id="table-icon"></i>
-        <i title="Emoji" class="fa fa-smile-o" id="emoji-icon"></i>
+        <i title="Emoji" class="fa fa-smile-o" id="emoji-icon" data-remodal-target="emoji-modal"></i>
         <i class="dividor">|</i>
         <i title="Help" class="fa fa-question-circle" id="help-icon" data-remodal-target="help-modal"></i>
         <i title="About" class="fa fa-info-circle" id="about-icon" data-remodal-target="about-modal"></i>
@@ -52,23 +51,31 @@
     </div>
     <div class="ui-layout-center">
       <div id="editor"></div> <!-- 编辑器 -->
-      <div class="remodal" data-remodal-id="help-modal">
+      <div class="remodal" id="emoji-modal" data-remodal-id="emoji-modal"> <!-- emoji 弹出框 -->
+        <h1>Please enter an emoji code:</h1>
+        <p>
+          Examples: "smile", "whale", "santa", "panda_face", "dog", "truck", "helicopter"...etc.
+        </p>
+        <p><input id="emoji-code" placeholder="smile"/></p>
+        <br/>
+        <a class="remodal-cancel">Cancel</a>
+        <a class="remodal-confirm" id="emoji-confirm">OK</a>
+      </div>
+      <div class="remodal" data-remodal-id="help-modal"> <!-- help 弹出框 -->
         <h1>Help title</h1>
         <p>Help content</p>
         <br/>
-        <a class="remodal-cancel">Cancel</a>
         <a class="remodal-confirm">OK</a>
       </div>
-      <div class="remodal" data-remodal-id="about-modal">
+      <div class="remodal" data-remodal-id="about-modal"> <!-- about 弹出框 -->
         <h1>About title</h1>
         <p>About content</p>
         <br/>
-        <a class="remodal-cancel">Cancel</a>
         <a class="remodal-confirm">OK</a>
       </div>
     </div>
     <div class="ui-layout-east">
-      <article class="markdown-body"></article> <!-- 预览 -->
+      <article class="markdown-body"></article> <!-- 实时预览 -->
     </div>
   </body>
 </html>

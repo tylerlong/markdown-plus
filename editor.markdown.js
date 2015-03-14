@@ -183,9 +183,23 @@ $(document).ready(function() {
   });
 
   // emoji icon
-  $('#emoji-icon').click(function() {
-    var emoji = prompt('Emoji name, "smile" for example:');
-    editor.insert('<img src="emoji/' + emoji + '" width="18"/>');
+  $(document).on('confirm', '#emoji-modal', function() {
+    var emoji_code = $('#emoji-code').val().trim();
+    if(emoji_code.length > 0) {
+      editor.insert('<img src="emoji/' + emoji_code + '" width="18"/>');
+    }
+  });
+  $(document).on('opened', '#emoji-modal', function() {
+    $('#emoji-code').focus();
+  });
+  $('#emoji-modal').keyup(function(e) {
+   if(e.which == 13) {
+      $('#emoji-confirm').click();
+    }
+  });
+
+  // modals
+  $(document).on('close', '.remodal', function(e) {
     editor.focus();
   });
 
