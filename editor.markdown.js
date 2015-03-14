@@ -183,24 +183,25 @@ $(document).ready(function() {
   });
 
   // emoji icon
+  $(document).on('opened', '#emoji-modal', function() {
+    $('#emoji-code').focus();
+  });
+  $('#emoji-code').keyup(function(e) {
+   if(e.which == 13) { // 回车键确认
+      $('#emoji-confirm').click();
+    }
+  });
   $(document).on('confirm', '#emoji-modal', function() {
     var emoji_code = $('#emoji-code').val().trim();
     if(emoji_code.length > 0) {
       editor.insert('<img src="emoji/' + emoji_code + '" width="18"/>');
-    }
-  });
-  $(document).on('opened', '#emoji-modal', function() {
-    $('#emoji-code').focus();
-  });
-  $('#emoji-modal').keyup(function(e) {
-   if(e.which == 13) {
-      $('#emoji-confirm').click();
+      $('#emoji-code').val('');
     }
   });
 
   // modals
   $(document).on('close', '.remodal', function(e) {
-    editor.focus();
+    editor.focus(); // 关闭modal，编辑器自动获得焦点
   });
 
 });
