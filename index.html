@@ -47,20 +47,24 @@
         <i title="Emoji" class="fa fa-smile-o" id="emoji-icon"></i>
         <i class="dividor">|</i>
         <i title="Help" class="fa fa-question-circle" id="help-icon" data-remodal-target="help-modal"></i>
-        <i title="About" class="fa fa-info-circle" id="about-icon"></i>
+        <i title="About" class="fa fa-info-circle" id="about-icon" data-remodal-target="about-modal"></i>
       </div>
     </div>
     <div class="ui-layout-center">
       <div id="editor"></div> <!-- 编辑器 -->
       <div class="remodal" data-remodal-id="help-modal">
-        <h1>Help modal</h1>
-        <p>
-          Flat, responsive, lightweight, fast, easy customizable modal window plugin
-          with declarative state notation and hash tracking.
-        </p>
-        <br>
-        <a class="remodal-cancel" href="#">Cancel</a>
-        <a class="remodal-confirm" href="#">OK</a>
+        <h1>Help title</h1>
+        <p>Help content</p>
+        <br/>
+        <a class="remodal-cancel">Cancel</a>
+        <a class="remodal-confirm">OK</a>
+      </div>
+      <div class="remodal" data-remodal-id="about-modal">
+        <h1>About title</h1>
+        <p>About content</p>
+        <br/>
+        <a class="remodal-cancel">Cancel</a>
+        <a class="remodal-confirm">OK</a>
       </div>
     </div>
     <div class="ui-layout-east">

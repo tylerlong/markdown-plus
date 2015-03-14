@@ -189,14 +189,4 @@ $(document).ready(function() {
     editor.focus();
   });
 
-  // help icon
-  $('#help-icon').click(function() {
-    console.log('help');
-  });
-
-  // about icon
-  $('#about-icon').click(function() {
-    console.log('about');
-  });
-
 });
