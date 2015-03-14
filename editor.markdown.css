@@ -35,7 +35,10 @@ li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
   color: #bbbbbb;
 }
 
-li.none-style {
+ul, ol {
+  list-style-position: inside;
+}
+li.nostyle {
   list-style: none;
 }
 

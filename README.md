@@ -21,11 +21,11 @@ open index.html
 
 ## todo list
 
-- ACE 换行自动插入list prefix的特性需要斟酌。
 - rename to Markdown Plus
 - submit to OSChina
 - create help content
 - create about content
+- create ace min nonconflict
 
 
 ## License

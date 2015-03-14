@@ -60,7 +60,7 @@ $(document).ready(function() {
     if(/^\[x\]\s/.test(text)) { // 完成的任务列表
       checkbox.attr('checked', true);
     }
-    return $(marked.Renderer.prototype.listitem(text.substring(4))).addClass('none-style').prepend(checkbox)[0].outerHTML;
+    return $(marked.Renderer.prototype.listitem(text.substring(4))).addClass('nostyle').prepend(checkbox)[0].outerHTML;
   }
   marked.setOptions({
     renderer: renderer,
