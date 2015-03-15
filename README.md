@@ -5,6 +5,15 @@ Markdown editor with extra features. It supports the common markdown, GitHub mar
 ![Markdown Plus](https://github.com/tylerlong/markdown-plus/raw/master/screenshot.png)
 
 
+## Features
+
+- GitHub Flavored Markdown
+- Realtime preview
+- Source code highlight
+- Task lists
+- Emojis
+
+
 ## Setup & Run
 
 ```shell
@@ -27,7 +36,9 @@ Copyright (c) 2015 Tylingsoft
 
 
 ---
+
 ---
+
 ---
 
 
@@ -35,6 +46,15 @@ Copyright (c) 2015 Tylingsoft
 
 
 Markdown Plus 是一款轻量级Markdown编辑器。它支持标准 markdown、GitHub markdown、任务列表、emoji 等特性。
+
+
+## 主要特性
+
+- GitHub Flavored Markdown
+- 实时预览
+- 代码高亮
+- 任务列表
+- Emoji 表情
 
 
 ## 安装与运行
