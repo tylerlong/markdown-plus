@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "jquery": null,
-    "layout": "allpro/layout#~1.4.3",
+    "jquery-ui-layout-min": null,
     "ace-min-noconflict": null,
     "jquery-ui": null,
     "marked": null,
