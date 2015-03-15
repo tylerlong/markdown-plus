@@ -26,8 +26,10 @@ Please take `index.html` as an example.
 Copyright (c) 2015 Tylingsoft
 
 
+---
 
-# Content blow is for those who speak Chinese
+
+# Blow is for Chinese speaking
 
 
 Markdown Plus 是一款轻量级Markdown编辑器。它支持标准 markdown，GitHub markdown，以及任务列表，Emoji等特性。
