@@ -12,7 +12,7 @@ Markdown Plus is a markdown editor with extra features. It supports the common m
 - Task lists
 - Emojis
 
-![Markdown Plus](https://github.com/tylerlong/markdown-plus/raw/master/screenshot.png)
+![Markdown Plus](screenshot.png)
 
 
 ## Setup & Run
