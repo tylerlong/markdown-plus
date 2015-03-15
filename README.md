@@ -18,17 +18,17 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 
 ## Why yet another markdown editor?
 
-I had tried several of the markdown editors available on GitHub, they are either too simple in features or too complex in implementation.
+We had tried several of the markdown editors available on GitHub, they are either too simple in features or too complex in implementation.
 
-I spent too much time finding, hacking and tweaking other markdown editors and finally I decided to create my own.
+We spent too much time finding, hacking and tweaking other markdown editors and finally we decided to create our own.
 
-I hope Markdown Plus could save your time when you need a simple yet feature-rich markdown editor.
+We hope Markdown Plus could save your time when you need a simple yet feature-rich markdown editor.
 
 
 ## Setup & Run
 
 ```shell
-git clone git@github.com:tylerlong/markdown-plus.git && cd markdown-plus
+git clone git@github.com:tylingsoft/markdown-plus.git && cd markdown-plus
 bower install
 open index.html
 ```
@@ -72,17 +72,17 @@ Markdown Plus 是一款轻量级 markdown 编辑器。除了支持标准 markdow
 
 ## 为什么又一个 markdown 编辑器？
 
-我曾试过 GitHub 上面的几个 markdown 编辑器，对我来讲它们不是功能上太简单了就是实现上太复杂了。
+我们曾试过 GitHub 上面的几个 markdown 编辑器，对我们来讲它们不是功能上太简单了就是实现上太复杂了。
 
-我把大量的时间花在了寻找、修改、定制其它的 markdown 编辑器上，直到最终我决定自己写一个。
+我们把大量的时间花在了寻找、修改、定制其它的 markdown 编辑器上，直到最终我们决定自己写一个。
 
-我希望 Markdown Plus 能给那些需要一个既简单又功能完备的 markdown 编辑器的人节省时间。
+我们希望 Markdown Plus 能给那些需要一个既简单又功能完备的 markdown 编辑器的人节省时间。
 
 
 ## 安装与运行
 
 ```shell
-git clone git@github.com:tylerlong/markdown-plus.git && cd markdown-plus
+git clone git@github.com:tylingsoft/markdown-plus.git && cd markdown-plus
 bower install
 open index.html
 ```

@@ -11,7 +11,7 @@
     "editor"
   ],
   "license": "BSD",
-  "homepage": "https://github.com/tylerlong/markdown-plus",
+  "homepage": "https://github.com/tylingsoft/markdown-plus",
   "ignore": [
     "**/.*",
     "node_modules",
