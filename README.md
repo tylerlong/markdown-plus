@@ -25,7 +25,7 @@ open index.html
 - submit to OSChina
 - create help content
 - create about content
-- create ace min nonconflict
+- change lisence
 
 
 ## License

@@ -22,7 +22,7 @@
   "dependencies": {
     "jquery": null,
     "layout": "allpro/layout#~1.4.3",
-    "ace-builds": "master",
+    "ace-min-noconflict": null,
     "jquery-ui": null,
     "marked": null,
     "github-markdown-css": null,
