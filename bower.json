@@ -1,17 +1,17 @@
 {
-  "name": "editor.markdown",
+  "name": "markdown-plus",
   "version": "0.9.9",
   "authors": [
     "Tyler Long <tyler4long@gmail.com>"
   ],
-  "description": "A lightweight markdown editor.",
+  "description": "Markdown editor with extra features.",
   "main": "index.html",
   "keywords": [
     "markdown",
     "editor"
   ],
   "license": "BSD",
-  "homepage": "https://github.com/tylerlong/editor.markdown",
+  "homepage": "https://github.com/tylerlong/markdown-plus",
   "ignore": [
     "**/.*",
     "node_modules",

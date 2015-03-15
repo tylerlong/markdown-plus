@@ -1,27 +1,26 @@
-# editor.markdown
+# Markdown Plus
 
-A lightweight markdown editor.
+Markdown editor with extra features.
 
-![editor.markdown](https://github.com/tylerlong/editor.markdown/raw/master/editor.markdown.png)
+![Markdown Plus](https://github.com/tylerlong/markdown-plus/raw/master/screenshot.png)
 
 
 ## Setup & Run
 
 ```shell
-git clone git@github.com:tylerlong/editor.markdown.git && cd editor.markdown
+git clone git@github.com:tylerlong/markdown-plus.git && cd markdown-plus
 bower install
 open index.html
 ```
 
 
-## 如何嵌入到自己的项目
+## 如何在项目中使用
 
 参考`index.html`，比葫芦画瓢。
 
 
 ## todo list
 
-- rename to Markdown Plus
 - submit to OSChina
 - create help content
 - create about content
