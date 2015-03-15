@@ -1,6 +1,6 @@
 # Markdown Plus
 
-<img src="icon.svg" width="128"/>
+![Markdown Plus](icon.png)
 Markdown Plus is a markdown editor with extra features. It supports the common markdown, GitHub markdown, task lists and emojis.
 
 
@@ -45,7 +45,7 @@ Copyright (c) 2015 Tylingsoft
 
 # Blow is for Chinese speaking
 
-<img src="icon.svg" width="128"/>
+![Markdown Plus](icon.png)
 
 Markdown Plus 是一款轻量级Markdown编辑器。它支持标准 markdown、GitHub markdown、任务列表、emoji 等特性。
 
