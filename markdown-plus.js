@@ -69,7 +69,7 @@ $(document).ready(function() {
   renderer.code = function(code, language) {
     if(language === 'math') {
       var tex = '';
-      code.split(/\n/).forEach(function(line){
+      code.split(/\n\n/).forEach(function(line){
         line = line.trim();
         if(line.length > 0) {
           try {
