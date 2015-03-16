@@ -66,7 +66,13 @@ $(document).ready(function() {
     }
     return $(marked.Renderer.prototype.listitem(text.substring(4))).addClass('nostyle').prepend(checkbox)[0].outerHTML;
   }
+  var mermaidError;
+  mermaid.parseError = function(err, hash){
+    mermaidError = err;
+  };
   renderer.code = function(code, language) {
+    code = code.trim();
+    var firstLine = code.split(/\n/)[0].trim();
     if(language === 'math') {
       var tex = '';
       code.split(/\n\n/).forEach(function(line){
@@ -75,11 +81,20 @@ $(document).ready(function() {
           try {
             tex += katex.renderToString(line, { displayMode: true });
           } catch(err) {
-            tex += '<p>' + err.message + '</p>';
+            tex += '<pre>' + err + '</pre>';
           }
         }
       });
       return tex;
+    } else if(firstLine == 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) {
+      if(firstLine == 'sequenceDiagram') {
+        code += '\n'; // 如果末尾没有空行，则语法错误
+      }
+      if(mermaid.parse(code)) {
+        return '<div class="mermaid">' + code + '</div>';
+      } else {
+        return '<pre>' + mermaidError + '</pre>';
+      }
     } else {
       return marked.Renderer.prototype.code.apply(this, arguments);
     }
@@ -104,6 +119,7 @@ $(document).ready(function() {
     $('img[src^="emoji/"]').each(function() { // 转换emoji路径
       $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
     });
+    mermaid.init(); // 生成流程图，顺序图等
   });
 
   // h1 - h6 heading

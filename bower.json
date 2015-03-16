@@ -30,6 +30,7 @@
     "font-awesome-min": null,
     "emoji-icons": null,
     "remodal-min": null,
-    "katex-build": null
+    "katex-build": null,
+    "mermaid": null
   }
 }
