@@ -73,9 +73,9 @@ $(document).ready(function() {
   renderer.code = function(code, language) {
     code = code.trim();
     var firstLine = code.split(/\n/)[0].trim();
-    if(language === 'math') {
+    if(language === 'math') { // 数学公式
       var tex = '';
-      code.split(/\n\n/).forEach(function(line){
+      code.split(/\n\n/).forEach(function(line){ // 连续两个换行，则开始下一个公式
         line = line.trim();
         if(line.length > 0) {
           try {
@@ -86,8 +86,8 @@ $(document).ready(function() {
         }
       });
       return tex;
-    } else if(firstLine == 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) {
-      if(firstLine == 'sequenceDiagram') {
+    } else if(firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) {
+      if(firstLine === 'sequenceDiagram') {
         code += '\n'; // 如果末尾没有空行，则语法错误
       }
       if(mermaid.parse(code)) {
