@@ -82,7 +82,7 @@ Markdown Plus 是一款轻量级 markdown 编辑器。除了支持标准 markdow
 ## 安装与运行
 
 ```shell
-git clone git@github.com:tylingsoft/markdown-plus.git && cd markdown-plus
+git clone https://github.com/tylingsoft/markdown-plus.git && cd markdown-plus
 bower install
 open index.html
 ```
