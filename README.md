@@ -53,7 +53,7 @@ Copyright (c) 2015 Tylingsoft
 ---
 
 
-# Blow is for Chinese speaking
+# Below is for Chinese speaking
 
 ![Markdown Plus](icon.png)
 
