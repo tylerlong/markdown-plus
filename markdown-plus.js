@@ -68,11 +68,17 @@ $(document).ready(function() {
   }
   renderer.code = function(code, language) {
     if(language === 'math') {
-      try {
-        tex = katex.renderToString(code, { displayMode: true });
-      } catch(err) {
-        return err.message;
-      }
+      var tex = '';
+      code.split(/\n/).forEach(function(line){
+        line = line.trim();
+        if(line.length > 0) {
+          try {
+            tex += katex.renderToString(line, { displayMode: true });
+          } catch(err) {
+            tex += '<p>' + err.message + '</p>';
+          }
+        }
+      });
       return tex;
     } else {
       return marked.Renderer.prototype.code.apply(this, arguments);
