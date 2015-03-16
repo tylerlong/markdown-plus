@@ -183,8 +183,7 @@ $(document).ready(function() {
   });
 
   $('#image-icon').click(function() {
-    var range = editor.selection.getRange();
-    var text = editor.session.getTextRange(range).trim();
+    var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
       text = 'image description';
     }
@@ -193,8 +192,7 @@ $(document).ready(function() {
   });
 
   $('#code-icon').click(function() {
-    var range = editor.selection.getRange();
-    var text = editor.session.getTextRange(range).trim();
+    var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
       text = 'enter code here';
     }
@@ -234,8 +232,7 @@ $(document).ready(function() {
   });
 
   $('#math-icon').click(function(){
-    var range = editor.selection.getRange();
-    var text = editor.session.getTextRange(range).trim();
+    var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
       text = 'E = mc^2';
     }
@@ -244,8 +241,7 @@ $(document).ready(function() {
   });
 
   $('#flow-icon').click(function(){
-    var range = editor.selection.getRange();
-    var text = editor.session.getTextRange(range).trim();
+    var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
       text = 'graph LR\nA-->B';
     }
@@ -254,8 +250,7 @@ $(document).ready(function() {
   });
 
   $('#seq-icon').click(function(){
-    var range = editor.selection.getRange();
-    var text = editor.session.getTextRange(range).trim();
+    var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
       text = 'sequenceDiagram\nA->>B: How are you?\nB->>A: Great!';
     }
