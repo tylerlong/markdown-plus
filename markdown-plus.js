@@ -172,7 +172,6 @@ $(document).ready(function() {
     editor.focus();
   });
 
-  // link icon
   $('#link-icon').click(function() {
     var range = editor.selection.smartRange();
     var text = editor.session.getTextRange(range);
@@ -183,7 +182,6 @@ $(document).ready(function() {
     editor.focus();
   });
 
-  // image icon
   $('#image-icon').click(function() {
     var range = editor.selection.getRange();
     var text = editor.session.getTextRange(range).trim();
@@ -194,7 +192,6 @@ $(document).ready(function() {
     editor.focus();
   });
 
-  // code icon
   $('#code-icon').click(function() {
     var range = editor.selection.getRange();
     var text = editor.session.getTextRange(range).trim();
@@ -205,7 +202,6 @@ $(document).ready(function() {
     editor.focus();
   });
 
-  // table icon
   $('#table-icon').click(function() {
     var tableTemplate = 'header 1 | header 2\n---|---\nrow 1 col 1 | row 1 col 2\nrow 2 col 1 | row 2 col 2';
     editor.insert(''); // 删除选中的部分
@@ -237,7 +233,6 @@ $(document).ready(function() {
     }
   });
 
-  // math icon
   $('#math-icon').click(function(){
     var range = editor.selection.getRange();
     var text = editor.session.getTextRange(range).trim();
@@ -246,6 +241,14 @@ $(document).ready(function() {
     }
     editor.insert('\n```math\n' + text + '\n```\n');
     editor.focus();
+  });
+
+  $('flow-icon').click(function(){
+    console.log('flow');
+  });
+
+  $('seq-icon').click(function(){
+    console.log('seq');
   });
 
   // modals
