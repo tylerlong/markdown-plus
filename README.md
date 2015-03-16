@@ -28,7 +28,7 @@ We hope Markdown Plus could save your time when you need a simple yet feature-ri
 ## Setup & Run
 
 ```shell
-git clone git@github.com:tylingsoft/markdown-plus.git && cd markdown-plus
+git clone https://github.com/tylingsoft/markdown-plus.git && cd markdown-plus
 bower install
 open index.html
 ```
