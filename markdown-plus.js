@@ -66,6 +66,18 @@ $(document).ready(function() {
     }
     return $(marked.Renderer.prototype.listitem(text.substring(4))).addClass('nostyle').prepend(checkbox)[0].outerHTML;
   }
+  renderer.code = function(code, language) {
+    if(language === 'math') {
+      try {
+        tex = katex.renderToString(code, { displayMode: true });
+      } catch(err) {
+        return err.message;
+      }
+      return tex;
+    } else {
+      return marked.Renderer.prototype.code.apply(this, arguments);
+    }
+  }
   marked.setOptions({
     renderer: renderer,
     gfm: true,

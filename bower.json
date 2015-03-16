@@ -29,6 +29,7 @@
     "google-code-prettify": null,
     "font-awesome-min": null,
     "emoji-icons": null,
-    "remodal-min": null
+    "remodal-min": null,
+    "katex-build": null
   }
 }
