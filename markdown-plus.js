@@ -221,6 +221,17 @@ $(document).ready(function() {
     }
   });
 
+  // math icon
+  $('#math-icon').click(function(){
+    var range = editor.selection.getRange();
+    var text = editor.session.getTextRange(range).trim();
+    if(text.length == 0) {
+      text = 'E = mc^2';
+    }
+    editor.insert('\n```math\n' + text + '\n```\n');
+    editor.focus();
+  });
+
   // modals
   $(document).on('close', '.remodal', function(e) {
     editor.focus(); // 关闭modal，编辑器自动获得焦点
