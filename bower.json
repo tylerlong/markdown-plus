@@ -13,7 +13,9 @@
     "sequence diagram",
     "emoji",
     "GFM",
-    "LaTex"
+    "LaTex",
+    "Font Awesome",
+    "Ionicons"
   ],
   "license": "BSD",
   "homepage": "https://github.com/tylingsoft/markdown-plus",
@@ -40,6 +42,7 @@
     "remodal-min": null,
     "katex-build": null,
     "mermaid": null,
-    "ionicons-min": null
+    "ionicons-min": null,
+    "underscore": null
   }
 }

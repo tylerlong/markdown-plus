@@ -111,8 +111,11 @@ $(document).ready(function() {
   });
 
   // 实时监听用户的编辑
-  // todo: 改成underscore debounce方法来减少执行次数、提升性能？
   editor.session.on('change', function() {
+    lazy_change();
+  });
+
+  var lazy_change = _.debounce(function() { // 用户停止输入256毫秒之后才会触发
     $('.markdown-body').empty().append(marked(editor.session.getValue())); // 实时预览
     $('pre').addClass('prettyprint').addClass('linenums');
     prettyPrint(); // 语法高亮
@@ -120,7 +123,7 @@ $(document).ready(function() {
       $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
     });
     mermaid.init(); // 生成流程图，顺序图等
-  });
+  }, 256, false);
 
   // h1 - h6 heading
   $('.heading-icon').click(function() {
