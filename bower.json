@@ -12,7 +12,8 @@
     "flowchart",
     "sequence diagram",
     "emoji",
-    "GFM"
+    "GFM",
+    "LaTex"
   ],
   "license": "BSD",
   "homepage": "https://github.com/tylingsoft/markdown-plus",
