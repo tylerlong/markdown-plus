@@ -248,6 +248,23 @@ $(document).ready(function() {
     }
   });
 
+  // Ionicons icon
+  $(document).on('opened', '#ion-modal', function() {
+    $('#ion-code').focus();
+  });
+  $('#ion-code').keyup(function(e) {
+   if(e.which == 13) { // 回车键确认
+      $('#ion-confirm').click();
+    }
+  });
+  $(document).on('confirm', '#ion-modal', function() {
+    var ion_code = $('#ion-code').val().trim();
+    if(ion_code.length > 0) {
+      editor.insert('<i class="icon ion-' + ion_code + '"/>');
+      $('#ion-code').val('');
+    }
+  });
+
   $('#math-icon').click(function(){
     var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {

@@ -50,6 +50,7 @@
         <i class="dividor">|</i>
         <i title="Emoji" class="fa fa-smile-o" data-remodal-target="emoji-modal"></i>
         <i title="Font Awesome" class="fa fa-flag-o" data-remodal-target="fa-modal"></i>
+        <i title="Ionicons" class="icon ion-ionic" data-remodal-target="ion-modal"></i>
         <i class="dividor">|</i>
         <i title="Mathematical formulae" class="fa fa-superscript" id="math-icon"></i>
         <i title="Flowchart" class="fa fa-long-arrow-right" id="flow-icon"></i>
@@ -64,7 +65,7 @@
       <div class="remodal" id="emoji-modal" data-remodal-id="emoji-modal"> <!-- emoji 弹出框 -->
         <h2>Please enter an emoji code:</h2>
         <p>Examples: "smile", "whale", "santa", "panda_face", "dog", "truck" ...</p>
-        <p>For a complete list, please check <a href="http://www.emoji-cheat-sheet.com/" target="_blank">emoji cheat sheet</a>.</p>
+        <p>For a complete list, please check <a href="http://www.emoji-cheat-sheet.com/" target="_blank">Emoji Cheat Sheet</a>.</p>
         <p><input id="emoji-code" placeholder="smile"/></p>
         <br/><a class="remodal-cancel">Cancel</a>
         <a class="remodal-confirm" id="emoji-confirm">OK</a>
@@ -77,13 +78,23 @@
         <br/><a class="remodal-cancel">Cancel</a>
         <a class="remodal-confirm" id="fa-confirm">OK</a>
       </div>
+      <div class="remodal" id="ion-modal" data-remodal-id="ion-modal"> <!-- Ionicons 弹出框 -->
+        <h2>Please enter an Ionicons code:</h2>
+        <p>Examples: "beer", "key", "locked", "location", "plane", "ios-eye" ...</p>
+        <p>For a complete list, please check <a href="http://ionicons.com/" target="_blank">Ionicons Website</a>.</p>
+        <p><input id="ion-code" placeholder="beer"/></p>
+        <br/><a class="remodal-cancel">Cancel</a>
+        <a class="remodal-confirm" id="ion-confirm">OK</a>
+      </div>
       <div class="remodal" data-remodal-id="help-modal"> <!-- help 弹出框 -->
+        <img src="icon.png" width="64"/>
         <h2>Markdown Plus help</h2>
         <p><a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts" target="_blank">Keyboard Shortcuts</a></p>
         <p><a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown Basics</a></p>
         <p><a href="https://help.github.com/articles/github-flavored-markdown/" target="_blank">GitHub Flavored Markdown</a></p>
         <p><a href="http://www.emoji-cheat-sheet.com/" target="_blank">Emoji Cheat Sheet</a></p>
         <p><a href="http://fontawesome.io/icons/" target="_blank">Font Awesome Icons</a></p>
+        <p><a href="http://ionicons.com/" target="_blank">Ionicons Website</a></p>
         <p><a href="http://meta.wikimedia.org/wiki/Help:Displaying_a_formula" target="_blank">Mathematical Formulae</a></p>
         <p><a href="http://knsv.github.io/mermaid/flowchart.html" target="_blank">Flowchart Syntax</a></p>
         <p><a href="http://knsv.github.io/mermaid/sequenceDiagram.html" target="_blank">Sequence Diagram Syntax</a></p>
