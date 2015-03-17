@@ -127,7 +127,7 @@ $(document).ready(function() {
     var level = $(this).data('level');
     var p = editor.getCursorPosition();
     p.column += level + 1; // 光标位置会产生偏移
-    editor.navigateLineStart();
+    editor.navigateTo(editor.getSelectionRange().start.row, 0); // navigateLineStart 在 wrap 的时候有问题
     editor.insert('#'.repeat(level) + ' ');
     editor.moveCursorToPosition(p); // 恢复光标位置
     editor.focus();
@@ -152,7 +152,7 @@ $(document).ready(function() {
       editor.selection.clearSelection();
       editor.insert('\n---\n');
     } else {
-      editor.navigateLineEnd();
+      editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE); // navigateLineEnd 在 wrap 的时候有问题
       editor.insert('\n\n---\n');
     }
     editor.focus();
@@ -205,10 +205,10 @@ $(document).ready(function() {
     editor.insert(''); // 删除选中的部分
     var p = editor.getCursorPosition();
     if(p.column == 0) { // 光标在行首
-      editor.navigateLineStart();
+      editor.selection.clearSelection();
       editor.insert('\n' + tableTemplate + '\n\n');
     } else {
-      editor.navigateLineEnd();
+      editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE);
       editor.insert('\n\n' + tableTemplate + '\n');
     }
     editor.focus();
