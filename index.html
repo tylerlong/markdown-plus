@@ -47,8 +47,8 @@
         <i title="Code" class="fa fa-code" id="code-icon"></i>
         <i title="Table" class="fa fa-table" id="table-icon"></i>
         <i class="dividor">|</i>
-        <i title="Emoji" class="fa fa-smile-o" id="emoji-icon" data-remodal-target="emoji-modal"></i>
-        <i title="Font Awesome" class="fa fa-flag-o" id="fa-icon"></i>
+        <i title="Emoji" class="fa fa-smile-o" data-remodal-target="emoji-modal"></i>
+        <i title="Font Awesome" class="fa fa-flag-o" data-remodal-target="fa-modal"></i>
         <i class="dividor">|</i>
         <i title="Mathematical formulae" class="fa fa-superscript" id="math-icon"></i>
         <i title="Flowchart" class="fa fa-long-arrow-right" id="flow-icon"></i>
@@ -73,15 +73,29 @@
         <a class="remodal-cancel">Cancel</a>
         <a class="remodal-confirm" id="emoji-confirm">OK</a>
       </div>
+      <div class="remodal" id="fa-modal" data-remodal-id="fa-modal"> <!-- Font Awesome 弹出框 -->
+        <h2>Please enter a Font Awesome code:</h2>
+        <p>
+          Examples: "cloud", "flag", "car", "truck", "heart", "dollar" ...
+        </p>
+        <p>
+          For a complete list, please check <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome Icons</a>.
+        </p>
+        <p><input id="fa-code" placeholder="heart"/></p>
+        <br/>
+        <a class="remodal-cancel">Cancel</a>
+        <a class="remodal-confirm" id="fa-confirm">OK</a>
+      </div>
       <div class="remodal" data-remodal-id="help-modal"> <!-- help 弹出框 -->
         <h2>Markdown Plus help</h2>
         <p><a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts" target="_blank">Keyboard Shortcuts</a></p>
         <p><a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown Basics</a></p>
         <p><a href="https://help.github.com/articles/github-flavored-markdown/" target="_blank">GitHub Flavored Markdown</a></p>
         <p><a href="http://www.emoji-cheat-sheet.com/" target="_blank">Emoji Cheat Sheet</a></p>
+        <p><a href="http://fontawesome.io/icons/" target="_blank">Font Awesome Icons</a></p>
         <p><a href="http://meta.wikimedia.org/wiki/Help:Displaying_a_formula" target="_blank">Mathematical Formulae</a></p>
-        <p><a href="http://knsv.github.io/mermaid/flowchart.html" target="_blank">Flowchart syntax</a></p>
-        <p><a href="http://knsv.github.io/mermaid/sequenceDiagram.html" target="_blank">Sequence diagram syntax</a></p>
+        <p><a href="http://knsv.github.io/mermaid/flowchart.html" target="_blank">Flowchart Syntax</a></p>
+        <p><a href="http://knsv.github.io/mermaid/sequenceDiagram.html" target="_blank">Sequence Diagram Syntax</a></p>
         <br/>
         <a class="remodal-confirm">OK</a>
       </div>

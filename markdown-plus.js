@@ -231,6 +231,23 @@ $(document).ready(function() {
     }
   });
 
+  // Font Awesome icon
+  $(document).on('opened', '#fa-modal', function() {
+    $('#fa-code').focus();
+  });
+  $('#fa-code').keyup(function(e) {
+   if(e.which == 13) { // 回车键确认
+      $('#fa-confirm').click();
+    }
+  });
+  $(document).on('confirm', '#fa-modal', function() {
+    var fa_code = $('#fa-code').val().trim();
+    if(fa_code.length > 0) {
+      editor.insert('<i class="fa fa-' + fa_code + '"/>');
+      $('#fa-code').val('');
+    }
+  });
+
   $('#math-icon').click(function(){
     var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
