@@ -1,6 +1,6 @@
 {
   "name": "markdown-plus",
-  "version": "0.9.9",
+  "version": "1.0.0",
   "authors": [
     "Tyler Long <tyler4long@gmail.com>"
   ],
@@ -8,7 +8,11 @@
   "main": "index.html",
   "keywords": [
     "markdown",
-    "editor"
+    "editor",
+    "flowchart",
+    "sequence diagram",
+    "emoji",
+    "GFM"
   ],
   "license": "BSD",
   "homepage": "https://github.com/tylingsoft/markdown-plus",
@@ -17,7 +21,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "README.md",
+    "screenshot.png",
+    "todo.md"
   ],
   "dependencies": {
     "jquery": null,
