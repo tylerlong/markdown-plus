@@ -14,7 +14,7 @@ $(document).ready(function() {
     togglerLength_open: '100%',
     togglerLength_closed: '100%',
     north: {
-      size: '1px', // 只是占位，真实大小由内容决定
+      size: 'auto',
       togglerTip_open: 'Hide Toolbar',
       togglerTip_closed: 'Show Toolbar'
     },
