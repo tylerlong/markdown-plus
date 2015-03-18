@@ -303,28 +303,10 @@ $(document).ready(function() {
     editor.focus();
   });
 
-  $('#flow-icon').click(function(){
+  $('.mermaid-icon').click(function(){
     var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
-      text = 'graph LR\nA-->B';
-    }
-    editor.insert('\n```\n' + text + '\n```\n');
-    editor.focus();
-  });
-
-  $('#seq-icon').click(function(){
-    var text = editor.session.getTextRange(editor.selection.getRange()).trim();
-    if(text.length == 0) {
-      text = 'sequenceDiagram\nA->>B: How are you?\nB->>A: Great!';
-    }
-    editor.insert('\n```\n' + text + '\n```\n');
-    editor.focus();
-  });
-
-  $('#gantt-icon').click(function(){
-    var text = editor.session.getTextRange(editor.selection.getRange()).trim();
-    if(text.length == 0) {
-      text = 'gantt\ntitle A Gantt Diagram\ndateFormat  YYYY-MM-DD\nsection Section 1\nA task : a1, 2014-01-01, 12d\nAnother task : after a1, 12d\nsection Section 2\nThird task : 2014-01-02, 12d';
+      text = $(this).data('sample');
     }
     editor.insert('\n```\n' + text + '\n```\n');
     editor.focus();
