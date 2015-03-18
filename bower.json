@@ -27,7 +27,8 @@
     "tests",
     "README.md",
     "screenshot.png",
-    "todo.md"
+    "todo.md",
+    "fabfile.py"
   ],
   "dependencies": {
     "jquery-dist": null,
