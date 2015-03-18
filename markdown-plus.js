@@ -1,11 +1,30 @@
-String.prototype.repeat = function(i) {
+String.prototype.repeat = function(i) { // Some browsers don't support this, for example, Safari
     return new Array(i + 1).join(this);
 }
 
+mermaid.ganttConfig = { // Configuration for Gantt diagrams
+  numberSectionStyles:4,
+  axisFormatter: [
+      ["%I:%M", function (d) { // Within a day
+          return d.getHours();
+      }],
+      ["w. %U", function (d) { // Monday a week
+          return d.getDay() == 1;
+      }],
+      ["%a %d", function (d) { // Day within a week (not monday)
+          return d.getDay() && d.getDate() != 1;
+      }],
+      ["%b %d", function (d) { // within a month
+          return d.getDate() != 1;
+      }],
+      ["%m-%y", function (d) { // Month
+          return d.getMonth();
+      }]
+  ]
+};
+
 var editor;
-
 $(document).ready(function() {
-
   $.getJSON('bower.json', function(json) {
     $('#version-string').html(json.version); // 从 bower.json 读取版本号
   });
@@ -93,7 +112,7 @@ $(document).ready(function() {
         }
       });
       return tex;
-    } else if(firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) {
+    } else if(firstLine === 'gantt' || firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) {
       if(firstLine === 'sequenceDiagram') {
         code += '\n'; // 如果末尾没有空行，则语法错误
       }
@@ -306,5 +325,4 @@ $(document).ready(function() {
   $(document).on('close', '.remodal', function(e) {
     editor.focus(); // 关闭modal，编辑器自动获得焦点
   });
-
 });
