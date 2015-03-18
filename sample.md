@@ -1,7 +1,7 @@
 # Markdown Plus
 
 ![Markdown Plus](icon.png)
-Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, Mathematical formulae, flowcharts and sequence diagrams.
+Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, Mathematical formulae, flowcharts, sequence diagrams and gantt diagrams.
 
 
 #### Fork me on GitHub: <i class="fa fa-github" style="font-size: 64px;"/> [tylingsoft/markdown-plus](https://github.com/tylingsoft/markdown-plus).
@@ -134,7 +134,7 @@ sequenceDiagram
 [Sequence Diagram Syntax](http://knsv.github.io/mermaid/sequenceDiagram.html)
 
 
-## Gant diagrams
+## Gantt diagrams
 
 ```
 gantt
@@ -147,3 +147,5 @@ gantt
     Task in sec      :2014-01-12, 12d
     anther task      : 24d
 ```
+
+[Gantt Diagram Syntax](http://knsv.github.io/mermaid/gantt.html)
