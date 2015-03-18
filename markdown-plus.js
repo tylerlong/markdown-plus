@@ -1,3 +1,7 @@
+String.prototype.repeat = function(i) {
+    return new Array(i + 1).join(this);
+}
+
 var editor;
 
 $(document).ready(function() {
