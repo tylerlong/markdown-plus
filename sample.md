@@ -4,7 +4,7 @@
 Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, Mathematical formulae, flowcharts and sequence diagrams.
 
 
-##### Github home page: <a href="https://github.com/tylingsoft/markdown-plus" target="_blank">https://github.com/tylingsoft/markdown-plus</a>.
+##### Github home page: <a href="https://github.com/tylingsoft/markdown-plus" target="_blank">tylingsoft/markdown-plus</a>.
 
 
 ## GitHub flavored markdown

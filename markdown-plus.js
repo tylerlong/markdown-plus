@@ -33,7 +33,7 @@ $(document).ready(function() {
     }
   });
 
-  // 左侧编辑器
+  // editor on the left
   editor = ace.edit("editor");
   editor.$blockScrolling = Infinity;
   editor.renderer.setShowPrintMargin(false);
@@ -41,6 +41,9 @@ $(document).ready(function() {
   editor.session.setUseWrapMode(true);
   editor.setFontSize('14px');
   editor.focus();
+  $.get('sample.md', function(data) { // load sample text
+    editor.insert(data);
+  });
 
   // 编辑器的一些拓展方法
   editor.selection.smartRange = function() {
