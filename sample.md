@@ -4,7 +4,7 @@
 Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, Mathematical formulae, flowcharts and sequence diagrams.
 
 
-##### Github home page: <a href="https://github.com/tylingsoft/markdown-plus" target="_blank">tylingsoft/markdown-plus</a>.
+#### Fork me on GitHub: <i class="fa fa-github" style="font-size: 64px;"/> [tylingsoft/markdown-plus](https://github.com/tylingsoft/markdown-plus).
 
 
 ## GitHub flavored markdown
@@ -14,6 +14,8 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 | col 3 is      | some wordy text | $1600 |
 | col 2 is      | centered        |   $12 |
 | zebra stripes | are neat        |    $1 |
+
+[GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)
 
 
 ## Fenced code blocks
@@ -36,6 +38,8 @@ def update():
   - [ ] final subtask
 - [ ] a separate task
 
+[Task Lists Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
+
 
 ## Emojis
 
@@ -45,6 +49,8 @@ def update():
 <img src="emoji/panda_face" width="64"/>
 <img src="emoji/dog" width="64"/>
 <img src="emoji/truck" width="64"/>
+
+[Emoji Cheat Sheet](http://www.emoji-cheat-sheet.com/)
 
 
 ## Font Awesome icons
@@ -56,6 +62,8 @@ def update():
 <i class="fa fa-heart" style="font-size: 64px;"/>
 <i class="fa fa-dollar" style="font-size: 64px;"/>
 
+[All the Font Awesome icons](http://fontawesome.io/icons/)
+
 
 ## Ionicons icons
 
@@ -65,6 +73,8 @@ def update():
 <i class="icon ion-location" style="font-size: 96px;"/>
 <i class="icon ion-plane" style="font-size: 96px;"/>
 <i class="icon ion-ios-eye" style="font-size: 96px;"/>
+
+[All the Ionicons icons](http://ionicons.com/)
 
 
 ## Mathematical formulae
@@ -90,6 +100,8 @@ E = mc^2
  \left[R^2\frac{\partial D_n(R)}{\partial R}\right]\,dR
 ```
 
+[Mathematical Formulae Syntax](http://meta.wikimedia.org/wiki/Help:Displaying_a_formula)
+
 
 ## Flowcharts
 
@@ -100,6 +112,8 @@ graph TD
     C -->|One| D[Result one]
     C -->|Two| E[Result two]
 ```
+
+[Flowchart Syntax](http://knsv.github.io/mermaid/flowchart.html)
 
 
 ## Sequence diagrams
@@ -116,3 +130,5 @@ sequenceDiagram
         Bob->>Alice: Thanks for asking
     end
 ```
+
+[Sequence Diagram Syntax](http://knsv.github.io/mermaid/sequenceDiagram.html)
