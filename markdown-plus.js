@@ -321,6 +321,15 @@ $(document).ready(function() {
     editor.focus();
   });
 
+  $('#gantt-icon').click(function(){
+    var text = editor.session.getTextRange(editor.selection.getRange()).trim();
+    if(text.length == 0) {
+      text = 'gantt\ntitle A Gantt Diagram\ndateFormat  YYYY-MM-DD\nsection Section 1\nA task : a1, 2014-01-01, 12d\nAnother task : after a1, 12d\nsection Section 2\nThird task : 2014-01-02, 12d';
+    }
+    editor.insert('\n```\n' + text + '\n```\n');
+    editor.focus();
+  });
+
   // modals
   $(document).on('close', '.remodal', function(e) {
     editor.focus(); // 关闭modal，编辑器自动获得焦点
