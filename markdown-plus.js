@@ -1,4 +1,4 @@
-String.prototype.repeat = function(i) { // Some browsers don't support this, for example, Safari
+String.prototype.repeat = function(i) { // Some browsers don't support repeat, for example, Safari
     return new Array(i + 1).join(this);
 }
 
@@ -56,9 +56,6 @@ $(document).ready(function() {
   editor.session.setUseWrapMode(true);
   editor.setFontSize('14px');
   editor.focus();
-  $.get('sample.md', function(data) { // load sample text
-    editor.session.setValue(data, -1);
-  });
 
   // 编辑器的一些拓展方法
   editor.selection.smartRange = function() {
@@ -144,7 +141,7 @@ $(document).ready(function() {
     $('img[src^="emoji/"]').each(function() { // 转换emoji路径
       $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
     });
-    mermaid.init(); // 生成流程图，顺序图等
+    mermaid.init(); // generate flowcharts, sequence diagrams, gantt diagrams...etc.
   }, 128, false);
 
   // h1 - h6 heading
