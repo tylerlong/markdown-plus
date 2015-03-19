@@ -61,7 +61,7 @@ $(document).ready(function() {
   editor.setFontSize('14px');
   editor.focus();
   $.get('sample.md', function(data) { // load sample text
-    editor.insert(data);
+    editor.session.setValue(data, -1);
   });
 
   // 编辑器的一些拓展方法
