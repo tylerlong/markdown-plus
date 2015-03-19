@@ -19,7 +19,7 @@
     "Ionicons"
   ],
   "license": "BSD",
-  "homepage": "https://github.com/tylingsoft/markdown-plus",
+  "homepage": "https://tylingsoft.com/mdp",
   "ignore": [
     "**/.*",
     "node_modules",

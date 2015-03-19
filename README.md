@@ -53,7 +53,7 @@ Please take `index.html` as an example.
 
 [The BSD 3-Clause License](http://opensource.org/licenses/BSD-3-Clause)
 
-Copyright (c) 2015 Tylingsoft
+Copyright (c) 2015 [Tylingsoft](https://tylingsoft.com/)
 
 
 ---
@@ -116,4 +116,4 @@ open index.html
 
 [BSD 协议](http://opensource.org/licenses/BSD-3-Clause)
 
-版权所有 (c) 2015 Tylingsoft
+版权所有 (c) 2015 [Tylingsoft](https://tylingsoft.com/)
