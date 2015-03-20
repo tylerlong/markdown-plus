@@ -91,3 +91,9 @@ i.dividor { /* toolbar 上面的分隔竖线 */
   -ms-user-select: none;
   user-select: none;
 }
+
+@media print {
+  .ui-layout-pane-north, .ui-layout-pane-center .ui-layout-resizer, .ui-layout-toggler {
+    display: none !important;
+  }
+}
