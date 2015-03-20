@@ -40,7 +40,9 @@ $(document).ready(function() {
     east: {
       size: '50%',
       togglerTip_open: 'Hide Preview',
-      togglerTip_closed: 'Show Preview',
+      togglerTip_closed: 'Show Preview'
+    },
+    center: {
       onresize: function() {
         editor.session.setUseWrapMode(false); // ACE的wrap貌似有问题，这里手动触发一下。
         editor.session.setUseWrapMode(true);
