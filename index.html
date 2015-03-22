@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="ui-layout-north">
-      <div id="toolbar" class="noselect"> <!-- 工具栏 -->
+      <div id="toolbar" class="noselect" data-open-title="Hide Toolbar" data-closed-title="Show Toolbar"> <!-- 工具栏 -->
         <i title="Bold" class="fa fa-bold styling-icon" data-modifier="**"></i>
         <i title="Italic" class="fa fa-italic styling-icon" data-modifier="*"></i>
         <i title="Strikethrough" class="fa fa-strikethrough styling-icon" data-modifier="~~"></i>
@@ -47,16 +47,16 @@
         <i title="Incomplete task list" class="fa fa-square-o list-icon" data-prefix="- [ ] "></i>
         <i title="Complete task list" class="fa fa-check-square-o list-icon" data-prefix="- [x] "></i>
         <i class="dividor">|</i>
-        <i title="Link" class="fa fa-link" id="link-icon"></i>
-        <i title="Image" class="fa fa-image" id="image-icon"></i>
-        <i title="Code" class="fa fa-code" id="code-icon"></i>
-        <i title="Table" class="fa fa-table" id="table-icon"></i>
+        <i title="Link" class="fa fa-link" id="link-icon" data-sample-text="link description" data-sample-url="http://example.com"></i>
+        <i title="Image" class="fa fa-image" id="image-icon" data-sample-text="image description" data-sample-url="http://example.com/example.png"></i>
+        <i title="Code" class="fa fa-code" id="code-icon" data-sample="enter some code"></i>
+        <i title="Table" class="fa fa-table" id="table-icon" data-sample="header 1 | header 2\n---|---\nrow 1 col 1 | row 1 col 2\nrow 2 col 1 | row 2 col 2"></i>
         <i class="dividor">|</i>
         <i title="Emoji" class="fa fa-smile-o" data-remodal-target="emoji-modal"></i>
         <i title="Font Awesome" class="fa fa-flag-o" data-remodal-target="fa-modal"></i>
         <i title="Ionicons" class="icon ion-ionic" data-remodal-target="ion-modal"></i>
         <i class="dividor">|</i>
-        <i title="Mathematical formulae" class="fa fa-superscript" id="math-icon"></i>
+        <i title="Mathematical formulae" class="fa fa-superscript" id="math-icon" data-sample="E = mc^2"></i>
         <i title="Flowchart" class="fa fa-long-arrow-right mermaid-icon" data-sample="graph LR
 A-->B"></i>
         <i title="Sequence diagram" class="fa fa-exchange mermaid-icon" data-sample="sequenceDiagram
@@ -126,7 +126,7 @@ T3: 2014-01-02, 9d"></i>
       </div>
     </div>
     <div class="ui-layout-east">
-      <article class="markdown-body"></article> <!-- 实时预览 -->
+      <article class="markdown-body" id="preview" data-open-title="Hide Preview" data-closed-title="Show Preview"></article> <!-- 实时预览 -->
     </div>
   </body>
 </html>

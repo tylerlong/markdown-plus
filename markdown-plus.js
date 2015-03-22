@@ -34,13 +34,13 @@ $(document).ready(function() {
     togglerLength_closed: '100%',
     north: {
       size: 'auto',
-      togglerTip_open: 'Hide Toolbar',
-      togglerTip_closed: 'Show Toolbar'
+      togglerTip_open: $('#toolbar').data('open-title'),
+      togglerTip_closed: $('#toolbar').data('closed-title')
     },
     east: {
       size: '50%',
-      togglerTip_open: 'Hide Preview',
-      togglerTip_closed: 'Show Preview'
+      togglerTip_open: $('#preview').data('open-title'),
+      togglerTip_closed: $('#preview').data('closed-title')
     },
     center: {
       onresize: function() {
@@ -207,40 +207,42 @@ $(document).ready(function() {
     var range = editor.selection.smartRange();
     var text = editor.session.getTextRange(range);
     if(text.trim().length == 0) {
-      text = 'link description';
+      text = $(this).data('sample-text');
     }
-    editor.session.replace(range, '[' + text +'](http://example.com/ "optional title")');
+    var url = $(this).data('sample-url');
+    editor.session.replace(range, '[' + text + '](' + url + ')');
     editor.focus();
   });
 
   $('#image-icon').click(function() {
     var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
-      text = 'image description';
+      text = $(this).data('sample-text');
     }
-    editor.insert('![' + text + '](http://example.com/example.png)');
+    var url = $(this).data('sample-url')
+    editor.insert('![' + text + '](' + url + ')');
     editor.focus();
   });
 
   $('#code-icon').click(function() {
     var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
-      text = 'enter code here';
+      text = $(this).data('sample');
     }
     editor.insert('\n```\n' + text + '\n```\n');
     editor.focus();
   });
 
   $('#table-icon').click(function() {
-    var tableTemplate = 'header 1 | header 2\n---|---\nrow 1 col 1 | row 1 col 2\nrow 2 col 1 | row 2 col 2';
+    var sample = $(this).data('sample');
     editor.insert(''); // 删除选中的部分
     var p = editor.getCursorPosition();
     if(p.column == 0) { // 光标在行首
       editor.selection.clearSelection();
-      editor.insert('\n' + tableTemplate + '\n\n');
+      editor.insert('\n' + sample + '\n\n');
     } else {
       editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE);
-      editor.insert('\n\n' + tableTemplate + '\n');
+      editor.insert('\n\n' + sample + '\n');
     }
     editor.focus();
   });
@@ -299,7 +301,7 @@ $(document).ready(function() {
   $('#math-icon').click(function(){
     var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
-      text = 'E = mc^2';
+      text = $(this).data('sample');;
     }
     editor.insert('\n```math\n' + text + '\n```\n');
     editor.focus();
@@ -319,3 +321,5 @@ $(document).ready(function() {
     editor.focus(); // 关闭modal，编辑器自动获得焦点
   });
 });
+
+// todo: 将三种icon的代码重构成一个函数, 将所有获取一个值的modal重构成一个函数？
