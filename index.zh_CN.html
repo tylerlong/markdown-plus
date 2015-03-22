@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Markdown Plus</title>
+    <link rel="stylesheet" href="bower_components/jquery-ui-layout-min/layout-default.css"/>
+    <link rel="stylesheet" href="bower_components/github-markdown-css/github-markdown.css"/>
+    <link rel="stylesheet" href="bower_components/prettify-min/prettify.min.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome-min/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="bower_components/remodal-min/jquery.remodal.css"/>
+    <link rel="stylesheet" href="bower_components/katex-build/katex.min.css"/>
+    <link rel="stylesheet" href="bower_components/ionicons-min/css/ionicons.min.css"/>
+    <link rel="stylesheet" href="bower_components/mermaid-min/mermaid.css"/>
+    <link rel="stylesheet" href="markdown-plus.css"/>
+    <link href="icon.png" rel="shortcut icon" type="image/png"/>
+    <script src="bower_components/underscore-min/underscore-min.js"></script>
+    <script src="bower_components/jquery-dist/jquery.min.js"></script>
+    <script src="bower_components/jquery-ui-min/jquery-ui.min.js"></script>
+    <script src="bower_components/jquery-ui-layout-min/jquery.layout.min.js"></script>
+    <script src="bower_components/ace-min-noconflict/ace.js" charset="utf-8"></script>
+    <script src="bower_components/marked-min/marked.min.js"></script>
+    <script src="bower_components/prettify-min/prettify.min.js"></script>
+    <script src="bower_components/remodal-min/jquery.remodal.min.js"></script>
+    <script src="bower_components/katex-build/katex.min.js"></script>
+    <script src="bower_components/mermaid-min/mermaid.full.min.js"></script>
+    <script src="markdown-plus.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <div class="ui-layout-north">
+      <div id="toolbar" class="noselect" data-open-title="隐藏工具栏" data-closed-title="显示工具栏"> <!-- 工具栏 -->
+        <i title="粗体" class="fa fa-bold styling-icon" data-modifier="**"></i>
+        <i title="斜体" class="fa fa-italic styling-icon" data-modifier="*"></i>
+        <i title="删除线" class="fa fa-strikethrough styling-icon" data-modifier="~~"></i>
+        <i class="dividor">|</i>
+        <i title="标题 1" class="fa heading-icon" data-level="1">h1</i>
+        <i title="标题 2" class="fa heading-icon" data-level="2">h2</i>
+        <i title="标题 3" class="fa heading-icon" data-level="3">h3</i>
+        <i title="标题 4" class="fa heading-icon" data-level="4">h4</i>
+        <i title="标题 5" class="fa heading-icon" data-level="5">h5</i>
+        <i title="标题 6" class="fa heading-icon" data-level="6">h6</i>
+        <i class="dividor">|</i>
+        <i title="横线" id="horizontal-rule" class="fa fa-minus"></i>
+        <i title="引用" class="fa fa-quote-left list-icon" data-prefix="> "></i>
+        <i title="无序列表" class="fa fa-list-ul list-icon" data-prefix="- "></i>
+        <i title="有序列表" class="fa fa-list-ol list-icon" data-prefix="1. "></i>
+        <i title="未完成任务列表" class="fa fa-square-o list-icon" data-prefix="- [ ] "></i>
+        <i title="已完成任务列表" class="fa fa-check-square-o list-icon" data-prefix="- [x] "></i>
+        <i class="dividor">|</i>
+        <i title="链接" class="fa fa-link" id="link-icon" data-sample-text="链接文字" data-sample-url="http://example.com"></i>
+        <i title="图片" class="fa fa-image" id="image-icon" data-sample-text="图片描述" data-sample-url="http://example.com/example.png"></i>
+        <i title="代码" class="fa fa-code" id="code-icon" data-sample="print '你好，世界'"></i>
+        <i title="表格" class="fa fa-table" id="table-icon" data-sample="列名 1 | 列名 2
+---|---
+第一行第一列 | 第一行第二列
+第二行第一列 | 第二行第二列"></i>
+        <i class="dividor">|</i>
+        <i title="Emoji 图标" class="fa fa-smile-o" data-remodal-target="emoji-modal"></i>
+        <i title="Font Awesome 图标" class="fa fa-flag-o" data-remodal-target="fa-modal"></i>
+        <i title="Ionicons 图标" class="icon ion-ionic" data-remodal-target="ion-modal"></i>
+        <i class="dividor">|</i>
+        <i title="数学公式" class="fa fa-superscript" id="math-icon" data-sample="E = mc^2"></i>
+        <i title="流程图" class="fa fa-long-arrow-right mermaid-icon" data-sample="graph LR
+A-->B"></i>
+        <i title="顺序图" class="fa fa-exchange mermaid-icon" data-sample="sequenceDiagram
+A->>B: 你好吗？
+B->>A: 我很好！"></i>
+        <i title="甘特图" class="fa fa-sliders mermaid-icon" data-sample="gantt
+dateFormat YYYY-MM-DD
+section S1
+T1: 2014-01-01, 9d
+section S2
+T2: 2014-01-11, 9d
+section S3
+T3: 2014-01-02, 9d"></i>
+        <i class="dividor">|</i>
+        <i title="帮助" class="fa fa-question-circle" id="help-icon" data-remodal-target="help-modal"></i>
+        <i title="关于" class="fa fa-info-circle" id="about-icon" data-remodal-target="about-modal"></i>
+      </div>
+    </div>
+    <div class="ui-layout-center">
+      <div id="editor"></div> <!-- 编辑器 -->
+      <div class="remodal" id="emoji-modal" data-remodal-id="emoji-modal"> <!-- emoji 弹出框 -->
+        <h2>请输入 emoji 编码：</h2>
+        <p>例子："smile", "whale", "santa", "panda_face", "dog", "truck" ...</p>
+        <p>完整列表，请访问 <a href="http://www.emoji-cheat-sheet.com/" target="_blank">Emoji Cheat Sheet</a>。</p>
+        <p><input id="emoji-code" placeholder="smile"/></p>
+        <br/><a class="remodal-cancel">取消</a>
+        <a class="remodal-confirm" id="emoji-confirm">确定</a>
+      </div>
+      <div class="remodal" id="fa-modal" data-remodal-id="fa-modal"> <!-- Font Awesome 弹出框 -->
+        <h2>请输入 Font Awesome 编码：</h2>
+        <p>例子："cloud", "flag", "car", "truck", "heart", "dollar" ...</p>
+        <p>完整列表，请访问 <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome 官网</a>。</p>
+        <p><input id="fa-code" placeholder="heart"/></p>
+        <br/><a class="remodal-cancel">取消</a>
+        <a class="remodal-confirm" id="fa-confirm">确定</a>
+      </div>
+      <div class="remodal" id="ion-modal" data-remodal-id="ion-modal"> <!-- Ionicons 弹出框 -->
+        <h2>请输入 Ionicons 编码：</h2>
+        <p>例子："beer", "key", "locked", "location", "plane", "ios-eye" ...</p>
+        <p>完整列表，请访问 <a href="http://ionicons.com/" target="_blank">Ionicons 官网</a>。</p>
+        <p><input id="ion-code" placeholder="beer"/></p>
+        <br/><a class="remodal-cancel">取消</a>
+        <a class="remodal-confirm" id="ion-confirm">确定</a>
+      </div>
+      <div class="remodal" data-remodal-id="help-modal"> <!-- help 弹出框 -->
+        <img src="icon.png" width="64"/>
+        <h2>Markdown Plus 帮助</h2>
+        <p><a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts" target="_blank">键盘快捷键</a></p>
+        <p><a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown 基础</a></p>
+        <p><a href="https://help.github.com/articles/github-flavored-markdown/" target="_blank">GitHub Flavored Markdown</a></p>
+        <p><a href="http://www.emoji-cheat-sheet.com/" target="_blank">Emoji 图标</a></p>
+        <p><a href="http://fontawesome.io/icons/" target="_blank">Font Awesome 图标</a></p>
+        <p><a href="http://ionicons.com/" target="_blank">Ionicons 图标</a></p>
+        <p><a href="http://meta.wikimedia.org/wiki/Help:Displaying_a_formula" target="_blank">数学公式</a></p>
+        <p><a href="http://knsv.github.io/mermaid/flowchart.html" target="_blank">流程图语法</a></p>
+        <p><a href="http://knsv.github.io/mermaid/sequenceDiagram.html" target="_blank">顺序图语法</a></p>
+        <p><a href="http://knsv.github.io/mermaid/gantt.html" target="_blank">甘特图语法</a></p>
+        <br/><a class="remodal-confirm">确定</a>
+      </div>
+      <div class="remodal" data-remodal-id="about-modal"> <!-- about 弹出框 -->
+        <img src="icon.png" width="64"/>
+        <h2>Markdown Plus</h2> 版本 1.2.2
+        <p>轻量级 markdown 编辑器。</p>
+        <p>版权所有 © 2015 <a href="https://tylingsoft.com" target="_blank">Tylingsoft</a>。保留一切权利。</p>
+        <p>软件主页: <a href="https://tylingsoft.com/mdp" target="_blank">https://tylingsoft.com/mdp</a>。</p>
+        <br/><a class="remodal-confirm">确定</a>
+      </div>
+    </div>
+    <div class="ui-layout-east">
+      <article class="markdown-body" id="preview" data-open-title="隐藏预览" data-closed-title="显示预览"></article> <!-- 实时预览 -->
+    </div>
+  </body>
+</html>
