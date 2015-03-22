@@ -96,4 +96,8 @@ i.dividor { /* toolbar 上面的分隔竖线 */
   .ui-layout-pane-north, .ui-layout-pane-center .ui-layout-resizer, .ui-layout-toggler {
     display: none !important;
   }
+
+  table, pre, blockquote {
+    page-break-inside: avoid;
+  }
 }
