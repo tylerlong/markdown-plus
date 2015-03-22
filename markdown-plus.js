@@ -248,54 +248,18 @@ $(document).ready(function() {
   });
 
   // emoji icon
-  $(document).on('opened', '#emoji-modal', function() {
-    $('#emoji-code').focus();
-  });
-  $('#emoji-code').keyup(function(e) {
-   if(e.which == 13) { // 回车键确认
-      $('#emoji-confirm').click();
-    }
-  });
-  $(document).on('confirm', '#emoji-modal', function() {
-    var emoji_code = $('#emoji-code').val().trim();
-    if(emoji_code.length > 0) {
-      editor.insert('<img src="emoji/' + emoji_code + '" width="18"/>');
-      $('#emoji-code').val('');
-    }
+  prompt_for_a_value('emoji', function(value){
+    editor.insert('<img src="emoji/' + value + '" width="18"/>');
   });
 
   // Font Awesome icon
-  $(document).on('opened', '#fa-modal', function() {
-    $('#fa-code').focus();
-  });
-  $('#fa-code').keyup(function(e) {
-   if(e.which == 13) { // 回车键确认
-      $('#fa-confirm').click();
-    }
-  });
-  $(document).on('confirm', '#fa-modal', function() {
-    var fa_code = $('#fa-code').val().trim();
-    if(fa_code.length > 0) {
-      editor.insert('<i class="fa fa-' + fa_code + '"/>');
-      $('#fa-code').val('');
-    }
+  prompt_for_a_value('fa', function(value){
+    editor.insert('<i class="fa fa-' + value + '"/>');
   });
 
   // Ionicons icon
-  $(document).on('opened', '#ion-modal', function() {
-    $('#ion-code').focus();
-  });
-  $('#ion-code').keyup(function(e) {
-   if(e.which == 13) { // 回车键确认
-      $('#ion-confirm').click();
-    }
-  });
-  $(document).on('confirm', '#ion-modal', function() {
-    var ion_code = $('#ion-code').val().trim();
-    if(ion_code.length > 0) {
-      editor.insert('<i class="icon ion-' + ion_code + '"/>');
-      $('#ion-code').val('');
-    }
+  prompt_for_a_value('ion', function(value){
+    editor.insert('<i class="icon ion-' + value + '"/>');
   });
 
   $('#math-icon').click(function(){
@@ -322,4 +286,20 @@ $(document).ready(function() {
   });
 });
 
-// todo: 将三种icon的代码重构成一个函数, 将所有获取一个值的modal重构成一个函数？
+function prompt_for_a_value(key, action) {
+  $(document).on('opened', '#' + key + '-modal', function() {
+    $('#' + key + '-code').focus();
+  });
+  $('#' + key + '-code').keyup(function(e) {
+   if(e.which == 13) { // 回车键确认
+      $('#' + key + '-confirm').click();
+    }
+  });
+  $(document).on('confirm', '#' + key + '-modal', function() {
+    var value = $('#' + key + '-code').val().trim();
+    if(value.length > 0) {
+      action(value);
+      $('#' + key + '-code').val('');
+    }
+  });
+}
