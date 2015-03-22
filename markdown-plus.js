@@ -23,6 +23,13 @@ mermaid.ganttConfig = { // Configuration for Gantt diagrams
   ]
 };
 
+// synchronize preview scrolling
+function sync_preview(scroll) {
+  var percentage = scroll / (editor.session.getScreenLength() * editor.renderer.lineHeight - $('#editor').height());
+  var scrollTop = ($('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height()) * percentage;
+  $('.ui-layout-east').scrollTop(scrollTop);
+}
+
 var editor;
 $(document).ready(function() {
   $('body').layout({ // create 3-panels layout
@@ -57,12 +64,8 @@ $(document).ready(function() {
   editor.session.setUseWrapMode(true);
   editor.setFontSize('14px');
   editor.focus();
-
-  // synchronize scrolling
   editor.session.on('changeScrollTop', function(scroll) {
-    var percentage = scroll / (editor.session.getScreenLength() * editor.renderer.lineHeight - $('#editor').height());
-    var scrollTop = ($('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height()) * percentage;
-    $('.ui-layout-east').scrollTop(scrollTop);
+    sync_preview(scroll);
   });
 
   // 编辑器的一些拓展方法
@@ -150,6 +153,7 @@ $(document).ready(function() {
       $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
     });
     mermaid.init(); // generate flowcharts, sequence diagrams, gantt diagrams...etc.
+    sync_preview(editor.session.getScrollTop());
   }, 128, false);
 
   // h1 - h6 heading
