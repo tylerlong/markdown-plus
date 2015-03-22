@@ -70,7 +70,7 @@ Copyright © 2015 [Tylingsoft](https://tylingsoft.com/)
 Markdown Plus 是一款轻量级 markdown 编辑器。除了支持通用 markdown、GitHub flavored markdown，它还支持任务列表、Emoji 图标、Font Awesome 图标、Ionicons 图标、数学公式、流程图、顺序图、甘特图。
 
 
-### 在线演示：[mdp.tylingsoft.com](http://mdp.tylingsoft.com)
+### 在线演示：[mdp.tylingsoft.com](http://mdp.tylingsoft.com/index.zh_CN.html)
 
 
 ## 主要特性
@@ -103,13 +103,13 @@ Markdown Plus 是一款轻量级 markdown 编辑器。除了支持通用 markdow
 ```shell
 git clone https://github.com/tylingsoft/markdown-plus.git && cd markdown-plus
 bower install
-open index.html
+open index.zh_CN.html
 ```
 
 
 ## 如何在项目中使用
 
-参考`index.html`，比葫芦画瓢。
+参考`index.zh_CN.html`，比葫芦画瓢。
 
 
 ## 软件协议
