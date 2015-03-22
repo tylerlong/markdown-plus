@@ -25,8 +25,7 @@ mermaid.ganttConfig = { // Configuration for Gantt diagrams
 
 var editor;
 $(document).ready(function() {
-  // 构造上中右三个面板
-  $('body').layout({
+  $('body').layout({ // create 3-panels layout
     resizerDblClickToggle: false,
     resizable: false,
     slidable: false,
@@ -203,6 +202,7 @@ $(document).ready(function() {
     editor.focus();
   });
 
+  // todo: link 和 image 采用 modal 的方式让用户输入
   $('#link-icon').click(function() {
     var range = editor.selection.smartRange();
     var text = editor.session.getTextRange(range);
