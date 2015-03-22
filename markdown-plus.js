@@ -61,7 +61,9 @@ $(document).ready(function() {
 
   // synchronize scrolling
   editor.session.on('changeScrollTop', function(scroll) {
-    $(".ui-layout-east").scrollTop(scroll);
+    var percentage = scroll / (editor.session.getScreenLength() * editor.renderer.lineHeight - $('#editor').height());
+    var scrollTop = ($('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height()) * percentage;
+    $('.ui-layout-east').scrollTop(scrollTop);
   });
 
   // 编辑器的一些拓展方法
