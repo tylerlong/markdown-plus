@@ -156,6 +156,9 @@ $(document).ready(function() {
       $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
     });
     mermaid.init(); // generate flowcharts, sequence diagrams, gantt diagrams...etc.
+    $('line[y2="2000"]').each(function(){ // a temp workaround for mermaid bug: https://github.com/knsv/mermaid/issues/142
+      $(this).attr('y2', $(this).closest('svg').attr('height'));
+    });
     sync_preview(editor.session.getScrollTop());
   }, 128, false);
 
