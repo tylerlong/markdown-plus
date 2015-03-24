@@ -2,6 +2,9 @@ String.prototype.repeat = function(i) { // Some browsers don't support repeat, f
     return new Array(i + 1).join(this);
 }
 
+var mermaid_config = {
+  htmlLables: false
+};
 mermaid.ganttConfig = { // Configuration for Gantt diagrams
   numberSectionStyles:4,
   axisFormatter: [
