@@ -3,7 +3,7 @@ String.prototype.repeat = function(i) { // Some browsers don't support repeat, f
 }
 
 var mermaid_config = {
-  htmlLables: false
+  htmlLabels: false
 };
 mermaid.ganttConfig = { // Configuration for Gantt diagrams
   numberSectionStyles:4,
