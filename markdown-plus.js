@@ -3,7 +3,7 @@ String.prototype.repeat = function(i) { // Some browsers don't support repeat, f
 }
 
 var mermaid_config = {
-  htmlLabels: false
+  htmlLabels: false // fix mermaid flowchart IE issue
 };
 mermaid.ganttConfig = { // Configuration for Gantt diagrams
   numberSectionStyles:4,
@@ -157,7 +157,7 @@ $(document).ready(function() {
     });
     mermaid.init(); // generate flowcharts, sequence diagrams, gantt diagrams...etc.
     $('line[y2="2000"]').each(function(){ // a temp workaround for mermaid bug: https://github.com/knsv/mermaid/issues/142
-      $(this).attr('y2', $(this).closest('svg').attr('height'));
+      $(this).attr('y2', $(this).closest('svg').attr('height') - 10);
     });
     sync_preview(editor.session.getScrollTop());
   }, 128, false);
