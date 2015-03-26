@@ -159,7 +159,7 @@ $(document).ready(function() {
       }
       highlight($(this)[0], {
           mode: 'ace/mode/' + language,
-          theme: 'ace/theme/tomorrow',
+          theme: 'ace/theme/github',
           startLineNumber: 1,
           showGutter: true,
           trim: true,

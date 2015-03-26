@@ -74,16 +74,38 @@ i.dividor { /* toolbar 上面的分隔竖线 */
 }
 
 /* source code highlight */
-.markdown-body .ace-tomorrow {
+.markdown-body .ace-github {
   background-color: #f7f7f7 !important;
 }
-.markdown-body .ace-tomorrow .ace_static_highlight {
+.markdown-body .ace-github .ace_static_highlight {
   font-size: 13.6px !important;
 }
-.markdown-body .ace-tomorrow .ace_gutter {
+.markdown-body .ace-github .ace_gutter {
   color: rgba(0,0,0,0.3) !important;
   margin-right: 16px !important;
+  background-color: #f7f7f7 !important;
 }
+.markdown-body .ace-github .ace_keyword, .markdown-body .ace-github .ace_modifier {
+  color: #a71d5d !important;
+  font-weight: normal !important;
+}
+.markdown-body .ace-github .ace_string {
+  color: #183691 !important;
+}
+.markdown-body .ace-github .ace_tag-name, .markdown-body .ace-github .ace_constant {
+  color: #63a35c !important;
+}
+.markdown-body .ace-github .ace_attribute-name, .markdown-body .ace-github .ace_variable {
+  color: #795da3 !important;
+}
+.markdown-body .ace-github .ace_comment {
+  color: #969896 !important;
+  font-style: normal !important;
+}
+.markdown-body .ace-github .ace_numeric, .markdown-body .ace-github .ace_type {
+  color: #0086b3 !important;
+}
+
 
 /*************************/
 /* below is for printing */
