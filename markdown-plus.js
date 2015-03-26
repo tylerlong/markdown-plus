@@ -119,7 +119,7 @@ $(document).ready(function() {
         }
       });
       return tex;
-    } else if(firstLine === 'gantt' || firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) {
+    } else if(firstLine === 'gantt' || firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) { // mermaid
       if(firstLine === 'sequenceDiagram') {
         code += '\n'; // 如果末尾没有空行，则语法错误
       }

@@ -26,17 +26,6 @@ body{
   padding: 30px;
 }
 
-li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
-  list-style-type: decimal !important; /* 强制每行都显示行号 */
-}
-
-.markdown-body ol.linenums {
-  color: #bbbbbb;
-}
-
-ul, ol {
-  list-style-position: inside;
-}
 li.nostyle {
   list-style: none;
 }
@@ -90,6 +79,22 @@ i.dividor { /* toolbar 上面的分隔竖线 */
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+/* source code highlight from GitHub*/
+.kwd {
+  color: #a71d5d !important;
+}
+.str {
+  color: #183691 !important;
+}
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
+  list-style-type: none !important; /* 强制不显示行号，跟GitHub保持一致 */
+  background: #f7f7f7 !important;
+}
+pre.prettyprint {
+  border: none !important;
+  padding: 16px 0 !important;
 }
 
 @media print {
