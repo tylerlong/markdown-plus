@@ -32,19 +32,18 @@
     "fabfile.py"
   ],
   "dependencies": {
+    "underscore-min": null,
     "jquery-dist": null,
-    "jquery-ui-layout-min": null,
-    "ace-min-noconflict": null,
     "jquery-ui-min": null,
+    "jquery-ui-layout-min": null,
+    "emoji-icons": null,
+    "font-awesome-min": null,
+    "ionicons-min": null,
+    "ace-min-noconflict": null,
     "marked-min": null,
     "github-markdown-css": null,
-    "prettify-min": null,
-    "font-awesome-min": null,
-    "emoji-icons": null,
     "remodal-min": null,
     "katex-build": null,
-    "mermaid-min": null,
-    "ionicons-min": null,
-    "underscore-min": null
+    "mermaid-min": null
   }
 }
