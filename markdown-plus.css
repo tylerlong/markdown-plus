@@ -79,6 +79,7 @@ i.dividor { /* toolbar 上面的分隔竖线 */
 }
 .markdown-body .ace-github .ace_static_highlight {
   font-size: 13.6px !important;
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
 }
 .markdown-body .ace-github .ace_gutter {
   color: rgba(0,0,0,0.3) !important;

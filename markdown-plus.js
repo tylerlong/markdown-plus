@@ -161,7 +161,7 @@ $(document).ready(function() {
           mode: 'ace/mode/' + language,
           theme: 'ace/theme/github',
           startLineNumber: 1,
-          showGutter: true,
+          showGutter: false,
           trim: true,
       }, function (highlighted) {});
     });
