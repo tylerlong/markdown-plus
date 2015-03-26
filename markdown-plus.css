@@ -26,10 +26,6 @@ body{
   padding: 30px;
 }
 
-li.nostyle {
-  list-style: none;
-}
-
 #toolbar {
   padding-left: 16px;
   color: #666666;
@@ -68,10 +64,6 @@ i.dividor { /* toolbar 上面的分隔竖线 */
   margin: 0 6px;
 }
 
-.taskbox {
-  margin-right: 8px !important;
-}
-
 .noselect { /* toolbar上面的按钮无论怎样点击都不应该选中 */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -82,20 +74,23 @@ i.dividor { /* toolbar 上面的分隔竖线 */
 }
 
 /* source code highlight from GitHub*/
-.kwd {
+.kwd { /* 关键字 */
   color: #a71d5d !important;
 }
-.str {
+.str { /* 字符串 */
   color: #183691 !important;
 }
-li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
-  list-style-type: none !important; /* 强制不显示行号，跟GitHub保持一致 */
-  background: #f7f7f7 !important;
+.com { /* 注释 */
+  color: #969896 !important;
 }
 pre.prettyprint {
   border: none !important;
-  padding: 16px 0 !important;
+  padding: 16px !important;
 }
+
+
+/* below is for printing */
+
 
 @media print {
   .ui-layout-pane-north, .ui-layout-pane-center .ui-layout-resizer, .ui-layout-toggler {

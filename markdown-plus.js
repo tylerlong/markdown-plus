@@ -93,11 +93,11 @@ $(document).ready(function() {
       return marked.Renderer.prototype.listitem(text);
     }
     // 任务列表
-    var checkbox = $('<input type="checkbox" class="taskbox" disabled="disabled"/>');
+    var checkbox = $('<input type="checkbox" disabled/>');
     if(/^\[x\]\s/.test(text)) { // 完成的任务列表
       checkbox.attr('checked', true);
     }
-    return $(marked.Renderer.prototype.listitem(text.substring(4))).addClass('nostyle').prepend(checkbox)[0].outerHTML;
+    return $(marked.Renderer.prototype.listitem(text.substring(3))).addClass('task-list-item').prepend(checkbox)[0].outerHTML;
   }
   var mermaidError;
   mermaid.parseError = function(err, hash){
@@ -150,7 +150,7 @@ $(document).ready(function() {
 
   var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后才会触发
     $('.markdown-body').empty().append(marked(editor.session.getValue())); // 实时预览
-    $('pre').addClass('prettyprint').addClass('linenums');
+    $('pre').addClass('prettyprint');
     prettyPrint(); // 语法高亮
     $('img[src^="emoji/"]').each(function() { // 转换emoji路径
       $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
