@@ -74,13 +74,16 @@ i.dividor { /* toolbar 上面的分隔竖线 */
 }
 
 /* source code highlight */
-.ace-tomorrow {
+.markdown-body .ace-tomorrow {
   background-color: #f7f7f7 !important;
 }
-.ace_static_highlight {
-  font-size: 14px !important;
+.markdown-body .ace-tomorrow .ace_static_highlight {
+  font-size: 13.6px !important;
 }
-
+.markdown-body .ace-tomorrow .ace_gutter {
+  color: #aaaaaa !important;
+  margin-right: 16px !important;
+}
 
 /*************************/
 /* below is for printing */
