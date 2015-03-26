@@ -83,6 +83,9 @@ i.dividor { /* toolbar 上面的分隔竖线 */
 .com { /* 注释 */
   color: #969896 !important;
 }
+.typ { /* 类型 */
+  color: #0086b3 !important;
+}
 pre.prettyprint {
   border: none !important;
   padding: 16px !important;
