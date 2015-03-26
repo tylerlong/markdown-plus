@@ -81,7 +81,7 @@ i.dividor { /* toolbar 上面的分隔竖线 */
   font-size: 13.6px !important;
 }
 .markdown-body .ace-tomorrow .ace_gutter {
-  color: #aaaaaa !important;
+  color: rgba(0,0,0,0.3) !important;
   margin-right: 16px !important;
 }
 
