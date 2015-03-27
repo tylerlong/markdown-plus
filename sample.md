@@ -7,7 +7,7 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 #### Fork me on GitHub: <i class="fa fa-github" style="font-size: 64px;"/> [tylingsoft/markdown-plus](https://github.com/tylingsoft/markdown-plus).
 
 
-We currently ***don't*** accept donations. The best way you could support our development is to buy our Mac app.
+We currently ***don't*** accept donations. The best way you could support our development is to [buy our Mac app](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8).
 
 [![Markdown Plus Mac app](macappstore.png)](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8)
 
