@@ -9,7 +9,7 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 
 ## Features
 
-- Simple, only a few hundred lines of code
+- ***Simple, only a few hundred lines of code***
 - GitHub flavored markdown
 - Realtime preview
 - Source code highlight
@@ -26,13 +26,11 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 ![Markdown Plus](screenshot.png)
 
 
-## Why yet another markdown editor?
+## Mac app
 
-We had tried several of the markdown editors available on GitHub, they are either too simple in features or too complex in implementation.
+We currently ***don't*** accept donations. The best way you could support our development is to buy our Mac app.
 
-We spent too much time finding, hacking and tweaking other markdown editors and finally we decided to create our own.
-
-We hope Markdown Plus could save your time when you need a simple yet feature-rich markdown editor.
+[![Markdown Plus Mac app](macappstore.png)](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8)
 
 
 ## Setup & Run
@@ -75,7 +73,7 @@ Markdown Plus 是一款轻量级 markdown 编辑器。除了支持通用 markdow
 
 ## 主要特性
 
-- 简单，仅有几百行代码
+- ***简单，仅有几百行代码***
 - GitHub flavored markdown
 - 实时预览
 - 代码高亮
@@ -89,13 +87,11 @@ Markdown Plus 是一款轻量级 markdown 编辑器。除了支持通用 markdow
 - 甘特图
 
 
-## 为什么又一个 markdown 编辑器？
+## Mac 客户端
 
-我们曾试过 GitHub 上面的几个 markdown 编辑器，对我们来讲它们不是功能上太简单了就是实现上太复杂了。
+目前我们***不接受***无偿捐赠。支持我们开发的最好方式就是购买我们的 Mac 客户端。
 
-我们把大量的时间花在了寻找、修改、定制其它的 markdown 编辑器上，直到最终我们决定自己写一个。
-
-我们希望 Markdown Plus 能给那些需要一个既简单又功能完备的 markdown 编辑器的人节省时间。
+[![Markdown Plus Mac 客户端](macappstore.png)](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8)
 
 
 ## 安装与运行
