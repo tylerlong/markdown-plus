@@ -27,7 +27,7 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 
 ## Mac app
 
-We currently ***don't*** accept donations. The best way you could support our development is to [buy our Mac app](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8).
+We currently ***don't*** accept donations. The best way to support our development is to [buy our Mac app](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8).
 
 [![Markdown Plus Mac app](macappstore.png)](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8)
 
@@ -44,6 +44,14 @@ open index.html
 ## How to use Markdown Plus in your projects
 
 Please take `index.html` as an example.
+
+
+## Thanks
+
+- Thanks to all the dependent open source projects' authors !
+- Thank [ASTND](http://www.weibo.com/236986311) for designing the icon !
+- Thanks to those who have contributed by creating PRs / issues !
+- Thanks to those who have bought our app to support our development !
 
 
 ## License
@@ -107,6 +115,14 @@ open index.zh_CN.html
 ## 如何在项目中使用
 
 参考`index.zh_CN.html`，比葫芦画瓢。
+
+
+## 鸣谢
+
+- 感谢本项目所依赖的众多开源项目的作者！
+- 感谢 [ASTND](http://www.weibo.com/236986311) 设计了图标！
+- 感谢通过创建 PR、issue 向本项目做贡献的朋友们！
+- 感谢众多购买了客户端来支持我们开发的朋友们！
 
 
 ## 软件协议
