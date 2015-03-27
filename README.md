@@ -6,6 +6,8 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 
 ### Online demo: [mdp.tylingsoft.com](http://mdp.tylingsoft.com)
 
+### Screenshots: [#screenshots](#screenshots)
+
 
 ## Features
 
@@ -21,9 +23,6 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 - Flowcharts
 - Sequence diagrams
 - Gantt diagrams
-
-
-![Markdown Plus](screenshot.png)
 
 
 ## Mac app
@@ -70,6 +69,8 @@ Markdown Plus 是一款轻量级 markdown 编辑器。除了支持通用 markdow
 
 ### 在线演示：[mdp.tylingsoft.com](http://mdp.tylingsoft.com/index.zh_CN.html)
 
+### 屏幕截图: [#screenshots](#screenshots)
+
 
 ## 主要特性
 
@@ -113,3 +114,19 @@ open index.zh_CN.html
 [BSD 协议](http://opensource.org/licenses/BSD-3-Clause)
 
 版权所有 © 2015 [Tylingsoft](https://tylingsoft.com/)
+
+
+---
+
+---
+
+---
+
+
+# Screenshots
+
+![Markdown Plus](screenshot.png)
+
+![Markdown Plus](screenshot2.png)
+
+![Markdown Plus](screenshot3.png)
