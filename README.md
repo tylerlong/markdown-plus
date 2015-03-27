@@ -71,7 +71,6 @@ Copyright © 2015 [Tylingsoft](https://tylingsoft.com/)
 # Below is for Chinese speaking
 
 ![Markdown Plus](icon.png)
-
 Markdown Plus 是一款轻量级 markdown 编辑器。除了支持通用 markdown、GitHub flavored markdown，它还支持任务列表、Emoji 图标、Font Awesome 图标、Ionicons 图标、数学公式、流程图、顺序图、甘特图。
 
 
