@@ -35,6 +35,12 @@ function sync_preview(scroll) {
 
 var editor;
 $(document).ready(function() {
+
+  // load preferences
+  var vim_mode = $.cookie('vim-mode');
+  console.log(vim_mode);
+  $('#vim-checkbox').prop('checked', vim_mode == 'true');
+
   $('body').layout({ // create 3-panels layout
     resizerDblClickToggle: false,
     resizable: false,
@@ -301,6 +307,17 @@ $(document).ready(function() {
     }
     editor.insert('\n```\n' + text + '\n```\n');
     editor.focus();
+  });
+
+  // Preferences
+  $('#vim-checkbox').change(function() {
+    if($(this).is(':checked')) {
+      console.log('enable vim mode');
+      $.cookie('vim-mode', true, { expires: 10000 });
+    } else {
+      console.log('disable vim mode');
+      $.cookie('vim-mode', false, { expires: 10000 });
+    }
   });
 
   // modals

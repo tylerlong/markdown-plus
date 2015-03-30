@@ -16,6 +16,7 @@
     <script src="bower_components/jquery-dist/jquery.min.js"></script>
     <script src="bower_components/jquery-ui-min/jquery-ui.min.js"></script>
     <script src="bower_components/jquery-ui-layout-min/jquery.layout.min.js"></script>
+    <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
     <script src="bower_components/ace-min-noconflict/ace.js" charset="utf-8"></script>
     <script src="bower_components/ace-min-noconflict/ext-static_highlight.js"></script>
     <script src="bower_components/ace-min-noconflict/ext-modelist.js"></script>
@@ -74,8 +75,9 @@ T2: 2014-01-11, 9d
 section S3
 T3: 2014-01-02, 9d"></i>
         <i class="dividor">|</i>
-        <i title="Help" class="fa fa-question-circle" id="help-icon" data-remodal-target="help-modal"></i>
-        <i title="About" class="fa fa-info-circle" id="about-icon" data-remodal-target="about-modal"></i>
+        <i title="Preferences" class="fa fa-cog" data-remodal-target="preferences-modal"></i>
+        <i title="Help" class="fa fa-question-circle" data-remodal-target="help-modal"></i>
+        <i title="About" class="fa fa-info-circle" data-remodal-target="about-modal"></i>
       </div>
     </div>
     <div class="ui-layout-center">
@@ -103,6 +105,12 @@ T3: 2014-01-02, 9d"></i>
         <p><input id="ion-code" placeholder="beer"/></p>
         <br/><a class="remodal-cancel">Cancel</a>
         <a class="remodal-confirm" id="ion-confirm">OK</a>
+      </div>
+      <div class="remodal" data-remodal-id="preferences-modal"> <!-- Preferences 弹出框 -->
+        <img src="icon.png" width="64"/>
+        <h2>Markdown Plus Preferences</h2>
+        <input type="checkbox" id="vim-checkbox"/> Vim Mode
+        <br/><br/><a class="remodal-confirm">OK</a>
       </div>
       <div class="remodal" data-remodal-id="help-modal"> <!-- help 弹出框 -->
         <img src="icon.png" width="64"/>
