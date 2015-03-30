@@ -34,9 +34,21 @@ function sync_preview(scroll) {
 }
 
 // vim commands
+// todo: need some test
 var VimApi = ace.require("ace/keyboard/vim").CodeMirror.Vim
 VimApi.defineEx("write", "w", function(cm, input) {
-  console.log('vim :w');
+  $('.file-icon[data-name="save"]').click();
+  console.log('write');
+});
+VimApi.defineEx("quit", "q", function(cm, input) {
+  if(input.input == 'q') {
+    console.log('quit');
+  } else if(input.input == 'q!') {
+    console.log('quit without warning');
+  }
+});
+VimApi.defineEx("wq", "wq", function(cm, input) {
+  console.log('write then quit');
 });
 
 var editor;
