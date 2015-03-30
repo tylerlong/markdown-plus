@@ -44,6 +44,7 @@
     "github-markdown-css": null,
     "remodal-min": null,
     "katex-build": null,
-    "mermaid-min": null
+    "mermaid-min": null,
+    "jquery.cookie-min": null
   }
 }
