@@ -33,13 +33,14 @@ function sync_preview(scroll) {
   $('.ui-layout-east').scrollTop(scrollTop);
 }
 
+// vim commands
+var VimApi = ace.require("ace/keyboard/vim").CodeMirror.Vim
+VimApi.defineEx("write", "w", function(cm, input) {
+  console.log('vim :w');
+})
+
 var editor;
 $(document).ready(function() {
-
-  // load preferences
-  var vim_mode = $.cookie('vim-mode');
-  $('#vim-checkbox').prop('checked', vim_mode == 'true');
-
   $('body').layout({ // create 3-panels layout
     resizerDblClickToggle: false,
     resizable: false,
@@ -76,6 +77,13 @@ $(document).ready(function() {
   editor.session.on('changeScrollTop', function(scroll) {
     sync_preview(scroll);
   });
+
+  // load preferences
+  var vim_mode = $.cookie('vim-mode') == 'true';
+  if(vim_mode) {
+    $('#vim-checkbox').prop('checked', true);
+    editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
+  }
 
   // 编辑器的一些拓展方法
   editor.selection.smartRange = function() {
@@ -312,8 +320,10 @@ $(document).ready(function() {
   $('#vim-checkbox').change(function() {
     if($(this).is(':checked')) {
       $.cookie('vim-mode', true, { expires: 10000 });
+      editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
     } else {
       $.cookie('vim-mode', false, { expires: 10000 });
+      editor.setKeyboardHandler(null);
     }
   });
 
