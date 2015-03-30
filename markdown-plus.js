@@ -37,7 +37,7 @@ function sync_preview(scroll) {
 var VimApi = ace.require("ace/keyboard/vim").CodeMirror.Vim
 VimApi.defineEx("write", "w", function(cm, input) {
   console.log('vim :w');
-})
+});
 
 var editor;
 $(document).ready(function() {

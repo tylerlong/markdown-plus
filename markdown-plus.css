@@ -3,6 +3,10 @@ body{
   padding: 0;
 }
 
+.app-only {
+  display: none;
+}
+
 .ui-layout-pane {
   border-width: 0;
   padding: 0;
