@@ -15,7 +15,7 @@ function get_editor_scroll() {
   var physicalLine = 0;
   var headerLines = [];
   for(var i = 0; i < lines.length; i++) {
-    if(/^#{1,4}\s+/.test(lines[i])) {
+    if(/^#{1,6}\s+/.test(lines[i])) {
       headerLines.push(physicalLine);
     }
     physicalLine += editor.session.getRowLength(i);
@@ -51,16 +51,16 @@ function get_editor_scroll() {
 }
 
 function set_preview_scroll(editor_scroll) {
-  console.log(editor_scroll);
   var lastPosition = 0;
-  var nextPosition = $('.ui-layout-east article').outerHeight();
-  var headers = $('.ui-layout-east article').find('h1,h2,h3,h4');
+  var nextPosition = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height();
+  var headers = $('.ui-layout-east article').find('h1,h2,h3,h4,h5,h6');
   if(editor_scroll.lastHeader !== false) {
-    lastPosition = headers[editor_scroll.lastHeader].position();
+    lastPosition = headers.eq(editor_scroll.lastHeader).get(0).offsetTop;
   }
   if(editor_scroll.nextHeader !== false) {
-    nextPosition = headers[editor_scroll.nextHeader].position();
+    nextPosition = headers.eq(editor_scroll.nextHeader).get(0).offsetTop;
   }
-  console.log(lastPosition);
-  console.log(nextPosition);
+  scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage;
+  console.log(scrollPosition);
+  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 256);
 }

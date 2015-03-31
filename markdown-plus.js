@@ -27,11 +27,9 @@ mermaid.ganttConfig = { // Configuration for Gantt diagrams
 };
 
 // synchronize preview scrolling
-function sync_preview(scroll) {
-  var percentage = scroll / (editor.session.getScreenLength() * editor.renderer.lineHeight - $('#editor').height());
-  var scrollTop = ($('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height()) * percentage;
-  $('.ui-layout-east').scrollTop(scrollTop);
-}
+var sync_preview = _.debounce(function() {
+  set_preview_scroll(get_editor_scroll());
+}, 128, false);
 
 // vim commands
 // todo: need some test
@@ -85,9 +83,10 @@ $(document).ready(function() {
   editor.setTheme('ace/theme/tomorrow');
   editor.session.setUseWrapMode(true);
   editor.setFontSize('14px');
+  editor.setOption("scrollPastEnd", true);
   editor.focus();
   editor.session.on('changeScrollTop', function(scroll) {
-    sync_preview(scroll);
+    sync_preview();
   });
 
   // load preferences
@@ -197,7 +196,7 @@ $(document).ready(function() {
     $('line[y2="2000"]').each(function(){ // a temp workaround for mermaid bug: https://github.com/knsv/mermaid/issues/142
       $(this).attr('y2', $(this).closest('svg').attr('height') - 10);
     });
-    sync_preview(editor.session.getScrollTop());
+    sync_preview();
   }, 128, false);
 
   // h1 - h6 heading
