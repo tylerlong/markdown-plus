@@ -55,6 +55,10 @@ function set_preview_scroll(editor_scroll) { // 设置预览的滚动位置
   $('.ui-layout-east').animate({scrollTop: scrollPosition}, 128); // 加一点动画效果
 }
 
+var sync_preview = _.debounce(function() { // 右侧预览和左侧的内容同步
+  set_preview_scroll(get_editor_scroll());
+}, 128, false);
+
 var mermaid_config = {
   htmlLabels: false // fix mermaid flowchart IE issue
 };
@@ -78,11 +82,6 @@ mermaid.ganttConfig = { // Configuration for Gantt diagrams
       }]
   ]
 };
-
-// synchronize preview scrolling
-var sync_preview = _.debounce(function() {
-  set_preview_scroll(get_editor_scroll());
-}, 128, false);
 
 // vim commands
 // todo: need some test
