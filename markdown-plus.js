@@ -208,7 +208,22 @@ $(document).ready(function() {
     } else {
       return marked.Renderer.prototype.code.apply(this, arguments);
     }
-  }
+  };
+  renderer.html = function(html) {
+    var result = marked.Renderer.prototype.html.apply(this, arguments);
+    var h = $(result.bold());
+    h.find('script,iframe').remove();
+    return h.html();
+  };
+  renderer.paragraph = function(text) {
+    var result = marked.Renderer.prototype.paragraph.apply(this, arguments);
+    var h = $(result.bold());
+    h.find('img[src^="emoji/"]').each(function() { //如果不在这个时刻执行这个，控制台报404
+      $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
+    });
+    h.find('script,iframe').remove();
+    return h.html();
+  };
   marked.setOptions({
     renderer: renderer,
     gfm: true,
