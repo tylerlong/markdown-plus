@@ -1,33 +1,18 @@
-// 思路： 找出所有的header line，计算出每一个的高度（从第一行开始算的高度）
-// 获取当前的scrollTop， 然后知道当前时在哪两个header之间，滚动的比例是多少
-// 右侧获取响应的header，滚动到响应的比例
-// editor.session.getRowLength(3) 获取指定行的行数。（考虑wrap因素）
-// editor.renderer.lineHeight 每一行所占高度。
-// editor.session.getScrollTop() 当前滚动到的位置。
-// editor.session.getScreenLength() 总的物理行数 考虑wrap因素
-
-
 function get_editor_scroll() {
-  var headers = $('.ui-layout-east article').find('h1,h2,h3,h4,h5,h6').filter('[data-line]');
+  var headers = $('.ui-layout-east article').find('h1,h2,h3,h4,h5,h6').filter('[data-line]'); // 把没有data-line属性的排除掉
   var lines = []; // 逻辑行
   headers.each(function(){
     lines.push($(this).data('line'));
   });
-  console.log(lines);
-
   var pLines = []; // 物理行
   var pLine = 0;
   for(var i = 0; i < lines[lines.length - 1]; i++) {
     if($.inArray(i + 1, lines) !== -1) {
       pLines.push(pLine);
     }
-    pLine += editor.session.getRowLength(i)
+    pLine += editor.session.getRowLength(i) // 因为有wrap，所以行高未必是1
   }
-  console.log(pLines);
-
-  var currentLine = editor.session.getScrollTop() / editor.renderer.lineHeight; // 物理行
-  console.log(currentLine);
-
+  var currentLine = editor.session.getScrollTop() / editor.renderer.lineHeight; // 当前滚动到的物理行
   var lastHeader = false;
   var nextHeader = false;
   for(var i = 0; i < pLines.length; i++) {
@@ -37,39 +22,31 @@ function get_editor_scroll() {
       nextHeader = i;
       break;
     }
-  }
+  } // 当前滚动到了哪两个header中间
   var lastLine = 0;
-  var nextLine = editor.session.getScreenLength() - 1;
+  var nextLine = editor.session.getScreenLength() - 1; // 最后一个物理行的顶部，所以 -1
   if(lastHeader !== false) {
     lastLine = pLines[lastHeader];
   }
   if(nextHeader !== false) {
     nextLine = pLines[nextHeader];
-  }
-  console.log('lastLine: ' + lastLine);
-  console.log('currentLine: ' + currentLine);
-  console.log('nextLine: ' + nextLine);
+  } // 前后两个header的物理行
   var percentage = 0;
-  if(nextLine !== lastLine) { // 行首标题的情况下可能相等
+  if(nextLine !== lastLine) { // 行首就是标题的情况下可能相等，0 不能作为除数
     percentage = (currentLine - lastLine) / (nextLine - lastLine);
-  }
-
-  var result = { lastHeader: lines[lastHeader], nextHeader: lines[nextHeader], percentage: percentage };
-  return result;
+  } // 当前位置在两个header之间所处的百分比
+  return { lastHeader: lines[lastHeader], nextHeader: lines[nextHeader], percentage: percentage }; // 返回的是前后两个header对应的逻辑行，以及当前位置在前后两个header之间所处的百分比
 }
 
 function set_preview_scroll(editor_scroll) {
-  console.log(editor_scroll);
   var lastPosition = 0;
-  var nextPosition = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height();
-  if(editor_scroll.lastHeader !== undefined) {
+  var nextPosition = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height(); // 这是总共可以scroll的最大幅度
+  if(editor_scroll.lastHeader !== undefined) { // 最开始的位置没有标题
     lastPosition = $('.ui-layout-east article').find('h1,h2,h3,h4,h5,h6').filter('[data-line="' + editor_scroll.lastHeader + '"]').get(0).offsetTop;
   }
-  if(editor_scroll.nextHeader !== undefined) {
+  if(editor_scroll.nextHeader !== undefined) { // 最末尾的位置没有标题
     nextPosition = $('.ui-layout-east article').find('h1,h2,h3,h4,h5,h6').filter('[data-line="' + editor_scroll.nextHeader + '"]').get(0).offsetTop;
-  }
-  console.log(lastPosition);
-  console.log(nextPosition);
-  scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage;
-  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 128);
+  } // 查找出前后两个header在页面上所处的滚动距离
+  scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // 按照左侧的百分比计算出右侧应该滚动到的位置
+  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 128); // 加一点动画效果
 }
