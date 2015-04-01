@@ -83,21 +83,18 @@ mermaid.ganttConfig = { // Configuration for Gantt diagrams
   ]
 };
 
-// vim commands
-// todo: need some test
-var VimApi = ace.require("ace/keyboard/vim").CodeMirror.Vim
-VimApi.defineEx("write", "w", function(cm, input) {
-  $('.file-icon[data-name="save"]').click();
+var Vim = ace.require("ace/keyboard/vim").CodeMirror.Vim // vim commands
+Vim.defineEx("write", "w", function(cm, input) {
   console.log('write');
 });
-VimApi.defineEx("quit", "q", function(cm, input) {
-  if(input.input == 'q') {
+Vim.defineEx("quit", "q", function(cm, input) {
+  if(input.input === 'q') {
     console.log('quit');
-  } else if(input.input == 'q!') {
+  } else if(input.input === 'q!') {
     console.log('quit without warning');
   }
 });
-VimApi.defineEx("wq", "wq", function(cm, input) {
+Vim.defineEx("wq", "wq", function(cm, input) {
   console.log('write then quit');
 });
 
