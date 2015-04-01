@@ -111,6 +111,9 @@ i.dividor { /* toolbar 上面的分隔竖线 */
   color: #0086b3 !important;
 }
 
+.remodal-overlay {
+  background: rgba(33, 36, 46, 0.6) !important;
+}
 
 /*************************/
 /* below is for printing */
