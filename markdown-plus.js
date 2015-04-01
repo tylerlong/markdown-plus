@@ -144,6 +144,7 @@ $(document).ready(function() {
     $('#vim-checkbox').prop('checked', true);
     editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
   }
+  $('#vim-checkbox').button(); // turn checkbox into a toggle button
 
   // 编辑器的一些拓展方法
   editor.selection.smartRange = function() {
