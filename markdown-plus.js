@@ -242,21 +242,25 @@ $(document).ready(function() {
   var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后才会触发
     $('.markdown-body').empty().append(marked(editor.session.getValue())); // realtime preview
     $('code').each(function(){ // code highlight
-      var language = ($(this).attr('class') || 'lang-c_cpp').substring(5).toLowerCase();
+      var code = $(this);
+      var language = (code.attr('class') || 'lang-c_cpp').substring(5).toLowerCase();
       if(modelist[language] == undefined) {
         language = 'c_cpp';
       }
-      highlight($(this)[0], {
+      highlight(code[0], {
           mode: 'ace/mode/' + language,
           theme: 'ace/theme/github',
           startLineNumber: 1,
           showGutter: false,
           trim: true,
-      }, function (highlighted) {
-        $('p > code div.ace_line').each(function() { // inline code
-          $(this).html($.trim($(this).html())); // 移除因为上面 hightlight 而加进去的空白（换行符）
-        });
-      });
+        }, function (highlighted) {
+          if(code.parent()[0].tagName === 'P') { // inline code
+            code.find('div.ace_line').each(function(){
+              $(this).html($.trim($(this).html())); // 移除因为上面 highlight 而加进去的空白（换行符）
+            });
+          }
+        }
+      );
     });
     $('img[src^="emoji/"]').each(function() { // 转换emoji路径
       $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
