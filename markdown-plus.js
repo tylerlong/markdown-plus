@@ -243,9 +243,9 @@ $(document).ready(function() {
     $('.markdown-body').empty().append(marked(editor.session.getValue())); // realtime preview
     $('code').each(function(){ // code highlight
       var code = $(this);
-      var language = (code.attr('class') || 'lang-c_cpp').substring(5).toLowerCase();
+      var language = (code.attr('class') || 'lang-javascript').substring(5).toLowerCase();
       if(modelist[language] == undefined) {
-        language = 'c_cpp';
+        language = 'javascript';
       }
       highlight(code[0], {
           mode: 'ace/mode/' + language,
