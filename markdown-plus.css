@@ -115,6 +115,10 @@ i.dividor { /* toolbar 上面的分隔竖线 */
   background: rgba(33, 36, 46, 0.6) !important;
 }
 
+p > code div {
+  display: inline !important;
+}
+
 /*************************/
 /* below is for printing */
 /*************************/

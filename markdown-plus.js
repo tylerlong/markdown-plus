@@ -241,7 +241,7 @@ $(document).ready(function() {
   var highlight = ace.require('ace/ext/static_highlight');
   var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后才会触发
     $('.markdown-body').empty().append(marked(editor.session.getValue())); // realtime preview
-    $('pre code').each(function(){ // code highlight
+    $('code').each(function(){ // code highlight
       var language = ($(this).attr('class') || 'lang-c_cpp').substring(5).toLowerCase();
       if(modelist[language] == undefined) {
         language = 'c_cpp';
