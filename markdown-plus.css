@@ -23,11 +23,11 @@ body{
   height: 100%;
 }
 
-.markdown-body { /* 模拟GitHub的页面设置 */
-  min-width: 200px;
-  max-width: 790px;
+.markdown-body { /* 最大宽度模拟 Foundation */
+  min-width: 16em;
+  max-width: 62.5em;
   margin: 0 auto;
-  padding: 30px;
+  padding: 1em;
 }
 
 #toolbar {
