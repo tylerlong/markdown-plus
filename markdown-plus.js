@@ -252,7 +252,11 @@ $(document).ready(function() {
           startLineNumber: 1,
           showGutter: false,
           trim: true,
-      }, function (highlighted) {});
+      }, function (highlighted) {
+        $('p > code div.ace_line').each(function() { // inline code
+          $(this).html($.trim($(this).html())); // 移除因为上面 hightlight 而加进去的空白（换行符）
+        });
+      });
     });
     $('img[src^="emoji/"]').each(function() { // 转换emoji路径
       $(this).attr('src', 'bower_components/emoji-icons/' + $(this).attr('src').substring(6) + '.png');
