@@ -13,7 +13,7 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 
 - ***Simple, only a few hundred lines of code***
 - GitHub flavored markdown
-- Live preview with Scroll Sync
+- Live preview with scroll sync
 - Source code highlight
 - Task lists
 - Emojis
