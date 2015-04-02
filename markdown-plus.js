@@ -317,7 +317,6 @@ $(document).ready(function() {
     editor.focus();
   });
 
-  // todo: link 和 image 采用 modal 的方式让用户输入
   $('#link-icon').click(function() {
     var range = editor.selection.smartRange();
     var text = editor.session.getTextRange(range);

@@ -12,7 +12,7 @@ Markdown Plus is a versatile markdown editor. Besides common markdown, GitHub fl
 ## Mac app
 
 We currently ***don't*** accept donations.  
-The best way to support our development is to [buy our Mac app](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8).
+The best way to support our development is to [buy our Mac app](https://tylingsoft.com/mdp).
 
 
 ## Features
@@ -82,7 +82,7 @@ Markdown Plus 是一款功能丰富的 markdown 编辑器。除了支持通用 m
 ## Mac 客户端
 
 目前我们***不接受***无偿捐赠。  
-支持我们开发的最好方式就是购买我们的 [Mac 客户端](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8)。
+支持我们开发的最好方式就是购买我们的 [Mac 客户端](https://tylingsoft.com/mdp)。
 
 
 ## 主要特性
