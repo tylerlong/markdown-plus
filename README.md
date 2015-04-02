@@ -1,12 +1,17 @@
 # Markdown Plus
 
 ![Markdown Plus](icon.png)
-Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, mathematical formulae, flowcharts, sequence diagrams and gantt diagrams.
+Markdown Plus is a versatile markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, mathematical formulae, flowcharts, sequence diagrams, gantt diagrams and Vim mode.
 
 
 ### Online demo: [mdp.tylingsoft.com](http://mdp.tylingsoft.com)
 
 ### Screenshots: [#screenshots](#screenshots)
+
+
+## Mac app
+
+We currently ***don't*** accept donations. The best way to support our development is to [buy our Mac app](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8).
 
 
 ## Features
@@ -24,11 +29,6 @@ Markdown Plus is a lightweight markdown editor. Besides common markdown, GitHub 
 - Sequence diagrams
 - Gantt diagrams
 - Vim mode
-
-
-## Mac app
-
-We currently ***don't*** accept donations. The best way to support our development is to [buy our Mac app](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8).
 
 
 ## Setup & Run
@@ -70,12 +70,17 @@ Copyright © 2015 [Tylingsoft](https://tylingsoft.com/)
 # Below is for Chinese speaking
 
 ![Markdown Plus](icon.png)
-Markdown Plus 是一款轻量级 markdown 编辑器。除了支持通用 markdown、GitHub flavored markdown，它还支持任务列表、Emoji 图标、Font Awesome 图标、Ionicons 图标、数学公式、流程图、顺序图、甘特图。
+Markdown Plus 是一款功能丰富的 markdown 编辑器。除了支持通用 markdown、GitHub flavored markdown，它还支持任务列表、Emoji 图标、Font Awesome 图标、Ionicons 图标、数学公式、流程图、顺序图、甘特图、Vim 模式。
 
 
 ### 在线演示：[mdp.tylingsoft.com](http://mdp.tylingsoft.com/index.zh_CN.html)
 
 ### 屏幕截图: [#screenshots](#screenshots)
+
+
+## Mac 客户端
+
+目前我们***不接受***无偿捐赠。支持我们开发的最好方式就是购买我们的 [Mac 客户端](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8)。
 
 
 ## 主要特性
@@ -93,11 +98,6 @@ Markdown Plus 是一款轻量级 markdown 编辑器。除了支持通用 markdow
 - 顺序图
 - 甘特图
 - Vim 模式
-
-
-## Mac 客户端
-
-目前我们***不接受***无偿捐赠。支持我们开发的最好方式就是购买我们的 [Mac 客户端](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8)。
 
 
 ## 安装与运行
