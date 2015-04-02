@@ -10,18 +10,12 @@ Markdown Plus is a versatile markdown editor. Besides common markdown, GitHub fl
 
 ---
 
-## GitHub flavored markdown
 
-| Left-Aligned  | Center Aligned  | Right Aligned |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
+## Code blocks with syntax highlight
 
-[GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)
-
-
-## Fenced code blocks
+    <?php
+        echo "Hello world!";
+    ?>
 
 ```python
 from fabric.api import local
@@ -31,6 +25,19 @@ def update():
     local('bower cache clean')
     local('bower update')
 ```
+
+
+## Tables and alignment
+
+Function name | Description
+------------- | -----------
+`help()`      | Display the help window.
+`destroy()`   | **Destroy your computer!**
+
+| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
 
 
 ## Task lists

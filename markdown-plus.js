@@ -241,7 +241,7 @@ $(document).ready(function() {
   var highlight = ace.require('ace/ext/static_highlight');
   var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后才会触发
     $('.markdown-body').empty().append(marked(editor.session.getValue())); // realtime preview
-    $('code').each(function(){ // code highlight
+    $('pre > code').each(function(){ // code highlight
       var code = $(this);
       var language = (code.attr('class') || 'lang-javascript').substring(5).toLowerCase();
       if(modelist[language] == undefined) {
@@ -253,13 +253,8 @@ $(document).ready(function() {
           startLineNumber: 1,
           showGutter: false,
           trim: true,
-        }, function (highlighted) {
-          if(code.parent()[0].tagName === 'P') { // inline code
-            code.find('div.ace_line').each(function(){
-              $(this).html($.trim($(this).html())); // 移除因为上面 highlight 而加进去的空白（换行符）
-            });
-          }
-        }
+        },
+        function(highlighted){}
       );
     });
     $('img[src^="emoji/"]').each(function() { // 转换emoji路径
