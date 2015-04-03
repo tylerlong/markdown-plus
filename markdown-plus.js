@@ -52,12 +52,12 @@ function set_preview_scroll(editor_scroll) { // 设置预览的滚动位置
     nextPosition = $('.ui-layout-east article').find('h1,h2,h3,h4,h5,h6').filter('[data-line="' + editor_scroll.nextHeader + '"]').get(0).offsetTop;
   } // 查找出前后两个header在页面上所处的滚动距离
   scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // 按照左侧的百分比计算出右侧应该滚动到的位置
-  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 128); // 加一点动画效果
+  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 16); // 加一点动画效果
 }
 
 var sync_preview = _.debounce(function() { // 右侧预览和左侧的内容同步
   set_preview_scroll(get_editor_scroll());
-}, 128, false);
+}, 16, false);
 
 var mermaid_config = {
   htmlLabels: false // fix mermaid flowchart IE issue
