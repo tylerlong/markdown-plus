@@ -89,11 +89,9 @@ Function name | Description
 
 ## Mathematical formulae
 
+Inline math `$E = mc^2$`, another one: `$\dfrac{ \tfrac{1}{2}[1-(\tfrac{1}{2})^n] }{ 1-\tfrac{1}{2} } = s_n$`.
+
 ```math
-E = mc^2
-
-\dfrac{ \tfrac{1}{2}[1-(\tfrac{1}{2})^n] }{ 1-\tfrac{1}{2} } = s_n
-
 \oint_C x^3\, dx + 4y^2\, dy
 
 2 = \left(

@@ -214,6 +214,17 @@ $(document).ready(function() {
   mermaid.parseError = function(err, hash){
     mermaidError = err;
   };
+  renderer.codespan = function(text) { // inline code
+    if(/^\$.+\$$/.test(text)) { // inline math
+      var line = /^\$(.+)\$$/.exec(text)[1];
+      try{
+        return katex.renderToString(line, { displayMode: false });
+      } catch(err) {
+        return '<code>' + err + '</code>';
+      }
+    }
+    return marked.Renderer.prototype.codespan.apply(this, arguments);
+  }
   renderer.code = function(code, language) {
     code = code.trim();
     var firstLine = code.split(/\n/)[0].trim();
