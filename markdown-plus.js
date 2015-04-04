@@ -170,6 +170,7 @@ $(document).ready(function() {
   editor.session.setMode('ace/mode/markdown');
   editor.session.setUseWrapMode(true);
   editor.setFontSize('14px');
+  editor.setScrollSpeed(1);
   editor.setOption("scrollPastEnd", true);
   editor.session.setFoldStyle('manual');
   editor.focus();
