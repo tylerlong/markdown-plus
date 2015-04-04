@@ -169,6 +169,7 @@ $(document).ready(function() {
   editor.session.setUseWrapMode(true);
   editor.setFontSize('14px');
   editor.setOption("scrollPastEnd", true);
+  editor.session.setFoldStyle('manual');
   editor.focus();
   editor.session.on('changeScrollTop', function(scroll) {
     sync_preview();
