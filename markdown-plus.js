@@ -1,3 +1,6 @@
+var light_theme = 'ace/theme/tomorrow';
+var dark_theme = 'ace/theme/tomorrow_night_eighties';
+
 String.prototype.repeat = function(i) { // Some browsers don't support repeat, for example, Safari
     return new Array(i + 1).join(this);
 }
@@ -165,7 +168,6 @@ $(document).ready(function() {
   editor.$blockScrolling = Infinity;
   editor.renderer.setShowPrintMargin(false);
   editor.session.setMode('ace/mode/markdown');
-  editor.setTheme('ace/theme/tomorrow');
   editor.session.setUseWrapMode(true);
   editor.setFontSize('14px');
   editor.setOption("scrollPastEnd", true);
@@ -176,12 +178,37 @@ $(document).ready(function() {
   });
 
   // load preferences
-  var vim_mode = $.cookie('vim-mode') == 'true';
-  if(vim_mode) {
-    $('#vim-checkbox').prop('checked', true);
+  if($.cookie('vim-mode') == 'true') {
+    $('#vim-mode').prop('checked', true);
     editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
   }
-  $('#vim-checkbox').button(); // turn checkbox into a toggle button
+  if($.cookie('dark-editor-theme') == 'true') {
+    $('#dark-editor-theme').prop('checked', true);
+    editor.setTheme(dark_theme);
+  } else {
+    editor.setTheme(light_theme);
+  }
+  $('.toggle-button').button(); // turn checkboxes into toggle buttons
+
+  // Preferences
+  $('#vim-mode').change(function() {
+    if($(this).is(':checked')) {
+      $.cookie('vim-mode', true, { expires: 10000 });
+      editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
+    } else {
+      $.cookie('vim-mode', false, { expires: 10000 });
+      editor.setKeyboardHandler(null);
+    }
+  });
+  $('#dark-editor-theme').change(function() {
+    if($(this).is(':checked')) {
+      $.cookie('dark-editor-theme', true, { expires: 10000 });
+      editor.setTheme(dark_theme);
+    } else {
+      $.cookie('dark-editor-theme', false, { expires: 10000 });
+      editor.setTheme(light_theme);
+    }
+  });
 
   // 编辑器的一些拓展方法
   editor.selection.smartRange = function() {
@@ -411,17 +438,6 @@ $(document).ready(function() {
     }
     editor.insert('\n```\n' + text + '\n```\n');
     editor.focus();
-  });
-
-  // Preferences
-  $('#vim-checkbox').change(function() {
-    if($(this).is(':checked')) {
-      $.cookie('vim-mode', true, { expires: 10000 });
-      editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
-    } else {
-      $.cookie('vim-mode', false, { expires: 10000 });
-      editor.setKeyboardHandler(null);
-    }
   });
 
   // modals
