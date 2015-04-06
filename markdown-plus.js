@@ -1,4 +1,4 @@
-var light_theme = 'ace/theme/tomorrow';
+var bright_theme = 'ace/theme/tomorrow';
 var dark_theme = 'ace/theme/tomorrow_night_eighties';
 
 String.prototype.repeat = function(i) { // Some browsers don't support repeat, for example, Safari
@@ -183,9 +183,9 @@ $(document).ready(function() {
     $('#vim-mode').prop('checked', true);
     editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
   }
-  if($.cookie('light-editor-theme') == 'true') {
-    $('#light-editor-theme').prop('checked', true);
-    editor.setTheme(light_theme);
+  if($.cookie('bright-editor-theme') == 'true') {
+    $('#bright-editor-theme').prop('checked', true);
+    editor.setTheme(bright_theme);
   } else {
     editor.setTheme(dark_theme);
   }
@@ -201,12 +201,12 @@ $(document).ready(function() {
       editor.setKeyboardHandler(null);
     }
   });
-  $('#light-editor-theme').change(function() {
+  $('#bright-editor-theme').change(function() {
     if($(this).is(':checked')) {
-      $.cookie('light-editor-theme', true, { expires: 10000 });
-      editor.setTheme(light_theme);
+      $.cookie('bright-editor-theme', true, { expires: 10000 });
+      editor.setTheme(bright_theme);
     } else {
-      $.cookie('light-editor-theme', false, { expires: 10000 });
+      $.cookie('bright-editor-theme', false, { expires: 10000 });
       editor.setTheme(dark_theme);
     }
   });
