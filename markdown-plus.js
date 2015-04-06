@@ -183,11 +183,11 @@ $(document).ready(function() {
     $('#vim-mode').prop('checked', true);
     editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
   }
-  if($.cookie('dark-editor-theme') == 'true') {
-    $('#dark-editor-theme').prop('checked', true);
-    editor.setTheme(dark_theme);
-  } else {
+  if($.cookie('light-editor-theme') == 'true') {
+    $('#light-editor-theme').prop('checked', true);
     editor.setTheme(light_theme);
+  } else {
+    editor.setTheme(dark_theme);
   }
   $('.toggle-button').button(); // turn checkboxes into toggle buttons
 
@@ -201,13 +201,13 @@ $(document).ready(function() {
       editor.setKeyboardHandler(null);
     }
   });
-  $('#dark-editor-theme').change(function() {
+  $('#light-editor-theme').change(function() {
     if($(this).is(':checked')) {
-      $.cookie('dark-editor-theme', true, { expires: 10000 });
-      editor.setTheme(dark_theme);
-    } else {
-      $.cookie('dark-editor-theme', false, { expires: 10000 });
+      $.cookie('light-editor-theme', true, { expires: 10000 });
       editor.setTheme(light_theme);
+    } else {
+      $.cookie('light-editor-theme', false, { expires: 10000 });
+      editor.setTheme(dark_theme);
     }
   });
 
