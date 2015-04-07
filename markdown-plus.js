@@ -456,6 +456,17 @@ $(document).ready(function() {
   $(document).on('close', '.remodal', function(e) {
     editor.focus(); // 关闭modal，编辑器自动获得焦点
   });
+
+  // overwrite some ACE editor keyboard shortcuts
+  editor.commands.addCommands([
+    {
+      name: "preferences",
+      bindKey: { win: "Ctrl-,", mac: "Command-," },
+      exec: function (editor) {
+        $('i.fa-cog').click(); // show M+ preferences modal
+      }
+    }
+  ]);
 });
 
 function prompt_for_a_value(key, action) {
