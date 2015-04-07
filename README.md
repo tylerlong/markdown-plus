@@ -1,7 +1,7 @@
-# Markdown Plus
+# Markdown Plus (M+)
 
 ![Markdown Plus](icon.png)
-Markdown Plus is a versatile markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, mathematical formulae, flowcharts, sequence diagrams, gantt diagrams and Vim mode.
+Markdown Plus (or "M+" for short), is a versatile markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, mathematical formulae, flowcharts, sequence diagrams, gantt diagrams and Vim mode.
 
 
 ### Online demo: [mdp.tylingsoft.com](http://mdp.tylingsoft.com)
@@ -71,7 +71,7 @@ Copyright © 2015 [Tylingsoft](https://tylingsoft.com/)
 # Below is for Chinese speaking
 
 ![Markdown Plus](icon.png)
-Markdown Plus 是一款功能丰富的 markdown 编辑器。除了支持通用 markdown、GitHub flavored markdown，它还支持任务列表、Emoji 图标、Font Awesome 图标、Ionicons 图标、数学公式、流程图、顺序图、甘特图、Vim 模式。
+Markdown Plus（或者简称为 “M+”）是一款功能丰富的 markdown 编辑器。除了支持通用 markdown、GitHub flavored markdown，它还支持任务列表、Emoji 图标、Font Awesome 图标、Ionicons 图标、数学公式、流程图、顺序图、甘特图、Vim 模式。
 
 
 ### 在线演示：[mdp.tylingsoft.com](http://mdp.tylingsoft.com/index.zh_CN.html)
