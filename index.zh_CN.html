@@ -117,7 +117,12 @@ T3: 2014-01-02, 9d"></i>
       <div class="remodal" data-remodal-id="preferences-modal"> <!-- Preferences 弹出框 -->
         <img src="icon.png" width="64"/>
         <h2>Markdown Plus 首选项</h2>
-        <p><label for="bright-editor-theme">浅色编辑器主题</label><input type="checkbox" id="bright-editor-theme" class="toggle-button"/></p>
+        <p>编辑器主题: <select id="editor-theme">
+          <option value="tomorrow_night_blue">蓝色</option>
+          <option value="tomorrow">浅色</option>
+          <option value="tomorrow_night_eighties">深色</option>
+          <option value="kuroir">灰色</option>
+        </select></p>
         <p><label for="vim-mode">Vim 模式</label><input type="checkbox" id="vim-mode" class="toggle-button"/></p>
         <br/><a class="remodal-confirm">确定</a>
       </div>

@@ -1,6 +1,3 @@
-var bright_theme = 'ace/theme/tomorrow';
-var dark_theme = 'ace/theme/tomorrow_night_eighties';
-
 String.prototype.repeat = function(i) { // Some browsers don't support repeat, for example, Safari
     return new Array(i + 1).join(this);
 }
@@ -183,13 +180,13 @@ $(document).ready(function() {
     $('#vim-mode').prop('checked', true);
     editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
   }
-  if($.cookie('bright-editor-theme') == 'true') {
-    $('#bright-editor-theme').prop('checked', true);
-    editor.setTheme(bright_theme);
-  } else {
-    editor.setTheme(dark_theme);
-  }
   $('.toggle-button').button(); // turn checkboxes into toggle buttons
+  var editor_theme = $.cookie('editor-theme');
+  if(editor_theme == undefined) {
+    editor_theme = 'tomorrow_night_eighties';
+  }
+  $('select#editor-theme').val(editor_theme);
+  editor.setTheme('ace/theme/' + editor_theme);
 
   // Preferences
   $('#vim-mode').change(function() {
@@ -201,15 +198,11 @@ $(document).ready(function() {
       editor.setKeyboardHandler(null);
     }
   });
-  $('#bright-editor-theme').change(function() {
-    if($(this).is(':checked')) {
-      $.cookie('bright-editor-theme', true, { expires: 10000 });
-      editor.setTheme(bright_theme);
-    } else {
-      $.cookie('bright-editor-theme', false, { expires: 10000 });
-      editor.setTheme(dark_theme);
-    }
-  });
+  $('select#editor-theme').change(function(){
+    var editor_theme = $(this).val();
+    $.cookie('editor-theme', editor_theme, { expires: 10000 });
+    editor.setTheme('ace/theme/' + editor_theme);
+  })
 
   // 编辑器的一些拓展方法
   editor.selection.smartRange = function() {
