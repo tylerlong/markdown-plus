@@ -22,6 +22,7 @@
     <script src="bower_components/ace-min-noconflict/ext-static_highlight.js"></script>
     <script src="bower_components/ace-min-noconflict/ext-modelist.js"></script>
     <script src="bower_components/ace-min-noconflict/keybinding-vim.js"></script>
+    <script src="bower_components/ace-min-noconflict/keybinding-emacs.js"></script>
     <script src="bower_components/markedown/markedown.min.js"></script>
     <script src="bower_components/remodal-min/jquery.remodal.min.js"></script>
     <script src="bower_components/katex-build/katex.min.js"></script>
@@ -123,7 +124,11 @@ T3: 2014-01-02, 9d"></i>
           <option value="tomorrow_night_eighties">深色</option>
           <option value="kuroir">灰色</option>
         </select></p>
-        <p><label for="vim-mode">Vim 模式</label><input type="checkbox" id="vim-mode" class="toggle-button"/></p>
+        <p>按键绑定: <select id="key-binding">
+          <option value="default">默认</option>
+          <option value="emacs">Emacs</option>
+          <option value="vim">Vim</option>
+        </select></p>
         <br/><a class="remodal-confirm">确定</a>
       </div>
       <div class="remodal" data-remodal-id="help-modal"> <!-- help 弹出框 -->

@@ -176,11 +176,15 @@ $(document).ready(function() {
   });
 
   // load preferences
-  if($.cookie('vim-mode') == 'true') {
-    $('#vim-mode').prop('checked', true);
-    editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
+  var key_binding = $.cookie('key-binding');
+  if(key_binding == undefined) {
+    key_binding = 'default'
   }
-  $('.toggle-button').button(); // turn checkboxes into toggle buttons
+  $('select#key-binding').val(key_binding);
+  if(key_binding !== 'default') {
+    editor.setKeyboardHandler(ace.require("ace/keyboard/" + key_binding).handler);
+  }
+
   var editor_theme = $.cookie('editor-theme');
   if(editor_theme == undefined) {
     editor_theme = 'tomorrow_night_eighties';
@@ -188,21 +192,22 @@ $(document).ready(function() {
   $('select#editor-theme').val(editor_theme);
   editor.setTheme('ace/theme/' + editor_theme);
 
-  // Preferences
-  $('#vim-mode').change(function() {
-    if($(this).is(':checked')) {
-      $.cookie('vim-mode', true, { expires: 10000 });
-      editor.setKeyboardHandler(ace.require("ace/keyboard/vim").handler);
-    } else {
-      $.cookie('vim-mode', false, { expires: 10000 });
+  // change preferences
+  $('select#key-binding').change(function(){
+    var key_binding = $(this).val();
+    $.cookie('key-binding', key_binding, { expires: 10000 });
+    if(key_binding == 'default') {
       editor.setKeyboardHandler(null);
+    } else {
+      editor.setKeyboardHandler(ace.require("ace/keyboard/" + key_binding).handler);
     }
   });
+
   $('select#editor-theme').change(function(){
     var editor_theme = $(this).val();
     $.cookie('editor-theme', editor_theme, { expires: 10000 });
     editor.setTheme('ace/theme/' + editor_theme);
-  })
+  });
 
   // 编辑器的一些拓展方法
   editor.selection.smartRange = function() {
