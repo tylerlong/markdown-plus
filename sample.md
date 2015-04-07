@@ -1,7 +1,7 @@
-# Markdown Plus (M+)
+# Markdown Plus
 
 ![Markdown Plus](icon.png)
-Markdown Plus (or "M+" for short) is a versatile markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, mathematical formulae, flowcharts, sequence diagrams, gantt diagrams and Vim mode.
+Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, mathematical formulae, flowcharts, sequence diagrams, gantt diagrams and Vim mode.
 
 
 ##### Fork me on GitHub: <i class="fa fa-github" style="font-size: 64px;"/> [tylingsoft/markdown-plus](https://github.com/tylingsoft/markdown-plus).
@@ -15,7 +15,6 @@ Markdown Plus (or "M+" for short) is a versatile markdown editor. Besides common
 
     <?php
         echo "Hello world!";
-    ?>
 
 ```python
 from fabric.api import local
