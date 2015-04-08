@@ -29,7 +29,7 @@ The best way to support our development is to [buy our Mac app](https://tylingso
 - Flowcharts
 - Sequence diagrams
 - Gantt diagrams
-- Vim mode
+- Vim mode & Emacs mode
 
 
 ## Setup & Run
@@ -99,7 +99,7 @@ Markdown Plus（简称为“M+”或“mdp”）是一款功能丰富的 markdow
 - 流程图
 - 顺序图
 - 甘特图
-- Vim 模式
+- Vim 模式 和 Emacs 模式
 
 
 ## 安装与运行
