@@ -234,7 +234,7 @@ $(document).ready(function() {
   editor.renderer.setShowPrintMargin(false);
   editor.session.setMode('ace/mode/markdown');
   editor.session.setUseWrapMode(true);
-  editor.setScrollSpeed(0.3);
+  editor.setScrollSpeed(0.5);
   editor.setOption("scrollPastEnd", true);
   editor.session.setFoldStyle('manual');
   editor.focus();
