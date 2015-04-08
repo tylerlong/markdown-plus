@@ -3,7 +3,7 @@ String.prototype.repeat = function(i) { // Some browsers don't support repeat, f
 }
 
 function get_editor_scroll() { // 获取编辑器的滚动位置
-  var line_markers = $('.ui-layout-east article').find('[data-line]');
+  var line_markers = $('.ui-layout-east article > [data-line]');
   var lines = []; // 逻辑行
   line_markers.each(function() {
     lines.push($(this).data('line'));
@@ -46,10 +46,10 @@ function set_preview_scroll(editor_scroll) { // 设置预览的滚动位置
   var lastPosition = 0;
   var nextPosition = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height(); // 这是总共可以scroll的最大幅度
   if(editor_scroll.lastMarker !== undefined) { // 最开始的位置没有marker
-    lastPosition = $('.ui-layout-east article').find('[data-line="' + editor_scroll.lastMarker + '"]').get(0).offsetTop;
+    lastPosition = $('.ui-layout-east article').find('>[data-line="' + editor_scroll.lastMarker + '"]').get(0).offsetTop;
   }
   if(editor_scroll.nextMarker !== undefined) { // 最末尾的位置没有marker
-    nextPosition = $('.ui-layout-east article').find('[data-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
+    nextPosition = $('.ui-layout-east article').find('>[data-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
   } // 查找出前后两个marker在页面上所处的滚动距离
   scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // 按照左侧的百分比计算出右侧应该滚动到的位置
   $('.ui-layout-east').animate({scrollTop: scrollPosition}, 16); // 加一点动画效果
@@ -59,7 +59,7 @@ function get_preview_scroll() {
   var scroll = $('.ui-layout-east').scrollTop();
   var lastMarker = false;
   var nextMarker = false;
-  var line_markers = $('.ui-layout-east article').find('[data-line]');
+  var line_markers = $('.ui-layout-east article > [data-line]');
   for(var i = 0; i < line_markers.length; i++) {
     if(line_markers[i].offsetTop < scroll) {
       lastMarker = i;
@@ -84,7 +84,7 @@ function get_preview_scroll() {
 }
 
 function set_editor_scroll(preview_scroll) {
-  var line_markers = $('.ui-layout-east article').find('[data-line]');
+  var line_markers = $('.ui-layout-east article > [data-line]');
   var lines = []; // 逻辑行
   line_markers.each(function() {
     lines.push($(this).data('line'));
@@ -223,6 +223,7 @@ $(document).ready(function() {
   });
 
   // preview scroll past end
+  // todo: 高度调整后要重新执行
   $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px');
   $('.ui-layout-east').scroll(function() {
       sync_editor();
