@@ -110,7 +110,15 @@ function set_editor_scroll(preview_scroll) {
 }
 
 var sync_preview = _.debounce(function() { // 右侧预览和左侧的内容同步
-  set_preview_scroll(get_editor_scroll());
+  if(!$('.ui-layout-east').is(':hover')) { // 鼠标不在右侧，否则不触发
+    set_preview_scroll(get_editor_scroll());
+  }
+}, 16, false);
+
+var sync_editor = _.debounce(function() { // 左侧的内容和右侧预览同步
+  if($('.ui-layout-east').is(':hover')) { // 鼠标要在右侧，否则不触发
+    set_editor_scroll(get_preview_scroll());
+  }
 }, 16, false);
 
 var mermaid_config = {
@@ -216,6 +224,9 @@ $(document).ready(function() {
 
   // preview scroll past end
   $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px');
+  $('.ui-layout-east').scroll(function() {
+      sync_editor();
+  });
 
   // editor on the left
   editor = ace.edit("editor");
