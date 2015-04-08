@@ -68,8 +68,45 @@ function get_preview_scroll() {
       break;
     }
   }
-  console.log(line_markers[lastMarker]);
-  console.log(line_markers[nextMarker]);
+  var lastLine = 0;
+  var nextLine = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height(); // 这是总共可以scroll的最大幅度
+  if(lastMarker !== false) {
+    lastLine = line_markers[lastMarker].offsetTop;
+  }
+  if(nextMarker !== false) {
+    nextLine = line_markers[nextMarker].offsetTop;
+  }
+  var percentage = 0;
+  if(nextLine !== lastLine) {
+    percentage = (scroll - lastLine) / (nextLine - lastLine);
+  }
+  return { lastMarker: lastMarker, nextMarker: nextMarker, percentage: percentage }; // 返回的是前后两个marker的编号，以及当前位置在前后两个marker之间所处的百分比 
+}
+
+function set_editor_scroll(preview_scroll) {
+  var line_markers = $('.ui-layout-east article').find('[data-line]');
+  var lines = []; // 逻辑行
+  line_markers.each(function() {
+    lines.push($(this).data('line'));
+  });
+  var pLines = []; // 物理行
+  var pLine = 0;
+  for(var i = 0; i < lines[lines.length - 1]; i++) {
+    if($.inArray(i + 1, lines) !== -1) {
+      pLines.push(pLine);
+    }
+    pLine += editor.session.getRowLength(i) // 因为有wrap，所以行高未必是1
+  }
+  var lastLine = 0;
+  var nextLine = editor.session.getScreenLength() - 1; // 最后一个物理行的顶部
+  if(preview_scroll.lastMarker !== false) {
+    lastLine = pLines[preview_scroll.lastMarker]
+  }
+  if(preview_scroll.nextMarker !== false) {
+    nextLine = pLines[preview_scroll.nextMarker]
+  }
+  var scroll = ((nextLine - lastLine) * preview_scroll.percentage + lastLine) * editor.renderer.lineHeight;
+  editor.session.setScrollTop(scroll);
 }
 
 var sync_preview = _.debounce(function() { // 右侧预览和左侧的内容同步
@@ -178,7 +215,7 @@ $(document).ready(function() {
   });
 
   // preview scroll past end
-  $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseFloat($('.markdown-body').css('line-height'))) + 'px');
+  $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px');
 
   // editor on the left
   editor = ace.edit("editor");
