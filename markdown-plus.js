@@ -55,6 +55,23 @@ function set_preview_scroll(editor_scroll) { // 设置预览的滚动位置
   $('.ui-layout-east').animate({scrollTop: scrollPosition}, 16); // 加一点动画效果
 }
 
+function get_preview_scroll() {
+  var scroll = $('.ui-layout-east').scrollTop();
+  var lastMarker = false;
+  var nextMarker = false;
+  var line_markers = $('.ui-layout-east article').find('[data-line]');
+  for(var i = 0; i < line_markers.length; i++) {
+    if(line_markers[i].offsetTop < scroll) {
+      lastMarker = i;
+    } else {
+      nextMarker = i;
+      break;
+    }
+  }
+  console.log(line_markers[lastMarker]);
+  console.log(line_markers[nextMarker]);
+}
+
 var sync_preview = _.debounce(function() { // 右侧预览和左侧的内容同步
   set_preview_scroll(get_editor_scroll());
 }, 16, false);
@@ -159,6 +176,9 @@ $(document).ready(function() {
       }
     }
   });
+
+  // preview scroll past end
+  $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseFloat($('.markdown-body').css('line-height'))) + 'px');
 
   // editor on the left
   editor = ace.edit("editor");
