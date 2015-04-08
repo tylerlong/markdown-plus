@@ -210,8 +210,9 @@ $(document).ready(function() {
       size: '50%',
       togglerTip_open: $('#preview').data('open-title'),
       togglerTip_closed: $('#preview').data('closed-title'),
-      onresize: function() { // mermaid gantt diagram 宽度无法自适应, 只能每次重新生成
-        lazy_change();
+      onresize: function() {
+        lazy_change(); // mermaid gantt diagram 宽度无法自适应, 只能每次重新生成
+        $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px'); // scroll past end
       }
     },
     center: {
@@ -222,9 +223,7 @@ $(document).ready(function() {
     }
   });
 
-  // preview scroll past end
-  // todo: 高度调整后要重新执行
-  $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px');
+  $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px'); // scroll past end
   $('.ui-layout-east').scroll(function() {
       sync_editor();
   });
