@@ -333,7 +333,7 @@ $(document).ready(function() {
     }
     return marked.Renderer.prototype.codespan.apply(this, arguments);
   }
-  renderer.code = function(code, language) {
+  renderer.code = function(code, language, escaped, line_number) {
     code = code.trim();
     var firstLine = code.split(/\n/)[0].trim();
     if(language === 'math') { // 数学公式
@@ -348,15 +348,15 @@ $(document).ready(function() {
           }
         }
       });
-      return tex;
+      return '<div data-line="' + line_number + '">' + tex + '</div>';
     } else if(firstLine === 'gantt' || firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) { // mermaid
       if(firstLine === 'sequenceDiagram') {
         code += '\n'; // 如果末尾没有空行，则语法错误
       }
       if(mermaid.parse(code)) {
-        return '<div class="mermaid">' + code + '</div>';
+        return '<div class="mermaid" data-line="' + line_number + '">' + code + '</div>';
       } else {
-        return '<pre>' + mermaidError + '</pre>';
+        return '<pre data-line="' + line_number + '">' + mermaidError + '</pre>';
       }
     } else {
       return marked.Renderer.prototype.code.apply(this, arguments);
