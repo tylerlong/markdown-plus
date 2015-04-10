@@ -131,4 +131,8 @@ div.mermaid {
   table, pre, blockquote, div.mermaid {
     page-break-inside: avoid;
   }
+
+  .markdown-body { /* 打印不需要 scroll past end， 省纸 */
+    padding-bottom: 0 !important;
+  }
 }
