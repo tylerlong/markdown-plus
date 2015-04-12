@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Markdown Plus</title>
+    <link rel="stylesheet" href="bower_components/jquery-ui-min/themes/base/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="bower_components/jquery-ui-layout-min/layout-default.css"/>
+    <link rel="stylesheet" href="bower_components/github-markdown-css/github-markdown.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome-min/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="bower_components/remodal-min/jquery.remodal.css"/>
+    <link rel="stylesheet" href="bower_components/katex-build/katex.min.css"/>
+    <link rel="stylesheet" href="bower_components/ionicons-min/css/ionicons.min.css"/>
+    <link rel="stylesheet" href="bower_components/mermaid-min/mermaid.css"/>
+    <link rel="stylesheet" href="markdown-plus.css"/>
+    <link href="icon.png" rel="shortcut icon" type="image/png"/>
+    <script src="bower_components/underscore-min/underscore-min.js"></script>
+    <script src="bower_components/jquery-dist/jquery.min.js"></script>
+    <script src="bower_components/jquery-ui-min/jquery-ui.min.js"></script>
+    <script src="bower_components/jquery-ui-layout-min/jquery.layout.min.js"></script>
+    <script src="bower_components/jquery.cookie-min/jquery.cookie.js"></script>
+    <script src="bower_components/ace-min-noconflict/ace.js" charset="utf-8"></script>
+    <script src="bower_components/ace-min-noconflict/ext-static_highlight.js"></script>
+    <script src="bower_components/ace-min-noconflict/ext-modelist.js"></script>
+    <script src="bower_components/ace-min-noconflict/keybinding-vim.js"></script>
+    <script src="bower_components/ace-min-noconflict/keybinding-emacs.js"></script>
+    <script src="bower_components/markedown/markedown.min.js"></script>
+    <script src="bower_components/remodal-min/jquery.remodal.min.js"></script>
+    <script src="bower_components/katex-build/katex.min.js"></script>
+    <script src="bower_components/mermaid-min/mermaid.full.min.js"></script>
+    <script src="markdown-plus.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <div class="ui-layout-north">
+      <div id="toolbar" class="noselect" data-open-title="隱藏工具列" data-closed-title="顯示工具列"> <!-- 工具列 -->
+        <i title="新增" class="fa fa-file-text-o file-icon app-only" data-name="new"></i>
+        <i title="打開" class="fa fa-folder-open-o file-icon app-only" data-name="open"></i>
+        <i title="儲存" class="fa fa-save file-icon app-only" data-name="save"></i>
+        <i title="輸出為 HTML" class="fa fa-file-code-o file-icon app-only" data-name="html"></i>
+        <i title="輸出為 PDF" class="fa fa-file-pdf-o file-icon app-only" data-name="pdf"></i>
+        <i class="dividor app-only">|</i>
+        <i title="粗體" class="fa fa-bold styling-icon" data-modifier="**"></i>
+        <i title="斜體" class="fa fa-italic styling-icon" data-modifier="*"></i>
+        <i title="刪除線" class="fa fa-strikethrough styling-icon" data-modifier="~~"></i>
+        <i class="dividor">|</i>
+        <i title="標題 1" class="fa heading-icon" data-level="1">h1</i>
+        <i title="標題 2" class="fa heading-icon" data-level="2">h2</i>
+        <i title="標題 3" class="fa heading-icon" data-level="3">h3</i>
+        <i title="標題 4" class="fa heading-icon" data-level="4">h4</i>
+        <i title="標題 5" class="fa heading-icon" data-level="5">h5</i>
+        <i title="標題 6" class="fa heading-icon" data-level="6">h6</i>
+        <i class="dividor">|</i>
+        <i title="水平線" id="horizontal-rule" class="fa fa-minus"></i>
+        <i title="引用" class="fa fa-quote-left list-icon" data-prefix="> "></i>
+        <i title="有序列表" class="fa fa-list-ul list-icon" data-prefix="- "></i>
+        <i title="無序列表" class="fa fa-list-ol list-icon" data-prefix="1. "></i>
+        <i title="未完成任務列表" class="fa fa-square-o list-icon" data-prefix="- [ ] "></i>
+        <i title="已完成任務列表" class="fa fa-check-square-o list-icon" data-prefix="- [x] "></i>
+        <i class="dividor">|</i>
+        <i title="連結" class="fa fa-link" id="link-icon" data-sample-text="連結文字" data-sample-url="http://example.com"></i>
+        <i title="圖片" class="fa fa-image" id="image-icon" data-sample-text="圖片描述" data-sample-url="http://example.com/example.png"></i>
+        <i title="程式碼" class="fa fa-code" id="code-icon" data-sample="print '你好，世界！'"></i>
+        <i title="表格" class="fa fa-table" id="table-icon" data-sample="列標題 1 | 列標題 2
+---|---
+第一行第一列 | 第一行第二列
+第二行第一列 | 第二行第二列"></i>
+        <i class="dividor">|</i>
+        <i title="Emoji 圖示" class="fa fa-smile-o" data-remodal-target="emoji-modal"></i>
+        <i title="Font Awesome 圖示" class="fa fa-flag-o" data-remodal-target="fa-modal"></i>
+        <i title="Ionicons 圖示" class="icon ion-ionic" data-remodal-target="ion-modal"></i>
+        <i class="dividor">|</i>
+        <i title="數學公式" class="fa fa-superscript" id="math-icon" data-sample="E = mc^2"></i>
+        <i title="流程圖" class="fa fa-long-arrow-right mermaid-icon" data-sample="graph LR
+A-->B"></i>
+        <i title="時序圖" class="fa fa-exchange mermaid-icon" data-sample="sequenceDiagram
+A->>B: 你好嗎？
+B->>A: 我很好！"></i>
+        <i title="甘特圖" class="fa fa-sliders mermaid-icon" data-sample="gantt
+dateFormat YYYY-MM-DD
+section S1
+T1: 2014-01-01, 9d
+section S2
+T2: 2014-01-11, 9d
+section S3
+T3: 2014-01-02, 9d"></i>
+        <i class="dividor">|</i>
+        <i title="偏好設定" class="fa fa-cog" data-remodal-target="preferences-modal"></i>
+        <i title="說明" class="fa fa-question-circle" data-remodal-target="help-modal"></i>
+        <i title="關於" class="fa fa-info-circle" data-remodal-target="about-modal"></i>
+        <i title="輸入註冊序號" class="fa fa-key guest-only" data-remodal-target="license-modal"></i>
+      </div>
+    </div>
+    <div class="ui-layout-center">
+      <div id="editor"></div> <!-- 編輯器 -->
+      <div class="remodal" id="emoji-modal" data-remodal-id="emoji-modal"> <!-- emoji 彈出框 -->
+        <h2>請輸入 emoji 代碼：</h2>
+        <p>例子："smile", "whale", "santa", "panda_face", "dog", "truck" ...</p>
+        <p>完整列表，請訪問 <a href="http://www.emoji-cheat-sheet.com/" target="_blank">Emoji Cheat Sheet</a>。</p>
+        <p><input id="emoji-code" placeholder="smile"/></p>
+        <br/><a class="remodal-cancel">取消</a>
+        <a class="remodal-confirm" id="emoji-confirm">確定</a>
+      </div>
+      <div class="remodal" id="fa-modal" data-remodal-id="fa-modal"> <!-- Font Awesome 彈出框 -->
+        <h2>請輸入 Font Awesome 代碼：</h2>
+        <p>例子："cloud", "flag", "car", "truck", "heart", "dollar" ...</p>
+        <p>完整列表，請訪問 <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome 官網</a>。</p>
+        <p><input id="fa-code" placeholder="heart"/></p>
+        <br/><a class="remodal-cancel">取消</a>
+        <a class="remodal-confirm" id="fa-confirm">確定</a>
+      </div>
+      <div class="remodal" id="ion-modal" data-remodal-id="ion-modal"> <!-- Ionicons 彈出框 -->
+        <h2>請輸入 Ionicons 代碼：</h2>
+        <p>例子："beer", "key", "locked", "location", "plane", "ios-eye" ...</p>
+        <p>完整列表，請訪問 <a href="http://ionicons.com/" target="_blank">Ionicons 官網</a>。</p>
+        <p><input id="ion-code" placeholder="beer"/></p>
+        <br/><a class="remodal-cancel">取消</a>
+        <a class="remodal-confirm" id="ion-confirm">確定</a>
+      </div>
+      <div class="remodal" data-remodal-id="preferences-modal"> <!-- Preferences 彈出框 -->
+        <img src="icon.png" width="64"/>
+        <h2>Markdown Plus 偏好設定</h2>
+        <p>編輯器主題: <select id="editor-theme">
+          <option value="tomorrow_night_blue">藍色</option>
+          <option value="tomorrow">淺色</option>
+          <option value="tomorrow_night_eighties">深色</option>
+          <option value="kuroir">灰色</option>
+        </select></p>
+        <p>編輯器字體大小: <select id="editor-font-size">
+          <option value="8">8px</option><option value="9">9px</option><option value="10">10px</option><option value="11">11px</option>
+          <option value="12">12px</option><option value="13">13px</option><option value="14">14px</option><option value="15">15px</option>
+          <option value="16">16px</option><option value="17">17px</option><option value="18">18px</option><option value="20">20px</option>
+          <option value="24">24px</option><option value="32">32px</option><option value="48">48px</option><option value="64">64px</option>
+        </select></p>
+        <p>按鍵模式: <select id="key-binding">
+          <option value="default">預設</option>
+          <option value="emacs">Emacs</option>
+          <option value="vim">Vim</option>
+        </select></p>
+        <br/><a class="remodal-confirm">確定</a>
+      </div>
+      <div class="remodal" data-remodal-id="help-modal"> <!-- help 彈出框 -->
+        <img src="icon.png" width="64"/>
+        <h2>Markdown Plus 說明</h2>
+        <h3><a href="http://mdp.tylingsoft.com/index.zh_CN.html" target="_blank">一個線上範例</a></h3>
+        <p><a href="https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts" target="_blank">鍵盤快速鍵</a></p>
+        <p><a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown 基礎</a></p>
+        <p><a href="https://help.github.com/articles/github-flavored-markdown/" target="_blank">GitHub Flavored Markdown</a></p>
+        <p><a href="http://www.emoji-cheat-sheet.com/" target="_blank">Emoji 圖示</a></p>
+        <p><a href="http://fontawesome.io/icons/" target="_blank">Font Awesome 圖示</a></p>
+        <p><a href="http://ionicons.com/" target="_blank">Ionicons 圖示</a></p>
+        <p><a href="http://meta.wikimedia.org/wiki/Help:Displaying_a_formula" target="_blank">數學公式</a></p>
+        <p><a href="http://knsv.github.io/mermaid/flowchart.html" target="_blank">流程圖語法</a></p>
+        <p><a href="http://knsv.github.io/mermaid/sequenceDiagram.html" target="_blank">時序圖語法</a></p>
+        <p><a href="http://knsv.github.io/mermaid/gantt.html" target="_blank">甘特圖語法</a></p>
+        <p>如果以上未能解決您的問題，請發郵件給我們：<a href="mailto:service@tylingsoft.com?subject=Markdown Plus 問題回饋&amp;body=請附上一張問題的截圖。">service@tylingsoft.com</a>。</p>
+        <br/><a class="remodal-confirm">確定</a>
+      </div>
+      <div class="remodal" data-remodal-id="about-modal"> <!-- about 彈出框 -->
+        <img src="icon.png" width="64"/>
+        <h2>Markdown Plus</h2> 版本 1.3.9
+        <p>功能豐富的 markdown 編輯器。</p>
+        <p>版權所有 © 2015 <a href="https://tylingsoft.com" target="_blank">Tylingsoft</a>。</p>
+        <p>官方網頁: <a href="https://tylingsoft.com/mdp" target="_blank">https://tylingsoft.com/mdp</a>。</p>
+        <br/><a class="remodal-confirm">確定</a>
+      </div>
+      <div class="remodal" data-remodal-id="license-modal"> <!-- license 彈出框 -->
+        <img src="icon.png" width="64"/>
+        <h2>請輸入註冊序號</h2>
+        <p>電子郵件: <input id="email"/></p>
+        <p>註冊序號: <input id="password"/></p>
+        <p>沒有註冊序號? <a href="https://tylingsoft.com/mdp" target="_blank">按此購買</a>.</p>
+        <br/><a class="remodal-cancel">Cancel</a>
+        <a class="remodal-confirm">OK</a>
+      </div>
+    </div>
+    <div class="ui-layout-east">
+      <article class="markdown-body" id="preview" data-open-title="隱藏預覽" data-closed-title="顯示預覽"></article> <!-- 即時預覽 -->
+    </div>
+  </body>
+</html>
