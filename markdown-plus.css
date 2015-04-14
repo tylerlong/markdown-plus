@@ -8,7 +8,6 @@ body{
 }
 .guest-only { /* 未注册用户 */
   display: none;
-  color: red;
 }
 
 .ui-layout-pane {
