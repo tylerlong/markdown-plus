@@ -52,12 +52,12 @@ Function name | Description
 
 ## Emojis
 
-<img src="emoji/smile" width="64"/>
-<img src="emoji/whale" width="64"/>
-<img src="emoji/santa" width="64"/>
-<img src="emoji/panda_face" width="64"/>
-<img src="emoji/dog" width="64"/>
-<img src="emoji/truck" width="64"/>
+<img src="https://s.tylingsoft.com/emoji-icons/smile.png" width="64"/>
+<img src="https://s.tylingsoft.com/emoji-icons/whale.png" width="64"/>
+<img src="https://s.tylingsoft.com/emoji-icons/santa.png" width="64"/>
+<img src="https://s.tylingsoft.com/emoji-icons/panda_face.png" width="64"/>
+<img src="https://s.tylingsoft.com/emoji-icons/dog.png" width="64"/>
+<img src="https://s.tylingsoft.com/emoji-icons/truck.png" width="64"/>
 
 [Emoji Cheat Sheet](http://www.emoji-cheat-sheet.com/)
 
