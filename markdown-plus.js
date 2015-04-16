@@ -230,11 +230,12 @@ $(document).ready(function() {
 
   // editor on the left
   editor = ace.edit("editor");
+  editor.session.setUseWorker(false);
   editor.$blockScrolling = Infinity;
   editor.renderer.setShowPrintMargin(false);
   editor.session.setMode('ace/mode/markdown');
   editor.session.setUseWrapMode(true);
-  editor.setScrollSpeed(0.5);
+  editor.setScrollSpeed(1);
   editor.setOption("scrollPastEnd", true);
   editor.session.setFoldStyle('manual');
   editor.focus();
