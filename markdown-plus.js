@@ -257,7 +257,7 @@ $(document).ready(function() {
   renderer.codespan = function(text) { // inline code
     if(/^\$.+\$$/.test(text)) { // inline math
       var raw = /^\$(.+)\$$/.exec(text)[1];
-      var line = raw.replace(/&lt;/g,'<').replace(/&gt;/g,'>') // replace '&lt;' and '&gt;'
+      var line = raw.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'"); // unescape html characters
       try{
         return katex.renderToString(line, { displayMode: false });
       } catch(err) {
