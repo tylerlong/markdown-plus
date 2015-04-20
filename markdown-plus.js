@@ -256,7 +256,8 @@ $(document).ready(function() {
   };
   renderer.codespan = function(text) { // inline code
     if(/^\$.+\$$/.test(text)) { // inline math
-      var line = /^\$(.+)\$$/.exec(text)[1];
+      var raw = /^\$(.+)\$$/.exec(text)[1];
+      var line = raw.replace(/&lt;/g,'<').replace(/&gt;/g,'>') // replace '&lt;' and '&gt;'
       try{
         return katex.renderToString(line, { displayMode: false });
       } catch(err) {
