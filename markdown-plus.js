@@ -298,13 +298,13 @@ $(document).ready(function() {
   renderer.html = function(html) {
     var result = marked.Renderer.prototype.html.apply(this, arguments);
     var h = $(result.bold());
-    h.find('script,iframe').remove();
+    // h.find('script,iframe').remove();
     return h.html();
   };
   renderer.paragraph = function(text) {
     var result = marked.Renderer.prototype.paragraph.apply(this, arguments);
     var h = $(result.bold());
-    h.find('script,iframe').remove();
+    // h.find('script,iframe').remove();
     return h.html();
   };
   marked.setOptions({
