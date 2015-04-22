@@ -418,16 +418,25 @@ $(document).ready(function() {
 
   // emoji icon
   prompt_for_a_value('emoji', function(value){
+    if(/^:.+:$/.test(value)) {
+      value = /^:(.+):$/.exec(value)[1];
+    }
     editor.insert('<img src="https://s.tylingsoft.com/emoji-icons/' + value + '.png" width="18"/>');
   });
 
   // Font Awesome icon
   prompt_for_a_value('fa', function(value){
+    if(value.substring(0, 3) == 'fa-') {
+      value = value.substring(3);
+    }
     editor.insert('<i class="fa fa-' + value + '"/>');
   });
 
   // Ionicons icon
   prompt_for_a_value('ion', function(value){
+    if(value.substring(0, 4) == 'ion-') {
+      value = value.substring(4);
+    }
     editor.insert('<i class="icon ion-' + value + '"/>');
   });
 
