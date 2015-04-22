@@ -28,9 +28,9 @@ body{
 
 .markdown-body { /* 最大宽度模拟 Foundation */
   min-width: 16em;
-  max-width: 62.5em;
+  max-width: 48em;
   margin: 0 auto;
-  padding: 1em;
+  padding: 2em;
 }
 
 #toolbar {
