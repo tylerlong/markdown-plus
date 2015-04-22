@@ -396,11 +396,10 @@ $(document).ready(function() {
 
   $('#code-icon').click(function() {
     var text = editor.session.getTextRange(editor.selection.getRange()).trim();
-    if(text.length == 0) {
-      text = $(this).data('sample');
-    }
     editor.insert('\n```\n' + text + '\n```\n');
     editor.focus();
+    editor.navigateUp(2);
+    editor.navigateLineEnd();
   });
 
   $('#table-icon').click(function() {
