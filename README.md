@@ -9,10 +9,22 @@ Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides 
 ### Screenshots: [#screenshots](#screenshots)
 
 
-## Mac app
+## App
 
 We currently ***don't*** accept donations.  
-The best way to support our development is to [buy our Mac app](https://tylingsoft.com/mdp).
+The best way to support our development is to buy our app.
+
+### Mac app
+
+Compatibility: OS X 10.9 or later.
+
+Available on the [Mac App Store](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8).
+
+### Windows app
+
+Compatibility: Windows 7 or later, .Net Framework 4.5 or later.
+
+It's free to download and evaluate: [https://tylingsoft.com/mdp](https://tylingsoft.com/mdp).
 
 
 ## Features
@@ -79,10 +91,22 @@ Markdown Plus（简称为“M+”或“mdp”）是一款功能丰富的 markdow
 ### 屏幕截图: [#screenshots](#screenshots)
 
 
-## Mac 客户端
+## 客户端
 
 目前我们***不接受***无偿捐赠。  
-支持我们开发的最好方式就是购买我们的 [Mac 客户端](https://tylingsoft.com/mdp)。
+支持我们开发的最好方式是购买我们的客户端。
+
+### Mac 客户端
+
+兼容性: OS X 10.9 或更晚版本。
+
+可通过 [苹果应用商店](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8) 下载。
+
+### Windows 客户端
+
+兼容性：Windows 7 或更晚版本，.Net Framework 4.5 或更晚版本。
+
+下载和试用是免费的: [https://tylingsoft.com/mdp](https://tylingsoft.com/mdp)。
 
 
 ## 主要特性
