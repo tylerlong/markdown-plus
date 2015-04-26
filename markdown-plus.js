@@ -59,9 +59,6 @@ var sync_preview = _.debounce(function() { // 右侧预览和左侧的内容同�
   set_preview_scroll(get_editor_scroll());
 }, 16, false);
 
-// var mermaid_config = {
-//   htmlLabels: false // fix mermaid flowchart IE issue
-// };
 mermaid.ganttConfig = { // Configuration for Gantt diagrams
   numberSectionStyles:4,
   axisFormatter: [
@@ -84,9 +81,6 @@ mermaid.ganttConfig = { // Configuration for Gantt diagrams
 };
 function mermaid_init() {
   mermaid.init(); // generate flowcharts, sequence diagrams, gantt diagrams...etc.
-  // $('line[y2="2000"]').each(function(){ // a temp workaround for mermaid bug: https://github.com/knsv/mermaid/issues/142
-  //   $(this).attr('y2', $(this).closest('svg').attr('height') - 10);
-  // });
 }
 
 var modelist = ace.require('ace/ext/modelist').modesByName;
@@ -298,7 +292,6 @@ $(document).ready(function() {
   renderer.html = function(html) {
     var result = marked.Renderer.prototype.html.apply(this, arguments);
     var h = $(result.bold());
-    // h.find('script,iframe').remove();
     return h.html();
   };
   renderer.paragraph = function(text) {
