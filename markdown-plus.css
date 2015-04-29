@@ -26,7 +26,7 @@ body{
   height: 100%;
 }
 
-.markdown-body { /* 最大宽度模拟 Foundation */
+.markdown-body {
   min-width: 16em;
   max-width: 48em;
   margin: 0 auto;
