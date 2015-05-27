@@ -3,6 +3,11 @@ body{
   padding: 0;
 }
 
+svg{
+  min-width: 15em;
+  max-width: 40em;
+}
+
 .app-only {
   display: none;
 }
