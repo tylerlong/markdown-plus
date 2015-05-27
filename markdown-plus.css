@@ -4,8 +4,7 @@ body{
 }
 
 svg{
-  min-width: 15em;
-  max-width: 40em;
+  max-width: 48em;
 }
 
 .app-only {
