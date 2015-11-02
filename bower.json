@@ -34,8 +34,6 @@
   ],
   "dependencies": {
     "jquery-ui-layout-min": null,
-    "font-awesome-min": null,
-    "ionicons-min": null,
     "ace-min-noconflict": null,
     "markedown": null,
     "github-markdown-css": null,
