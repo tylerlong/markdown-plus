@@ -33,7 +33,6 @@
     "fabfile.py"
   ],
   "dependencies": {
-    "jquery-ui-min": null,
     "jquery-ui-layout-min": null,
     "font-awesome-min": null,
     "ionicons-min": null,
