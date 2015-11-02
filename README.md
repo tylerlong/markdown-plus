@@ -68,7 +68,7 @@ Please take `index.html` as an example.
 
 ## License
 
-[The BSD 3-Clause License](http://opensource.org/licenses/BSD-3-Clause)
+MIT
 
 Copyright © 2015 [Tylingsoft](https://tylingsoft.com/)
 
@@ -150,7 +150,7 @@ open index.zh_CN.html
 
 ## 软件协议
 
-[BSD 协议](http://opensource.org/licenses/BSD-3-Clause)
+MIT
 
 版权所有 © 2015 [Tylingsoft](https://tylingsoft.com/)
 
