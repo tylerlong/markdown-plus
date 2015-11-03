@@ -233,51 +233,51 @@ $(function() {
   };
 
   // 设置marked
-  var renderer = new marked.Renderer();
-  renderer.listitem = function(text) {
-    if(!/^\[[ x]\]\s/.test(text)) {
-      return marked.Renderer.prototype.listitem(text);
-    }
-    // 任务列表
-    var checkbox = $('<input type="checkbox" disabled/>');
-    if(/^\[x\]\s/.test(text)) { // 完成的任务列表
-      checkbox.attr('checked', true);
-    }
-    return $(marked.Renderer.prototype.listitem(text.substring(3))).addClass('task-list-item').prepend(checkbox)[0].outerHTML;
-  }
+  // var renderer = new marked.Renderer();
+  // renderer.listitem = function(text) {
+  //   if(!/^\[[ x]\]\s/.test(text)) {
+  //     return marked.Renderer.prototype.listitem(text);
+  //   }
+  //   // 任务列表
+  //   var checkbox = $('<input type="checkbox" disabled/>');
+  //   if(/^\[x\]\s/.test(text)) { // 完成的任务列表
+  //     checkbox.attr('checked', true);
+  //   }
+  //   return $(marked.Renderer.prototype.listitem(text.substring(3))).addClass('task-list-item').prepend(checkbox)[0].outerHTML;
+  // }
   // var mermaidError;
   // mermaid.parseError = function(err, hash){
   //   mermaidError = err;
   // };
-  renderer.codespan = function(text) { // inline code
-    if(/^\$.+\$$/.test(text)) { // inline math
-      var raw = /^\$(.+)\$$/.exec(text)[1];
-      var line = raw.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'"); // unescape html characters
-      try{
-        return katex.renderToString(line, { displayMode: false });
-      } catch(err) {
-        return '<code>' + err + '</code>';
-      }
-    }
-    return marked.Renderer.prototype.codespan.apply(this, arguments);
-  }
-  renderer.code = function(code, language, escaped, line_number) {
-    code = code.trim();
-    var firstLine = code.split(/\n/)[0].trim();
-    if(language === 'math') { // 数学公式
-      var tex = '';
-      code.split(/\n\n/).forEach(function(line){ // 连续两个换行，则开始下一个公式
-        line = line.trim();
-        if(line.length > 0) {
-          try {
-            tex += katex.renderToString(line, { displayMode: true });
-          } catch(err) {
-            tex += '<pre>' + err + '</pre>';
-          }
-        }
-      });
-      return '<div data-line="' + line_number + '">' + tex + '</div>';
-    } 
+  // renderer.codespan = function(text) { // inline code
+  //   if(/^\$.+\$$/.test(text)) { // inline math
+  //     var raw = /^\$(.+)\$$/.exec(text)[1];
+  //     var line = raw.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'"); // unescape html characters
+  //     try{
+  //       return katex.renderToString(line, { displayMode: false });
+  //     } catch(err) {
+  //       return '<code>' + err + '</code>';
+  //     }
+  //   }
+  //   return marked.Renderer.prototype.codespan.apply(this, arguments);
+  // }
+  // renderer.code = function(code, language, escaped, line_number) {
+  //   code = code.trim();
+  //   var firstLine = code.split(/\n/)[0].trim();
+  //   if(language === 'math') { // 数学公式
+  //     var tex = '';
+  //     code.split(/\n\n/).forEach(function(line){ // 连续两个换行，则开始下一个公式
+  //       line = line.trim();
+  //       if(line.length > 0) {
+  //         try {
+  //           tex += katex.renderToString(line, { displayMode: true });
+  //         } catch(err) {
+  //           tex += '<pre>' + err + '</pre>';
+  //         }
+  //       }
+  //     });
+  //     return '<div data-line="' + line_number + '">' + tex + '</div>';
+  //   }
     // else if(firstLine === 'gantt' || firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) { // mermaid
     //   if(firstLine === 'sequenceDiagram') {
     //     code += '\n'; // 如果末尾没有空行，则语法错误
@@ -288,31 +288,31 @@ $(function() {
     //     return '<pre data-line="' + line_number + '">' + mermaidError + '</pre>';
     //   }
     // } 
-    else {
-      return marked.Renderer.prototype.code.apply(this, arguments);
-    }
-  };
-  renderer.html = function(html) {
-    var result = marked.Renderer.prototype.html.apply(this, arguments);
-    var h = $(result.bold());
-    return h.html();
-  };
-  renderer.paragraph = function(text) {
-    var result = marked.Renderer.prototype.paragraph.apply(this, arguments);
-    var h = $(result.bold());
-    // h.find('script,iframe').remove();
-    return h.html();
-  };
-  marked.setOptions({
-    renderer: renderer,
-    gfm: true,
-    tables: true,
-    breaks: false,
-    pedantic: false,
-    sanitize: false,
-    smartLists: true,
-    smartypants: true
-  });
+  //   else {
+  //     return marked.Renderer.prototype.code.apply(this, arguments);
+  //   }
+  // };
+  // renderer.html = function(html) {
+  //   var result = marked.Renderer.prototype.html.apply(this, arguments);
+  //   var h = $(result.bold());
+  //   return h.html();
+  // };
+  // renderer.paragraph = function(text) {
+  //   var result = marked.Renderer.prototype.paragraph.apply(this, arguments);
+  //   var h = $(result.bold());
+  //   // h.find('script,iframe').remove();
+  //   return h.html();
+  // };
+  // marked.setOptions({
+  //   renderer: renderer,
+  //   gfm: true,
+  //   tables: true,
+  //   breaks: false,
+  //   pedantic: false,
+  //   sanitize: false,
+  //   smartLists: true,
+  //   smartypants: true
+  // });
 
   // 实时监听用户的编辑
   editor.session.on('change', function() {
