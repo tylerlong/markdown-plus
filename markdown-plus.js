@@ -422,7 +422,7 @@ $(document).ready(function() {
     if(value.substring(0, 3) == 'fa-') {
       value = value.substring(3);
     }
-    editor.insert('<i class="fa fa-' + value + '"/>');
+    editor.insert('<i class="fa fa-' + value + '"></i>');
   });
 
   // Ionicons icon
@@ -430,7 +430,7 @@ $(document).ready(function() {
     if(value.substring(0, 4) == 'ion-') {
       value = value.substring(4);
     }
-    editor.insert('<i class="icon ion-' + value + '"/>');
+    editor.insert('<i class="icon ion-' + value + '"></i>');
   });
 
   $('#math-icon').click(function(){
