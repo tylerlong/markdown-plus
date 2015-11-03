@@ -86,7 +86,8 @@ String.prototype.repeat = function(i) { // Some browsers don't support repeat, f
 // var modelist = ace.require('ace/ext/modelist').modesByName;
 // var highlight = ace.require('ace/ext/static_highlight');
 var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后才会触发
-  $('.markdown-body').empty().append(marked(editor.session.getValue())); // realtime preview
+  mdc.init(editor.session.getValue(), false); // realtime preview
+  // $('.markdown-body').empty().append(marked(editor.session.getValue())); // realtime preview
   // $('pre > code').each(function(){ // code highlight
   //   var code = $(this);
   //   var language = (code.attr('class') || 'lang-javascript').substring(5).toLowerCase();
