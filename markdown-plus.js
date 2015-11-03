@@ -2,6 +2,28 @@ String.prototype.repeat = function(i) { // Some browsers don't support repeat, f
     return new Array(i + 1).join(this);
 }
 
+function prompt_for_a_value(key, action) {
+  $(document).on('opened', '#' + key + '-modal', function() {
+    $('#' + key + '-code').focus();
+  });
+  $('#' + key + '-code').keyup(function(e) {
+   if(e.which == 13) { // 回车键确认
+      $('#' + key + '-confirm').click();
+    }
+  });
+  $(document).on('confirm', '#' + key + '-modal', function() {
+    var value = $('#' + key + '-code').val().trim();
+    if(value.length > 0) {
+      action(value);
+      $('#' + key + '-code').val('');
+    }
+  });
+}
+// modals
+$(document).on('close', '.remodal', function(e) {
+  editor.focus(); // 关闭modal，编辑器自动获得焦点
+});
+
 // function get_editor_scroll() { // 获取编辑器的滚动位置
 //   var line_markers = $('.ui-layout-east article > [data-line]');
 //   var lines = []; // 逻辑行
@@ -232,6 +254,17 @@ $(function() {
     return range;
   };
 
+  // overwrite some ACE editor keyboard shortcuts
+  editor.commands.addCommands([
+    {
+      name: "preferences",
+      bindKey: { win: "Ctrl-,", mac: "Command-," },
+      exec: function (editor) {
+        $('i.fa-cog').click(); // show M+ preferences modal
+      }
+    }
+  ]);
+
   // 设置marked
   // var renderer = new marked.Renderer();
   // renderer.listitem = function(text) {
@@ -453,38 +486,4 @@ $(function() {
     editor.insert('\n```\n' + text + '\n```\n');
     editor.focus();
   });
-
-  // modals
-  $(document).on('close', '.remodal', function(e) {
-    editor.focus(); // 关闭modal，编辑器自动获得焦点
-  });
-
-  // overwrite some ACE editor keyboard shortcuts
-  editor.commands.addCommands([
-    {
-      name: "preferences",
-      bindKey: { win: "Ctrl-,", mac: "Command-," },
-      exec: function (editor) {
-        $('i.fa-cog').click(); // show M+ preferences modal
-      }
-    }
-  ]);
 });
-
-function prompt_for_a_value(key, action) {
-  $(document).on('opened', '#' + key + '-modal', function() {
-    $('#' + key + '-code').focus();
-  });
-  $('#' + key + '-code').keyup(function(e) {
-   if(e.which == 13) { // 回车键确认
-      $('#' + key + '-confirm').click();
-    }
-  });
-  $(document).on('confirm', '#' + key + '-modal', function() {
-    var value = $('#' + key + '-code').val().trim();
-    if(value.length > 0) {
-      action(value);
-      $('#' + key + '-code').val('');
-    }
-  });
-}
