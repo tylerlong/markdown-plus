@@ -59,29 +59,29 @@ String.prototype.repeat = function(i) { // Some browsers don't support repeat, f
 //   set_preview_scroll(get_editor_scroll());
 // }, 8, false);
 
-mermaid.ganttConfig = { // Configuration for Gantt diagrams
-  numberSectionStyles:4,
-  axisFormatter: [
-      ["%I:%M", function (d) { // Within a day
-          return d.getHours();
-      }],
-      ["w. %U", function (d) { // Monday a week
-          return d.getDay() == 1;
-      }],
-      ["%a %d", function (d) { // Day within a week (not monday)
-          return d.getDay() && d.getDate() != 1;
-      }],
-      ["%b %d", function (d) { // within a month
-          return d.getDate() != 1;
-      }],
-      ["%m-%y", function (d) { // Month
-          return d.getMonth();
-      }]
-  ]
-};
-function mermaid_init() {
-  mermaid.init(); // generate flowcharts, sequence diagrams, gantt diagrams...etc.
-}
+// mermaid.ganttConfig = { // Configuration for Gantt diagrams
+//   numberSectionStyles:4,
+//   axisFormatter: [
+//       ["%I:%M", function (d) { // Within a day
+//           return d.getHours();
+//       }],
+//       ["w. %U", function (d) { // Monday a week
+//           return d.getDay() == 1;
+//       }],
+//       ["%a %d", function (d) { // Day within a week (not monday)
+//           return d.getDay() && d.getDate() != 1;
+//       }],
+//       ["%b %d", function (d) { // within a month
+//           return d.getDate() != 1;
+//       }],
+//       ["%m-%y", function (d) { // Month
+//           return d.getMonth();
+//       }]
+//   ]
+// };
+// function mermaid_init() {
+//   mermaid.init(); // generate flowcharts, sequence diagrams, gantt diagrams...etc.
+// }
 
 var modelist = ace.require('ace/ext/modelist').modesByName;
 var highlight = ace.require('ace/ext/static_highlight');
@@ -103,7 +103,7 @@ var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后�
       function(highlighted){}
     );
   });
-  mermaid_init();
+  // mermaid_init();
   // sync_preview();
 }, 128, false);
 
@@ -140,7 +140,7 @@ $(document).ready(function() {
       togglerTip_open: $('#preview').data('open-title'),
       togglerTip_closed: $('#preview').data('closed-title'),
       onresize: function() {
-        lazy_change(); // mermaid gantt diagram 宽度无法自适应, 只能每次重新生成
+        // lazy_change(); // mermaid gantt diagram 宽度无法自适应, 只能每次重新生成
         $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px'); // scroll past end
       }
     },
@@ -244,10 +244,10 @@ $(document).ready(function() {
     }
     return $(marked.Renderer.prototype.listitem(text.substring(3))).addClass('task-list-item').prepend(checkbox)[0].outerHTML;
   }
-  var mermaidError;
-  mermaid.parseError = function(err, hash){
-    mermaidError = err;
-  };
+  // var mermaidError;
+  // mermaid.parseError = function(err, hash){
+  //   mermaidError = err;
+  // };
   renderer.codespan = function(text) { // inline code
     if(/^\$.+\$$/.test(text)) { // inline math
       var raw = /^\$(.+)\$$/.exec(text)[1];
@@ -276,16 +276,18 @@ $(document).ready(function() {
         }
       });
       return '<div data-line="' + line_number + '">' + tex + '</div>';
-    } else if(firstLine === 'gantt' || firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) { // mermaid
-      if(firstLine === 'sequenceDiagram') {
-        code += '\n'; // 如果末尾没有空行，则语法错误
-      }
-      if(mermaid.parse(code)) {
-        return '<div class="mermaid" data-line="' + line_number + '">' + code + '</div>';
-      } else {
-        return '<pre data-line="' + line_number + '">' + mermaidError + '</pre>';
-      }
-    } else {
+    } 
+    // else if(firstLine === 'gantt' || firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) { // mermaid
+    //   if(firstLine === 'sequenceDiagram') {
+    //     code += '\n'; // 如果末尾没有空行，则语法错误
+    //   }
+    //   if(mermaid.parse(code)) {
+    //     return '<div class="mermaid" data-line="' + line_number + '">' + code + '</div>';
+    //   } else {
+    //     return '<pre data-line="' + line_number + '">' + mermaidError + '</pre>';
+    //   }
+    // } 
+    else {
       return marked.Renderer.prototype.code.apply(this, arguments);
     }
   };
