@@ -3,9 +3,9 @@ body{
   padding: 0;
 }
 
-svg{
+/*svg{
   max-width: 48em;
-}
+}*/
 
 .app-only {
   display: none;
@@ -30,12 +30,12 @@ svg{
   height: 100%;
 }
 
-.markdown-body {
+/*.markdown-body {
   min-width: 16em;
   max-width: 48em;
   margin: 0 auto;
   padding: 2em;
-}
+}*/
 
 #toolbar {
   padding-left: 16px;
@@ -85,7 +85,7 @@ i.dividor { /* toolbar 上面的分隔竖线 */
 }
 
 /* source code highlight */
-.markdown-body .ace-github {
+/*.markdown-body .ace-github {
   background-color: #f7f7f7 !important;
 }
 .markdown-body .ace-github .ace_static_highlight {
@@ -116,15 +116,15 @@ i.dividor { /* toolbar 上面的分隔竖线 */
 }
 .markdown-body .ace-github .ace_numeric, .markdown-body .ace-github .ace_type {
   color: #0086b3 !important;
-}
+}*/
 
 .remodal-overlay {
   background: rgba(33, 36, 46, 0.6) !important;
 }
 
-div.mermaid {
+/*div.mermaid {
   text-align: center;
-}
+}*/
 
 /*************************/
 /* below is for printing */
