@@ -2,62 +2,62 @@ String.prototype.repeat = function(i) { // Some browsers don't support repeat, f
     return new Array(i + 1).join(this);
 }
 
-function get_editor_scroll() { // 获取编辑器的滚动位置
-  var line_markers = $('.ui-layout-east article > [data-line]');
-  var lines = []; // 逻辑行
-  line_markers.each(function() {
-    lines.push($(this).data('line'));
-  });
-  var pLines = []; // 物理行
-  var pLine = 0;
-  for(var i = 0; i < lines[lines.length - 1]; i++) {
-    if($.inArray(i + 1, lines) !== -1) {
-      pLines.push(pLine);
-    }
-    pLine += editor.session.getRowLength(i) // 因为有wrap，所以行高未必是1
-  }
-  var currentLine = editor.session.getScrollTop() / editor.renderer.lineHeight; // 当前滚动到的物理行
-  var lastMarker = false;
-  var nextMarker = false;
-  for(var i = 0; i < pLines.length; i++) {
-    if(pLines[i] < currentLine) {
-      lastMarker = i;
-    } else {
-      nextMarker = i;
-      break;
-    }
-  } // 当前滚动到了哪两个marker中间
-  var lastLine = 0;
-  var nextLine = editor.session.getScreenLength() - 1; // 最后一个物理行的顶部，所以 -1
-  if(lastMarker !== false) {
-    lastLine = pLines[lastMarker];
-  }
-  if(nextMarker !== false) {
-    nextLine = pLines[nextMarker];
-  } // 前后两个marker的物理行
-  var percentage = 0;
-  if(nextLine !== lastLine) { // 行首的情况下可能相等，0 不能作为除数
-    percentage = (currentLine - lastLine) / (nextLine - lastLine);
-  } // 当前位置在两个marker之间所处的百分比
-  return { lastMarker: lines[lastMarker], nextMarker: lines[nextMarker], percentage: percentage }; // 返回的是前后两个marker对应的逻辑行，以及当前位置在前后两个marker之间所处的百分比
-}
-
-function set_preview_scroll(editor_scroll) { // 设置预览的滚动位置
-  var lastPosition = 0;
-  var nextPosition = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height(); // 这是总共可以scroll的最大幅度
-  if(editor_scroll.lastMarker !== undefined) { // 最开始的位置没有marker
-    lastPosition = $('.ui-layout-east article').find('>[data-line="' + editor_scroll.lastMarker + '"]').get(0).offsetTop;
-  }
-  if(editor_scroll.nextMarker !== undefined) { // 最末尾的位置没有marker
-    nextPosition = $('.ui-layout-east article').find('>[data-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
-  } // 查找出前后两个marker在页面上所处的滚动距离
-  scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // 按照左侧的百分比计算出右侧应该滚动到的位置
-  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 16); // 加一点动画效果
-}
-
-var sync_preview = _.debounce(function() { // 右侧预览和左侧的内容同步
-  set_preview_scroll(get_editor_scroll());
-}, 8, false);
+// function get_editor_scroll() { // 获取编辑器的滚动位置
+//   var line_markers = $('.ui-layout-east article > [data-line]');
+//   var lines = []; // 逻辑行
+//   line_markers.each(function() {
+//     lines.push($(this).data('line'));
+//   });
+//   var pLines = []; // 物理行
+//   var pLine = 0;
+//   for(var i = 0; i < lines[lines.length - 1]; i++) {
+//     if($.inArray(i + 1, lines) !== -1) {
+//       pLines.push(pLine);
+//     }
+//     pLine += editor.session.getRowLength(i) // 因为有wrap，所以行高未必是1
+//   }
+//   var currentLine = editor.session.getScrollTop() / editor.renderer.lineHeight; // 当前滚动到的物理行
+//   var lastMarker = false;
+//   var nextMarker = false;
+//   for(var i = 0; i < pLines.length; i++) {
+//     if(pLines[i] < currentLine) {
+//       lastMarker = i;
+//     } else {
+//       nextMarker = i;
+//       break;
+//     }
+//   } // 当前滚动到了哪两个marker中间
+//   var lastLine = 0;
+//   var nextLine = editor.session.getScreenLength() - 1; // 最后一个物理行的顶部，所以 -1
+//   if(lastMarker !== false) {
+//     lastLine = pLines[lastMarker];
+//   }
+//   if(nextMarker !== false) {
+//     nextLine = pLines[nextMarker];
+//   } // 前后两个marker的物理行
+//   var percentage = 0;
+//   if(nextLine !== lastLine) { // 行首的情况下可能相等，0 不能作为除数
+//     percentage = (currentLine - lastLine) / (nextLine - lastLine);
+//   } // 当前位置在两个marker之间所处的百分比
+//   return { lastMarker: lines[lastMarker], nextMarker: lines[nextMarker], percentage: percentage }; // 返回的是前后两个marker对应的逻辑行，以及当前位置在前后两个marker之间所处的百分比
+// }
+//
+// function set_preview_scroll(editor_scroll) { // 设置预览的滚动位置
+//   var lastPosition = 0;
+//   var nextPosition = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height(); // 这是总共可以scroll的最大幅度
+//   if(editor_scroll.lastMarker !== undefined) { // 最开始的位置没有marker
+//     lastPosition = $('.ui-layout-east article').find('>[data-line="' + editor_scroll.lastMarker + '"]').get(0).offsetTop;
+//   }
+//   if(editor_scroll.nextMarker !== undefined) { // 最末尾的位置没有marker
+//     nextPosition = $('.ui-layout-east article').find('>[data-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
+//   } // 查找出前后两个marker在页面上所处的滚动距离
+//   scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // 按照左侧的百分比计算出右侧应该滚动到的位置
+//   $('.ui-layout-east').animate({scrollTop: scrollPosition}, 16); // 加一点动画效果
+// }
+//
+// var sync_preview = _.debounce(function() { // 右侧预览和左侧的内容同步
+//   set_preview_scroll(get_editor_scroll());
+// }, 8, false);
 
 mermaid.ganttConfig = { // Configuration for Gantt diagrams
   numberSectionStyles:4,
@@ -104,7 +104,7 @@ var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后�
     );
   });
   mermaid_init();
-  sync_preview();
+  // sync_preview();
 }, 128, false);
 
 var Vim = ace.require("ace/keyboard/vim").CodeMirror.Vim // vim commands
@@ -166,7 +166,7 @@ $(document).ready(function() {
   editor.session.setFoldStyle('manual');
   editor.focus();
   editor.session.on('changeScrollTop', function(scroll) {
-    sync_preview();
+    // sync_preview();
   });
 
   // load preferences
