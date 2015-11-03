@@ -124,7 +124,7 @@ Vim.defineEx("wq", "wq", function(cm, input) {
 });
 
 var editor;
-$(document).ready(function() {
+$(function() {
   $('body').layout({ // create 3-panels layout
     resizerDblClickToggle: false,
     resizable: false,
