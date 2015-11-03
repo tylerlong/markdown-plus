@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "jquery-ui-layout-min": null,
-    "markedown": null,
+    "markdown-core": null,
     "remodal-min": null
   }
 }
