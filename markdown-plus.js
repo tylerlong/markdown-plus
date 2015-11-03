@@ -83,26 +83,26 @@ String.prototype.repeat = function(i) { // Some browsers don't support repeat, f
 //   mermaid.init(); // generate flowcharts, sequence diagrams, gantt diagrams...etc.
 // }
 
-var modelist = ace.require('ace/ext/modelist').modesByName;
-var highlight = ace.require('ace/ext/static_highlight');
+// var modelist = ace.require('ace/ext/modelist').modesByName;
+// var highlight = ace.require('ace/ext/static_highlight');
 var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后才会触发
   $('.markdown-body').empty().append(marked(editor.session.getValue())); // realtime preview
-  $('pre > code').each(function(){ // code highlight
-    var code = $(this);
-    var language = (code.attr('class') || 'lang-javascript').substring(5).toLowerCase();
-    if(modelist[language] == undefined) {
-      language = 'javascript';
-    }
-    highlight(code[0], {
-        mode: 'ace/mode/' + language,
-        theme: 'ace/theme/github',
-        startLineNumber: 1,
-        showGutter: false,
-        trim: true,
-      },
-      function(highlighted){}
-    );
-  });
+  // $('pre > code').each(function(){ // code highlight
+  //   var code = $(this);
+  //   var language = (code.attr('class') || 'lang-javascript').substring(5).toLowerCase();
+  //   if(modelist[language] == undefined) {
+  //     language = 'javascript';
+  //   }
+  //   highlight(code[0], {
+  //       mode: 'ace/mode/' + language,
+  //       theme: 'ace/theme/github',
+  //       startLineNumber: 1,
+  //       showGutter: false,
+  //       trim: true,
+  //     },
+  //     function(highlighted){}
+  //   );
+  // });
   // mermaid_init();
   // sync_preview();
 }, 128, false);
