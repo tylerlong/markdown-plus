@@ -36,7 +36,6 @@
     "jquery-ui-layout-min": null,
     "ace-min-noconflict": null,
     "markedown": null,
-    "remodal-min": null,
-    "jquery.cookie-min": null
+    "remodal-min": null
   }
 }
