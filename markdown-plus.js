@@ -81,52 +81,8 @@ $(document).on('close', '.remodal', function(e) {
 //   set_preview_scroll(get_editor_scroll());
 // }, 8, false);
 
-// mermaid.ganttConfig = { // Configuration for Gantt diagrams
-//   numberSectionStyles:4,
-//   axisFormatter: [
-//       ["%I:%M", function (d) { // Within a day
-//           return d.getHours();
-//       }],
-//       ["w. %U", function (d) { // Monday a week
-//           return d.getDay() == 1;
-//       }],
-//       ["%a %d", function (d) { // Day within a week (not monday)
-//           return d.getDay() && d.getDate() != 1;
-//       }],
-//       ["%b %d", function (d) { // within a month
-//           return d.getDate() != 1;
-//       }],
-//       ["%m-%y", function (d) { // Month
-//           return d.getMonth();
-//       }]
-//   ]
-// };
-// function mermaid_init() {
-//   mermaid.init(); // generate flowcharts, sequence diagrams, gantt diagrams...etc.
-// }
-
-// var modelist = ace.require('ace/ext/modelist').modesByName;
-// var highlight = ace.require('ace/ext/static_highlight');
 var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后才会触发
   mdc.init(editor.session.getValue(), false); // realtime preview
-  // $('.markdown-body').empty().append(marked(editor.session.getValue())); // realtime preview
-  // $('pre > code').each(function(){ // code highlight
-  //   var code = $(this);
-  //   var language = (code.attr('class') || 'lang-javascript').substring(5).toLowerCase();
-  //   if(modelist[language] == undefined) {
-  //     language = 'javascript';
-  //   }
-  //   highlight(code[0], {
-  //       mode: 'ace/mode/' + language,
-  //       theme: 'ace/theme/github',
-  //       startLineNumber: 1,
-  //       showGutter: false,
-  //       trim: true,
-  //     },
-  //     function(highlighted){}
-  //   );
-  // });
-  // mermaid_init();
   // sync_preview();
 }, 128, false);
 
@@ -163,12 +119,12 @@ $(function() {
       togglerTip_open: $('#preview').data('open-title'),
       togglerTip_closed: $('#preview').data('closed-title'),
       onresize: function() {
-        // lazy_change(); // mermaid gantt diagram 宽度无法自适应, 只能每次重新生成
         $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px'); // scroll past end
       }
     },
     center: {
       onresize: function() {
+        // todo: is the following still necessary?
         editor.session.setUseWrapMode(false); // ACE的wrap貌似有问题，这里手动触发一下。
         editor.session.setUseWrapMode(true);
       }
@@ -240,6 +196,7 @@ $(function() {
   });
 
   // 编辑器的一些拓展方法
+  // todo: is the following still necessary?
   editor.selection.smartRange = function() {
     var range = editor.selection.getRange();
     if(!range.isEmpty()) {
@@ -264,88 +221,6 @@ $(function() {
       }
     }
   ]);
-
-  // 设置marked
-  // var renderer = new marked.Renderer();
-  // renderer.listitem = function(text) {
-  //   if(!/^\[[ x]\]\s/.test(text)) {
-  //     return marked.Renderer.prototype.listitem(text);
-  //   }
-  //   // 任务列表
-  //   var checkbox = $('<input type="checkbox" disabled/>');
-  //   if(/^\[x\]\s/.test(text)) { // 完成的任务列表
-  //     checkbox.attr('checked', true);
-  //   }
-  //   return $(marked.Renderer.prototype.listitem(text.substring(3))).addClass('task-list-item').prepend(checkbox)[0].outerHTML;
-  // }
-  // var mermaidError;
-  // mermaid.parseError = function(err, hash){
-  //   mermaidError = err;
-  // };
-  // renderer.codespan = function(text) { // inline code
-  //   if(/^\$.+\$$/.test(text)) { // inline math
-  //     var raw = /^\$(.+)\$$/.exec(text)[1];
-  //     var line = raw.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'"); // unescape html characters
-  //     try{
-  //       return katex.renderToString(line, { displayMode: false });
-  //     } catch(err) {
-  //       return '<code>' + err + '</code>';
-  //     }
-  //   }
-  //   return marked.Renderer.prototype.codespan.apply(this, arguments);
-  // }
-  // renderer.code = function(code, language, escaped, line_number) {
-  //   code = code.trim();
-  //   var firstLine = code.split(/\n/)[0].trim();
-  //   if(language === 'math') { // 数学公式
-  //     var tex = '';
-  //     code.split(/\n\n/).forEach(function(line){ // 连续两个换行，则开始下一个公式
-  //       line = line.trim();
-  //       if(line.length > 0) {
-  //         try {
-  //           tex += katex.renderToString(line, { displayMode: true });
-  //         } catch(err) {
-  //           tex += '<pre>' + err + '</pre>';
-  //         }
-  //       }
-  //     });
-  //     return '<div data-line="' + line_number + '">' + tex + '</div>';
-  //   }
-    // else if(firstLine === 'gantt' || firstLine === 'sequenceDiagram' || firstLine.match(/^graph (?:TB|BT|RL|LR|TD);?$/)) { // mermaid
-    //   if(firstLine === 'sequenceDiagram') {
-    //     code += '\n'; // 如果末尾没有空行，则语法错误
-    //   }
-    //   if(mermaid.parse(code)) {
-    //     return '<div class="mermaid" data-line="' + line_number + '">' + code + '</div>';
-    //   } else {
-    //     return '<pre data-line="' + line_number + '">' + mermaidError + '</pre>';
-    //   }
-    // } 
-  //   else {
-  //     return marked.Renderer.prototype.code.apply(this, arguments);
-  //   }
-  // };
-  // renderer.html = function(html) {
-  //   var result = marked.Renderer.prototype.html.apply(this, arguments);
-  //   var h = $(result.bold());
-  //   return h.html();
-  // };
-  // renderer.paragraph = function(text) {
-  //   var result = marked.Renderer.prototype.paragraph.apply(this, arguments);
-  //   var h = $(result.bold());
-  //   // h.find('script,iframe').remove();
-  //   return h.html();
-  // };
-  // marked.setOptions({
-  //   renderer: renderer,
-  //   gfm: true,
-  //   tables: true,
-  //   breaks: false,
-  //   pedantic: false,
-  //   sanitize: false,
-  //   smartLists: true,
-  //   smartypants: true
-  // });
 
   // 实时监听用户的编辑
   editor.session.on('change', function() {
