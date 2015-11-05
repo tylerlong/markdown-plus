@@ -33,7 +33,6 @@
     "fabfile.py"
   ],
   "dependencies": {
-    "jquery-ui-layout-min": null,
     "markdown-core": null,
     "remodal-min": null
   }
