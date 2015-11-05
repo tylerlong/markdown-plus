@@ -193,7 +193,7 @@ $(function() {
   });
 
   // load preferences
-  var key_binding = $.cookie('key-binding');
+  var key_binding = Cookies.get('key-binding');
   if(key_binding == undefined) {
     key_binding = 'default'
   }
@@ -202,14 +202,14 @@ $(function() {
     editor.setKeyboardHandler(ace.require("ace/keyboard/" + key_binding).handler);
   }
 
-  var font_size = $.cookie('editor-font-size');
+  var font_size = Cookies.get('editor-font-size');
   if(font_size == undefined) {
     font_size = '14';
   }
   $('select#editor-font-size').val(font_size);
   editor.setFontSize(font_size + 'px');
 
-  var editor_theme = $.cookie('editor-theme');
+  var editor_theme = Cookies.get('editor-theme');
   if(editor_theme == undefined) {
     editor_theme = 'tomorrow_night_eighties';
   }
@@ -219,7 +219,7 @@ $(function() {
   // change preferences
   $('select#key-binding').change(function() {
     var key_binding = $(this).val();
-    $.cookie('key-binding', key_binding, { expires: 10000 });
+    Cookies.set('key-binding', key_binding, { expires: 10000 });
     if(key_binding == 'default') {
       editor.setKeyboardHandler(null);
     } else {
@@ -229,13 +229,13 @@ $(function() {
 
   $('select#editor-font-size').change(function() {
     var font_size = $(this).val();
-    $.cookie('editor-font-size', font_size, { expires: 10000 });
+    Cookies.set('editor-font-size', font_size, { expires: 10000 });
     editor.setFontSize(font_size + 'px');
   });
 
   $('select#editor-theme').change(function() {
     var editor_theme = $(this).val();
-    $.cookie('editor-theme', editor_theme, { expires: 10000 });
+    Cookies.set('editor-theme', editor_theme, { expires: 10000 });
     editor.setTheme('ace/theme/' + editor_theme);
   });
 
