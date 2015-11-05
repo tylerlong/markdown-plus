@@ -64,7 +64,7 @@ i.dividor { /* toolbar 上面的分隔竖线 */
   margin: 0 6px;
 }
 
-.noselect { /* toolbar上面的按钮无论怎样点击都不应该选中 */
+.noselect { /* toolbar 上面的按钮无论怎样点击都不应该选中 */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -86,11 +86,7 @@ i.dividor { /* toolbar 上面的分隔竖线 */
     display: none !important;
   }
 
-  table, pre, blockquote, div.mermaid {
-    page-break-inside: avoid;
-  }
-
-  .markdown-body { /* 打印不需要 scroll past end， 省纸 */
+  .markdown-body { /* no scroll past end， saving paper */
     padding-bottom: 0 !important;
   }
 }
