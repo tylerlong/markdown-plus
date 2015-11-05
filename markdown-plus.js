@@ -75,14 +75,14 @@ function set_preview_scroll(editor_scroll) { // 设置预览的滚动位置
     nextPosition = $('.ui-layout-east article').find('>[data-source-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
   } // 查找出前后两个marker在页面上所处的滚动距离
   scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // 按照左侧的百分比计算出右侧应该滚动到的位置
-  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 16); // 加一点动画效果
+  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 32); // 加一点动画效果
 }
 
-var sync_preview = _.debounce(function() { // 右侧预览和左侧的内容同步
+var sync_preview = _.debounce(function() { // sync right with left
   set_preview_scroll(get_editor_scroll());
-}, 64, false);
+}, 32, false);
 
-var lazy_change = _.debounce(function() { // 用户停止输入128毫秒之后才会触发
+var lazy_change = _.debounce(function() { // user changes markdown text
   mdc.init(editor.session.getValue(), false); // realtime preview
   sync_preview();
 }, 256, false);
