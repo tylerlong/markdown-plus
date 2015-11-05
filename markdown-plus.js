@@ -7,7 +7,7 @@ function prompt_for_a_value(key, action) {
     $('#' + key + '-code').focus();
   });
   $('#' + key + '-code').keyup(function(e) {
-   if(e.which == 13) { // 回车键确认
+   if(e.which == 13) { // press enter to confirm
       $('#' + key + '-confirm').click();
     }
   });
@@ -21,7 +21,7 @@ function prompt_for_a_value(key, action) {
 }
 // modals
 $(document).on('close', '.remodal', function(e) {
-  editor.focus(); // 关闭modal，编辑器自动获得焦点
+  editor.focus();
 });
 
 // function get_editor_scroll() { // 获取编辑器的滚动位置
@@ -124,8 +124,7 @@ $(function() {
     },
     center: {
       onresize: function() {
-        // todo: is the following still necessary?
-        editor.session.setUseWrapMode(false); // ACE的wrap貌似有问题，这里手动触发一下。
+        editor.session.setUseWrapMode(false); // fix ACE editor text wrap issue
         editor.session.setUseWrapMode(true);
       }
     }
@@ -195,18 +194,17 @@ $(function() {
     editor.setTheme('ace/theme/' + editor_theme);
   });
 
-  // 编辑器的一些拓展方法
-  // todo: is the following still necessary?
+  // extension methods for editor
   editor.selection.smartRange = function() {
     var range = editor.selection.getRange();
     if(!range.isEmpty()) {
-      return range; // 用户手动选中了一些文字，直接用这个
+      return range; // return what user selected
     }
-    // 没有选中任何东西
-    var _range = range; // 备份原始range
-    range = editor.selection.getWordRange(range.start.row, range.start.column); // 当前单词的range
-    if(editor.session.getTextRange(range).trim().length == 0) { // 选中的东西是空或者全空白
-      range = _range; // 还使用原始的range
+    // nothing was selected
+    var _range = range; // backup original range
+    range = editor.selection.getWordRange(range.start.row, range.start.column); // range for current word
+    if(editor.session.getTextRange(range).trim().length == 0) { // selected is blank
+      range = _range; // restore original range
     }
     return range;
   };
@@ -222,7 +220,7 @@ $(function() {
     }
   ]);
 
-  // 实时监听用户的编辑
+  // whenever user changes markdown...
   editor.session.on('change', function() {
     lazy_change();
   });
@@ -234,7 +232,7 @@ $(function() {
     p.column += level + 1; // 光标位置会产生偏移
     editor.navigateTo(editor.getSelectionRange().start.row, 0); // navigateLineStart 在 wrap 的时候有问题
     editor.insert('#'.repeat(level) + ' ');
-    editor.moveCursorToPosition(p); // 恢复光标位置
+    editor.moveCursorToPosition(p); // restore cursor position
     editor.focus();
   });
 
@@ -245,7 +243,7 @@ $(function() {
     var p = editor.getCursorPosition();
     p.column += modifier.length; // 光标位置会产生偏移
     editor.session.replace(range, modifier + editor.session.getTextRange(range) + modifier);
-    editor.moveCursorToPosition(p); // 恢复光标位置
+    editor.moveCursorToPosition(p); // restore cursor position
     editor.selection.clearSelection(); // 不知为何上一个语句会选中一部分文字
     editor.focus();
   });
@@ -253,7 +251,7 @@ $(function() {
   // <hr/>
   $('#horizontal-rule').click(function() {
     var p = editor.getCursorPosition();
-    if(p.column == 0) { // 光标在行首
+    if(p.column == 0) { // cursor is at line start
       editor.selection.clearSelection();
       editor.insert('\n---\n');
     } else {
@@ -273,7 +271,7 @@ $(function() {
       editor.gotoLine(i);
       editor.insert(prefix);
     }
-    editor.moveCursorToPosition(p); // 恢复光标位置
+    editor.moveCursorToPosition(p); // restore cursor position
     editor.focus();
   });
 
@@ -308,9 +306,9 @@ $(function() {
 
   $('#table-icon').click(function() {
     var sample = $(this).data('sample');
-    editor.insert(''); // 删除选中的部分
+    editor.insert(''); // delete selected
     var p = editor.getCursorPosition();
-    if(p.column == 0) { // 光标在行首
+    if(p.column == 0) { // cursor is at line start
       editor.selection.clearSelection();
       editor.insert('\n' + sample + '\n\n');
     } else {
