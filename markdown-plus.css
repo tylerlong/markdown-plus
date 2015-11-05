@@ -3,10 +3,6 @@ body{
   padding: 0;
 }
 
-/*svg{
-  max-width: 48em;
-}*/
-
 .app-only {
   display: none;
 }
@@ -29,13 +25,6 @@ body{
   width: 100%;
   height: 100%;
 }
-
-/*.markdown-body {
-  min-width: 16em;
-  max-width: 48em;
-  margin: 0 auto;
-  padding: 2em;
-}*/
 
 #toolbar {
   padding-left: 16px;
@@ -84,47 +73,9 @@ i.dividor { /* toolbar 上面的分隔竖线 */
   user-select: none;
 }
 
-/* source code highlight */
-/*.markdown-body .ace-github {
-  background-color: #f7f7f7 !important;
-}
-.markdown-body .ace-github .ace_static_highlight {
-  font-size: 13.6px !important;
-  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
-}
-.markdown-body .ace-github .ace_gutter {
-  color: rgba(0,0,0,0.3) !important;
-  margin-right: 16px !important;
-  background-color: #f7f7f7 !important;
-}
-.markdown-body .ace-github .ace_keyword, .markdown-body .ace-github .ace_modifier {
-  color: #a71d5d !important;
-  font-weight: normal !important;
-}
-.markdown-body .ace-github .ace_string {
-  color: #183691 !important;
-}
-.markdown-body .ace-github .ace_tag-name, .markdown-body .ace-github .ace_constant {
-  color: #63a35c !important;
-}
-.markdown-body .ace-github .ace_attribute-name, .markdown-body .ace-github .ace_variable {
-  color: #795da3 !important;
-}
-.markdown-body .ace-github .ace_comment {
-  color: #969896 !important;
-  font-style: normal !important;
-}
-.markdown-body .ace-github .ace_numeric, .markdown-body .ace-github .ace_type {
-  color: #0086b3 !important;
-}*/
-
 .remodal-overlay {
   background: rgba(33, 36, 46, 0.6) !important;
 }
-
-/*div.mermaid {
-  text-align: center;
-}*/
 
 /*************************/
 /* below is for printing */
