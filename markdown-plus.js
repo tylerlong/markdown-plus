@@ -324,7 +324,7 @@ $(function() {
     if(/^:.+:$/.test(value)) {
       value = /^:(.+):$/.exec(value)[1];
     }
-    editor.insert('<img src="https://s.tylingsoft.com/emoji-icons/' + value + '.png" width="18"/>');
+    editor.insert(':' + value + ':');
   });
 
   // Font Awesome icon
@@ -332,7 +332,7 @@ $(function() {
     if(value.substring(0, 3) == 'fa-') {
       value = value.substring(3);
     }
-    editor.insert('<i class="fa fa-' + value + '"></i>');
+    editor.insert(':fa-' + value + ':');
   });
 
   // Ionicons icon
@@ -340,7 +340,7 @@ $(function() {
     if(value.substring(0, 4) == 'ion-') {
       value = value.substring(4);
     }
-    editor.insert('<i class="icon ion-' + value + '"></i>');
+    editor.insert(':ion-' + value + ':');
   });
 
   $('#math-icon').click(function(){
