@@ -55,6 +55,25 @@ $(document).ready(function() {
 [Task Lists Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
 
 
+## Footnote
+
+Here is a footnote reference,[^1] and another.[^longnote]
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here's one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they
+belong to the previous footnote.
+
+
+Here is an inline note.^[Inlines notes are easier to write, since
+you don't have to pick an identifier and move down to type the
+note.]
+
+[Footnote Syntax](http://pandoc.org/README.html#footnotes)
+
+
 ## Tables and alignment
 
 Function name | Description
@@ -156,3 +175,15 @@ gantt
 ```
 
 [Gantt Diagram Syntax](http://knsv.github.io/mermaid/#gant-diagrams)
+
+
+## Subscript: H~2~O
+
+
+## Superscript: 29^th^
+
+
+## ++insert++
+
+
+## ==mark==
