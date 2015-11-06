@@ -1,29 +1,58 @@
 # Markdown Plus
 
-![Markdown Plus](icon.png)
-Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, mathematical formulae, flowcharts, sequence diagrams, gantt diagrams, Vim mode and Emacs mode.
+![Markdown Plus](http://mdp.tylingsoft.com/icon.png)  
+Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides CommonMark, GitHub flavored markdown, it also supports footnotes, task lists, emojis, Font Awesome, Ionicons, mathematical formulae, flowcharts, sequence diagrams, gantt diagrams, Vim mode and Emacs mode.
 
 
-##### Fork me on GitHub: <i class="fa fa-github" style="font-size: 64px;"></i> [tylingsoft/markdown-plus](https://github.com/tylingsoft/markdown-plus).
+#### Fork me on GitHub: :fa-github: [tylingsoft/markdown-plus](https://github.com/tylingsoft/markdown-plus).
 
-##### Buy our Mac app: <i class="fa fa-apple" style="font-size: 64px;"></i> [tylingsoft.com/mdp](https://tylingsoft.com/mdp)
+
+#### Buy our apps: :fa-apple: [tylingsoft.com/mdp](https://tylingsoft.com/mdp).
+
 
 ---
 
 
-## Code blocks with syntax highlight
+## Emoji: :panda_face: :sparkles: :camel: :boom: :pig:
 
-    <?php
-        echo "Hello world!";
+[Emoji Cheat Sheet](http://www.emoji-cheat-sheet.com/)
 
-```python
-from fabric.api import local
 
-def update():
-    local('rm -rf vendor')
-    local('bower cache clean')
-    local('bower update')
+## Fontawesome: :fa-cab: :fa-flag: :fa-bicycle: :fa-leaf: :fa-heart:
+
+[All the Font Awesome icons](http://fontawesome.io/icons/)
+
+
+## Ionicons: :ion-printer: :ion-social-tux: :ion-lock-combination: :ion-ios-medkit: :ion-coffee:
+
+[All the Ionicons icons](http://ionicons.com/)
+
+
+
+## `print 'hello code'`
+
+    [1, 2, 3, 4, 5].collect do |item|
+      item * 2
+    end
+
+```javascript
+$(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
 ```
+
+
+## Task lists
+
+- [ ] a bigger project
+  - [x] first subtask
+  - [x] follow up subtask
+  - [ ] final subtask
+- [ ] a separate task
+
+[Task Lists Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
 
 
 ## Tables and alignment
@@ -38,57 +67,14 @@ Function name | Description
 | col 3 is      | some wordy text | $1600 |
 | col 2 is      | centered        |   $12 |
 
-
-## Task lists
-
-- [ ] a bigger project
-  - [x] first subtask
-  - [x] follow up subtask
-  - [ ] final subtask
-- [ ] a separate task
-
-[Task Lists Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
+[Table Syntax](https://help.github.com/articles/github-flavored-markdown/#tables)
 
 
-## Emojis
+## Mathematical formulae `$y = x^2$`
 
-<img src="https://s.tylingsoft.com/emoji-icons/smile.png" width="64"/>
-<img src="https://s.tylingsoft.com/emoji-icons/whale.png" width="64"/>
-<img src="https://s.tylingsoft.com/emoji-icons/santa.png" width="64"/>
-<img src="https://s.tylingsoft.com/emoji-icons/panda_face.png" width="64"/>
-<img src="https://s.tylingsoft.com/emoji-icons/dog.png" width="64"/>
-<img src="https://s.tylingsoft.com/emoji-icons/truck.png" width="64"/>
+Inline math: `$\dfrac{ \tfrac{1}{2}[1-(\tfrac{1}{2})^n] }{ 1-\tfrac{1}{2} } = s_n$`.
 
-[Emoji Cheat Sheet](http://www.emoji-cheat-sheet.com/)
-
-
-## Font Awesome icons
-
-<i class="fa fa-cloud" style="font-size: 64px;"></i>
-<i class="fa fa-flag" style="font-size: 64px;"></i>
-<i class="fa fa-car" style="font-size: 64px;"></i>
-<i class="fa fa-truck" style="font-size: 64px;"></i>
-<i class="fa fa-heart" style="font-size: 64px;"></i>
-<i class="fa fa-dollar" style="font-size: 64px;"></i>
-
-[All the Font Awesome icons](http://fontawesome.io/icons/)
-
-
-## Ionicons icons
-
-<i class="icon ion-beer" style="font-size: 88px;"></i>
-<i class="icon ion-key" style="font-size: 88px;"></i>
-<i class="icon ion-locked" style="font-size: 88px;"></i>
-<i class="icon ion-location" style="font-size: 88px;"></i>
-<i class="icon ion-plane" style="font-size: 88px;"></i>
-<i class="icon ion-ios-eye" style="font-size: 88px;"></i>
-
-[All the Ionicons icons](http://ionicons.com/)
-
-
-## Mathematical formulae
-
-Inline math `$E = mc^2$`, another one: `$\dfrac{ \tfrac{1}{2}[1-(\tfrac{1}{2})^n] }{ 1-\tfrac{1}{2} } = s_n$`.
+Math block:
 
 ```math
 \oint_C x^3\, dx + 4y^2\, dy
@@ -110,49 +96,63 @@ Inline math `$E = mc^2$`, another one: `$\dfrac{ \tfrac{1}{2}[1-(\tfrac{1}{2})^n
 [Mathematical Formulae Syntax](http://meta.wikimedia.org/wiki/Help:Displaying_a_formula)
 
 
-## Flowcharts
+## Flowchart
 
 ```
 graph TD
-    A[Hard edge] -->|Link text| B(Round edge)
-    B --> C{Decision}
-    C -->|One| D[Result one]
-    C -->|Two| E[Result two]
+    A[Christmas] -->|get money| B(go shopping)
+    B --> C{fa:fa-spinner let me think}
+    C -->|One| D[Laptop: fa:fa-laptop]
+    C -->|Two| E[iphone: fa:fa-mobile]
+    C -->|Three| F[car: fa:fa-car]
 ```
 
-[Flowchart Syntax](http://knsv.github.io/mermaid/flowchart.html)
+[Flowchart Syntax](http://knsv.github.io/mermaid/#flowcharts-basic-syntax)
 
 
-## Sequence diagrams
+## Sequence diagram
 
 ```
 sequenceDiagram
-    Alice->>Bob: Hello Bob, how are you?
-    alt is sick
-        Bob->>Alice: Not so good :(
-    else is well
-        Bob->>Alice: Feeling fresh like a daisy
-    end
-    opt Extra response
-        Bob->>Alice: Thanks for asking
+    loop every day
+        Alice->>John: Hello John, how are you?
+        John-->>Alice: Great!
     end
 ```
 
-[Sequence Diagram Syntax](http://knsv.github.io/mermaid/sequenceDiagram.html)
+[Sequence Diagram Syntax](http://knsv.github.io/mermaid/#sequence-diagrams)
 
 
-## Gantt diagrams
+## Gantt diagram
 
 ```
 gantt
-    title A Gantt Diagram
     dateFormat  YYYY-MM-DD
-    section Section
-    A task           :a1, 2014-01-01, 30d
-    Another task     :after a1, 20d
-    section Another
-    Task in sec      :2014-01-12, 12d
-    anther task      : 24d
+    title Adding GANTT diagram functionality to mermaid
+
+    section A section
+    Completed task            :done,    des1, 2014-01-06,2014-01-08
+    Active task               :active,  des2, 2014-01-09, 3d
+    Future task               :         des3, after des2, 5d
+    Future task2               :         des4, after des3, 5d
+
+    section Critical tasks
+    Completed task in the critical line :crit, done, 2014-01-06,24h
+    Implement parser and jison          :crit, done, after des1, 2d
+    Create tests for parser             :crit, active, 3d
+    Future task in critical line        :crit, 5d
+    Create tests for renderer           :2d
+    Add to mermaid                      :1d
+
+    section Documentation
+    Describe gantt syntax               :active, a1, after des1, 3d
+    Add gantt diagram to demo page      :after a1  , 20h
+    Add another diagram to demo page    :doc1, after a1  , 48h
+
+    section Last section
+    Describe gantt syntax               :after doc1, 3d
+    Add gantt diagram to demo page      : 20h
+    Add another diagram to demo page    : 48h
 ```
 
-[Gantt Diagram Syntax](http://knsv.github.io/mermaid/gantt.html)
+[Gantt Diagram Syntax](http://knsv.github.io/mermaid/#gant-diagrams)
