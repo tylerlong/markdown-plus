@@ -212,3 +212,10 @@ gantt
 ```
 
 [Gantt Diagram Syntax](http://knsv.github.io/mermaid/#gant-diagrams)
+
+
+## HTML
+
+If you find the markdown syntax too limited, you can try some <span style="color: blue;">HTML<span>.
+
+<p style="text-align:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/120px-HTML5_logo_and_wordmark.svg.png"/></p>
