@@ -29,6 +29,16 @@ Markdown allows you to write using an easy-to-read, easy-to-write plain text for
 ## ==mark==
 
 
+## Subscript: H~2~O
+
+You can also use inline math: `$H_2O$`
+
+
+## Superscript: 29^th^
+
+You can also use inline math: `$29^{th}$`
+
+
 ## Emoji: :panda_face: :sparkles: :camel: :boom: :pig:
 
 [Emoji Cheat Sheet](http://www.emoji-cheat-sheet.com/)
@@ -85,6 +95,16 @@ Content in the first column | Content in the second column
 - [ ] a separate task
 
 [Task Lists Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
+
+
+## Abbreviation
+
+Markup is based on [php markdown extra](https://michelf.ca/projects/php-markdown/extra/#abbr) definition, but without multiline support:
+
+*[HTML]: Hyper Text Markup Language
+*[W3C]:  World Wide Web Consortium
+The HTML specification
+is maintained by the W3C.
 
 
 ## Footnote
@@ -192,13 +212,3 @@ gantt
 ```
 
 [Gantt Diagram Syntax](http://knsv.github.io/mermaid/#gant-diagrams)
-
-
-## Subscript: H~2~O
-
-You can also use inline math: `$H_2O$`
-
-
-## Superscript: 29^th^
-
-You can also use inline math: `$29^{th}$`
