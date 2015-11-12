@@ -94,7 +94,7 @@ Content in the first column | Content in the second column
   - [ ] final subtask
 - [ ] a separate task
 
-[Task Lists Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
+[Task List Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
 
 
 ## Abbreviation
