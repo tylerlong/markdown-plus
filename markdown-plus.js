@@ -11,7 +11,7 @@ function prompt_for_a_value(key, action) {
       $('#' + key + '-confirm').click();
     }
   });
-  $(document).on('confirm', '#' + key + '-modal', function() {
+  $(document).on('confirmation', '#' + key + '-modal', function() {
     var value = $('#' + key + '-code').val().trim();
     if(value.length > 0) {
       action(value);
@@ -20,7 +20,7 @@ function prompt_for_a_value(key, action) {
   });
 }
 // modals
-$(document).on('close', '.remodal', function(e) {
+$(document).on('closed', '.remodal', function(e) {
   editor.focus();
 });
 

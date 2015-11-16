@@ -7,7 +7,8 @@
     <link href="icon.png" rel="shortcut icon" type="image/png"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.ui/1.11.4/jquery-ui.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.layout/1.4.3/layout-default.css"/>
-    <link rel="stylesheet" href="vendor/remodal-min/jquery.remodal.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/remodal/1.0.5/remodal.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/remodal/1.0.5/remodal-default-theme.css"/>
     <link rel="stylesheet" href="vendor/markdown-core/dist/css/markdown-core.css">
     <link rel="stylesheet" href="markdown-plus.css"/>
     <script src="https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js"></script>
@@ -18,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/ace/1.2.1/noconflict/ace.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/ace/1.2.1/noconflict/keybinding-vim.js"></script>
     <script src="https://cdn.jsdelivr.net/ace/1.2.1/noconflict/keybinding-emacs.js"></script>
-    <script src="vendor/remodal-min/jquery.remodal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/remodal/1.0.5/remodal.min.js"></script>
     <script src="markdown-plus.js"></script>
     <script src="index.js"></script>
   </head>
@@ -91,24 +92,24 @@ T3: 2014-01-02, 9d"></i>
         <p>Examples: "smile", "whale", "santa", "panda_face", "dog", "truck" ...</p>
         <p>For a complete list, please check <a href="http://www.emoji-cheat-sheet.com/" target="_blank">Emoji Cheat Sheet</a>.</p>
         <p><input id="emoji-code" placeholder="smile"/></p>
-        <br/><a class="remodal-cancel">Cancel</a>
-        <a class="remodal-confirm" id="emoji-confirm">OK</a>
+        <br/><a data-remodal-action="cancel" class="remodal-cancel">Cancel</a>
+        <a data-remodal-action="confirm" class="remodal-confirm" id="emoji-confirm">OK</a>
       </div>
       <div class="remodal" id="fa-modal" data-remodal-id="fa-modal"> <!-- Font Awesome 弹出框 -->
         <h2>Please enter a Font Awesome code:</h2>
         <p>Examples: "cloud", "flag", "car", "truck", "heart", "dollar" ...</p>
         <p>For a complete list, please check <a href="http://fontawesome.io/icons/" target="_blank">Font Awesome Icons</a>.</p>
         <p><input id="fa-code" placeholder="heart"/></p>
-        <br/><a class="remodal-cancel">Cancel</a>
-        <a class="remodal-confirm" id="fa-confirm">OK</a>
+        <br/><a data-remodal-action="cancel" class="remodal-cancel">Cancel</a>
+        <a data-remodal-action="confirm" class="remodal-confirm" id="fa-confirm">OK</a>
       </div>
       <div class="remodal" id="ion-modal" data-remodal-id="ion-modal"> <!-- Ionicons 弹出框 -->
         <h2>Please enter an Ionicons code:</h2>
         <p>Examples: "beer", "key", "locked", "location", "plane", "ios-eye" ...</p>
         <p>For a complete list, please check <a href="http://ionicons.com/" target="_blank">Ionicons Website</a>.</p>
         <p><input id="ion-code" placeholder="beer"/></p>
-        <br/><a class="remodal-cancel">Cancel</a>
-        <a class="remodal-confirm" id="ion-confirm">OK</a>
+        <br/><a data-remodal-action="cancel" class="remodal-cancel">Cancel</a>
+        <a data-remodal-action="confirm" class="remodal-confirm" id="ion-confirm">OK</a>
       </div>
       <div class="remodal" data-remodal-id="preferences-modal"> <!-- Preferences 弹出框 -->
         <img src="icon.png" width="64"/>
@@ -130,7 +131,7 @@ T3: 2014-01-02, 9d"></i>
           <option value="emacs">Emacs</option>
           <option value="vim">Vim</option>
         </select></p>
-        <br/><a class="remodal-confirm">OK</a>
+        <br/><a data-remodal-action="confirm" class="remodal-confirm">OK</a>
       </div>
       <div class="remodal" data-remodal-id="help-modal"> <!-- help 弹出框 -->
         <img src="icon.png" width="64"/>
@@ -147,7 +148,7 @@ T3: 2014-01-02, 9d"></i>
         <p><a href="http://knsv.github.io/mermaid/#sequence-diagrams" target="_blank">Sequence Diagram Syntax</a></p>
         <p><a href="http://knsv.github.io/mermaid/#gant-diagrams" target="_blank">Gantt Diagram Syntax</a></p>
         <p>If none of the above solves your problem, please email us: <a href="mailto:service@tylingsoft.com?subject=Markdown Plus help needed&amp;body=Please include a screenshot of the issue.">service@tylingsoft.com</a>.</p>
-        <br/><a class="remodal-confirm">OK</a>
+        <br/><a data-remodal-action="confirm" class="remodal-confirm">OK</a>
       </div>
       <div class="remodal" data-remodal-id="about-modal"> <!-- about 弹出框 -->
         <img src="icon.png" width="64"/>
@@ -155,7 +156,7 @@ T3: 2014-01-02, 9d"></i>
         <p>Markdown editor with extra features.</p>
         <p>Copyright © 2015 <a href="https://tylingsoft.com" target="_blank">Tylingsoft</a>.</p>
         <p>Home page: <a href="https://tylingsoft.com/mdp" target="_blank">https://tylingsoft.com/mdp</a>.</p>
-        <br/><a class="remodal-confirm">OK</a>
+        <br/><a data-remodal-action="confirm" class="remodal-confirm">OK</a>
       </div>
       <div class="remodal" data-remodal-id="license-modal"> <!-- license 弹出框 -->
         <img src="icon.png" width="64"/>
@@ -163,8 +164,8 @@ T3: 2014-01-02, 9d"></i>
         <p>Email: <input id="email"/></p>
         <p>License: <input id="license"/></p>
         <p>Don't have a license? <a href="https://tylingsoft.com/mdp" target="_blank">Purchase one</a>.</p>
-        <br/><a class="remodal-cancel">Cancel</a>
-        <a class="remodal-confirm">OK</a>
+        <br/><a data-remodal-action="cancel" class="remodal-cancel">Cancel</a>
+        <a data-remodal-action="confirm" class="remodal-confirm">OK</a>
       </div>
     </div>
     <div class="ui-layout-east">

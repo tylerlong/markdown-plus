@@ -33,7 +33,6 @@
     "fabfile.py"
   ],
   "dependencies": {
-    "markdown-core": null,
-    "remodal-min": null
+    "markdown-core": null
   }
 }
