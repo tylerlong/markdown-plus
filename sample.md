@@ -229,6 +229,18 @@ Your card will be expired in 30 days, please renew as soon as possible.
 :::
 
 
+## Definition list
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+[Definition List Syntax](http://pandoc.org/README.html#definition-lists)
+
+
 ## HTML
 
 If you find the markdown syntax too limited, you can try some <span style="color: blue;">HTML<span>:
