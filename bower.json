@@ -25,12 +25,12 @@
     "vendor",
     "test",
     "tests",
-    "README.md",
-    "screenshot.png",
-    "screenshot2.png",
-    "screenshot3.png",
-    "todo.md",
-    "fabfile.py"
+    "/*.png",
+    "/*.md",
+    "/*.py",
+    "/*.css",
+    "/*.js",
+    "LICENSE"
   ],
   "dependencies": {
     "markdown-core": null
