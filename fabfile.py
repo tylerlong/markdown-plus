@@ -2,6 +2,8 @@ from fabric.api import local
 
 
 def dist():
+    local('bower install')
+
     local('cp -r vendor/markdown-core/dist/css dist/')
     local('cp -r vendor/markdown-core/dist/fonts dist/')
     local('curl https://cdn.jsdelivr.net/jquery.ui/1.11.4/jquery-ui.min.css > dist/css/markdown-plus.css')
@@ -11,7 +13,6 @@ def dist():
     local('cat dist/css/markdown-core.css >> dist/css/markdown-plus.css')
     local('rm dist/css/markdown-core.css')
     local('cat markdown-plus.css >> dist/css/markdown-plus.css')
-    return
 
     local('curl https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js > dist/markdown-plus.js')
     local('echo "\n" >> dist/markdown-plus.js')
@@ -39,3 +40,5 @@ def dist():
     local('cat markdown-plus.js >> dist/markdown-plus.js')
     local('uglifyjs dist/markdown-plus.js -cmo dist/markdown-plus.min.js')
     local('rm dist/markdown-plus.js')
+
+    local('rm -rf vendor')
