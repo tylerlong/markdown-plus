@@ -1,6 +1,5 @@
 from fabric.api import local
 
-def update():
-    local('rm -rf vendor')
-    local('bower cache clean')
-    local('bower update')
+
+def dist():
+    local('uglifyjs markdown-plus.js -cmo dist/markdown-plus.min.js')
