@@ -11,6 +11,10 @@ def dist():
     local('curl https://cdn.jsdelivr.net/jquery.ui/1.11.4/jquery-ui.min.js >> dist/markdown-plus.js')
     local('echo "\n" >> dist/markdown-plus.js')
     local('curl https://cdn.jsdelivr.net/jquery.layout/1.4.3/jquery.layout.min.js >> dist/markdown-plus.js')
+    local('echo "\n" >> dist/markdown-plus.js')
+    local('curl https://cdn.jsdelivr.net/js-cookie/2.0.4/js.cookie.js >> dist/markdown-plus.js')
+    local('echo "\n" >> dist/markdown-plus.js')
+    local('curl https://cdn.jsdelivr.net/remodal/1.0.5/remodal.min.js >> dist/markdown-plus.js')
 
     local('echo "\n" >> dist/markdown-plus.js')
     local('cat markdown-plus.js >> dist/markdown-plus.js')
