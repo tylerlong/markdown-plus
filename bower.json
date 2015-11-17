@@ -4,25 +4,16 @@
     "Tyler Long <tyler4long@gmail.com>"
   ],
   "description": "Markdown editor with extra features.",
-  "main": "index.html",
+  "main": "dist/markdown-plus.min.js",
   "keywords": [
-    "markdown",
-    "editor",
-    "flowchart",
-    "sequence diagram",
-    "gantt diagram",
-    "emoji",
-    "GFM",
-    "LaTex",
-    "Font Awesome",
-    "Ionicons"
+    "markdown"
   ],
-  "license": "BSD",
-  "homepage": "https://tylingsoft.com/mdp",
+  "license": "MIT",
+  "homepage": "https://github.com/tylingsoft/markdown-plus",
   "ignore": [
     "**/.*",
     "node_modules",
-    "vendor",
+    "bower_components",
     "test",
     "tests",
     "/*.png",
@@ -32,8 +23,5 @@
     "/*.js",
     "/*.html",
     "LICENSE"
-  ],
-  "dependencies": {
-    "markdown-core": null
-  }
+  ]
 }

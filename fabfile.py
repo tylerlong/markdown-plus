@@ -2,7 +2,7 @@ from fabric.api import local
 
 
 def dist():
-    local('bower install')
+    local('bower install markdown-core')
 
     local('cp -r vendor/markdown-core/dist/css dist/')
     local('cp -r vendor/markdown-core/dist/fonts dist/')
