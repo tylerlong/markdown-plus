@@ -4,7 +4,9 @@ from fabric.api import local
 def dist():
     local('cp -r vendor/markdown-core/dist/css dist/')
     local('cp -r vendor/markdown-core/dist/fonts dist/')
-    local('cat dist/css/markdown-core.css > dist/css/markdown-plus.css')
+    local('curl https://cdn.jsdelivr.net/remodal/1.0.5/remodal.css > dist/css/markdown-plus.css')
+    local('curl https://cdn.jsdelivr.net/remodal/1.0.5/remodal-default-theme.css >> dist/css/markdown-plus.css')
+    local('cat dist/css/markdown-core.css >> dist/css/markdown-plus.css')
     local('rm dist/css/markdown-core.css')
     local('cat markdown-plus.css >> dist/css/markdown-plus.css')
     return
