@@ -15,6 +15,17 @@ def dist():
     local('curl https://cdn.jsdelivr.net/js-cookie/2.0.4/js.cookie.js >> dist/markdown-plus.js')
     local('echo "\n" >> dist/markdown-plus.js')
     local('curl https://cdn.jsdelivr.net/remodal/1.0.5/remodal.min.js >> dist/markdown-plus.js')
+    local('echo "\n" >> dist/markdown-plus.js')
+    local('curl https://cdn.jsdelivr.net/ace/1.2.1/noconflict/ace.js >> dist/markdown-plus.js')
+    local('echo "\n" >> dist/markdown-plus.js')
+    local('curl https://cdn.jsdelivr.net/ace/1.2.1/noconflict/keybinding-vim.js >> dist/markdown-plus.js')
+    local('echo "\n" >> dist/markdown-plus.js')
+    local('curl https://cdn.jsdelivr.net/ace/1.2.1/noconflict/keybinding-emacs.js >> dist/markdown-plus.js')
+    local('echo "\n" >> dist/markdown-plus.js')
+    local('curl https://cdn.jsdelivr.net/ace/1.2.1/noconflict/mode-markdown.js >> dist/markdown-plus.js')
+    for theme in ['tomorrow_night_eighties', 'tomorrow_night_blue', 'tomorrow', 'kuroir']:
+        local('echo "\n" >> dist/markdown-plus.js')
+        local('curl https://cdn.jsdelivr.net/ace/1.2.1/noconflict/theme-{0}.js >> dist/markdown-plus.js'.format(theme))
 
     local('echo "\n" >> dist/markdown-plus.js')
     local('cat markdown-plus.js >> dist/markdown-plus.js')
