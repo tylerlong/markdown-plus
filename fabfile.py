@@ -2,7 +2,12 @@ from fabric.api import local
 
 
 def dist():
-    local('cp markdown-plus.css dist/markdown-plus.css')
+    local('cp -r vendor/markdown-core/dist/css dist/')
+    local('cp -r vendor/markdown-core/dist/fonts dist/')
+    local('cat dist/css/markdown-core.css > dist/css/markdown-plus.css')
+    local('rm dist/css/markdown-core.css')
+    local('cat markdown-plus.css >> dist/css/markdown-plus.css')
+    return
 
     local('curl https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js > dist/markdown-plus.js')
     local('echo "\n" >> dist/markdown-plus.js')
