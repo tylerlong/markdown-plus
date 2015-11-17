@@ -9,7 +9,7 @@ def dist():
     local('cat dist/css/markdown-core.css >> dist/css/markdown-plus.css')
     local('rm dist/css/markdown-core.css')
     local('cat markdown-plus.css >> dist/css/markdown-plus.css')
-    return
+    # return
 
     local('curl https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js > dist/markdown-plus.js')
     local('echo "\n" >> dist/markdown-plus.js')
@@ -33,7 +33,6 @@ def dist():
     for theme in ['tomorrow_night_eighties', 'tomorrow_night_blue', 'tomorrow', 'kuroir']:
         local('echo "\n" >> dist/markdown-plus.js')
         local('curl https://cdn.jsdelivr.net/ace/1.2.1/noconflict/theme-{0}.js >> dist/markdown-plus.js'.format(theme))
-
     local('echo "\n" >> dist/markdown-plus.js')
     local('cat markdown-plus.js >> dist/markdown-plus.js')
     local('uglifyjs dist/markdown-plus.js -cmo dist/markdown-plus.min.js')

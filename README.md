@@ -1,7 +1,7 @@
 # Markdown Plus
 
 ![Markdown Plus](icon.png)
-Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides common markdown, GitHub flavored markdown, it also supports task lists, emojis, Font Awesome icons, Ionicons icons, mathematical formulae, flowcharts, sequence diagrams, gantt diagrams, Vim mode and Emacs mode.
+Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides CommonMark, GitHub flavored markdown, it also supports footnote, task list, emoji, Font Awesome, Ionicons, mathematical formula, flowchart, sequence diagram, gantt diagram, Vim mode and Emacs mode.
 
 
 ### Online demo: [mdp.tylingsoft.com](http://mdp.tylingsoft.com)
@@ -33,14 +33,15 @@ It's free to download and evaluate: [https://tylingsoft.com/mdp](https://tylings
 - GitHub flavored markdown
 - Live preview with scroll sync
 - Source code highlight
+- Footnote
 - Task lists
-- Emojis
-- Font Awesome icons
-- Ionicons icons
-- Mathematical formulae
-- Flowcharts
-- Sequence diagrams
-- Gantt diagrams
+- Emoji
+- Font Awesome icon
+- Ionicons icon
+- Mathematical formula
+- Flowchart
+- Sequence diagram
+- Gantt diagram
 - Vim mode & Emacs mode
 
 
@@ -48,7 +49,6 @@ It's free to download and evaluate: [https://tylingsoft.com/mdp](https://tylings
 
 ```shell
 git clone https://github.com/tylingsoft/markdown-plus.git && cd markdown-plus
-bower install
 open index.html
 ```
 
