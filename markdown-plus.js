@@ -1,7 +1,3 @@
-String.prototype.repeat = function(i) { // Some browsers don't support repeat, for example, Safari
-    return new Array(i + 1).join(this);
-}
-
 function prompt_for_a_value(key, action) {
   $(document).on('opened', '#' + key + '-modal', function() {
     $('#' + key + '-code').focus();
