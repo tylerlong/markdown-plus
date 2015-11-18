@@ -157,10 +157,10 @@ Math block:
 ```
 graph TD
     A[Christmas] -->|Get money| B(Go shopping)
-    B --> C{fa:fa-spinner Let me think}
-    C -->|One| D[Laptop: fa:fa-laptop]
-    C -->|Two| E[iPhone: fa:fa-mobile]
-    C -->|Three| F[Car: fa:fa-car]
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[Car]
 ```
 
 [Flowchart Syntax](http://knsv.github.io/mermaid/#flowcharts-basic-syntax)
