@@ -47,3 +47,8 @@ def dist():
     css()
     js()
     local('rm -rf vendor')
+
+
+def mdp():
+    local('cp -r dist ~/src/swift/markdown-plus/Markdown\ Plus/markdown-plus/dist')
+    local('cp index.html ~/src/swift/markdown-plus/Markdown\ Plus/markdown-plus/index.html')
