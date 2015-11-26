@@ -50,6 +50,6 @@ def dist():
 
 
 def mdp():
-    local('cp -r dist ~/src/swift/markdown-plus/Markdown\ Plus/markdown-plus/dist')
-    local('cp index.html ~/src/swift/markdown-plus/Markdown\ Plus/markdown-plus/index.html')
-    local('cp icon.png ~/src/swift/markdown-plus/Markdown\ Plus/markdown-plus/icon.png')
+    local('cp -rf dist ~/src/swift/markdown-plus/Markdown\ Plus/markdown-plus/dist')
+    local('cp -f index.html ~/src/swift/markdown-plus/Markdown\ Plus/markdown-plus/index.html')
+    local('cp -f icon.png ~/src/swift/markdown-plus/Markdown\ Plus/markdown-plus/icon.png')
