@@ -33,6 +33,8 @@ def js():
     local('curl https://cdn.jsdelivr.net/ace/1.2.2/noconflict/keybinding-emacs.js >> dist/markdown-plus.js')
     local('echo "\n" >> dist/markdown-plus.js')
     local('curl https://cdn.jsdelivr.net/ace/1.2.2/noconflict/mode-markdown.js >> dist/markdown-plus.js')
+    local('echo "\n" >> dist/markdown-plus.js')
+    local('curl https://cdn.jsdelivr.net/ace/1.2.2/noconflict/ext-searchbox.js >> dist/markdown-plus.js')
     for theme in ['tomorrow_night_eighties', 'tomorrow_night_blue', 'tomorrow', 'kuroir']:
         local('echo "\n" >> dist/markdown-plus.js')
         local('curl https://cdn.jsdelivr.net/ace/1.2.2/noconflict/theme-{0}.js >> dist/markdown-plus.js'.format(theme))
