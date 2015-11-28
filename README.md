@@ -82,8 +82,14 @@ Copyright © 2015 [Tylingsoft](https://tylingsoft.com/)
 
 # Screenshots
 
-![Markdown Plus](screenshot.png)
+![Markdown Plus](screenshots/1.png)
 
-![Markdown Plus](screenshot2.png)
+![Markdown Plus](screenshots/2.png)
 
-![Markdown Plus](screenshot3.png)
+![Markdown Plus](screenshots/3.png)
+
+![Markdown Plus](screenshots/4.png)
+
+![Markdown Plus](screenshots/5.png)
+
+![Markdown Plus](screenshots/6.png)
