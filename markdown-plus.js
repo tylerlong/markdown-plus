@@ -168,6 +168,13 @@ $(function() {
   $('select#editor-theme').val(editor_theme);
   editor.setTheme('ace/theme/' + editor_theme);
 
+  var gantt_axis_format = Cookies.get('gantt-axis-format');
+  if(gantt_axis_format == undefined) {
+      gantt_axis_format = '%-m/%-d';
+  }
+  $('input#gantt-axis-format').val(gantt_axis_format);
+  mdc.mermaid.gantt.axisFormat(gantt_axis_format);
+
   // change preferences
   $('select#key-binding').change(function() {
     var key_binding = $(this).val();
@@ -190,6 +197,8 @@ $(function() {
     Cookies.set('editor-theme', editor_theme, { expires: 10000 });
     editor.setTheme('ace/theme/' + editor_theme);
   });
+
+  // todo: change gantt axis format
 
   // extension methods for editor
   editor.selection.smartRange = function() {
