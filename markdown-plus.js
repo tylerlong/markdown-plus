@@ -198,7 +198,15 @@ $(function() {
     editor.setTheme('ace/theme/' + editor_theme);
   });
 
-  // todo: change gantt axis format
+  $(document).on('confirmation', '#preferences-modal', function() {
+    var gantt_axis_format = $('#gantt-axis-format').val().trim();
+    if(gantt_axis_format == '') {
+      gantt_axis_format = '%-m/%-d';
+    }
+    Cookies.set('gantt-axis-format', gantt_axis_format, { expires: 10000 });
+    mdc.mermaid.gantt.axisFormat(gantt_axis_format);
+    lazy_change(); // trigger re-render
+  });
 
   // extension methods for editor
   editor.selection.smartRange = function() {

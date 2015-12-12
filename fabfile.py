@@ -45,10 +45,10 @@ def js():
 
 
 def dist():
+    local('rm -rf vendor')
     local('bower install markdown-core')
     css()
     js()
-    local('rm -rf vendor')
 
 
 def mdp():
