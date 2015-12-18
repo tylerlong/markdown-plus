@@ -22,8 +22,6 @@ def js():
     local('echo "\n" >> dist/markdown-plus.js')
     local('curl https://cdn.jsdelivr.net/jquery.layout/1.4.3/jquery.layout.min.js >> dist/markdown-plus.js')
     local('echo "\n" >> dist/markdown-plus.js')
-    local('curl https://cdn.jsdelivr.net/js-cookie/2.0.4/js.cookie.js >> dist/markdown-plus.js')
-    local('echo "\n" >> dist/markdown-plus.js')
     local('curl https://cdn.jsdelivr.net/remodal/1.0.6/remodal.min.js >> dist/markdown-plus.js')
     local('echo "\n" >> dist/markdown-plus.js')
     local('curl https://cdn.jsdelivr.net/ace/1.2.2/noconflict/ace.js >> dist/markdown-plus.js')
