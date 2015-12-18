@@ -1,5 +1,38 @@
 mdp = {
-    preferencesChanged: function(){}
+    preferencesChanged: function(){},
+    loadPreferences: function() {
+        var key_binding = Cookies.get('key-binding');
+        if(key_binding == undefined) {
+            key_binding = 'default';
+        }
+        $('select#key-binding').val(key_binding);
+        if(key_binding == 'default') {
+            editor.setKeyboardHandler(null);
+        } else {
+            editor.setKeyboardHandler(ace.require("ace/keyboard/" + key_binding).handler);
+        }
+
+        var font_size = Cookies.get('editor-font-size');
+        if(font_size == undefined) {
+            font_size = '14';
+        }
+        $('select#editor-font-size').val(font_size);
+        editor.setFontSize(font_size + 'px');
+
+        var editor_theme = Cookies.get('editor-theme');
+        if(editor_theme == undefined) {
+            editor_theme = 'tomorrow_night_eighties';
+        }
+        $('select#editor-theme').val(editor_theme);
+        editor.setTheme('ace/theme/' + editor_theme);
+
+        var gantt_axis_format = Cookies.get('gantt-axis-format');
+        if(gantt_axis_format == undefined) {
+            gantt_axis_format = '%-m/%-d';
+        }
+        $('input#gantt-axis-format').val(gantt_axis_format);
+        mdc.mermaid.gantt.axisFormat(gantt_axis_format);
+    }
 };
 
 function prompt_for_a_value(key, action) {
@@ -149,66 +182,25 @@ $(function() {
   });
 
   // load preferences
-  var key_binding = Cookies.get('key-binding');
-  if(key_binding == undefined) {
-    key_binding = 'default'
-  }
-  $('select#key-binding').val(key_binding);
-  if(key_binding !== 'default') {
-    editor.setKeyboardHandler(ace.require("ace/keyboard/" + key_binding).handler);
-  }
-
-  var font_size = Cookies.get('editor-font-size');
-  if(font_size == undefined) {
-    font_size = '14';
-  }
-  $('select#editor-font-size').val(font_size);
-  editor.setFontSize(font_size + 'px');
-
-  var editor_theme = Cookies.get('editor-theme');
-  if(editor_theme == undefined) {
-    editor_theme = 'tomorrow_night_eighties';
-  }
-  $('select#editor-theme').val(editor_theme);
-  editor.setTheme('ace/theme/' + editor_theme);
-
-  var gantt_axis_format = Cookies.get('gantt-axis-format');
-  if(gantt_axis_format == undefined) {
-      gantt_axis_format = '%-m/%-d';
-  }
-  $('input#gantt-axis-format').val(gantt_axis_format);
-  mdc.mermaid.gantt.axisFormat(gantt_axis_format);
+  mdp.loadPreferences();
 
   // change preferences
-  $('select#key-binding').change(function() {
-    var key_binding = $(this).val();
-    Cookies.set('key-binding', key_binding, { expires: 10000 });
-    if(key_binding == 'default') {
-      editor.setKeyboardHandler(null);
-    } else {
-      editor.setKeyboardHandler(ace.require("ace/keyboard/" + key_binding).handler);
-    }
+  $.each(['key-binding', 'editor-font-size', 'editor-theme'], function(index, key) {
+      $('select#' + key).change(function() {
+          Cookies.set(key, $(this).val(), { expires: 10000 });
+          mdp.loadPreferences();
+      });
   });
-
-  $('select#editor-font-size').change(function() {
-    var font_size = $(this).val();
-    Cookies.set('editor-font-size', font_size, { expires: 10000 });
-    editor.setFontSize(font_size + 'px');
-  });
-
-  $('select#editor-theme').change(function() {
-    var editor_theme = $(this).val();
-    Cookies.set('editor-theme', editor_theme, { expires: 10000 });
-    editor.setTheme('ace/theme/' + editor_theme);
-  });
-
+  $('#gantt-axis-format').keyup(_.debounce(function() {
+      Cookies.set('gantt-axis-format', $('#gantt-axis-format').val(), { expires: 10000 });
+  }, 500));
   $(document).on('confirmation', '#preferences-modal', function() {
     var gantt_axis_format = $('#gantt-axis-format').val().trim();
     if(gantt_axis_format == '') {
       gantt_axis_format = '%-m/%-d';
     }
     Cookies.set('gantt-axis-format', gantt_axis_format, { expires: 10000 });
-    mdc.mermaid.gantt.axisFormat(gantt_axis_format);
+    mdp.loadPreferences();
     lazy_change(); // trigger re-render
     mdp.preferencesChanged();
   });
