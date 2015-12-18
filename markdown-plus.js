@@ -1,3 +1,7 @@
+mdp = {
+    preferencesChanged: function(){}
+};
+
 function prompt_for_a_value(key, action) {
   $(document).on('opened', '#' + key + '-modal', function() {
     $('#' + key + '-code').focus();
@@ -206,6 +210,7 @@ $(function() {
     Cookies.set('gantt-axis-format', gantt_axis_format, { expires: 10000 });
     mdc.mermaid.gantt.axisFormat(gantt_axis_format);
     lazy_change(); // trigger re-render
+    mdp.preferencesChanged();
   });
 
   // extension methods for editor
