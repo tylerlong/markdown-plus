@@ -26,12 +26,8 @@ mdp = {
         $('select#editor-theme').val(editor_theme);
         editor.setTheme('ace/theme/' + editor_theme);
 
-        var gantt_axis_format = Cookies.get('gantt-axis-format');
-        if(gantt_axis_format == undefined) {
-            gantt_axis_format = '%-m/%-d';
-        }
-        $('input#gantt-axis-format').val(gantt_axis_format);
-        mdc.mermaid.gantt.axisFormat(gantt_axis_format);
+        var mdcPreferences = mdc.loadPreferences();
+        $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format']);
     }
 };
 
