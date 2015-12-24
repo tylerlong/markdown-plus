@@ -53,21 +53,21 @@ $(document).on('closed', '.remodal', function(e) {
   editor.focus();
 });
 
-function get_editor_scroll() { // 获取编辑器的滚动位置
+function get_editor_scroll() {
   var line_markers = $('.ui-layout-east article > [data-source-line]');
-  var lines = []; // 逻辑行
+  var lines = []; // logical line
   line_markers.each(function() {
     lines.push($(this).data('source-line'));
   });
-  var pLines = []; // 物理行
+  var pLines = []; // physical line
   var pLine = 0;
   for(var i = 0; i < lines[lines.length - 1]; i++) {
     if($.inArray(i + 1, lines) !== -1) {
       pLines.push(pLine);
     }
-    pLine += editor.session.getRowLength(i) // 因为有wrap，所以行高未必是1
+    pLine += editor.session.getRowLength(i) // line height might not be 1 because of wrap
   }
-  var currentLine = editor.session.getScrollTop() / editor.renderer.lineHeight; // 当前滚动到的物理行
+  var currentLine = editor.session.getScrollTop() / editor.renderer.lineHeight; // current physical line
   var lastMarker = false;
   var nextMarker = false;
   for(var i = 0; i < pLines.length; i++) {
@@ -77,20 +77,20 @@ function get_editor_scroll() { // 获取编辑器的滚动位置
       nextMarker = i;
       break;
     }
-  } // 当前滚动到了哪两个marker中间
+  } // between last marker and next marker
   var lastLine = 0;
-  var nextLine = editor.session.getScreenLength() - 1; // 最后一个物理行的顶部，所以 -1
+  var nextLine = editor.session.getScreenLength() - 1; // on the top of last physical line, so -1
   if(lastMarker !== false) {
     lastLine = pLines[lastMarker];
   }
   if(nextMarker !== false) {
     nextLine = pLines[nextMarker];
-  } // 前后两个marker的物理行
+  } // physical lines of two neighboring markers
   var percentage = 0;
-  if(nextLine !== lastLine) { // 行首的情况下可能相等，0 不能作为除数
+  if(nextLine !== lastLine) { // at the beginning of file, equal, but cannot divide by 0
     percentage = (currentLine - lastLine) / (nextLine - lastLine);
-  } // 当前位置在两个marker之间所处的百分比
-  // 返回的是前后两个marker对应的逻辑行，以及当前位置在前后两个marker之间所处的百分比
+  } // scroll percentage between two markers
+  // returns two neighboring markers' logical lines, and current scroll percentage between two markers
   return { lastMarker: lines[lastMarker], nextMarker: lines[nextMarker], percentage: percentage };
 }
 
