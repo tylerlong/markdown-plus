@@ -1671,7 +1671,7 @@ body{
   margin: 0;
 }
 
-.ui-layout-north { /* 工具栏背景色 */
+.ui-layout-north { /* toolbar background color */
   background-color: #eeeeee;
 }
 
@@ -1706,20 +1706,20 @@ body{
   background-color: #cccccc;
 }
 .ui-layout-toggler:hover {
-  background-color: #add8e6; /* 浅蓝色 */
+  background-color: #add8e6; /* light blue */
 }
 
 .heading-icon {
   font-weight: bold;
 }
 
-i.dividor { /* toolbar 上面的分隔竖线 */
+i.dividor { /* dividor on toolbar */
   font-style: normal;
   color: #dddddd;
   margin: 0 6px;
 }
 
-.noselect { /* toolbar 上面的按钮无论怎样点击都不应该选中 */
+.noselect { /* icons toolbar shouldn't be selectable */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
