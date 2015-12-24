@@ -65,7 +65,7 @@ function get_editor_scroll() {
     if($.inArray(i + 1, lines) !== -1) {
       pLines.push(pLine);
     }
-    pLine += editor.session.getRowLength(i) // line height might not be 1 because of wrap
+    pLine += editor.session.getRowLength(i); // line height might not be 1 because of wrap
   }
   var currentLine = editor.session.getScrollTop() / editor.renderer.lineHeight; // current physical line
   var lastMarker = false;

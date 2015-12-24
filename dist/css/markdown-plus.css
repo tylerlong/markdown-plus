@@ -1668,9 +1668,6 @@ body{
 .app-only {
   display: none !important;
 }
-.guest-only { /* 未注册用户 */
-  display: none !important;
-}
 
 .ui-layout-pane {
   border-width: 0;
