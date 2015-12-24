@@ -94,17 +94,17 @@ function get_editor_scroll() {
   return { lastMarker: lines[lastMarker], nextMarker: lines[nextMarker], percentage: percentage };
 }
 
-function set_preview_scroll(editor_scroll) { // 设置预览的滚动位置
+function set_preview_scroll(editor_scroll) {
   var lastPosition = 0;
-  var nextPosition = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height(); // 这是总共可以scroll的最大幅度
-  if(editor_scroll.lastMarker !== undefined) { // 最开始的位置没有marker
+  var nextPosition = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height(); // maximum scroll
+  if(editor_scroll.lastMarker !== undefined) { // no marker at very start
     lastPosition = $('.ui-layout-east article').find('>[data-source-line="' + editor_scroll.lastMarker + '"]').get(0).offsetTop;
   }
-  if(editor_scroll.nextMarker !== undefined) { // 最末尾的位置没有marker
+  if(editor_scroll.nextMarker !== undefined) { // no marker at very end
     nextPosition = $('.ui-layout-east article').find('>[data-source-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
-  } // 查找出前后两个marker在页面上所处的滚动距离
-  scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // 按照左侧的百分比计算出右侧应该滚动到的位置
-  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 32); // 加一点动画效果
+  }
+  scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // right scroll according to left percentage
+  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 32); // some animations
 }
 
 var sync_preview = _.debounce(function() { // sync right with left
@@ -236,8 +236,8 @@ $(function() {
   $('.heading-icon').click(function() {
     var level = $(this).data('level');
     var p = editor.getCursorPosition();
-    p.column += level + 1; // 光标位置会产生偏移
-    editor.navigateTo(editor.getSelectionRange().start.row, 0); // navigateLineStart 在 wrap 的时候有问题
+    p.column += level + 1; // cursor offset
+    editor.navigateTo(editor.getSelectionRange().start.row, 0); // navigateLineStart has issue when there is wrap
     editor.insert('#'.repeat(level) + ' ');
     editor.moveCursorToPosition(p); // restore cursor position
     editor.focus();
@@ -248,10 +248,10 @@ $(function() {
     var modifier = $(this).data('modifier');
     var range = editor.selection.smartRange();
     var p = editor.getCursorPosition();
-    p.column += modifier.length; // 光标位置会产生偏移
+    p.column += modifier.length; // cursor offset
     editor.session.replace(range, modifier + editor.session.getTextRange(range) + modifier);
     editor.moveCursorToPosition(p); // restore cursor position
-    editor.selection.clearSelection(); // 不知为何上一个语句会选中一部分文字
+    editor.selection.clearSelection(); // don't know why statement above selects some text
     editor.focus();
   });
 
@@ -262,7 +262,7 @@ $(function() {
       editor.selection.clearSelection();
       editor.insert('\n---\n');
     } else {
-      editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE); // navigateLineEnd 在 wrap 的时候有问题
+      editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE); // navigateLineEnd has issue when there is wrap
       editor.insert('\n\n---\n');
     }
     editor.focus();
@@ -272,7 +272,7 @@ $(function() {
   $('.list-icon').click(function() {
     var prefix = $(this).data('prefix');
     var p = editor.getCursorPosition();
-    p.column += prefix.length; // 光标位置会产生偏移
+    p.column += prefix.length; // cursor offset
     var range = editor.selection.getRange();
     for(var i = range.start.row + 1; i < range.end.row + 2; i++) {
       editor.gotoLine(i);
