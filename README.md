@@ -9,10 +9,10 @@ Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides 
 ### Screenshots: [#screenshots](#screenshots)
 
 
-## App
+## Apps
 
 We currently ***don't*** accept donations.  
-The best way to support our development is to buy our app.
+The best way to support our development is to buy our apps.
 
 ### Mac app
 
@@ -24,7 +24,7 @@ Available on the [Mac App Store](https://itunes.apple.com/us/app/markdown-plus/i
 
 Compatibility: Windows 7 or later, .Net Framework 4.5 or later.
 
-It's free to download and evaluate: [https://tylingsoft.com/mdp](https://tylingsoft.com/mdp).
+Available for purchase here: [https://gum.co/mdp-win](https://gum.co/mdp-win).
 
 
 ## Features
@@ -48,7 +48,8 @@ It's free to download and evaluate: [https://tylingsoft.com/mdp](https://tylings
 ## Setup & Run
 
 ```shell
-git clone https://github.com/tylingsoft/markdown-plus.git && cd markdown-plus
+fork it
+git clone to your local
 open index.html
 ```
 
@@ -60,10 +61,10 @@ Please take `index.html` as an example.
 
 ## Thanks
 
+- Thanks to those who have bought our apps to support our development !
 - Thanks to all the dependent open source projects' authors !
 - Thank [ASTND](http://www.weibo.com/236986311) for designing the icon !
 - Thanks to those who have contributed by creating PRs / issues !
-- Thanks to those who have bought our app to support our development !
 
 
 ## License
