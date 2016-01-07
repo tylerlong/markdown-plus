@@ -3,7 +3,6 @@ from fabric.api import local
 
 def css():
     local('cp -r vendor/markdown-core/dist/css dist/')
-    local('cp -r vendor/markdown-core/dist/fonts dist/')
     local('curl https://cdn.jsdelivr.net/jquery.ui/1.11.4/jquery-ui.min.css > dist/css/markdown-plus.css')
     local('curl https://cdn.jsdelivr.net/jquery.layout/1.4.3/layout-default.css >> dist/css/markdown-plus.css')
     local('curl https://cdn.jsdelivr.net/remodal/1.0.6/remodal.css >> dist/css/markdown-plus.css')
