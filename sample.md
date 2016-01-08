@@ -12,7 +12,7 @@ Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides 
 
 #### Buy Windows App: :fa-windows: [https://gum.co/mdp-win](https://gum.co/mdp-win)
 
-==**Email Support**==: We provide email support to users who have purchased the apps: service@tylingsoft.com
+**Email Support**: We provide email support to those who have purchased the apps: service@tylingsoft.com
 
 ---
 
