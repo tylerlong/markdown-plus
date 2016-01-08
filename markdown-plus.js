@@ -141,13 +141,13 @@ $(function() {
     togglerLength_closed: '100%',
     north: {
       size: 'auto',
-      togglerTip_open: $('#toolbar').data('open-title'),
-      togglerTip_closed: $('#toolbar').data('closed-title')
+      togglerTip_open: 'Hide Toolbar',
+      togglerTip_closed: 'Show Toolbar'
     },
     east: {
       size: '50%',
-      togglerTip_open: $('#preview').data('open-title'),
-      togglerTip_closed: $('#preview').data('closed-title'),
+      togglerTip_open: 'Hide Preview',
+      togglerTip_closed: 'Show Preview',
       onresize: function() {
         $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px'); // scroll past end
       }
