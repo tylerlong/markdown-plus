@@ -113,7 +113,6 @@ var sync_preview = _.debounce(function() { // sync right with left
 
 var lazy_change = _.debounce(function() { // user changes markdown text
   mdc.init(editor.session.getValue(), false); // realtime preview
-  sync_preview();
 }, 256, false);
 
 var Vim = ace.require("ace/keyboard/vim").CodeMirror.Vim // vim commands
