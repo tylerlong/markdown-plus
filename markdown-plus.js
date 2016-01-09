@@ -104,16 +104,16 @@ function set_preview_scroll(editor_scroll) {
     nextPosition = $('.ui-layout-east article').find('>[data-source-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
   }
   scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // right scroll according to left percentage
-  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 32); // some animations
+  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 64); // some animations
 }
 
 var sync_preview = _.debounce(function() { // sync right with left
   set_preview_scroll(get_editor_scroll());
-}, 32, false);
+}, 64, false);
 
 var lazy_change = _.debounce(function() { // user changes markdown text
   mdc.init(editor.session.getValue(), false); // realtime preview
-}, 128, false);
+}, 512, false);
 
 var Vim = ace.require("ace/keyboard/vim").CodeMirror.Vim // vim commands
 Vim.defineEx("write", "w", function(cm, input) {
