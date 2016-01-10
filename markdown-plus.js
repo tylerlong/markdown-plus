@@ -104,13 +104,104 @@ function set_preview_scroll(editor_scroll) {
   if(editor_scroll.nextMarker !== undefined) { // no marker at very end
     nextPosition = $('article#preview').find('>[data-source-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
   }
-  scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // right scroll according to left percentage
-  $('.ui-layout-east').animate({scrollTop: scrollPosition}, 64); // some animations
+  var scrollTop = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // right scroll according to left percentage
+  scrollRight(scrollTop);
 }
 
 var sync_preview = _.debounce(function() { // sync right with left
   set_preview_scroll(get_editor_scroll());
 }, 64, false);
+
+
+
+
+
+mdp.scrollingSide = null;
+var timeoutHandle = null;
+function scrollSide(scrollTop, side) {
+  if(mdp.scrollingSide != null && mdp.scrollingSide != side) {
+    return; // the other side hasn't finished scrolling
+  }
+  mdp.scrollingSide = side
+  clearTimeout(timeoutHandle);
+  timeoutHandle = setTimeout(function(){ mdp.scrollingSide = null; }, 512);
+  if(side === 'left') {
+    editor.session.setScrollTop(scrollTop);
+  } else if (side === 'right') {
+    $('.ui-layout-east').animate({ scrollTop: scrollTop }, 64);
+  } else { // impossible
+    return;
+  }
+}
+function scrollLeft(scrollTop){ scrollSide(scrollTop, 'left'); }
+function scrollRight(scrollTop){ scrollSide(scrollTop, 'right'); }
+
+
+
+
+
+function get_preview_scroll() {
+  var scroll = $('.ui-layout-east').scrollTop();
+  var lastMarker = false;
+  var nextMarker = false;
+  var line_markers = $('article#preview > [data-source-line]');
+  for(var i = 0; i < line_markers.length; i++) {
+    if(line_markers[i].offsetTop < scroll) {
+      lastMarker = i;
+    } else {
+      nextMarker = i;
+      break;
+    }
+  }
+  var lastLine = 0;
+  var nextLine = $('article#preview').outerHeight() - $('.ui-layout-east').height(); // 这是总共可以scroll的最大幅度
+  if(lastMarker !== false) {
+    lastLine = line_markers[lastMarker].offsetTop;
+  }
+  if(nextMarker !== false) {
+    nextLine = line_markers[nextMarker].offsetTop;
+  }
+  var percentage = 0;
+  if(nextLine !== lastLine) {
+    percentage = (scroll - lastLine) / (nextLine - lastLine);
+  }
+  return { lastMarker: lastMarker, nextMarker: nextMarker, percentage: percentage }; // 返回的是前后两个marker的编号，以及当前位置在前后两个marker之间所处的百分比
+}
+
+function set_editor_scroll(preview_scroll) {
+  var line_markers = $('article#preview > [data-source-line]');
+  var lines = []; // 逻辑行
+  line_markers.each(function() {
+    lines.push($(this).data('source-line'));
+  });
+  var pLines = []; // 物理行
+  var pLine = 0;
+  for(var i = 0; i < lines[lines.length - 1]; i++) {
+    if($.inArray(i + 1, lines) !== -1) {
+      pLines.push(pLine);
+    }
+    pLine += editor.session.getRowLength(i) // 因为有wrap，所以行高未必是1
+  }
+  var lastLine = 0;
+  var nextLine = editor.session.getScreenLength() - 1; // 最后一个物理行的顶部
+  if(preview_scroll.lastMarker !== false) {
+    lastLine = pLines[preview_scroll.lastMarker]
+  }
+  if(preview_scroll.nextMarker !== false) {
+    nextLine = pLines[preview_scroll.nextMarker]
+  }
+  var scrollTop = ((nextLine - lastLine) * preview_scroll.percentage + lastLine) * editor.renderer.lineHeight;
+  // editor.session.setScrollTop(scrollTop);
+  scrollLeft(scrollTop);
+}
+
+var sync_editor = _.debounce(function() { // sync left with right
+  set_editor_scroll(get_preview_scroll());
+}, 64, false);
+
+
+
+
 
 var lazy_change = _.debounce(function() { // user changes markdown text
   mdc.init(editor.session.getValue(), false); // realtime preview
@@ -162,6 +253,10 @@ $(function() {
 
   $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px'); // scroll past end
 
+  $('.ui-layout-east').scroll(function() { // left scroll with right
+    sync_editor();
+  });
+
   // editor on the left
   editor = ace.edit("editor");
   editor.session.setUseWorker(false);
@@ -174,7 +269,7 @@ $(function() {
   editor.session.setFoldStyle('manual');
   editor.focus();
   editor.session.on('changeScrollTop', function(scroll) {
-    sync_preview();
+    sync_preview(); // right scroll with left
   });
 
   // load preferences
