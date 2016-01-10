@@ -118,23 +118,25 @@ var sync_preview = _.debounce(function() { // sync right with left
 
 mdp.scrollingSide = null;
 var timeoutHandle = null;
-function scrollSide(scrollTop, side) {
+function scrollSide(side, howToScroll) {
   if(mdp.scrollingSide != null && mdp.scrollingSide != side) {
     return; // the other side hasn't finished scrolling
   }
   mdp.scrollingSide = side
   clearTimeout(timeoutHandle);
   timeoutHandle = setTimeout(function(){ mdp.scrollingSide = null; }, 512);
-  if(side === 'left') {
-    editor.session.setScrollTop(scrollTop);
-  } else if (side === 'right') {
-    $('.ui-layout-east').animate({ scrollTop: scrollTop }, 64);
-  } else { // impossible
-    return;
-  }
+  howToScroll();
 }
-function scrollLeft(scrollTop){ scrollSide(scrollTop, 'left'); }
-function scrollRight(scrollTop){ scrollSide(scrollTop, 'right'); }
+function scrollLeft(scrollTop) {
+  scrollSide('left', function(){
+    editor.session.setScrollTop(scrollTop); // todo: add animation, setTimeout and steps
+  });
+}
+function scrollRight(scrollTop) {
+  scrollSide('right', function(){
+    $('.ui-layout-east').animate({ scrollTop: scrollTop }, 64);
+  });
+}
 
 
 
