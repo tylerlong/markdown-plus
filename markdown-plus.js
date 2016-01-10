@@ -1,34 +1,34 @@
 mdp = {
-    preferencesChanged: function(){},
-    loadPreferences: function() {
-        var key_binding = Cookies.get('key-binding');
-        if(key_binding == undefined) {
-            key_binding = 'default';
-        }
-        $('select#key-binding').val(key_binding);
-        if(key_binding == 'default') {
-            editor.setKeyboardHandler(null);
-        } else {
-            editor.setKeyboardHandler(ace.require("ace/keyboard/" + key_binding).handler);
-        }
-
-        var font_size = Cookies.get('editor-font-size');
-        if(font_size == undefined) {
-            font_size = '14';
-        }
-        $('select#editor-font-size').val(font_size);
-        editor.setFontSize(font_size + 'px');
-
-        var editor_theme = Cookies.get('editor-theme');
-        if(editor_theme == undefined) {
-            editor_theme = 'tomorrow_night_eighties';
-        }
-        $('select#editor-theme').val(editor_theme);
-        editor.setTheme('ace/theme/' + editor_theme);
-
-        var mdcPreferences = mdc.loadPreferences();
-        $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format']);
+  preferencesChanged: function(){},
+  loadPreferences: function() {
+    var key_binding = Cookies.get('key-binding');
+    if(key_binding == undefined) {
+      key_binding = 'default';
     }
+    $('select#key-binding').val(key_binding);
+    if(key_binding == 'default') {
+      editor.setKeyboardHandler(null);
+    } else {
+      editor.setKeyboardHandler(ace.require("ace/keyboard/" + key_binding).handler);
+    }
+
+    var font_size = Cookies.get('editor-font-size');
+    if(font_size == undefined) {
+      font_size = '14';
+    }
+    $('select#editor-font-size').val(font_size);
+    editor.setFontSize(font_size + 'px');
+
+    var editor_theme = Cookies.get('editor-theme');
+    if(editor_theme == undefined) {
+      editor_theme = 'tomorrow_night_eighties';
+    }
+    $('select#editor-theme').val(editor_theme);
+    editor.setTheme('ace/theme/' + editor_theme);
+
+    var mdcPreferences = mdc.loadPreferences();
+    $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format']);
+  }
 };
 
 function prompt_for_a_value(key, action) {
