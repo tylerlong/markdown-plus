@@ -1,3 +1,4 @@
+mdc.map = true;
 mdp = {
   preferencesChanged: function(){},
   loadPreferences: function() {
