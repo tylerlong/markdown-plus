@@ -39,6 +39,8 @@ def js():
         local('echo "\n" >> dist/markdown-plus.js')
         local('curl https://cdn.jsdelivr.net/ace/1.2.2/noconflict/theme-{0}.js >> dist/markdown-plus.js'.format(theme))
     local('echo "\n" >> dist/markdown-plus.js')
+    local('cat sync_scroll.js >> dist/markdown-plus.js')
+    local('echo "\n" >> dist/markdown-plus.js')
     local('cat markdown-plus.js >> dist/markdown-plus.js')
     local('uglifyjs dist/markdown-plus.js -cmo dist/markdown-plus.min.js')
     local('rm dist/markdown-plus.js')
