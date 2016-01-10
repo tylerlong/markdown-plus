@@ -55,7 +55,7 @@ $(document).on('closed', '.remodal', function(e) {
 });
 
 function get_editor_scroll() {
-  var line_markers = $('.ui-layout-east article > [data-source-line]');
+  var line_markers = $('article#preview > [data-source-line]');
   var lines = []; // logical line
   line_markers.each(function() {
     lines.push($(this).data('source-line'));
@@ -97,12 +97,12 @@ function get_editor_scroll() {
 
 function set_preview_scroll(editor_scroll) {
   var lastPosition = 0;
-  var nextPosition = $('.ui-layout-east article').outerHeight() - $('.ui-layout-east').height(); // maximum scroll
+  var nextPosition = $('article#preview').outerHeight() - $('.ui-layout-east').height(); // maximum scroll
   if(editor_scroll.lastMarker !== undefined) { // no marker at very start
-    lastPosition = $('.ui-layout-east article').find('>[data-source-line="' + editor_scroll.lastMarker + '"]').get(0).offsetTop;
+    lastPosition = $('article#preview').find('>[data-source-line="' + editor_scroll.lastMarker + '"]').get(0).offsetTop;
   }
   if(editor_scroll.nextMarker !== undefined) { // no marker at very end
-    nextPosition = $('.ui-layout-east article').find('>[data-source-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
+    nextPosition = $('article#preview').find('>[data-source-line="' + editor_scroll.nextMarker + '"]').get(0).offsetTop;
   }
   scrollPosition = lastPosition + (nextPosition - lastPosition) * editor_scroll.percentage; // right scroll according to left percentage
   $('.ui-layout-east').animate({scrollTop: scrollPosition}, 64); // some animations
@@ -114,7 +114,7 @@ var sync_preview = _.debounce(function() { // sync right with left
 
 var lazy_change = _.debounce(function() { // user changes markdown text
   mdc.init(editor.session.getValue(), false); // realtime preview
-}, 512, false);
+}, 256, false);
 
 var Vim = ace.require("ace/keyboard/vim").CodeMirror.Vim // vim commands
 Vim.defineEx("write", "w", function(cm, input) {
@@ -149,7 +149,7 @@ $(function() {
       togglerTip_open: 'Hide Preview',
       togglerTip_closed: 'Show Preview',
       onresize: function() {
-        $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px'); // scroll past end
+        $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px'); // scroll past end
       }
     },
     center: {
@@ -160,7 +160,7 @@ $(function() {
     }
   });
 
-  $('.markdown-body').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('.markdown-body').css('line-height')) + 1) + 'px'); // scroll past end
+  $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px'); // scroll past end
 
   // editor on the left
   editor = ace.edit("editor");
