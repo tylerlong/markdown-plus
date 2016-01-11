@@ -10,19 +10,24 @@ function scrollSide(side, howToScroll) {
   howToScroll();
 }
 
+function scrollEditor(scrollTop, when) {
+  setTimeout(function() {
+    editor.session.setScrollTop(scrollTop);
+  }, when);
+}
 function scrollLeft(scrollTop) {
-  scrollSide('left', function(){
+  scrollSide('left', function() {
     var current = editor.session.getScrollTop();
     var step = (scrollTop - current) / 8;
-    for(var i = 1; i < 8; i++) {
-      setTimeout(function() { editor.session.setScrollTop(current + step * i); }, 128 / 8 * i);
+    for(var i = 1; i < 8; i++) { // to create some animation
+      scrollEditor(current + step * i, 128 / 8 * i);
     }
-    setTimeout(function() { editor.session.setScrollTop(scrollTop); }, 128);
+    scrollEditor(scrollTop, 128);
   });
 }
 
 function scrollRight(scrollTop) {
-  scrollSide('right', function(){
+  scrollSide('right', function() {
     $('.ui-layout-east').animate({ scrollTop: scrollTop }, 128);
   });
 }
