@@ -18,7 +18,7 @@ Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides 
 
 # Table of Contents
 
-@[toc]
+[toc]
 
 Note: Only `h2` and `h3` are shown in toc.
 
