@@ -2,6 +2,28 @@ mdc.map = true;
 mdp = {
   preferencesChanged: function(){},
   loadPreferences: function() {
+    var show_toolbar = Cookies.get('show-toolbar');
+    if(show_toolbar == undefined) {
+      show_toolbar = 'yes';
+    }
+    $('select#show-toolbar').val(show_toolbar);
+    if(show_toolbar === 'yes') {
+      layout.open('north');
+    } else {
+      layout.close('north');
+    }
+
+    var show_preview = Cookies.get('show-preview');
+    if(show_preview == undefined) {
+      show_preview = 'yes';
+    }
+    $('select#show-preview').val(show_preview);
+    if(show_preview === 'yes') {
+      layout.open('east');
+    } else {
+      layout.close('east');
+    }
+
     var key_binding = Cookies.get('key-binding');
     if(key_binding == undefined) {
       key_binding = 'default';
@@ -144,16 +166,10 @@ $(function() {
   mdp.loadPreferences();
 
   // change preferences
-  $.each(['key-binding', 'editor-font-size', 'editor-theme'], function(index, key) {
-      $('select#' + key).change(function() {
-          Cookies.set(key, $(this).val(), { expires: 10000 });
-          mdp.loadPreferences();
-      });
-  });
-  $('#gantt-axis-format').keyup(_.debounce(function() {
-      Cookies.set('gantt-axis-format', $('#gantt-axis-format').val(), { expires: 10000 });
-  }, 500));
   $(document).on('confirmation', '#preferences-modal', function() {
+    ['show-toolbar', 'show-preview', 'key-binding', 'editor-font-size', 'editor-theme'].forEach(function(key) {
+      Cookies.set(key, $('select#' + key).val(), { expires: 10000 });
+    });
     var gantt_axis_format = $('#gantt-axis-format').val().trim();
     if(gantt_axis_format == '') {
       gantt_axis_format = '%-m/%-d';
