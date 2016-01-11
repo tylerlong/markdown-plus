@@ -55,6 +55,9 @@ $(document).on('closed', '.remodal', function(e) {
 });
 
 var lazy_change = _.debounce(function() { // user changes markdown text
+  if(layout.state.east.isClosed) {
+    return; // no need to update preview if panel closed
+  }
   mdc.init(editor.session.getValue(), false); // realtime preview
 }, 256, false);
 
@@ -74,8 +77,9 @@ Vim.defineEx("wq", "wq", function(cm, input) {
 });
 
 var editor;
+var layout;
 $(function() {
-  $('body').layout({ // create 3-panels layout
+  layout = $('body').layout({ // create 3-panels layout
     resizerDblClickToggle: false,
     resizable: false,
     slidable: false,
@@ -84,7 +88,13 @@ $(function() {
     north: {
       size: 'auto',
       togglerTip_open: 'Hide Toolbar',
-      togglerTip_closed: 'Show Toolbar'
+      togglerTip_closed: 'Show Toolbar',
+      onopen: function() {
+        editor.focus();
+      },
+      onclose: function() {
+        editor.focus();
+      }
     },
     east: {
       size: '50%',
@@ -92,6 +102,13 @@ $(function() {
       togglerTip_closed: 'Show Preview',
       onresize: function() {
         $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px'); // scroll past end
+      },
+      onopen: function() {
+        lazy_change();
+        editor.focus();
+      },
+      onclose: function() {
+        editor.focus();
       }
     },
     center: {
@@ -311,5 +328,10 @@ $(function() {
     }
     editor.insert('\n```\n' + text + '\n```\n');
     editor.focus();
+  });
+
+  $('.toggle-icon').click(function() {
+    var direction = $(this).data('direction');
+    layout.toggle(direction);
   });
 });
