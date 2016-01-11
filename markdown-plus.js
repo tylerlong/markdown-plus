@@ -203,6 +203,13 @@ $(function() {
       exec: function (editor) {
         $('i.fa-cog').click(); // show M+ preferences modal
       }
+    },
+    {
+      name: "bold",
+      bindKey: { win: "Ctrl-B", mac: "Command-B" },
+      exec: function (editor) {
+        $('i.fa-bold').click();
+      }
     }
   ]);
 
