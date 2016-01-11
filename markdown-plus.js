@@ -81,7 +81,7 @@ var lazy_change = _.debounce(function() { // user changes markdown text
     return; // no need to update preview if panel closed
   }
   mdc.init(editor.session.getValue(), false); // realtime preview
-}, 256, false);
+}, 512, false);
 
 var Vim = ace.require("ace/keyboard/vim").CodeMirror.Vim // vim commands
 Vim.defineEx("write", "w", function(cm, input) {

@@ -175,6 +175,8 @@ graph TD
 
 [Flowchart Syntax](http://knsv.github.io/mermaid/#flowcharts-basic-syntax)
 
+==Note==: Adding many flowcharts will slow down the editor.
+
 
 ## Sequence diagram
 
@@ -187,6 +189,8 @@ sequenceDiagram
 ```
 
 [Sequence Diagram Syntax](http://knsv.github.io/mermaid/#sequence-diagrams)
+
+==Note==: Adding many sequence diagrams will slow down the editor.
 
 
 ## Gantt diagram
@@ -222,6 +226,8 @@ gantt
 ```
 
 [Gantt Diagram Syntax](http://knsv.github.io/mermaid/#gant-diagrams)
+
+==Note==: Adding many gantt diagrams will slow down the editor.
 
 
 ## Custom Container
