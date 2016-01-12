@@ -210,6 +210,20 @@ $(function() {
       exec: function (editor) {
         $('i.fa-bold').click();
       }
+    },
+    {
+      name: "italic",
+      bindKey: { win: "Ctrl-I", mac: "Command-I" },
+      exec: function (editor) {
+        $('i.fa-italic').click();
+      }
+    },
+    {
+      name: "underline",
+      bindKey: { win: "Ctrl-U", mac: "Command-U" },
+      exec: function (editor) {
+        $('i.fa-underline').click();
+      }
     }
   ]);
 
