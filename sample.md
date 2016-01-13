@@ -239,14 +239,12 @@ Adding many gantt diagrams will slow down the editor.
 
 Markup is similar to fenced code blocks. Valid container types are `success`, `info`, `warning` and `danger`.
 
-::: success
-Congratulations!
-
-You have done something successfully!
+::: info
+You have new mail.
 :::
 
-::: warning
-Your card will be expired in 30 days, please renew as soon as possible.
+::: danger
+Staying up all night is bad for health.
 :::
 
 

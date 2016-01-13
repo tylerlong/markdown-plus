@@ -48,6 +48,8 @@ Available for purchase here: [https://gum.co/mdp-win](https://gum.co/mdp-win).
 
 ## Setup & Run
 
+Optionally :star: this project, then:
+
 ```shell
 fork it
 git clone to your local
