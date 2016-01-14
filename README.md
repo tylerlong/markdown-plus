@@ -6,7 +6,8 @@ Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides 
 
 ### Online demo: [mdp.tylingsoft.com](http://mdp.tylingsoft.com)
 
-### Screenshots: [#screenshots](#screenshots)
+
+![Markdown Plus](screenshot.png)
 
 
 ## Apps
@@ -29,13 +30,15 @@ Available for purchase here: [https://gum.co/mdp-win](https://gum.co/mdp-win).
 
 ## Features
 
-- ***Simple, only a few hundred lines of code***
 - GitHub flavored markdown
 - Live preview with scroll sync
 - Source code highlight
 - Footnote
 - Table of Contents
-- Task lists
+- Task list
+- Abbreviation
+- Custom container
+- Definition list
 - Emoji
 - Font Awesome icon
 - Ionicons icon
@@ -43,7 +46,8 @@ Available for purchase here: [https://gum.co/mdp-win](https://gum.co/mdp-win).
 - Flowchart
 - Sequence diagram
 - Gantt diagram
-- Vim mode & Emacs mode
+- Vim mode
+- Emacs mode
 
 
 ## Setup & Run
@@ -75,25 +79,3 @@ Please take `index.html` as an example.
 MIT
 
 Copyright © 2015 [Tylingsoft](https://tylingsoft.com/)
-
-
----
-
----
-
----
-
-
-# Screenshots
-
-![Markdown Plus](screenshots/1.png)
-
-![Markdown Plus](screenshots/2.png)
-
-![Markdown Plus](screenshots/3.png)
-
-![Markdown Plus](screenshots/4.png)
-
-![Markdown Plus](screenshots/5.png)
-
-![Markdown Plus](screenshots/6.png)
