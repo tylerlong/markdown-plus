@@ -172,7 +172,7 @@ $(function() {
     });
     var gantt_axis_format = $('#gantt-axis-format').val().trim();
     if(gantt_axis_format == '') {
-      gantt_axis_format = '%-m/%-d';
+      gantt_axis_format = '%Y-%m-%d';
     }
     Cookies.set('gantt-axis-format', gantt_axis_format, { expires: 10000 });
     mdp.loadPreferences();
@@ -326,7 +326,7 @@ $(function() {
   });
 
   // emoji icon
-  prompt_for_a_value('emoji', function(value){
+  prompt_for_a_value('emoji', function(value) {
     if(/^:.+:$/.test(value)) {
       value = /^:(.+):$/.exec(value)[1];
     }
@@ -334,7 +334,7 @@ $(function() {
   });
 
   // Font Awesome icon
-  prompt_for_a_value('fa', function(value){
+  prompt_for_a_value('fa', function(value) {
     if(value.substring(0, 3) == 'fa-') {
       value = value.substring(3);
     }
@@ -342,14 +342,14 @@ $(function() {
   });
 
   // Ionicons icon
-  prompt_for_a_value('ion', function(value){
+  prompt_for_a_value('ion', function(value) {
     if(value.substring(0, 4) == 'ion-') {
       value = value.substring(4);
     }
     editor.insert(':ion-' + value + ':');
   });
 
-  $('#math-icon').click(function(){
+  $('#math-icon').click(function() {
     var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
       text = $(this).data('sample');;
@@ -358,7 +358,7 @@ $(function() {
     editor.focus();
   });
 
-  $('.mermaid-icon').click(function(){
+  $('.mermaid-icon').click(function() {
     var text = editor.session.getTextRange(editor.selection.getRange()).trim();
     if(text.length == 0) {
       text = $(this).data('sample');

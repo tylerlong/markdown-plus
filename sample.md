@@ -1,7 +1,10 @@
 # Markdown Plus
 
-![Markdown Plus](http://mdp.tylingsoft.com/icon.png)  
-Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor. Besides CommonMark, GitHub flavored markdown, it also supports toc, footnote, task list, emoji, Font Awesome, Ionicons, mathematical formula, flowchart, sequence diagram, gantt diagram, Vim mode and Emacs mode.
+![Markdown Plus](http://mdp.tylingsoft.com/icon.png)
+Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor.
+Besides CommonMark, GitHub flavored markdown, it also supports toc, footnote,
+task list, emoji, Font Awesome, Ionicons, mathematical formula, flowchart,
+sequence diagram, gantt diagram, Vim mode and Emacs mode.
 
 
 #### Buy Mac App: :fa-apple: [Mac App Store](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8)
@@ -150,7 +153,7 @@ Math block:
 
 \sum_{m=1}^\infty\sum_{n=1}^\infty\frac{m^2\,n}
  {3^m\left(m\,3^n+n\,3^m\right)}
- 
+
 \phi_n(\kappa) =
  \frac{1}{4\pi^2\kappa^2} \int_0^\infty
  \frac{\sin(\kappa R)}{\kappa R}

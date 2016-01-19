@@ -1,0 +1,23 @@
+{
+  "name": "markdown-plus",
+  "version": "1.9.0",
+  "description": "Markdown editor with extra features",
+  "main": "index.js",
+  "dependencies": {
+    "markdown-core": "^0.4.9"
+  },
+  "keywords": [
+    "markdown",
+    "editor"
+  ],
+  "author": "Tyler Long",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylingsoft/markdown-plus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tylingsoft/markdown-plus/issues"
+  },
+  "homepage": "https://github.com/tylingsoft/markdown-plus#readme"
+}
