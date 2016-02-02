@@ -4,7 +4,7 @@
   "description": "Markdown editor with extra features",
   "main": "index.js",
   "dependencies": {
-    "markdown-core": "^0.4.9"
+    "markdown-core": "^0.5.1"
   },
   "keywords": [
     "markdown",

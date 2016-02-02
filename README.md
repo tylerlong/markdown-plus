@@ -66,7 +66,7 @@ open index.html
 
 ## How to use Markdown Plus in your projects
 
-Please take `index.html` as an example.
+Please take `index.html` as example.
 
 
 ## Thanks
