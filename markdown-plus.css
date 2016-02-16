@@ -88,6 +88,11 @@ i.dividor { /* dividor on toolbar */
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
+#css-textarea {
+  width: 256px;
+  height: 64px;
+}
+
 
 /*************************/
 /* below is for printing */
