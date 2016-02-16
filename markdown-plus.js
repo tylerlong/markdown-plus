@@ -51,6 +51,12 @@ mdp = {
 
     var mdcPreferences = mdc.loadPreferences();
     $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format']);
+
+    var custom_css_files = Cookies.get('custom-css-files');
+    if(custom_css_files == undefined) {
+      custom_css_files = '';
+    }
+    $('textarea#custom-css-files').val(custom_css_files);
   }
 };
 
@@ -175,6 +181,8 @@ $(function() {
       gantt_axis_format = '%Y-%m-%d';
     }
     Cookies.set('gantt-axis-format', gantt_axis_format, { expires: 10000 });
+    var custom_css_files = $('#custom-css-files').val().trim();
+    Cookies.set('custom-css-files', custom_css_files, { expires: 10000 });
     mdp.loadPreferences();
     lazy_change(); // trigger re-render
     mdp.preferencesChanged();
