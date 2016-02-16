@@ -119,11 +119,10 @@ $(function() {
     resizerDblClickToggle: false,
     resizable: false,
     slidable: false,
-    togglerLength_open: '100%',
-    togglerLength_closed: '100%',
     north: {
+      togglerLength_open: 0,
+      togglerLength_closed: 64,
       size: 'auto',
-      togglerTip_open: 'Hide Toolbar',
       togglerTip_closed: 'Show Toolbar',
       onopen: function() {
         editor.focus();
@@ -133,9 +132,11 @@ $(function() {
       }
     },
     east: {
+      spacing_open: 0,
+      spacing_closed: 0,
+      togglerLength_open: 0,
+      togglerLength_closed: 0,
       size: '50%',
-      togglerTip_open: 'Hide Preview',
-      togglerTip_closed: 'Show Preview',
       onresize: function() {
         $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px'); // scroll past end
       },
