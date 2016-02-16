@@ -57,6 +57,14 @@ mdp = {
       custom_css_files = '';
     }
     $('textarea#custom-css-files').val(custom_css_files);
+    $('link[title="customstyle"]').attr('disabled', 'disabled');
+    $('link[title="customstyle"]').remove();
+    custom_css_files.split('\n').forEach(function(cssfile) {
+      cssfile = cssfile.trim();
+      if(cssfile.length > 0) {
+        $('head').append('<link rel="stylesheet" title="customstyle" href="' + cssfile + '"/>');
+      }
+    });
   }
 };
 
