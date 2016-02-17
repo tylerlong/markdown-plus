@@ -19,9 +19,9 @@ mdp = {
     }
     $('select#show-preview').val(show_preview);
     if(show_preview === 'yes') {
-      layout.open('east');
+      layout.sizePane('east', '50%');
     } else {
-      layout.close('east');
+      layout.sizePane('east', 1);
     }
 
     var key_binding = Cookies.get('key-binding');
@@ -91,8 +91,8 @@ $(document).on('closed', '.remodal', function(e) {
 });
 
 var lazy_change = _.debounce(function() { // user changes markdown text
-  if(layout.state.east.isClosed) {
-    return; // no need to update preview if panel closed
+  if(layout.panes.east.outerWidth() < 8) { // preview is hidden
+    return; // no need to update preview if it's hidden
   }
   mdc.init(editor.session.getValue(), false); // realtime preview
 }, 512, false);
@@ -123,8 +123,8 @@ $(function() {
       togglerLength_open: 128,
       togglerLength_closed: 128,
       size: 'auto',
-      togglerTip_open: 'Hide Toolbar',
-      togglerTip_closed: 'Show Toolbar',
+      togglerTip_open: 'Hide toolbar',
+      togglerTip_closed: 'Show toolbar',
       onopen: function() {
         editor.focus();
       },
@@ -139,14 +139,9 @@ $(function() {
       togglerLength_closed: 0,
       size: '50%',
       onresize: function() {
-        $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px'); // scroll past end
-      },
-      onopen: function() {
         lazy_change();
         editor.focus();
-      },
-      onclose: function() {
-        editor.focus();
+        $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px'); // scroll past end
       }
     },
     center: {
@@ -385,8 +380,23 @@ $(function() {
     editor.focus();
   });
 
-  $('.toggle-icon').click(function() {
-    var direction = $(this).data('direction');
-    layout.toggle(direction);
+  $('#toggle-toolbar').click(function() {
+    layout.toggle('north');
+  });
+
+  $('#toggle-editor').click(function() {
+    if (layout.panes.center.outerWidth() < 8) { // editor is hidden
+      layout.sizePane('east', '50%');
+    } else {
+      layout.sizePane('east', '100%');
+    }
+  });
+
+  $('#toggle-preview').click(function() {
+    if (layout.panes.east.outerWidth() < 8) { // preview is hidden
+      layout.sizePane('east', '50%');
+    } else {
+      layout.sizePane('east', 1);
+    }
   });
 });
