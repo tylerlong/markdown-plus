@@ -85,9 +85,13 @@ i.dividor { /* dividor on toolbar */
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-textarea#custom-css-files {
+textarea#custom-css-files, textarea#custom-js-files {
   width: 256px;
   height: 64px;
+}
+
+span.hint {
+  font-size: 80%;
 }
 
 

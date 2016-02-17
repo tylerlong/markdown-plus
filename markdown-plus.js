@@ -67,6 +67,12 @@ mdp = {
       custom_css_files = '';
     }
     $('textarea#custom-css-files').val(custom_css_files);
+
+    var custom_js_files = Cookies.get('custom-js-files');
+    if(custom_js_files == undefined) {
+      custom_js_files = '';
+    }
+    $('textarea#custom-js-files').val(custom_js_files);
   }
 };
 
@@ -126,6 +132,18 @@ $(function() {
     cssfile = cssfile.trim();
     if(cssfile.length > 0) {
       $('head').append('<link rel="stylesheet" href="' + cssfile + '"/>');
+    }
+  });
+
+  // load plugins
+  var custom_js_files = Cookies.get('custom-js-files');
+  if(custom_js_files == undefined) {
+    custom_js_files = '';
+  }
+  custom_js_files.split('\n').forEach(function(jsfile) {
+    jsfile = jsfile.trim();
+    if(jsfile.length > 0) {
+      $('head').append('<script src="' + jsfile + '"></script>');
     }
   });
 
@@ -200,6 +218,8 @@ $(function() {
     Cookies.set('gantt-axis-format', gantt_axis_format, { expires: 10000 });
     var custom_css_files = $('#custom-css-files').val().trim();
     Cookies.set('custom-css-files', custom_css_files, { expires: 10000 });
+    var custom_js_files = $('#custom-js-files').val().trim();
+    Cookies.set('custom-js-files', custom_js_files, { expires: 10000 });
     mdp.loadPreferences();
     lazy_change(); // trigger re-render
     mdp.preferencesChanged();
