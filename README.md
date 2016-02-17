@@ -1,10 +1,6 @@
 # Markdown Plus
 
-![Markdown Plus](icon.png)
-Markdown Plus ("M+" or "mdp" for short) is a versatile markdown editor.
-Besides CommonMark, GitHub flavored markdown, it also supports toc, footnote,
-task list, emoji, Font Awesome, Ionicons, mathematical formula, flowchart,
-sequence diagram, gantt diagram, Vim mode and Emacs mode.
+Markdown Plus ("M+" or "mdp" for short) is a markdown editor with extra features.
 
 
 ### Online demo: [mdp.tylingsoft.com](http://mdp.tylingsoft.com)
@@ -18,17 +14,15 @@ sequence diagram, gantt diagram, Vim mode and Emacs mode.
 We currently ***don't*** accept donations.
 The best way to support our development is to buy our apps.
 
-### Mac app
+### Markdown Plus
 
-Compatibility: OS X 10.9 or later.
+<a href="http://tylingsoft.com/markdown-plus/"><img src="http://tylingsoft.com/img/mdp/icon.png" height="64px"/></a>
+[Markdown Plus](http://tylingsoft.com/markdown-plus/) is available for both OS X and Windows. You get every feature of the web version plus lots of advanced features.
 
-Available on the [Mac App Store](https://itunes.apple.com/us/app/markdown-plus/id972585766?mt=8).
+### Markdown Mate
 
-### Windows app
-
-Compatibility: Windows 7 or later, .Net Framework 4.5 or later.
-
-Available for purchase here: [https://gum.co/mdp-win](https://gum.co/mdp-win).
+<a href="http://tylingsoft.com/markdown-mate/"><img src="http://tylingsoft.com/img/mdm/icon.png" height="64px"/></a>
+[Markdown Mate](http://tylingsoft.com/markdown-mate/) is a markdown previewer, it's not going to replace your favorite editor but handles everything about markdown.
 
 
 ## Features
@@ -51,6 +45,8 @@ Available for purchase here: [https://gum.co/mdp-win](https://gum.co/mdp-win).
 - Gantt diagram
 - Vim mode
 - Emacs mode
+- [Themes](https://github.com/tylingsoft/markdown-plus-themes)
+- [Plugins](https://github.com/tylingsoft/markdown-plus-plugins)
 
 
 ## Setup & Run
@@ -81,4 +77,4 @@ Please take `index.html` as example.
 
 MIT
 
-Copyright © 2015 [Tylingsoft](https://tylingsoft.com/)
+Copyright © 2016 [Tylingsoft](http://tylingsoft.com/)
