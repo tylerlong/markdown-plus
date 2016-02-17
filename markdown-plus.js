@@ -67,14 +67,6 @@ mdp = {
       custom_css_files = '';
     }
     $('textarea#custom-css-files').val(custom_css_files);
-    $('link[title="customstyle"]').attr('disabled', 'disabled');
-    $('link[title="customstyle"]').remove();
-    custom_css_files.split('\n').forEach(function(cssfile) {
-      cssfile = cssfile.trim();
-      if(cssfile.length > 0) {
-        $('head').append('<link rel="stylesheet" title="customstyle" href="' + cssfile + '"/>');
-      }
-    });
   }
 };
 
@@ -125,6 +117,18 @@ Vim.defineEx("wq", "wq", function(cm, input) {
 var editor;
 var layout;
 $(function() {
+  // load themes
+  var custom_css_files = Cookies.get('custom-css-files');
+  if(custom_css_files == undefined) {
+    custom_css_files = '';
+  }
+  custom_css_files.split('\n').forEach(function(cssfile) {
+    cssfile = cssfile.trim();
+    if(cssfile.length > 0) {
+      $('head').append('<link rel="stylesheet" href="' + cssfile + '"/>');
+    }
+  });
+
   layout = $('body').layout({ // create 3-panels layout
     resizerDblClickToggle: false,
     resizable: false,
