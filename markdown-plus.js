@@ -1,4 +1,21 @@
 mdc.map = true;
+
+function get_preview_width() {
+  var preview_width = Cookies.get('editor-versus-preview');
+  if(preview_width == undefined) {
+    preview_width = '50%';
+  }
+  return preview_width;
+}
+
+function get_normal_preview_width() { // neither editor or preview is hidden
+  var preview_width = get_preview_width();
+  if(preview_width == '1' || preview_width == '100%') {
+    preview_width = '50%';
+  }
+  return preview_width;
+}
+
 mdp = {
   preferencesChanged: function(){},
   loadPreferences: function() {
@@ -12,6 +29,10 @@ mdp = {
     } else {
       layout.close('north');
     }
+
+    var preview_width = get_preview_width();
+    $('select#editor-versus-preview').val(preview_width);
+    layout.sizePane('east', preview_width);
 
     var key_binding = Cookies.get('key-binding');
     if(key_binding == undefined) {
@@ -126,7 +147,7 @@ $(function() {
       spacing_closed: 0,
       togglerLength_open: 0,
       togglerLength_closed: 0,
-      size: '50%',
+      size: get_preview_width(),
       onresize: function() {
         lazy_change();
         editor.focus();
@@ -167,7 +188,7 @@ $(function() {
 
   // change preferences
   $(document).on('confirmation', '#preferences-modal', function() {
-    ['show-toolbar', 'key-binding', 'editor-font-size', 'editor-theme'].forEach(function(key) {
+    ['show-toolbar', 'editor-versus-preview', 'key-binding', 'editor-font-size', 'editor-theme'].forEach(function(key) {
       Cookies.set(key, $('select#' + key).val(), { expires: 10000 });
     });
     var gantt_axis_format = $('#gantt-axis-format').val().trim();
@@ -375,7 +396,7 @@ $(function() {
 
   $('#toggle-editor').click(function() {
     if (layout.panes.center.outerWidth() < 8) { // editor is hidden
-      layout.sizePane('east', '50%');
+      layout.sizePane('east', get_normal_preview_width());
     } else {
       layout.sizePane('east', '100%');
     }
@@ -383,7 +404,7 @@ $(function() {
 
   $('#toggle-preview').click(function() {
     if (layout.panes.east.outerWidth() < 8) { // preview is hidden
-      layout.sizePane('east', '50%');
+      layout.sizePane('east', get_normal_preview_width());
     } else {
       layout.sizePane('east', 1);
     }
