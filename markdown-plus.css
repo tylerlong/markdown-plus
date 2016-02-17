@@ -10,19 +10,16 @@ body {
   margin: 0;
 }
 .ui-layout-north { /* toolbar background color */
-  background-color: #eeeeee;
+  background-color: #eee;
 }
-.ui-layout-toggler {
-  background-color: #cccccc;
-}
-.ui-layout-toggler:hover {
-  background-color: #add8e6; /* light blue */
+.ui-layout-resizer-north-hover {
+  background: #ddd !important; /* same color as non-hover */
 }
 
 
 #toolbar {
   padding-left: 16px;
-  color: #666666;
+  color: #666;
 }
 #toolbar .fa {
   padding: 2px;
@@ -33,8 +30,8 @@ body {
   border: 1px solid transparent;
 }
 #toolbar .fa:hover, #toolbar .icon:hover {
-  background-color: #dddddd;
-  border-color: #cccccc;
+  background-color: #ddd;
+  border-color: #ccc;
   cursor: pointer;
 }
 
@@ -51,7 +48,7 @@ body {
 
 i.dividor { /* dividor on toolbar */
   font-style: normal;
-  color: #dddddd;
+  color: #ddd;
   margin: 0 6px;
 }
 
@@ -93,16 +90,13 @@ textarea#custom-css-files {
   height: 64px;
 }
 
-.ui-layout-resizer-hover {
-  background: #ddd !important;
-}
 
 /*************************/
 /* below is for printing */
 /*************************/
 
 @media print {
-  .ui-layout-pane-north, .ui-layout-pane-center .ui-layout-resizer, .ui-layout-toggler {
+  .ui-layout-pane-north, .ui-layout-pane-center, .ui-layout-resizer, .ui-layout-toggler {
     display: none !important;
   }
 

@@ -143,10 +143,8 @@ $(function() {
       }
     },
     east: {
-      spacing_open: 0,
-      spacing_closed: 0,
+      resizable: true,
       togglerLength_open: 0,
-      togglerLength_closed: 0,
       size: get_preview_width(),
       onresize: function() {
         lazy_change();
