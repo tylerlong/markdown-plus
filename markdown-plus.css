@@ -93,6 +93,9 @@ textarea#custom-css-files {
   height: 64px;
 }
 
+.ui-layout-resizer-hover {
+  background: #ddd !important;
+}
 
 /*************************/
 /* below is for printing */

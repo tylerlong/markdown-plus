@@ -120,9 +120,10 @@ $(function() {
     resizable: false,
     slidable: false,
     north: {
-      togglerLength_open: 0,
-      togglerLength_closed: 64,
+      togglerLength_open: 128,
+      togglerLength_closed: 128,
       size: 'auto',
+      togglerTip_open: 'Hide Toolbar',
       togglerTip_closed: 'Show Toolbar',
       onopen: function() {
         editor.focus();
