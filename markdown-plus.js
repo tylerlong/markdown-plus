@@ -13,17 +13,6 @@ mdp = {
       layout.close('north');
     }
 
-    var show_preview = Cookies.get('show-preview');
-    if(show_preview == undefined) {
-      show_preview = 'yes';
-    }
-    $('select#show-preview').val(show_preview);
-    if(show_preview === 'yes') {
-      layout.sizePane('east', '50%');
-    } else {
-      layout.sizePane('east', 1);
-    }
-
     var key_binding = Cookies.get('key-binding');
     if(key_binding == undefined) {
       key_binding = 'default';
@@ -178,7 +167,7 @@ $(function() {
 
   // change preferences
   $(document).on('confirmation', '#preferences-modal', function() {
-    ['show-toolbar', 'show-preview', 'key-binding', 'editor-font-size', 'editor-theme'].forEach(function(key) {
+    ['show-toolbar', 'key-binding', 'editor-font-size', 'editor-theme'].forEach(function(key) {
       Cookies.set(key, $('select#' + key).val(), { expires: 10000 });
     });
     var gantt_axis_format = $('#gantt-axis-format').val().trim();
