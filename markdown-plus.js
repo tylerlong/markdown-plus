@@ -120,9 +120,18 @@ Vim.defineEx("wq", "wq", function(cm, input) {
   console.log('write then quit');
 });
 
+var lazy_resize = _.debounce(function() { // adjust layout according to percentage configuration
+  layout.sizePane('east', get_preview_width());
+}, 512, false);
+
 var editor;
 var layout;
 $(function() {
+  // keep layout percentage after window resizing
+  $(window).resize(function() {
+    lazy_resize();
+  });
+
   // load themes
   var custom_css_files = Cookies.get('custom-css-files');
   if(custom_css_files == undefined) {
