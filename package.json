@@ -1,10 +1,10 @@
 {
   "name": "markdown-plus",
-  "version": "1.9.0",
+  "version": "1.9.6",
   "description": "Markdown editor with extra features",
   "main": "index.js",
   "dependencies": {
-    "markdown-core": "^0.5.4"
+    "markdown-core": "^0.5.5"
   },
   "keywords": [
     "markdown",
