@@ -146,7 +146,7 @@ function set_editor_scroll(preview_scroll) {
 
 
 var sync_preview = _.debounce(function() { // sync right with left
-  if(layout.state.east.isClosed) {
+  if(layout.panes.east.outerWidth() < 8) {
     return; // no need to sync if panel closed
   }
   if(scrollingSide != 'left') {
@@ -155,7 +155,7 @@ var sync_preview = _.debounce(function() { // sync right with left
 }, 128, false);
 
 var sync_editor = _.debounce(function() { // sync left with right
-  if(layout.state.east.isClosed) {
+  if(layout.panes.east.outerWidth() < 8) {
     return; // no need to sync if panel closed
   }
   if(scrollingSide != 'right') {
