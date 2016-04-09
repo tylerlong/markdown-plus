@@ -156,7 +156,7 @@ $(function() {
     }
   });
 
-  layout = $('body').layout({ // create 3-panels layout
+  layout = $('#mdp-container').layout({ // create 3-panels layout
     resizerDblClickToggle: false,
     resizable: false,
     slidable: false,
