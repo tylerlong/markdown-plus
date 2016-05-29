@@ -1,14 +1,16 @@
 {
   "name": "markdown-plus",
-  "version": "1.9.8",
+  "version": "1.9.9",
   "description": "Markdown editor with extra features",
   "main": "index.js",
   "dependencies": {
-    "markdown-core": "^0.5.5"
+    "markdown-core": "^0.5.7"
   },
   "keywords": [
     "markdown",
-    "editor"
+    "editor",
+    "markdown plus",
+    "mdp"
   ],
   "author": "Tyler Long",
   "license": "MIT",
