@@ -280,6 +280,8 @@ If you find the markdown syntax too limited, you can try some <span style="color
 
 ## Charts
 
+[Documentation for charts](http://www.chartjs.org/docs/)
+
 ### Line Chart
 
 ```chart
@@ -332,6 +334,10 @@ If you find the markdown syntax too limited, you can try some <span style="color
 }
 ```
 
+<br/>
+
+[Documentation for Line Chart](http://www.chartjs.org/docs/#line-chart)
+
 ### Bar Chart
 
 ```chart
@@ -380,6 +386,10 @@ If you find the markdown syntax too limited, you can try some <span style="color
   "options": {}
 }
 ```
+
+<br/>
+
+[Documentation for Bar Chart](http://www.chartjs.org/docs/#bar-chart)
 
 ### Radar Chart
 
@@ -439,6 +449,10 @@ If you find the markdown syntax too limited, you can try some <span style="color
 }
 ```
 
+<br/>
+
+[Documentation for Radar Chart](http://www.chartjs.org/docs/#radar-chart)
+
 ### Polar Area Chart
 
 ```chart
@@ -476,6 +490,10 @@ If you find the markdown syntax too limited, you can try some <span style="color
 }
 ```
 
+<br/>
+
+[Documentation for Polar Area Chart](http://www.chartjs.org/docs/#polar-area-chart)
+
 ### Pie Chart
 
 ```chart
@@ -510,6 +528,10 @@ If you find the markdown syntax too limited, you can try some <span style="color
   "options": {}
 }
 ```
+
+<br/>
+
+[Documentation for Pie Chart](http://www.chartjs.org/docs/#doughnut-pie-chart)
 
 ### Doughnut Chart
 
@@ -546,6 +568,10 @@ If you find the markdown syntax too limited, you can try some <span style="color
 }
 ```
 
+<br/>
+
+[Documentation for Doughnut Chart](http://www.chartjs.org/docs/#doughnut-pie-chart)
+
 ### Bubble Chart
 
 ```chart
@@ -575,3 +601,7 @@ If you find the markdown syntax too limited, you can try some <span style="color
   "options": {}
 }
 ```
+
+<br/>
+
+[Documentation for Bubble Chart](http://www.chartjs.org/docs/#bubble-chart)
