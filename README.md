@@ -47,6 +47,7 @@ The best way to support our development is to buy our apps.
 - Emacs mode
 - [Themes](https://github.com/tylingsoft/markdown-plus-themes)
 - [Plugins](https://github.com/tylingsoft/markdown-plus-plugins)
+- Charts: line, bar, radar, polar area, pie, doughnut and bubble
 
 
 ## Setup & Run
