@@ -417,7 +417,7 @@ $(function() {
     if(text.length == 0) {
       text = $(this).data('sample');
     }
-    editor.insert('\n```\n' + text + '\n```\n');
+    editor.insert('\n```mermaid\n' + text + '\n```\n');
     editor.focus();
   });
 
