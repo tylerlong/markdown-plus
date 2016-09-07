@@ -1,6 +1,6 @@
 {
   "name": "markdown-plus",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Markdown editor with extra features",
   "main": "index.js",
   "dependencies": {
