@@ -103,7 +103,7 @@ var lazy_change = _.debounce(function() { // user changes markdown text
     return; // no need to update preview if it's hidden
   }
   mdc.init(editor.session.getValue(), false); // realtime preview
-}, 512, false);
+}, 1024, false);
 
 var Vim = ace.require("ace/keyboard/vim").CodeMirror.Vim // vim commands
 Vim.defineEx("write", "w", function(cm, input) {
@@ -122,7 +122,7 @@ Vim.defineEx("wq", "wq", function(cm, input) {
 
 var lazy_resize = _.debounce(function() { // adjust layout according to percentage configuration
   layout.sizePane('east', get_preview_width());
-}, 512, false);
+}, 1024, false);
 
 var editor;
 var layout;

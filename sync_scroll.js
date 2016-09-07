@@ -152,7 +152,7 @@ var sync_preview = _.debounce(function() { // sync right with left
   if(scrollingSide != 'left') {
     set_preview_scroll(get_editor_scroll());
   }
-}, 128, false);
+}, 256, false);
 
 var sync_editor = _.debounce(function() { // sync left with right
   if(layout.panes.east.outerWidth() < 8) {
@@ -161,4 +161,4 @@ var sync_editor = _.debounce(function() { // sync left with right
   if(scrollingSide != 'right') {
     set_editor_scroll(get_preview_scroll());
   }
-}, 128, false);
+}, 256, false);
