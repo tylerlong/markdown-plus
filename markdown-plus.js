@@ -408,7 +408,7 @@ $(function() {
     if(text.length == 0) {
       text = $(this).data('sample');;
     }
-    editor.insert('\n```math\n' + text + '\n```\n');
+    editor.insert('\n```katex\n' + text + '\n```\n');
     editor.focus();
   });
 

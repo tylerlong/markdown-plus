@@ -40,6 +40,7 @@ The best way to support our development is to buy our apps.
 - Font Awesome icon
 - Ionicons icon
 - Mathematical formula
+- AsciiMath
 - Flowchart
 - Sequence diagram
 - Gantt diagram
