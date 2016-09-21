@@ -194,7 +194,7 @@ phi_n(kappa) = 1/(4pi^2 kappa^2)
 
 ## Flowchart
 
-```
+```mermaid
 graph TD
     A[Christmas] -->|Get money| B(Go shopping)
     B --> C{Let me think}
@@ -212,7 +212,7 @@ Adding many flowcharts will slow down the editor.
 
 ## Sequence diagram
 
-```
+```mermaid
 sequenceDiagram
     loop every day
         Alice->>John: Hello John, how are you?
@@ -229,7 +229,7 @@ Adding many sequence diagrams will slow down the editor.
 
 ## Gantt diagram
 
-```
+```mermaid
 gantt
     dateFormat  YYYY-MM-DD
     title Adding GANTT diagram functionality to mermaid
