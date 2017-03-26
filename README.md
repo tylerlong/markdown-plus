@@ -92,4 +92,3 @@ Copyright © 2016 [Tylingsoft](http://tylingsoft.com/)
 ## Todo
 
 - Replace underscore with lodash
-- Use Webpack
