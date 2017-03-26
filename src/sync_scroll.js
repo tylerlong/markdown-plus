@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import _ from 'underscore'
+import { debounce } from 'lodash'
 
 import editor from './editor'
 import layout from './layout'
@@ -147,7 +147,7 @@ const setEditorScroll = (previewScroll) => {
   scrollLeft(scrollTop)
 }
 
-const syncPreview = _.debounce(() => { // sync right with left
+const syncPreview = debounce(() => { // sync right with left
   if (layout.panes.east.outerWidth() < 8) {
     return // no need to sync if panel closed
   }
@@ -156,7 +156,7 @@ const syncPreview = _.debounce(() => { // sync right with left
   }
 }, 256, false)
 
-const syncEditor = _.debounce(() => { // sync left with right
+const syncEditor = debounce(() => { // sync left with right
   if (layout.panes.east.outerWidth() < 8) {
     return // no need to sync if panel closed
   }

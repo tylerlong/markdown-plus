@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "upgrade": "ncu -ua && yarn upgrade",
-    "build": "node -r babel-register node_modules/.bin/webpack -p --progress --colors --watch"
+    "build": "node -r babel-register node_modules/.bin/webpack --progress --colors --watch"
   },
   "dependencies": {
     "brace": "^0.10.0",
@@ -14,8 +14,8 @@
     "github-css": "^0.1.0",
     "jquery": "^3.2.1",
     "js-cookie": "^2.1.3",
-    "markdown-core": "^0.9.7",
-    "underscore": "^1.8.3"
+    "lodash": "^4.17.4",
+    "markdown-core": "^0.9.7"
   },
   "keywords": [
     "markdown",

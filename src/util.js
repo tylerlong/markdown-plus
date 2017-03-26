@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import _ from 'underscore'
+import { debounce } from 'lodash'
 import mdc from 'markdown-core/src/index-browser'
 
 import layout from './layout'
@@ -23,7 +23,7 @@ const getNormalPreviewWidth = () => {
 }
 
 // user changes markdown text
-const lazyChange = _.debounce(() => {
+const lazyChange = debounce(() => {
   if (layout.panes.east.outerWidth() < 8) { // preview is hidden
     return // no need to update preview if it's hidden
   }
@@ -31,7 +31,7 @@ const lazyChange = _.debounce(() => {
 }, 1024, false)
 
 // adjust layout according to percentage configuration
-const lazyResize = _.debounce(() => {
+const lazyResize = debounce(() => {
   layout.sizePane('east', getPreviewWidth())
 }, 1024, false)
 
