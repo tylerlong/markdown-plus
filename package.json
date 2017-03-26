@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "brace": "^0.10.0",
-    "markdown-core": "^0.9.6"
+    "markdown-core": "^0.9.7"
   },
   "keywords": [
     "markdown",
@@ -33,6 +33,7 @@
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.2.2",
     "css-loader": "^0.27.3",
+    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
     "npm-check-updates": "^2.10.4",
     "standard": "^9.0.2",

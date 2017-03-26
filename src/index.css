@@ -104,8 +104,4 @@ span.hint {
   .ui-layout-pane-north, .ui-layout-pane-center, .ui-layout-resizer, .ui-layout-toggler {
     display: none !important;
   }
-
-  .markdown-body { /* no scroll past end， saving paper */
-    padding-bottom: 0 !important;
-  }
 }

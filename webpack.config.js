@@ -1,13 +1,14 @@
 import path from 'path'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const rules = []
 
 rules.push({
   test: /\.css$/,
-  use: [
-    { loader: 'style-loader' },
-    { loader: 'css-loader' }
-  ]
+  use: ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    use: 'css-loader'
+  })
 })
 
 rules.push({
@@ -46,7 +47,10 @@ const config = {
     publicPath: 'fonts/',
     filename: '../[name].bundle.js'
   },
-  module: { rules }
+  module: { rules },
+  plugins: [
+    new ExtractTextPlugin('../[name].bundle.css')
+  ]
 }
 
 export default [config]
