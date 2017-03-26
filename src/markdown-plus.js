@@ -7,7 +7,7 @@ import { syncEditor, syncPreview } from './sync_scroll'
 
 mdc.map = true
 
-function getPreviewWidth () {
+const getPreviewWidth = () => {
   let previewWidth = Cookies.get('editor-versus-preview')
   if (previewWidth === undefined) {
     previewWidth = '50%'
@@ -15,7 +15,7 @@ function getPreviewWidth () {
   return previewWidth
 }
 
-function getNormalPreviewWidth () { // neither editor or preview is hidden
+const getNormalPreviewWidth = () => { // neither editor or preview is hidden
   let previewWidth = getPreviewWidth()
   if (previewWidth === '1' || previewWidth === '100%') {
     previewWidth = '50%'
@@ -24,8 +24,8 @@ function getNormalPreviewWidth () { // neither editor or preview is hidden
 }
 
 window.mdp = {
-  preferencesChanged: function () {},
-  loadPreferences: function () {
+  preferencesChanged: () => {},
+  loadPreferences: () => {
     let showToolbar = Cookies.get('show-toolbar')
     if (showToolbar === undefined) {
       showToolbar = 'yes'
@@ -83,16 +83,16 @@ window.mdp = {
   }
 }
 
-function promptForAValue (key, action) {
-  $(document).on('opened', '#' + key + '-modal', function () {
+const promptForAValue = (key, action) => {
+  $(document).on('opened', '#' + key + '-modal', () => {
     $('#' + key + '-code').focus()
   })
-  $('#' + key + '-code').keyup(function (e) {
+  $('#' + key + '-code').keyup((e) => {
     if (e.which === 13) { // press enter to confirm
       $('#' + key + '-confirm').click()
     }
   })
-  $(document).on('confirmation', '#' + key + '-modal', function () {
+  $(document).on('confirmation', '#' + key + '-modal', () => {
     const value = $('#' + key + '-code').val().trim()
     if (value.length > 0) {
       action(value)
@@ -101,11 +101,11 @@ function promptForAValue (key, action) {
   })
 }
 // modals
-$(document).on('closed', '.remodal', function (e) {
+$(document).on('closed', '.remodal', (e) => {
   editor.focus()
 })
 
-const lazyChange = _.debounce(function () { // user changes markdown text
+const lazyChange = _.debounce(() => { // user changes markdown text
   if (layout.panes.east.outerWidth() < 8) { // preview is hidden
     return // no need to update preview if it's hidden
   }
@@ -113,29 +113,29 @@ const lazyChange = _.debounce(function () { // user changes markdown text
 }, 1024, false)
 
 const Vim = ace.require('ace/keyboard/vim').CodeMirror.Vim // vim commands
-Vim.defineEx('write', 'w', function (cm, input) {
+Vim.defineEx('write', 'w', (cm, input) => {
   console.log('write')
 })
-Vim.defineEx('quit', 'q', function (cm, input) {
+Vim.defineEx('quit', 'q', (cm, input) => {
   if (input.input === 'q') {
     console.log('quit')
   } else if (input.input === 'q!') {
     console.log('quit without warning')
   }
 })
-Vim.defineEx('wq', 'wq', function (cm, input) {
+Vim.defineEx('wq', 'wq', (cm, input) => {
   console.log('write then quit')
 })
 
-const lazyResize = _.debounce(function () { // adjust layout according to percentage configuration
+const lazyResize = _.debounce(() => { // adjust layout according to percentage configuration
   layout.sizePane('east', getPreviewWidth())
 }, 1024, false)
 
 let editor
 let layout
-$(function () {
+$(() => {
   // keep layout percentage after window resizing
-  $(window).resize(function () {
+  $(window).resize(() => {
     lazyResize()
   })
 
@@ -144,7 +144,7 @@ $(function () {
   if (customCssFiles === undefined) {
     customCssFiles = ''
   }
-  customCssFiles.split('\n').forEach(function (cssfile) {
+  customCssFiles.split('\n').forEach((cssfile) => {
     cssfile = cssfile.trim()
     if (cssfile.length > 0) {
       $('head').append('<link rel="stylesheet" href="' + cssfile + '"/>')
@@ -156,10 +156,10 @@ $(function () {
   if (customJsFiles === undefined) {
     customJsFiles = ''
   }
-  customJsFiles.split('\n').forEach(function (jsfile) {
-    jsfile = jsfile.trim()
-    if (jsfile.length > 0) {
-      $('head').append('<script src="' + jsfile + '"></script>')
+  customJsFiles.split('\n').forEach((jsFile) => {
+    jsFile = jsFile.trim()
+    if (jsFile.length > 0) {
+      $('head').append('<script src="' + jsFile + '"></script>')
     }
   })
 
@@ -173,10 +173,10 @@ $(function () {
       size: 'auto',
       togglerTip_open: 'Hide toolbar',
       togglerTip_closed: 'Show toolbar',
-      onopen: function () {
+      onopen: () => {
         editor.focus()
       },
-      onclose: function () {
+      onclose: () => {
         editor.focus()
       }
     },
@@ -184,14 +184,14 @@ $(function () {
       resizable: true,
       togglerLength_open: 0,
       size: getPreviewWidth(),
-      onresize: function () {
+      onresize: () => {
         lazyChange()
         editor.focus()
         $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px') // scroll past end
       }
     },
     center: {
-      onresize: function () {
+      onresize: () => {
         editor.session.setUseWrapMode(false) // fix ACE editor text wrap issue
         editor.session.setUseWrapMode(true)
       }
@@ -200,7 +200,7 @@ $(function () {
 
   $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px') // scroll past end
 
-  $('.ui-layout-east').scroll(function () { // left scroll with right
+  $('.ui-layout-east').scroll(() => { // left scroll with right
     syncEditor()
   })
 
@@ -215,7 +215,7 @@ $(function () {
   editor.setOption('scrollPastEnd', true)
   editor.session.setFoldStyle('manual')
   editor.focus()
-  editor.session.on('changeScrollTop', function (scroll) {
+  editor.session.on('changeScrollTop', (scroll) => {
     syncPreview() // right scroll with left
   })
 
@@ -223,8 +223,8 @@ $(function () {
   window.mdp.loadPreferences()
 
   // change preferences
-  $(document).on('confirmation', '#preferences-modal', function () {
-    ['show-toolbar', 'editor-versus-preview', 'key-binding', 'editor-font-size', 'editor-theme'].forEach(function (key) {
+  $(document).on('confirmation', '#preferences-modal', () => {
+    ['show-toolbar', 'editor-versus-preview', 'key-binding', 'editor-font-size', 'editor-theme'].forEach((key) => {
       Cookies.set(key, $('select#' + key).val(), { expires: 10000 })
     })
     let ganttAxisFormat = $('#gantt-axis-format').val().trim()
@@ -242,7 +242,7 @@ $(function () {
   })
 
   // extension methods for editor
-  editor.selection.smartRange = function () {
+  editor.selection.smartRange = () => {
     let range = editor.selection.getRange()
     if (!range.isEmpty()) {
       return range // return what user selected
@@ -261,40 +261,40 @@ $(function () {
     {
       name: 'preferences',
       bindKey: { win: 'Ctrl-,', mac: 'Command-,' },
-      exec: function (editor) {
+      exec: (editor) => {
         $('i.fa-cog').click() // show M+ preferences modal
       }
     },
     {
       name: 'bold',
       bindKey: { win: 'Ctrl-B', mac: 'Command-B' },
-      exec: function (editor) {
+      exec: (editor) => {
         $('i.fa-bold').click()
       }
     },
     {
       name: 'italic',
       bindKey: { win: 'Ctrl-I', mac: 'Command-I' },
-      exec: function (editor) {
+      exec: (editor) => {
         $('i.fa-italic').click()
       }
     },
     {
       name: 'underline',
       bindKey: { win: 'Ctrl-U', mac: 'Command-U' },
-      exec: function (editor) {
+      exec: (editor) => {
         $('i.fa-underline').click()
       }
     }
   ])
 
   // whenever user changes markdown...
-  editor.session.on('change', function () {
+  editor.session.on('change', () => {
     lazyChange()
   })
 
   // h1 - h6 heading
-  $('.heading-icon').click(function () {
+  $('.heading-icon').click(() => {
     const level = $(this).data('level')
     const p = editor.getCursorPosition()
     p.column += level + 1 // cursor offset
@@ -305,7 +305,7 @@ $(function () {
   })
 
   // styling icons
-  $('.styling-icon').click(function () {
+  $('.styling-icon').click(() => {
     const modifier = $(this).data('modifier')
     const range = editor.selection.smartRange()
     const p = editor.getCursorPosition()
@@ -317,7 +317,7 @@ $(function () {
   })
 
   // <hr/>
-  $('#horizontal-rule').click(function () {
+  $('#horizontal-rule').click(() => {
     const p = editor.getCursorPosition()
     if (p.column === 0) { // cursor is at line start
       editor.selection.clearSelection()
@@ -330,7 +330,7 @@ $(function () {
   })
 
   // list icons
-  $('.list-icon').click(function () {
+  $('.list-icon').click(() => {
     const prefix = $(this).data('prefix')
     const p = editor.getCursorPosition()
     p.column += prefix.length // cursor offset
@@ -343,7 +343,7 @@ $(function () {
     editor.focus()
   })
 
-  $('#link-icon').click(function () {
+  $('#link-icon').click(() => {
     const range = editor.selection.smartRange()
     let text = editor.session.getTextRange(range)
     if (text.trim().length === 0) {
@@ -354,7 +354,7 @@ $(function () {
     editor.focus()
   })
 
-  $('#image-icon').click(function () {
+  $('#image-icon').click(() => {
     let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {
       text = $(this).data('sample-text')
@@ -364,7 +364,7 @@ $(function () {
     editor.focus()
   })
 
-  $('#code-icon').click(function () {
+  $('#code-icon').click(() => {
     const text = editor.session.getTextRange(editor.selection.getRange()).trim()
     editor.insert('\n```\n' + text + '\n```\n')
     editor.focus()
@@ -372,7 +372,7 @@ $(function () {
     editor.navigateLineEnd()
   })
 
-  $('#table-icon').click(function () {
+  $('#table-icon').click(() => {
     const sample = $(this).data('sample')
     editor.insert('') // delete selected
     const p = editor.getCursorPosition()
@@ -387,7 +387,7 @@ $(function () {
   })
 
   // emoji icon
-  promptForAValue('emoji', function (value) {
+  promptForAValue('emoji', (value) => {
     if (/^:.+:$/.test(value)) {
       value = /^:(.+):$/.exec(value)[1]
     }
@@ -395,7 +395,7 @@ $(function () {
   })
 
   // Font Awesome icon
-  promptForAValue('fa', function (value) {
+  promptForAValue('fa', (value) => {
     if (value.substring(0, 3) === 'fa-') {
       value = value.substring(3)
     }
@@ -403,14 +403,14 @@ $(function () {
   })
 
   // Ionicons icon
-  promptForAValue('ion', function (value) {
+  promptForAValue('ion', (value) => {
     if (value.substring(0, 4) === 'ion-') {
       value = value.substring(4)
     }
     editor.insert(':ion-' + value + ':')
   })
 
-  $('#math-icon').click(function () {
+  $('#math-icon').click(() => {
     let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {
       text = $(this).data('sample')
@@ -419,7 +419,7 @@ $(function () {
     editor.focus()
   })
 
-  $('.mermaid-icon').click(function () {
+  $('.mermaid-icon').click(() => {
     let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {
       text = $(this).data('sample')
@@ -428,11 +428,11 @@ $(function () {
     editor.focus()
   })
 
-  $('#toggle-toolbar').click(function () {
+  $('#toggle-toolbar').click(() => {
     layout.toggle('north')
   })
 
-  $('#toggle-editor').click(function () {
+  $('#toggle-editor').click(() => {
     if (layout.panes.center.outerWidth() < 8) { // editor is hidden
       layout.sizePane('east', getNormalPreviewWidth())
     } else {
@@ -440,7 +440,7 @@ $(function () {
     }
   })
 
-  $('#toggle-preview').click(function () {
+  $('#toggle-preview').click(() => {
     if (layout.panes.east.outerWidth() < 8) { // preview is hidden
       layout.sizePane('east', getNormalPreviewWidth())
     } else {

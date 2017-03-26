@@ -1,10 +1,10 @@
 import $ from 'jquery'
 
-$(function () {
-  $.get('sample.md', function (data) { // load sample text
+$(() => {
+  $.get('sample.md', (data) => { // load sample text
     window.editor.session.setValue(data, -1)
-    setTimeout(function () {
-      window.addEventListener('hashchange', function () {
+    setTimeout(() => {
+      window.addEventListener('hashchange', () => {
         $('.ui-layout-east').scrollTop($('.ui-layout-east').scrollTop() - 6)
       }) // a little gap to top
       if (window.location.hash.length > 0) {

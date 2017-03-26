@@ -79,8 +79,8 @@ You can also use inline math: `$29^{th}$`
     end
 
 ```javascript
-$(document).ready(function() {
-  $('pre code').each(function(i, block) {
+$(document).ready(() => {
+  $('pre code').each((i, block) => {
     hljs.highlightBlock(block);
   });
 });
@@ -232,7 +232,7 @@ Adding many sequence diagrams will slow down the editor.
 ```mermaid
 gantt
     dateFormat  YYYY-MM-DD
-    title Adding GANTT diagram functionality to mermaid
+    title Adding GANTT diagram to mermaid
 
     section A section
     Completed task            :done,    des1, 2014-01-06,2014-01-08

@@ -6,23 +6,23 @@ const layout = window.layout
 
 let scrollingSide = null
 let timeoutHandle = null
-function scrollSide (side, howToScroll) {
+const scrollSide = (side, howToScroll) => {
   if (scrollingSide != null && scrollingSide !== side) {
     return // the other side hasn't finished scrolling
   }
   scrollingSide = side
   clearTimeout(timeoutHandle)
-  timeoutHandle = setTimeout(function () { scrollingSide = null }, 512)
+  timeoutHandle = setTimeout(() => { scrollingSide = null }, 512)
   howToScroll()
 }
 
-function scrollEditor (scrollTop, when) {
-  setTimeout(function () {
+const scrollEditor = (scrollTop, when) => {
+  setTimeout(() => {
     editor.session.setScrollTop(scrollTop)
   }, when)
 }
-function scrollLeft (scrollTop) {
-  scrollSide('left', function () {
+const scrollLeft = (scrollTop) => {
+  scrollSide('left', () => {
     const current = editor.session.getScrollTop()
     const step = (scrollTop - current) / 8
     for (let i = 1; i < 8; i++) { // to create some animation
@@ -32,16 +32,16 @@ function scrollLeft (scrollTop) {
   })
 }
 
-function scrollRight (scrollTop) {
-  scrollSide('right', function () {
+const scrollRight = (scrollTop) => {
+  scrollSide('right', () => {
     $('.ui-layout-east').animate({ scrollTop: scrollTop }, 128)
   })
 }
 
-function getEditorScroll () {
+const getEditorScroll = () => {
   const lineMarkers = $('article#preview > [data-source-line]')
   const lines = [] // logical line
-  lineMarkers.each(function () {
+  lineMarkers.each(() => {
     lines.push($(this).data('source-line'))
   })
   const pLines = [] // physical line
@@ -79,7 +79,7 @@ function getEditorScroll () {
   return { lastMarker: lines[lastMarker], nextMarker: lines[nextMarker], percentage: percentage }
 }
 
-function setPreviewScroll (editorScroll) {
+const setPreviewScroll = (editorScroll) => {
   let lastPosition = 0
   let nextPosition = $('article#preview').outerHeight() - $('.ui-layout-east').height() // maximum scroll
   if (editorScroll.lastMarker !== undefined) { // no marker at very start
@@ -92,7 +92,7 @@ function setPreviewScroll (editorScroll) {
   scrollRight(scrollTop)
 }
 
-function getPreviewScroll () {
+const getPreviewScroll = () => {
   const scroll = $('.ui-layout-east').scrollTop()
   let lastMarker = false
   let nextMarker = false
@@ -121,10 +121,10 @@ function getPreviewScroll () {
   return { lastMarker: lastMarker, nextMarker: nextMarker, percentage: percentage }
 }
 
-function setEditorScroll (previewScroll) {
+const setEditorScroll = (previewScroll) => {
   const lineMarkers = $('article#preview > [data-source-line]')
   const lines = [] // logical line
-  lineMarkers.each(function () {
+  lineMarkers.each(() => {
     lines.push($(this).data('source-line'))
   })
   const pLines = [] // physical line
@@ -147,7 +147,7 @@ function setEditorScroll (previewScroll) {
   scrollLeft(scrollTop)
 }
 
-const syncPreview = _.debounce(function () { // sync right with left
+const syncPreview = _.debounce(() => { // sync right with left
   if (layout.panes.east.outerWidth() < 8) {
     return // no need to sync if panel closed
   }
@@ -156,7 +156,7 @@ const syncPreview = _.debounce(function () { // sync right with left
   }
 }, 256, false)
 
-const syncEditor = _.debounce(function () { // sync left with right
+const syncEditor = _.debounce(() => { // sync left with right
   if (layout.panes.east.outerWidth() < 8) {
     return // no need to sync if panel closed
   }
