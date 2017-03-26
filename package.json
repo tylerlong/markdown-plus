@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "brace": "^0.10.0",
-    "markdown-core": "^0.9.4"
+    "markdown-core": "^0.9.6"
   },
   "keywords": [
     "markdown",
