@@ -329,14 +329,6 @@ $(() => {
     editor.insert(':fa-' + value + ':')
   })
 
-  // Ionicons icon
-  promptForValue('ion', (value) => {
-    if (value.substring(0, 4) === 'ion-') {
-      value = value.substring(4)
-    }
-    editor.insert(':ion-' + value + ':')
-  })
-
   $('#math-icon').click(() => {
     let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {

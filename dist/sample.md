@@ -67,11 +67,6 @@ You can also use inline math: `$29^{th}$`
 [All the Font Awesome icons](http://fontawesome.io/icons/)
 
 
-## Ionicons: :ion-printer: :ion-social-tux: :ion-lock-combination: :ion-ios-medkit: :ion-coffee:
-
-[All the Ionicons icons](http://ionicons.com/)
-
-
 ## `print 'hello code'`
 
     evens = [1, 2, 3, 4, 5].collect do |item|
