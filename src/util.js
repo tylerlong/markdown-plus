@@ -13,7 +13,8 @@ const getPreviewWidth = () => {
   return previewWidth
 }
 
-const getNormalPreviewWidth = () => { // neither editor or preview is hidden
+// neither editor or preview is hidden
+const getNormalPreviewWidth = () => {
   let previewWidth = getPreviewWidth()
   if (previewWidth === '1' || previewWidth === '100%') {
     previewWidth = '50%'
@@ -21,11 +22,17 @@ const getNormalPreviewWidth = () => { // neither editor or preview is hidden
   return previewWidth
 }
 
-const lazyChange = _.debounce(() => { // user changes markdown text
+// user changes markdown text
+const lazyChange = _.debounce(() => {
   if (layout.panes.east.outerWidth() < 8) { // preview is hidden
     return // no need to update preview if it's hidden
   }
   mdc.init(editor.session.getValue(), false) // realtime preview
 }, 1024, false)
 
-export default { getPreviewWidth, getNormalPreviewWidth, lazyChange }
+// adjust layout according to percentage configuration
+const lazyResize = _.debounce(() => {
+  layout.sizePane('east', getPreviewWidth())
+}, 1024, false)
+
+export default { getPreviewWidth, getNormalPreviewWidth, lazyChange, lazyResize }

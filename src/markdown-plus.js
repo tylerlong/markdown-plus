@@ -1,12 +1,11 @@
 import $ from 'jquery'
-import _ from 'underscore'
 import Cookies from 'js-cookie'
 import mdc from 'markdown-core/src/index-browser'
 import ace from 'brace'
 
 import { syncEditor } from './sync_scroll'
 import editor from './editor'
-import { getPreviewWidth, getNormalPreviewWidth, lazyChange } from './util'
+import { getPreviewWidth, getNormalPreviewWidth, lazyChange, lazyResize } from './util'
 import layout from './layout'
 
 const mdp = {
@@ -106,10 +105,6 @@ Vim.defineEx('wq', 'wq', (cm, input) => {
   console.log('write then quit')
 })
 
-const lazyResize = _.debounce(() => { // adjust layout according to percentage configuration
-  layout.sizePane('east', getPreviewWidth())
-}, 1024, false)
-
 $(() => {
   // keep layout percentage after window resizing
   $(window).resize(() => {
@@ -167,53 +162,6 @@ $(() => {
     lazyChange() // trigger re-render
     mdp.preferencesChanged()
   })
-
-  // extension methods for editor
-  editor.selection.smartRange = () => {
-    let range = editor.selection.getRange()
-    if (!range.isEmpty()) {
-      return range // return what user selected
-    }
-    // nothing was selected
-    const _range = range // backup original range
-    range = editor.selection.getWordRange(range.start.row, range.start.column) // range for current word
-    if (editor.session.getTextRange(range).trim().length === 0) { // selected is blank
-      range = _range // restore original range
-    }
-    return range
-  }
-
-  // overwrite some ACE editor keyboard shortcuts
-  editor.commands.addCommands([
-    {
-      name: 'preferences',
-      bindKey: { win: 'Ctrl-,', mac: 'Command-,' },
-      exec: (editor) => {
-        $('i.fa-cog').click() // show M+ preferences modal
-      }
-    },
-    {
-      name: 'bold',
-      bindKey: { win: 'Ctrl-B', mac: 'Command-B' },
-      exec: (editor) => {
-        $('i.fa-bold').click()
-      }
-    },
-    {
-      name: 'italic',
-      bindKey: { win: 'Ctrl-I', mac: 'Command-I' },
-      exec: (editor) => {
-        $('i.fa-italic').click()
-      }
-    },
-    {
-      name: 'underline',
-      bindKey: { win: 'Ctrl-U', mac: 'Command-U' },
-      exec: (editor) => {
-        $('i.fa-underline').click()
-      }
-    }
-  ])
 
   // whenever user changes markdown...
   editor.session.on('change', () => {
