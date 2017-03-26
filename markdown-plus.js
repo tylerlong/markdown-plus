@@ -1,86 +1,89 @@
 import $ from 'jquery'
 import _ from 'underscore'
 import Cookies from 'js-cookie'
+import mdc from 'markdown-core/src/index-browser'
+import ace from 'brace'
+import { syncEditor, syncPreview } from './sync_scroll'
 
 mdc.map = true
 
-function get_preview_width () {
-  var preview_width = Cookies.get('editor-versus-preview')
-  if (preview_width === undefined) {
-    preview_width = '50%'
+function getPreviewWidth () {
+  let previewWidth = Cookies.get('editor-versus-preview')
+  if (previewWidth === undefined) {
+    previewWidth = '50%'
   }
-  return preview_width
+  return previewWidth
 }
 
-function get_normal_preview_width () { // neither editor or preview is hidden
-  var preview_width = get_preview_width()
-  if (preview_width === '1' || preview_width === '100%') {
-    preview_width = '50%'
+function getNormalPreviewWidth () { // neither editor or preview is hidden
+  let previewWidth = getPreviewWidth()
+  if (previewWidth === '1' || previewWidth === '100%') {
+    previewWidth = '50%'
   }
-  return preview_width
+  return previewWidth
 }
 
-mdp = {
+window.mdp = {
   preferencesChanged: function () {},
   loadPreferences: function () {
-    var show_toolbar = Cookies.get('show-toolbar')
-    if (show_toolbar === undefined) {
-      show_toolbar = 'yes'
+    let showToolbar = Cookies.get('show-toolbar')
+    if (showToolbar === undefined) {
+      showToolbar = 'yes'
     }
-    $('select#show-toolbar').val(show_toolbar)
-    if (show_toolbar === 'yes') {
+    $('select#show-toolbar').val(showToolbar)
+    if (showToolbar === 'yes') {
       layout.open('north')
     } else {
       layout.close('north')
     }
 
-    var preview_width = get_preview_width()
-    $('select#editor-versus-preview').val(preview_width)
-    layout.sizePane('east', preview_width)
+    const previewWidth = getPreviewWidth()
+    $('select#editor-versus-preview').val(previewWidth)
+    layout.sizePane('east', previewWidth)
 
-    var key_binding = Cookies.get('key-binding')
-    if (key_binding === undefined) {
-      key_binding = 'default'
+    let keyBinding = Cookies.get('key-binding')
+    if (keyBinding === undefined) {
+      keyBinding = 'default'
     }
-    $('select#key-binding').val(key_binding)
-    if (key_binding === 'default') {
+    $('select#key-binding').val(keyBinding)
+    if (keyBinding === 'default') {
       editor.setKeyboardHandler(null)
     } else {
-      editor.setKeyboardHandler(ace.require('ace/keyboard/' + key_binding).handler)
+      editor.setKeyboardHandler(ace.require('ace/keyboard/' + keyBinding).handler)
     }
 
-    var font_size = Cookies.get('editor-font-size')
-    if (font_size === undefined) {
-      font_size = '14'
+    let fontSize = Cookies.get('editor-font-size')
+    if (fontSize === undefined) {
+      fontSize = '14'
     }
-    $('select#editor-font-size').val(font_size)
-    editor.setFontSize(font_size + 'px')
+    $('select#editor-font-size').val(fontSize)
+    editor.setFontSize(fontSize + 'px')
 
-    var editor_theme = Cookies.get('editor-theme')
-    if (editor_theme === undefined) {
-      editor_theme = 'tomorrow_night_eighties'
+    let editorTheme = Cookies.get('editor-theme')
+    if (editorTheme === undefined) {
+      editorTheme = 'tomorrow_night_eighties'
     }
-    $('select#editor-theme').val(editor_theme)
-    editor.setTheme('ace/theme/' + editor_theme)
+    $('select#editor-theme').val(editorTheme)
+    editor.setTheme('ace/theme/' + editorTheme)
 
-    var mdcPreferences = mdc.loadPreferences()
+    const mdcPreferences = mdc.loadPreferences()
     $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format'])
 
-    var custom_css_files = Cookies.get('custom-css-files')
-    if (custom_css_files === undefined) {
-      custom_css_files = ''
+    let customCssFiles = Cookies.get('custom-css-files')
+    if (customCssFiles === undefined) {
+      customCssFiles = ''
     }
-    $('textarea#custom-css-files').val(custom_css_files)
+    $('textarea#custom-css-files').val(customCssFiles)
 
-    var custom_js_files = Cookies.get('custom-js-files')
-    if (custom_js_files === undefined) {
-      custom_js_files = ''
+    let customJsFiles = Cookies.get('custom-js-files')
+    if (customJsFiles === undefined) {
+      customJsFiles = ''
     }
-    $('textarea#custom-js-files').val(custom_js_files)
+    $('textarea#custom-js-files').val(customJsFiles)
   }
 }
 
-function prompt_for_a_value (key, action) {
+function promptForAValue (key, action) {
   $(document).on('opened', '#' + key + '-modal', function () {
     $('#' + key + '-code').focus()
   })
@@ -90,7 +93,7 @@ function prompt_for_a_value (key, action) {
     }
   })
   $(document).on('confirmation', '#' + key + '-modal', function () {
-    var value = $('#' + key + '-code').val().trim()
+    const value = $('#' + key + '-code').val().trim()
     if (value.length > 0) {
       action(value)
       $('#' + key + '-code').val('')
@@ -102,14 +105,14 @@ $(document).on('closed', '.remodal', function (e) {
   editor.focus()
 })
 
-var lazy_change = _.debounce(function () { // user changes markdown text
+const lazyChange = _.debounce(function () { // user changes markdown text
   if (layout.panes.east.outerWidth() < 8) { // preview is hidden
     return // no need to update preview if it's hidden
   }
   mdc.init(editor.session.getValue(), false) // realtime preview
 }, 1024, false)
 
-var Vim = ace.require('ace/keyboard/vim').CodeMirror.Vim // vim commands
+const Vim = ace.require('ace/keyboard/vim').CodeMirror.Vim // vim commands
 Vim.defineEx('write', 'w', function (cm, input) {
   console.log('write')
 })
@@ -124,24 +127,24 @@ Vim.defineEx('wq', 'wq', function (cm, input) {
   console.log('write then quit')
 })
 
-var lazy_resize = _.debounce(function () { // adjust layout according to percentage configuration
-  layout.sizePane('east', get_preview_width())
+const lazyResize = _.debounce(function () { // adjust layout according to percentage configuration
+  layout.sizePane('east', getPreviewWidth())
 }, 1024, false)
 
-var editor
-var layout
+let editor
+let layout
 $(function () {
   // keep layout percentage after window resizing
   $(window).resize(function () {
-    lazy_resize()
+    lazyResize()
   })
 
   // load themes
-  var custom_css_files = Cookies.get('custom-css-files')
-  if (custom_css_files === undefined) {
-    custom_css_files = ''
+  let customCssFiles = Cookies.get('custom-css-files')
+  if (customCssFiles === undefined) {
+    customCssFiles = ''
   }
-  custom_css_files.split('\n').forEach(function (cssfile) {
+  customCssFiles.split('\n').forEach(function (cssfile) {
     cssfile = cssfile.trim()
     if (cssfile.length > 0) {
       $('head').append('<link rel="stylesheet" href="' + cssfile + '"/>')
@@ -149,11 +152,11 @@ $(function () {
   })
 
   // load plugins
-  var custom_js_files = Cookies.get('custom-js-files')
-  if (custom_js_files === undefined) {
-    custom_js_files = ''
+  let customJsFiles = Cookies.get('custom-js-files')
+  if (customJsFiles === undefined) {
+    customJsFiles = ''
   }
-  custom_js_files.split('\n').forEach(function (jsfile) {
+  customJsFiles.split('\n').forEach(function (jsfile) {
     jsfile = jsfile.trim()
     if (jsfile.length > 0) {
       $('head').append('<script src="' + jsfile + '"></script>')
@@ -180,9 +183,9 @@ $(function () {
     east: {
       resizable: true,
       togglerLength_open: 0,
-      size: get_preview_width(),
+      size: getPreviewWidth(),
       onresize: function () {
-        lazy_change()
+        lazyChange()
         editor.focus()
         $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px') // scroll past end
       }
@@ -198,7 +201,7 @@ $(function () {
   $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px') // scroll past end
 
   $('.ui-layout-east').scroll(function () { // left scroll with right
-    sync_editor()
+    syncEditor()
   })
 
   // editor on the left
@@ -213,39 +216,39 @@ $(function () {
   editor.session.setFoldStyle('manual')
   editor.focus()
   editor.session.on('changeScrollTop', function (scroll) {
-    sync_preview() // right scroll with left
+    syncPreview() // right scroll with left
   })
 
   // load preferences
-  mdp.loadPreferences()
+  window.mdp.loadPreferences()
 
   // change preferences
   $(document).on('confirmation', '#preferences-modal', function () {
     ['show-toolbar', 'editor-versus-preview', 'key-binding', 'editor-font-size', 'editor-theme'].forEach(function (key) {
       Cookies.set(key, $('select#' + key).val(), { expires: 10000 })
     })
-    var gantt_axis_format = $('#gantt-axis-format').val().trim()
-    if (gantt_axis_format === '') {
-      gantt_axis_format = '%Y-%m-%d'
+    let ganttAxisFormat = $('#gantt-axis-format').val().trim()
+    if (ganttAxisFormat === '') {
+      ganttAxisFormat = '%Y-%m-%d'
     }
-    Cookies.set('gantt-axis-format', gantt_axis_format, { expires: 10000 })
-    var custom_css_files = $('#custom-css-files').val().trim()
-    Cookies.set('custom-css-files', custom_css_files, { expires: 10000 })
-    var custom_js_files = $('#custom-js-files').val().trim()
-    Cookies.set('custom-js-files', custom_js_files, { expires: 10000 })
-    mdp.loadPreferences()
-    lazy_change() // trigger re-render
-    mdp.preferencesChanged()
+    Cookies.set('gantt-axis-format', ganttAxisFormat, { expires: 10000 })
+    const customCssFiles = $('#custom-css-files').val().trim()
+    Cookies.set('custom-css-files', customCssFiles, { expires: 10000 })
+    const customJsFiles = $('#custom-js-files').val().trim()
+    Cookies.set('custom-js-files', customJsFiles, { expires: 10000 })
+    window.mdp.loadPreferences()
+    lazyChange() // trigger re-render
+    window.mdp.preferencesChanged()
   })
 
   // extension methods for editor
   editor.selection.smartRange = function () {
-    var range = editor.selection.getRange()
+    let range = editor.selection.getRange()
     if (!range.isEmpty()) {
       return range // return what user selected
     }
     // nothing was selected
-    var _range = range // backup original range
+    const _range = range // backup original range
     range = editor.selection.getWordRange(range.start.row, range.start.column) // range for current word
     if (editor.session.getTextRange(range).trim().length === 0) { // selected is blank
       range = _range // restore original range
@@ -287,13 +290,13 @@ $(function () {
 
   // whenever user changes markdown...
   editor.session.on('change', function () {
-    lazy_change()
+    lazyChange()
   })
 
   // h1 - h6 heading
   $('.heading-icon').click(function () {
-    var level = $(this).data('level')
-    var p = editor.getCursorPosition()
+    const level = $(this).data('level')
+    const p = editor.getCursorPosition()
     p.column += level + 1 // cursor offset
     editor.navigateTo(editor.getSelectionRange().start.row, 0) // navigateLineStart has issue when there is wrap
     editor.insert('#'.repeat(level) + ' ')
@@ -303,9 +306,9 @@ $(function () {
 
   // styling icons
   $('.styling-icon').click(function () {
-    var modifier = $(this).data('modifier')
-    var range = editor.selection.smartRange()
-    var p = editor.getCursorPosition()
+    const modifier = $(this).data('modifier')
+    const range = editor.selection.smartRange()
+    const p = editor.getCursorPosition()
     p.column += modifier.length // cursor offset
     editor.session.replace(range, modifier + editor.session.getTextRange(range) + modifier)
     editor.moveCursorToPosition(p) // restore cursor position
@@ -315,7 +318,7 @@ $(function () {
 
   // <hr/>
   $('#horizontal-rule').click(function () {
-    var p = editor.getCursorPosition()
+    const p = editor.getCursorPosition()
     if (p.column === 0) { // cursor is at line start
       editor.selection.clearSelection()
       editor.insert('\n---\n')
@@ -328,11 +331,11 @@ $(function () {
 
   // list icons
   $('.list-icon').click(function () {
-    var prefix = $(this).data('prefix')
-    var p = editor.getCursorPosition()
+    const prefix = $(this).data('prefix')
+    const p = editor.getCursorPosition()
     p.column += prefix.length // cursor offset
-    var range = editor.selection.getRange()
-    for (var i = range.start.row + 1; i < range.end.row + 2; i++) {
+    const range = editor.selection.getRange()
+    for (let i = range.start.row + 1; i < range.end.row + 2; i++) {
       editor.gotoLine(i)
       editor.insert(prefix)
     }
@@ -341,28 +344,28 @@ $(function () {
   })
 
   $('#link-icon').click(function () {
-    var range = editor.selection.smartRange()
-    var text = editor.session.getTextRange(range)
+    const range = editor.selection.smartRange()
+    let text = editor.session.getTextRange(range)
     if (text.trim().length === 0) {
       text = $(this).data('sample-text')
     }
-    var url = $(this).data('sample-url')
+    const url = $(this).data('sample-url')
     editor.session.replace(range, '[' + text + '](' + url + ')')
     editor.focus()
   })
 
   $('#image-icon').click(function () {
-    var text = editor.session.getTextRange(editor.selection.getRange()).trim()
+    let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {
       text = $(this).data('sample-text')
     }
-    var url = $(this).data('sample-url')
+    const url = $(this).data('sample-url')
     editor.insert('![' + text + '](' + url + ')')
     editor.focus()
   })
 
   $('#code-icon').click(function () {
-    var text = editor.session.getTextRange(editor.selection.getRange()).trim()
+    const text = editor.session.getTextRange(editor.selection.getRange()).trim()
     editor.insert('\n```\n' + text + '\n```\n')
     editor.focus()
     editor.navigateUp(2)
@@ -370,9 +373,9 @@ $(function () {
   })
 
   $('#table-icon').click(function () {
-    var sample = $(this).data('sample')
+    const sample = $(this).data('sample')
     editor.insert('') // delete selected
-    var p = editor.getCursorPosition()
+    const p = editor.getCursorPosition()
     if (p.column === 0) { // cursor is at line start
       editor.selection.clearSelection()
       editor.insert('\n' + sample + '\n\n')
@@ -384,7 +387,7 @@ $(function () {
   })
 
   // emoji icon
-  prompt_for_a_value('emoji', function (value) {
+  promptForAValue('emoji', function (value) {
     if (/^:.+:$/.test(value)) {
       value = /^:(.+):$/.exec(value)[1]
     }
@@ -392,7 +395,7 @@ $(function () {
   })
 
   // Font Awesome icon
-  prompt_for_a_value('fa', function (value) {
+  promptForAValue('fa', function (value) {
     if (value.substring(0, 3) === 'fa-') {
       value = value.substring(3)
     }
@@ -400,7 +403,7 @@ $(function () {
   })
 
   // Ionicons icon
-  prompt_for_a_value('ion', function (value) {
+  promptForAValue('ion', function (value) {
     if (value.substring(0, 4) === 'ion-') {
       value = value.substring(4)
     }
@@ -408,7 +411,7 @@ $(function () {
   })
 
   $('#math-icon').click(function () {
-    var text = editor.session.getTextRange(editor.selection.getRange()).trim()
+    let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {
       text = $(this).data('sample')
     }
@@ -417,7 +420,7 @@ $(function () {
   })
 
   $('.mermaid-icon').click(function () {
-    var text = editor.session.getTextRange(editor.selection.getRange()).trim()
+    let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {
       text = $(this).data('sample')
     }
@@ -431,7 +434,7 @@ $(function () {
 
   $('#toggle-editor').click(function () {
     if (layout.panes.center.outerWidth() < 8) { // editor is hidden
-      layout.sizePane('east', get_normal_preview_width())
+      layout.sizePane('east', getNormalPreviewWidth())
     } else {
       layout.sizePane('east', '100%')
     }
@@ -439,7 +442,7 @@ $(function () {
 
   $('#toggle-preview').click(function () {
     if (layout.panes.east.outerWidth() < 8) { // preview is hidden
-      layout.sizePane('east', get_normal_preview_width())
+      layout.sizePane('east', getNormalPreviewWidth())
     } else {
       layout.sizePane('east', 1)
     }

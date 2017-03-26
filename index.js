@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 $(function () {
   $.get('sample.md', function (data) { // load sample text
-    editor.session.setValue(data, -1)
+    window.editor.session.setValue(data, -1)
     setTimeout(function () {
       window.addEventListener('hashchange', function () {
         $('.ui-layout-east').scrollTop($('.ui-layout-east').scrollTop() - 6)
