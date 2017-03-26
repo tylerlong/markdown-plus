@@ -165,4 +165,4 @@ const syncEditor = debounce(() => { // sync left with right
   }
 }, 256, false)
 
-export default { syncPreview, syncEditor }
+export { syncPreview, syncEditor }

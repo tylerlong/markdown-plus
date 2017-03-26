@@ -1,3 +1,5 @@
+require('./index.css')
+
 import $ from 'jquery'
 
 import editor from './editor'

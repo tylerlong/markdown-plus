@@ -171,4 +171,4 @@ const registerToolBarEvents = () => {
   })
 }
 
-export default { registerToolBarEvents }
+export { registerToolBarEvents }

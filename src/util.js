@@ -35,4 +35,4 @@ const lazyResize = debounce(() => {
   layout.sizePane('east', getPreviewWidth())
 }, 1024, false)
 
-export default { getPreviewWidth, getNormalPreviewWidth, lazyChange, lazyResize }
+export { getPreviewWidth, getNormalPreviewWidth, lazyChange, lazyResize }
