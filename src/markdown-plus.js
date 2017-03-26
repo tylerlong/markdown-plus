@@ -9,7 +9,7 @@ import editor from './editor'
 import { getPreviewWidth, getNormalPreviewWidth, lazyChange } from './util'
 import layout from './layout'
 
-window.mdp = {
+const mdp = {
   preferencesChanged: () => {},
   loadPreferences: () => {
     let showToolbar = Cookies.get('show-toolbar')
@@ -147,7 +147,7 @@ $(() => {
   })
 
   // load preferences
-  window.mdp.loadPreferences()
+  mdp.loadPreferences()
 
   // change preferences
   $(document).on('confirmation', '#preferences-modal', () => {
@@ -163,9 +163,9 @@ $(() => {
     Cookies.set('custom-css-files', customCssFiles, { expires: 10000 })
     const customJsFiles = $('#custom-js-files').val().trim()
     Cookies.set('custom-js-files', customJsFiles, { expires: 10000 })
-    window.mdp.loadPreferences()
+    mdp.loadPreferences()
     lazyChange() // trigger re-render
-    window.mdp.preferencesChanged()
+    mdp.preferencesChanged()
   })
 
   // extension methods for editor
