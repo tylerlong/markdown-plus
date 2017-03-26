@@ -1,8 +1,10 @@
 import $ from 'jquery'
 
+import editor from './editor'
+
 $(() => {
   $.get('sample.md', (data) => { // load sample text
-    window.editor.session.setValue(data, -1)
+    editor.session.setValue(data, -1)
     setTimeout(() => {
       window.addEventListener('hashchange', () => {
         $('.ui-layout-east').scrollTop($('.ui-layout-east').scrollTop() - 6)

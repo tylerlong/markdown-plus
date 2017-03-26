@@ -1,8 +1,8 @@
 import $ from 'jquery'
 import _ from 'underscore'
 
-const editor = window.editor
-const layout = window.layout
+import editor from './editor'
+import layout from './layout'
 
 let scrollingSide = null
 let timeoutHandle = null

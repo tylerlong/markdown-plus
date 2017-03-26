@@ -3,25 +3,11 @@ import _ from 'underscore'
 import Cookies from 'js-cookie'
 import mdc from 'markdown-core/src/index-browser'
 import ace from 'brace'
-import { syncEditor, syncPreview } from './sync_scroll'
 
-mdc.map = true
-
-const getPreviewWidth = () => {
-  let previewWidth = Cookies.get('editor-versus-preview')
-  if (previewWidth === undefined) {
-    previewWidth = '50%'
-  }
-  return previewWidth
-}
-
-const getNormalPreviewWidth = () => { // neither editor or preview is hidden
-  let previewWidth = getPreviewWidth()
-  if (previewWidth === '1' || previewWidth === '100%') {
-    previewWidth = '50%'
-  }
-  return previewWidth
-}
+import { syncEditor } from './sync_scroll'
+import editor from './editor'
+import { getPreviewWidth, getNormalPreviewWidth, lazyChange } from './util'
+import layout from './layout'
 
 window.mdp = {
   preferencesChanged: () => {},
@@ -83,7 +69,7 @@ window.mdp = {
   }
 }
 
-const promptForAValue = (key, action) => {
+const promptForValue = (key, action) => {
   $(document).on('opened', '#' + key + '-modal', () => {
     $('#' + key + '-code').focus()
   })
@@ -105,13 +91,6 @@ $(document).on('closed', '.remodal', (e) => {
   editor.focus()
 })
 
-const lazyChange = _.debounce(() => { // user changes markdown text
-  if (layout.panes.east.outerWidth() < 8) { // preview is hidden
-    return // no need to update preview if it's hidden
-  }
-  mdc.init(editor.session.getValue(), false) // realtime preview
-}, 1024, false)
-
 const Vim = ace.require('ace/keyboard/vim').CodeMirror.Vim // vim commands
 Vim.defineEx('write', 'w', (cm, input) => {
   console.log('write')
@@ -131,8 +110,6 @@ const lazyResize = _.debounce(() => { // adjust layout according to percentage c
   layout.sizePane('east', getPreviewWidth())
 }, 1024, false)
 
-let editor
-let layout
 $(() => {
   // keep layout percentage after window resizing
   $(window).resize(() => {
@@ -163,60 +140,10 @@ $(() => {
     }
   })
 
-  layout = $('#mdp-container').layout({ // create 3-panels layout
-    resizerDblClickToggle: false,
-    resizable: false,
-    slidable: false,
-    north: {
-      togglerLength_open: 128,
-      togglerLength_closed: 128,
-      size: 'auto',
-      togglerTip_open: 'Hide toolbar',
-      togglerTip_closed: 'Show toolbar',
-      onopen: () => {
-        editor.focus()
-      },
-      onclose: () => {
-        editor.focus()
-      }
-    },
-    east: {
-      resizable: true,
-      togglerLength_open: 0,
-      size: getPreviewWidth(),
-      onresize: () => {
-        lazyChange()
-        editor.focus()
-        $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px') // scroll past end
-      }
-    },
-    center: {
-      onresize: () => {
-        editor.session.setUseWrapMode(false) // fix ACE editor text wrap issue
-        editor.session.setUseWrapMode(true)
-      }
-    }
-  })
-
   $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px') // scroll past end
 
   $('.ui-layout-east').scroll(() => { // left scroll with right
     syncEditor()
-  })
-
-  // editor on the left
-  editor = ace.edit('editor')
-  editor.session.setUseWorker(false)
-  editor.$blockScrolling = Infinity
-  editor.renderer.setShowPrintMargin(false)
-  editor.session.setMode('ace/mode/markdown')
-  editor.session.setUseWrapMode(true)
-  editor.setScrollSpeed(1)
-  editor.setOption('scrollPastEnd', true)
-  editor.session.setFoldStyle('manual')
-  editor.focus()
-  editor.session.on('changeScrollTop', (scroll) => {
-    syncPreview() // right scroll with left
   })
 
   // load preferences
@@ -387,7 +314,7 @@ $(() => {
   })
 
   // emoji icon
-  promptForAValue('emoji', (value) => {
+  promptForValue('emoji', (value) => {
     if (/^:.+:$/.test(value)) {
       value = /^:(.+):$/.exec(value)[1]
     }
@@ -395,7 +322,7 @@ $(() => {
   })
 
   // Font Awesome icon
-  promptForAValue('fa', (value) => {
+  promptForValue('fa', (value) => {
     if (value.substring(0, 3) === 'fa-') {
       value = value.substring(3)
     }
@@ -403,7 +330,7 @@ $(() => {
   })
 
   // Ionicons icon
-  promptForAValue('ion', (value) => {
+  promptForValue('ion', (value) => {
     if (value.substring(0, 4) === 'ion-') {
       value = value.substring(4)
     }
