@@ -80,3 +80,19 @@ Please take `index.html` as example.
 MIT
 
 Copyright © 2016 [Tylingsoft](http://tylingsoft.com/)
+
+
+---
+
+---
+
+---
+
+
+## Todo
+
+- Move source code to `src/` folder.
+- Replace underscore with lodash
+- Remove Ionicons from html
+- Reduce global varaibles (`window.xxx =` )
+- Use Webpack
