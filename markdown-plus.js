@@ -1,8 +1,12 @@
+import $ from 'jquery'
+import _ from 'underscore'
+import Cookies from 'js-cookie'
+
 mdc.map = true
 
 function get_preview_width () {
   var preview_width = Cookies.get('editor-versus-preview')
-  if (preview_width == undefined) {
+  if (preview_width === undefined) {
     preview_width = '50%'
   }
   return preview_width
@@ -10,7 +14,7 @@ function get_preview_width () {
 
 function get_normal_preview_width () { // neither editor or preview is hidden
   var preview_width = get_preview_width()
-  if (preview_width == '1' || preview_width == '100%') {
+  if (preview_width === '1' || preview_width === '100%') {
     preview_width = '50%'
   }
   return preview_width
@@ -20,7 +24,7 @@ mdp = {
   preferencesChanged: function () {},
   loadPreferences: function () {
     var show_toolbar = Cookies.get('show-toolbar')
-    if (show_toolbar == undefined) {
+    if (show_toolbar === undefined) {
       show_toolbar = 'yes'
     }
     $('select#show-toolbar').val(show_toolbar)
@@ -35,25 +39,25 @@ mdp = {
     layout.sizePane('east', preview_width)
 
     var key_binding = Cookies.get('key-binding')
-    if (key_binding == undefined) {
+    if (key_binding === undefined) {
       key_binding = 'default'
     }
     $('select#key-binding').val(key_binding)
-    if (key_binding == 'default') {
+    if (key_binding === 'default') {
       editor.setKeyboardHandler(null)
     } else {
       editor.setKeyboardHandler(ace.require('ace/keyboard/' + key_binding).handler)
     }
 
     var font_size = Cookies.get('editor-font-size')
-    if (font_size == undefined) {
+    if (font_size === undefined) {
       font_size = '14'
     }
     $('select#editor-font-size').val(font_size)
     editor.setFontSize(font_size + 'px')
 
     var editor_theme = Cookies.get('editor-theme')
-    if (editor_theme == undefined) {
+    if (editor_theme === undefined) {
       editor_theme = 'tomorrow_night_eighties'
     }
     $('select#editor-theme').val(editor_theme)
@@ -63,13 +67,13 @@ mdp = {
     $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format'])
 
     var custom_css_files = Cookies.get('custom-css-files')
-    if (custom_css_files == undefined) {
+    if (custom_css_files === undefined) {
       custom_css_files = ''
     }
     $('textarea#custom-css-files').val(custom_css_files)
 
     var custom_js_files = Cookies.get('custom-js-files')
-    if (custom_js_files == undefined) {
+    if (custom_js_files === undefined) {
       custom_js_files = ''
     }
     $('textarea#custom-js-files').val(custom_js_files)
@@ -81,7 +85,7 @@ function prompt_for_a_value (key, action) {
     $('#' + key + '-code').focus()
   })
   $('#' + key + '-code').keyup(function (e) {
-    if (e.which == 13) { // press enter to confirm
+    if (e.which === 13) { // press enter to confirm
       $('#' + key + '-confirm').click()
     }
   })
@@ -134,7 +138,7 @@ $(function () {
 
   // load themes
   var custom_css_files = Cookies.get('custom-css-files')
-  if (custom_css_files == undefined) {
+  if (custom_css_files === undefined) {
     custom_css_files = ''
   }
   custom_css_files.split('\n').forEach(function (cssfile) {
@@ -146,7 +150,7 @@ $(function () {
 
   // load plugins
   var custom_js_files = Cookies.get('custom-js-files')
-  if (custom_js_files == undefined) {
+  if (custom_js_files === undefined) {
     custom_js_files = ''
   }
   custom_js_files.split('\n').forEach(function (jsfile) {
@@ -221,7 +225,7 @@ $(function () {
       Cookies.set(key, $('select#' + key).val(), { expires: 10000 })
     })
     var gantt_axis_format = $('#gantt-axis-format').val().trim()
-    if (gantt_axis_format == '') {
+    if (gantt_axis_format === '') {
       gantt_axis_format = '%Y-%m-%d'
     }
     Cookies.set('gantt-axis-format', gantt_axis_format, { expires: 10000 })
@@ -243,7 +247,7 @@ $(function () {
     // nothing was selected
     var _range = range // backup original range
     range = editor.selection.getWordRange(range.start.row, range.start.column) // range for current word
-    if (editor.session.getTextRange(range).trim().length == 0) { // selected is blank
+    if (editor.session.getTextRange(range).trim().length === 0) { // selected is blank
       range = _range // restore original range
     }
     return range
@@ -312,7 +316,7 @@ $(function () {
   // <hr/>
   $('#horizontal-rule').click(function () {
     var p = editor.getCursorPosition()
-    if (p.column == 0) { // cursor is at line start
+    if (p.column === 0) { // cursor is at line start
       editor.selection.clearSelection()
       editor.insert('\n---\n')
     } else {
@@ -339,7 +343,7 @@ $(function () {
   $('#link-icon').click(function () {
     var range = editor.selection.smartRange()
     var text = editor.session.getTextRange(range)
-    if (text.trim().length == 0) {
+    if (text.trim().length === 0) {
       text = $(this).data('sample-text')
     }
     var url = $(this).data('sample-url')
@@ -349,7 +353,7 @@ $(function () {
 
   $('#image-icon').click(function () {
     var text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    if (text.length == 0) {
+    if (text.length === 0) {
       text = $(this).data('sample-text')
     }
     var url = $(this).data('sample-url')
@@ -369,7 +373,7 @@ $(function () {
     var sample = $(this).data('sample')
     editor.insert('') // delete selected
     var p = editor.getCursorPosition()
-    if (p.column == 0) { // cursor is at line start
+    if (p.column === 0) { // cursor is at line start
       editor.selection.clearSelection()
       editor.insert('\n' + sample + '\n\n')
     } else {
@@ -389,7 +393,7 @@ $(function () {
 
   // Font Awesome icon
   prompt_for_a_value('fa', function (value) {
-    if (value.substring(0, 3) == 'fa-') {
+    if (value.substring(0, 3) === 'fa-') {
       value = value.substring(3)
     }
     editor.insert(':fa-' + value + ':')
@@ -397,7 +401,7 @@ $(function () {
 
   // Ionicons icon
   prompt_for_a_value('ion', function (value) {
-    if (value.substring(0, 4) == 'ion-') {
+    if (value.substring(0, 4) === 'ion-') {
       value = value.substring(4)
     }
     editor.insert(':ion-' + value + ':')
@@ -405,7 +409,7 @@ $(function () {
 
   $('#math-icon').click(function () {
     var text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    if (text.length == 0) {
+    if (text.length === 0) {
       text = $(this).data('sample')
     }
     editor.insert('\n```katex\n' + text + '\n```\n')
@@ -414,7 +418,7 @@ $(function () {
 
   $('.mermaid-icon').click(function () {
     var text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    if (text.length == 0) {
+    if (text.length === 0) {
       text = $(this).data('sample')
     }
     editor.insert('\n```mermaid\n' + text + '\n```\n')

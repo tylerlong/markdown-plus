@@ -1,7 +1,10 @@
+import $ from 'jquery'
+import _ from 'underscore'
+
 var scrollingSide = null
 var timeoutHandle = null
 function scrollSide (side, howToScroll) {
-  if (scrollingSide != null && scrollingSide != side) {
+  if (scrollingSide != null && scrollingSide !== side) {
     return // the other side hasn't finished scrolling
   }
   scrollingSide = side
@@ -145,7 +148,7 @@ var sync_preview = _.debounce(function () { // sync right with left
   if (layout.panes.east.outerWidth() < 8) {
     return // no need to sync if panel closed
   }
-  if (scrollingSide != 'left') {
+  if (scrollingSide !== 'left') {
     set_preview_scroll(get_editor_scroll())
   }
 }, 256, false)
@@ -154,7 +157,7 @@ var sync_editor = _.debounce(function () { // sync left with right
   if (layout.panes.east.outerWidth() < 8) {
     return // no need to sync if panel closed
   }
-  if (scrollingSide != 'right') {
+  if (scrollingSide !== 'right') {
     set_editor_scroll(get_preview_scroll())
   }
 }, 256, false)
