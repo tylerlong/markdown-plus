@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import { syncEditor } from './sync_scroll'
 import editor from './editor'
 import { lazyChange, lazyResize } from './util'
+import { registerToolBarEvents } from './toolbar'
 
 // modals
 $(document).on('closed', '.remodal', (e) => {
@@ -15,6 +16,9 @@ $(() => {
   $(window).resize(() => {
     lazyResize()
   })
+
+  // setup toolbar
+  registerToolBarEvents()
 
   // load themes
   let customCssFiles = Cookies.get('custom-css-files')

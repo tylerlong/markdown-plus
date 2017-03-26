@@ -64,9 +64,15 @@ const loadPreferences = () => {
   $('textarea#custom-js-files').val(customJsFiles)
 }
 
+const preferencesChanged = () => {
+
+}
+
+const mdp = { preferencesChanged, loadPreferences }
+
 $(() => {
   // load preferences
-  loadPreferences()
+  mdp.loadPreferences()
 
   // change preferences
   $(document).on('confirmation', '#preferences-modal', () => {
@@ -88,9 +94,4 @@ $(() => {
   })
 })
 
-const mdp = {
-  preferencesChanged: () => {},
-  loadPreferences: loadPreferences
-}
-
-export default { mdp }
+window.mdp = mdp
