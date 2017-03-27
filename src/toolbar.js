@@ -24,8 +24,8 @@ const promptForValue = (key, action) => {
 
 const registerToolBarEvents = () => {
   // h1 - h6 heading
-  $('.heading-icon').click(() => {
-    const level = $(this).data('level')
+  $('.heading-icon').click((event) => {
+    const level = $(event.currentTarget).data('level')
     const p = editor.getCursorPosition()
     p.column += level + 1 // cursor offset
     editor.navigateTo(editor.getSelectionRange().start.row, 0) // navigateLineStart has issue when there is wrap
@@ -35,8 +35,8 @@ const registerToolBarEvents = () => {
   })
 
   // styling icons
-  $('.styling-icon').click(() => {
-    const modifier = $(this).data('modifier')
+  $('.styling-icon').click((event) => {
+    const modifier = $(event.currentTarget).data('modifier')
     const range = editor.selection.smartRange()
     const p = editor.getCursorPosition()
     p.column += modifier.length // cursor offset
@@ -60,8 +60,8 @@ const registerToolBarEvents = () => {
   })
 
   // list icons
-  $('.list-icon').click(() => {
-    const prefix = $(this).data('prefix')
+  $('.list-icon').click((event) => {
+    const prefix = $(event.currentTarget).data('prefix')
     const p = editor.getCursorPosition()
     p.column += prefix.length // cursor offset
     const range = editor.selection.getRange()
@@ -73,23 +73,23 @@ const registerToolBarEvents = () => {
     editor.focus()
   })
 
-  $('#link-icon').click(() => {
+  $('#link-icon').click((event) => {
     const range = editor.selection.smartRange()
     let text = editor.session.getTextRange(range)
     if (text.trim().length === 0) {
-      text = $(this).data('sample-text')
+      text = $(event.currentTarget).data('sample-text')
     }
-    const url = $(this).data('sample-url')
+    const url = $(event.currentTarget).data('sample-url')
     editor.session.replace(range, '[' + text + '](' + url + ')')
     editor.focus()
   })
 
-  $('#image-icon').click(() => {
+  $('#image-icon').click((event) => {
     let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {
-      text = $(this).data('sample-text')
+      text = $(event.currentTarget).data('sample-text')
     }
-    const url = $(this).data('sample-url')
+    const url = $(event.currentTarget).data('sample-url')
     editor.insert('![' + text + '](' + url + ')')
     editor.focus()
   })
@@ -102,8 +102,8 @@ const registerToolBarEvents = () => {
     editor.navigateLineEnd()
   })
 
-  $('#table-icon').click(() => {
-    const sample = $(this).data('sample')
+  $('#table-icon').click((event) => {
+    const sample = $(event.currentTarget).data('sample')
     editor.insert('') // delete selected
     const p = editor.getCursorPosition()
     if (p.column === 0) { // cursor is at line start
@@ -132,19 +132,19 @@ const registerToolBarEvents = () => {
     editor.insert(':fa-' + value + ':')
   })
 
-  $('#math-icon').click(() => {
+  $('#math-icon').click((event) => {
     let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {
-      text = $(this).data('sample')
+      text = $(event.currentTarget).data('sample')
     }
     editor.insert('\n```katex\n' + text + '\n```\n')
     editor.focus()
   })
 
-  $('.mermaid-icon').click(() => {
+  $('.mermaid-icon').click((event) => {
     let text = editor.session.getTextRange(editor.selection.getRange()).trim()
     if (text.length === 0) {
-      text = $(this).data('sample')
+      text = $(event.currentTarget).data('sample')
     }
     editor.insert('\n```mermaid\n' + text + '\n```\n')
     editor.focus()

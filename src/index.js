@@ -1,5 +1,3 @@
-require('./index.css')
-
 import $ from 'jquery'
 window.$ = window.jQuery = $
 
@@ -22,4 +20,5 @@ $(() => {
       }
     }, 1000)
   })
+  require('./index.css')
 })

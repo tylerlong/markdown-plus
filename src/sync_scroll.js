@@ -41,8 +41,8 @@ const scrollRight = (scrollTop) => {
 const getEditorScroll = () => {
   const lineMarkers = $('article#preview > [data-source-line]')
   const lines = [] // logical line
-  lineMarkers.each(() => {
-    lines.push($(this).data('source-line'))
+  lineMarkers.each((index, element) => {
+    lines.push($(element).data('source-line'))
   })
   const pLines = [] // physical line
   let pLine = 0
@@ -124,8 +124,8 @@ const getPreviewScroll = () => {
 const setEditorScroll = (previewScroll) => {
   const lineMarkers = $('article#preview > [data-source-line]')
   const lines = [] // logical line
-  lineMarkers.each(() => {
-    lines.push($(this).data('source-line'))
+  lineMarkers.each((index, element) => {
+    lines.push($(element).data('source-line'))
   })
   const pLines = [] // physical line
   let pLine = 0

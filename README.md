@@ -92,8 +92,3 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 
 
 ## Todo
-
-- layout init should be after document ready
-    - Make it a global variable
-- Pay attention to $(this) and arrow functions
-    - https://github.com/tylingsoft/markdown-core/commit/4101c4d8c580bada9b8c36459bbe602d2da6eeaa
