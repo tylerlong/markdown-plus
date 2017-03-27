@@ -1,11 +1,12 @@
 import Cookies from 'js-cookie'
 import $ from 'jquery'
-import ace from 'brace'
 import mdc from 'markdown-core/src/index-browser'
 
 import layout from './layout'
 import { getPreviewWidth, lazyChange } from './util'
 import editor from './editor'
+
+const ace = window.ace
 
 const loadPreferences = () => {
   let showToolbar = Cookies.get('show-toolbar')

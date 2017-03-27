@@ -5,7 +5,7 @@ window.$ = window.jQuery = $
 
 // load sample text and get anchor links correct
 $(() => {
-  const editor = require('./editor')
+  const editor = require('./editor').default
   require('./init')
   require('./preferences')
   $.get('sample.md', (data) => {

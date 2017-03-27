@@ -1,7 +1,8 @@
-import ace from 'brace'
 import $ from 'jquery'
 
 import { syncPreview } from './sync_scroll'
+
+const ace = window.ace
 
 const editor = ace.edit('editor')
 editor.session.setUseWorker(false)
