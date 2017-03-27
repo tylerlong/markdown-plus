@@ -18,7 +18,7 @@ $(() => {
       if (window.location.hash.length > 0) {
         $('.ui-layout-east').scrollTop($(window.location.hash).offset().top - 30)
       }
-    }, 1000)
+    }, 3000)
   })
   require('./index.css')
 })
