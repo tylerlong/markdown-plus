@@ -1,13 +1,13 @@
 require('./index.css')
 
 import $ from 'jquery'
-
-import editor from './editor'
-require('./init')
-require('./preferences')
+window.$ = window.jQuery = $
 
 // load sample text and get anchor links correct
 $(() => {
+  const editor = require('./editor')
+  require('./init')
+  require('./preferences')
   $.get('sample.md', (data) => {
     editor.session.setValue(data, -1)
     setTimeout(() => {
