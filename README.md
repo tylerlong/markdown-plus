@@ -55,16 +55,18 @@ The best way to support our development is to buy our apps.
 
 Optionally :star: this project, then:
 
-```shell
+```
 fork it
 git clone to your local
-open index.html
+yarn install
+yarn build
+open dist/index.html in your browser
 ```
 
 
 ## How to use Markdown Plus in your projects
 
-Please take `index.html` as example.
+Please take `dist/index.html` as example.
 
 
 ## Thanks
@@ -79,7 +81,7 @@ Please take `index.html` as example.
 
 MIT
 
-Copyright © 2016 [Tylingsoft](http://tylingsoft.com/)
+Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 
 
 ---
@@ -91,4 +93,7 @@ Copyright © 2016 [Tylingsoft](http://tylingsoft.com/)
 
 ## Todo
 
-- Replace underscore with lodash
+- layout init should be after document ready
+    - Make it a global variable
+- Pay attention to $(this) and arrow functions
+    - https://github.com/tylingsoft/markdown-core/commit/4101c4d8c580bada9b8c36459bbe602d2da6eeaa
