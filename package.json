@@ -11,7 +11,7 @@
     "chart.js": "^2.5.0",
     "font-awesome": "^4.7.0",
     "github-css": "^0.1.1",
-    "jquery": "3.2.1",
+    "jquery": "2.2.4",
     "js-cookie": "^2.1.4",
     "lodash": "^4.17.4",
     "markdown-core": "^0.9.28"
