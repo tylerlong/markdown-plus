@@ -10,11 +10,11 @@
   "dependencies": {
     "chart.js": "^2.5.0",
     "font-awesome": "^4.7.0",
-    "github-css": "^0.1.0",
-    "jquery": "2.2.4",
-    "js-cookie": "^2.1.3",
+    "github-css": "^0.1.1",
+    "jquery": "3.2.1",
+    "js-cookie": "^2.1.4",
     "lodash": "^4.17.4",
-    "markdown-core": "^0.9.7"
+    "markdown-core": "^0.9.28"
   },
   "keywords": [
     "markdown",
@@ -34,16 +34,16 @@
   },
   "homepage": "https://github.com/tylingsoft/markdown-plus#readme",
   "devDependencies": {
-    "babel-core": "^6.24.0",
+    "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
-    "babel-preset-env": "^1.2.2",
-    "css-loader": "^0.27.3",
+    "babel-preset-env": "^1.3.3",
+    "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^2.1.0",
-    "file-loader": "^0.10.1",
-    "npm-check-updates": "^2.10.4",
-    "standard": "^9.0.2",
-    "style-loader": "^0.16.0",
+    "file-loader": "^0.11.1",
+    "npm-check-updates": "^2.10.5",
+    "standard": "^10.0.1",
+    "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.3.2"
+    "webpack": "^2.3.3"
   }
 }
