@@ -92,3 +92,5 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 
 
 ## Todo
+
+- https://github.com/thlorenz/brace/issues/81#issuecomment-291755810
