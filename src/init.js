@@ -53,7 +53,6 @@ $(() => {
   })
 
   // whenever user changes markdown...
-  // editor.session.on('change', () => {
   editor.on('changes', (instance, changes) => {
     lazyChange()
   })

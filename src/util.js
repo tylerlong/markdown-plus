@@ -27,7 +27,6 @@ const lazyChange = debounce(() => {
   if (layout.panes.east.outerWidth() < 8) { // preview is hidden
     return // no need to update preview if it's hidden
   }
-  // mdc.init(editor.session.getValue(), false) // realtime preview
   mdc.init(editor.getValue()) // realtime preview
 }, 1024, false)
 

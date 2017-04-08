@@ -29,11 +29,6 @@ const registerToolBarEvents = () => {
     const cursor = editor.getCursor()
     editor.setCursor(cursor.line, 0)
     editor.replaceSelection('#'.repeat(level) + ' ')
-    // const p = editor.getCursorPosition()
-    // p.column += level + 1 // cursor offset
-    // editor.navigateTo(editor.getSelectionRange().start.row, 0) // navigateLineStart has issue when there is wrap
-    // editor.insert('#'.repeat(level) + ' ')
-    // editor.moveCursorToPosition(p) // restore cursor position
     editor.focus()
   })
 
@@ -45,14 +40,6 @@ const registerToolBarEvents = () => {
       editor.setSelection(word.anchor, word.head)
     }
     editor.replaceSelection(modifier + editor.getSelection() + modifier)
-
-    // const range = editor.selection.smartRange()
-    // const p = editor.getCursorPosition()
-    // p.column += modifier.length // cursor offset
-    // editor.session.replace(range, modifier + editor.session.getTextRange(range) + modifier)
-    // editor.moveCursorToPosition(p) // restore cursor position
-    // editor.selection.clearSelection() // don't know why statement above selects some text
-
     editor.focus()
   })
 
@@ -65,14 +52,6 @@ const registerToolBarEvents = () => {
       editor.setCursor({ line: cursor.line }) // navigate to end of line
       editor.replaceSelection('\n\n---\n\n')
     }
-    // const p = editor.getCursorPosition()
-    // if (p.column === 0) { // cursor is at line start
-    //   editor.selection.clearSelection()
-    //   editor.insert('\n---\n')
-    // } else {
-    //   editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE) // navigateLineEnd has issue when there is wrap
-    //   editor.insert('\n\n---\n')
-    // }
     editor.focus()
   })
 
@@ -86,14 +65,6 @@ const registerToolBarEvents = () => {
       editor.setCursor(i, 0)
       editor.replaceSelection(prefix)
     }
-    // const p = editor.getCursorPosition()
-    // p.column += prefix.length // cursor offset
-    // const range = editor.selection.getRange()
-    // for (let i = range.start.row + 1; i < range.end.row + 2; i++) {
-    //   editor.gotoLine(i)
-    //   editor.insert(prefix)
-    // }
-    // editor.moveCursorToPosition(p) // restore cursor position
     editor.focus()
   })
 
@@ -104,15 +75,6 @@ const registerToolBarEvents = () => {
     }
     const url = $(event.currentTarget).data('sample-url')
     editor.replaceSelection(`[${text}](${url})`)
-
-    // const range = editor.selection.smartRange()
-    // let text = editor.session.getTextRange(range)
-    // if (text.trim().length === 0) {
-    //   text = $(event.currentTarget).data('sample-text')
-    // }
-    // const url = $(event.currentTarget).data('sample-url')
-    // editor.session.replace(range, '[' + text + '](' + url + ')')
-
     editor.focus()
   })
 
@@ -123,23 +85,12 @@ const registerToolBarEvents = () => {
     }
     const url = $(event.currentTarget).data('sample-url')
     editor.replaceSelection(`![${text}](${url})`)
-    // let text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    // if (text.length === 0) {
-    //   text = $(event.currentTarget).data('sample-text')
-    // }
-    // const url = $(event.currentTarget).data('sample-url')
-    // editor.insert('![' + text + '](' + url + ')')
     editor.focus()
   })
 
   $('#code-icon').click(() => {
     editor.replaceSelection(`\n\`\`\`\n${editor.getSelection()}\n\`\`\`\n`)
     editor.focus()
-    // const text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    // editor.insert('\n```\n' + text + '\n```\n')
-    // editor.focus()
-    // editor.navigateUp(2)
-    // editor.navigateLineEnd()
   })
 
   $('#table-icon').click((event) => {
@@ -151,15 +102,6 @@ const registerToolBarEvents = () => {
       editor.setCursor({ line: cursor.line }) // navigate to line end
       editor.replaceSelection(`\n\n${sample}\n`)
     }
-    // editor.insert('') // delete selected
-    // const p = editor.getCursorPosition()
-    // if (p.column === 0) { // cursor is at line start
-    //   editor.selection.clearSelection()
-    //   editor.insert('\n' + sample + '\n\n')
-    // } else {
-    //   editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE)
-    //   editor.insert('\n\n' + sample + '\n')
-    // }
     editor.focus()
   })
 
@@ -169,7 +111,6 @@ const registerToolBarEvents = () => {
       value = /^:(.+):$/.exec(value)[1]
     }
     editor.replaceSelection(`:${value}:`)
-    // editor.insert(':' + value + ':')
   })
 
   // Font Awesome icon
@@ -178,7 +119,6 @@ const registerToolBarEvents = () => {
       value = value.substring(3)
     }
     editor.replaceSelection(`:fa-${value}:`)
-    // editor.insert(':fa-' + value + ':')
   })
 
   $('#math-icon').click((event) => {
@@ -187,11 +127,6 @@ const registerToolBarEvents = () => {
       text = $(event.currentTarget).data('sample')
     }
     editor.replaceSelection(`\n\`\`\`katex\n${text}\n\`\`\`\n`)
-    // let text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    // if (text.length === 0) {
-    //   text = $(event.currentTarget).data('sample')
-    // }
-    // editor.insert('\n```katex\n' + text + '\n```\n')
     editor.focus()
   })
 
@@ -201,11 +136,6 @@ const registerToolBarEvents = () => {
       text = $(event.currentTarget).data('sample')
     }
     editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`)
-    // let text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    // if (text.length === 0) {
-    //   text = $(event.currentTarget).data('sample')
-    // }
-    // editor.insert('\n```mermaid\n' + text + '\n```\n')
     editor.focus()
   })
 

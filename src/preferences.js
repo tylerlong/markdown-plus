@@ -6,8 +6,6 @@ import layout from './layout'
 import { getPreviewWidth, lazyChange } from './util'
 // import editor from './editor'
 
-// const ace = window.ace
-
 const loadPreferences = () => {
   let showToolbar = Cookies.get('show-toolbar')
   if (showToolbar === undefined) {

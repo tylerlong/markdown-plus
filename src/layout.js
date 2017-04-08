@@ -30,12 +30,6 @@ const layout = $('#mdp-container').layout({ // create 3-panels layout
       $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px') // scroll past end
     }
   }
-  // center: {
-  //   onresize: () => {
-  //     editor.session.setUseWrapMode(false) // fix ACE editor text wrap issue
-  //     editor.session.setUseWrapMode(true)
-  //   }
-  // }
 })
 
 export default layout
