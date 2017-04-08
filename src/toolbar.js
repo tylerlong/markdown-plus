@@ -148,7 +148,7 @@ const registerToolBarEvents = () => {
     if (cursor.ch === 0) { // cursor is at line start
       editor.replaceSelection(`\n${sample}\n\n`)
     } else {
-      editor.setCursor({line: cursor.line}) // navigate to line end
+      editor.setCursor({ line: cursor.line }) // navigate to line end
       editor.replaceSelection(`\n\n${sample}\n`)
     }
     // editor.insert('') // delete selected
@@ -182,20 +182,30 @@ const registerToolBarEvents = () => {
   })
 
   $('#math-icon').click((event) => {
-    let text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    if (text.length === 0) {
+    let text = editor.getSelection()
+    if (text.trim() === '') {
       text = $(event.currentTarget).data('sample')
     }
-    editor.insert('\n```katex\n' + text + '\n```\n')
+    editor.replaceSelection(`\n\`\`\`katex\n${text}\n\`\`\`\n`)
+    // let text = editor.session.getTextRange(editor.selection.getRange()).trim()
+    // if (text.length === 0) {
+    //   text = $(event.currentTarget).data('sample')
+    // }
+    // editor.insert('\n```katex\n' + text + '\n```\n')
     editor.focus()
   })
 
   $('.mermaid-icon').click((event) => {
-    let text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    if (text.length === 0) {
+    let text = editor.getSelection()
+    if (text.trim() === '') {
       text = $(event.currentTarget).data('sample')
     }
-    editor.insert('\n```mermaid\n' + text + '\n```\n')
+    editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`)
+    // let text = editor.session.getTextRange(editor.selection.getRange()).trim()
+    // if (text.length === 0) {
+    //   text = $(event.currentTarget).data('sample')
+    // }
+    // editor.insert('\n```mermaid\n' + text + '\n```\n')
     editor.focus()
   })
 
