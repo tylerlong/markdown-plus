@@ -15,11 +15,14 @@ const rules = [
       loader: 'babel-loader',
       options: {
         presets: [
-          ['env', {
-            'targets': {
-              'browsers': ['last 2 versions']
+          [
+            'env',
+            {
+              'targets': {
+                'browsers': ['last 2 versions']
+              }
             }
-          }]
+          ]
         ]
       }
     }

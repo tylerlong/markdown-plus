@@ -1,8 +1,6 @@
 node_modules/
 todo.md
 .DS_Store
-*.pyc
 *.bundle.js
 *.log
-dist/fonts/
 *.bundle.css

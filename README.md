@@ -36,19 +36,13 @@ The best way to support our development is to buy our apps.
 - Abbreviation
 - Custom container
 - Definition list
-- Emoji
-- Font Awesome icon
-- Ionicons icon
-- Mathematical formula
-- AsciiMath
-- Flowchart
-- Sequence diagram
-- Gantt diagram
-- Vim mode
-- Emacs mode
+- Emoji, Font Awesome icon
+- Mathematical formula, AsciiMath
+- Mermaid: Flowchart, Sequence diagram, Gantt diagram
+- Vim mode, Emacs mode
 - [Themes](https://github.com/tylingsoft/markdown-plus-themes)
 - [Plugins](https://github.com/tylingsoft/markdown-plus-plugins)
-- Charts: line, bar, radar, polar area, pie, doughnut and bubble
+- Chart.js: line, bar, radar, polar area, pie, doughnut and bubble
 
 
 ## Setup & Run
@@ -92,5 +86,3 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 
 
 ## Todo
-
-- https://github.com/thlorenz/brace/issues/81#issuecomment-291755810
