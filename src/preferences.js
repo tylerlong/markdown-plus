@@ -37,11 +37,11 @@ const loadPreferences = () => {
   document.querySelector('.CodeMirror').style.fontSize = `${fontSize}px`
 
   let editorTheme = Cookies.get('editor-theme')
-  if (editorTheme === undefined) {
-    editorTheme = 'tomorrow_night_eighties'
+  if (editorTheme === undefined || editorTheme === 'tomorrow_night_eighties') {
+    editorTheme = 'blackboard'
   }
   $('select#editor-theme').val(editorTheme)
-  // editor.setTheme('ace/theme/' + editorTheme)
+  editor.setOption('theme', editorTheme)
 
   const mdcPreferences = mdc.loadPreferences()
   $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format'])
