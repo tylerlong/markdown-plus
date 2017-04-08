@@ -88,7 +88,5 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 ## Todo
 
 - sync scroll past end, not perfect
-- CodeMirror syntax highlight mermaid charts
-    - remove indentation, issue disappears
 - Vim commands, such as :wq
 - Go through all CodeMirror addons
