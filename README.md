@@ -91,6 +91,4 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 - CodeMirror syntax highlight mermaid charts
     - remove indentation, issue disappears
 - Vim commands, such as :wq
-- Load editor refs, such as theme, font-size
-- Support Sublime keyMap
 - Go through all CodeMirror addons
