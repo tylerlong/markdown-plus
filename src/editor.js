@@ -3,12 +3,14 @@ import 'codemirror/theme/monokai.css'
 
 import CodeMirror from 'codemirror'
 import 'codemirror/mode/markdown/markdown.js'
+import 'codemirror/addon/scroll/scrollpastend.js'
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   lineNumbers: true,
   mode: 'markdown',
   theme: 'monokai',
-  lineWrapping: true
+  lineWrapping: true,
+  scrollPastEnd: true
 })
 
 export default editor
