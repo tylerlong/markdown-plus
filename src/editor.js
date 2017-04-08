@@ -1,11 +1,20 @@
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
+import 'codemirror/addon/dialog/dialog.css'
+import 'codemirror/addon/search/matchesonscrollbar.css'
 
 import CodeMirror from 'codemirror'
 import 'codemirror/mode/markdown/markdown.js'
 import 'codemirror/addon/scroll/scrollpastend.js'
 import 'codemirror/keymap/vim.js'
 import 'codemirror/keymap/emacs.js'
+import 'codemirror/addon/search/search.js'
+import 'codemirror/addon/search/searchcursor.js'
+import 'codemirror/addon/search/jump-to-line.js'
+import 'codemirror/addon/dialog/dialog.js'
+import 'codemirror/addon/search/match-highlighter.js'
+import 'codemirror/addon/search/matchesonscrollbar.js'
+
 import { syncPreview } from './sync_scroll'
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
@@ -14,7 +23,8 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   theme: 'monokai',
   lineWrapping: true,
   scrollPastEnd: true,
-  autofocus: true
+  autofocus: true,
+  extraKeys: {'Alt-F': 'findPersistent'}
 })
 
 editor.on('scroll', (instance) => {
