@@ -23,15 +23,6 @@ const rules = [
         ]
       }
     }
-  },
-  {
-    test: /\.(ttf|eot|svg|woff2?)(\?v=.+?)?$/,
-    use: {
-      loader: 'url-loader',
-      options: {
-        limit: 10000
-      }
-    }
   }
 ]
 
