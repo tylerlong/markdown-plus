@@ -4,6 +4,7 @@ import 'codemirror/theme/monokai.css'
 import CodeMirror from 'codemirror'
 import 'codemirror/mode/markdown/markdown.js'
 import 'codemirror/addon/scroll/scrollpastend.js'
+import { syncPreview } from './sync_scroll'
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   lineNumbers: true,
@@ -12,6 +13,10 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   lineWrapping: true,
   scrollPastEnd: true,
   autofocus: true
+})
+
+editor.on('scroll', (instance) => {
+  syncPreview()
 })
 
 export default editor
@@ -32,6 +37,7 @@ export default editor
 // editor.setOption('scrollPastEnd', true)
 // editor.session.setFoldStyle('manual')
 // editor.focus()
+
 // editor.session.on('changeScrollTop', (scroll) => {
 //   syncPreview() // right scroll with left
 // })
