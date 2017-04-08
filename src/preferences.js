@@ -4,9 +4,9 @@ import mdc from 'markdown-core/src/index-browser'
 
 import layout from './layout'
 import { getPreviewWidth, lazyChange } from './util'
-import editor from './editor'
+// import editor from './editor'
 
-const ace = window.ace
+// const ace = window.ace
 
 const loadPreferences = () => {
   let showToolbar = Cookies.get('show-toolbar')
@@ -29,25 +29,25 @@ const loadPreferences = () => {
     keyBinding = 'default'
   }
   $('select#key-binding').val(keyBinding)
-  if (keyBinding === 'default') {
-    editor.setKeyboardHandler(null)
-  } else {
-    editor.setKeyboardHandler(ace.require('ace/keyboard/' + keyBinding).handler)
-  }
+  // if (keyBinding === 'default') {
+  //   editor.setKeyboardHandler(null)
+  // } else {
+  //   editor.setKeyboardHandler(ace.require('ace/keyboard/' + keyBinding).handler)
+  // }
 
   let fontSize = Cookies.get('editor-font-size')
   if (fontSize === undefined) {
     fontSize = '14'
   }
   $('select#editor-font-size').val(fontSize)
-  editor.setFontSize(fontSize + 'px')
+  // editor.setFontSize(fontSize + 'px')
 
   let editorTheme = Cookies.get('editor-theme')
   if (editorTheme === undefined) {
     editorTheme = 'tomorrow_night_eighties'
   }
   $('select#editor-theme').val(editorTheme)
-  editor.setTheme('ace/theme/' + editorTheme)
+  // editor.setTheme('ace/theme/' + editorTheme)
 
   const mdcPreferences = mdc.loadPreferences()
   $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format'])

@@ -7,7 +7,8 @@ $(() => {
   require('./init')
   require('./preferences')
   $.get('sample.md', (data) => {
-    editor.session.setValue(data, -1)
+    // editor.session.setValue(data, -1)
+    editor.doc.setValue(data)
     setTimeout(() => {
       // a little gap to top
       window.addEventListener('hashchange', () => {
