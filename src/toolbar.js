@@ -26,11 +26,14 @@ const registerToolBarEvents = () => {
   // h1 - h6 heading
   $('.heading-icon').click((event) => {
     const level = $(event.currentTarget).data('level')
-    const p = editor.getCursorPosition()
-    p.column += level + 1 // cursor offset
-    editor.navigateTo(editor.getSelectionRange().start.row, 0) // navigateLineStart has issue when there is wrap
-    editor.insert('#'.repeat(level) + ' ')
-    editor.moveCursorToPosition(p) // restore cursor position
+    const cursor = editor.getCursor()
+    editor.setCursor(cursor.line, 0)
+    editor.replaceSelection('#'.repeat(level) + ' ')
+    // const p = editor.getCursorPosition()
+    // p.column += level + 1 // cursor offset
+    // editor.navigateTo(editor.getSelectionRange().start.row, 0) // navigateLineStart has issue when there is wrap
+    // editor.insert('#'.repeat(level) + ' ')
+    // editor.moveCursorToPosition(p) // restore cursor position
     editor.focus()
   })
 

@@ -95,3 +95,4 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 - Vim commands, such as :wq
 - Keybinding, such as Vim, Emacs
 - Loader editor refs, such as keybinding, theme, font-size
+- Find and replace
