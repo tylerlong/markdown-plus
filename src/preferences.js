@@ -4,7 +4,7 @@ import mdc from 'markdown-core/src/index-browser'
 
 import layout from './layout'
 import { getPreviewWidth, lazyChange } from './util'
-// import editor from './editor'
+import editor from './editor'
 
 const loadPreferences = () => {
   let showToolbar = Cookies.get('show-toolbar')
@@ -27,11 +27,7 @@ const loadPreferences = () => {
     keyBinding = 'default'
   }
   $('select#key-binding').val(keyBinding)
-  // if (keyBinding === 'default') {
-  //   editor.setKeyboardHandler(null)
-  // } else {
-  //   editor.setKeyboardHandler(ace.require('ace/keyboard/' + keyBinding).handler)
-  // }
+  editor.setOption('keyMap', keyBinding)
 
   let fontSize = Cookies.get('editor-font-size')
   if (fontSize === undefined) {

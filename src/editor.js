@@ -4,6 +4,8 @@ import 'codemirror/theme/monokai.css'
 import CodeMirror from 'codemirror'
 import 'codemirror/mode/markdown/markdown.js'
 import 'codemirror/addon/scroll/scrollpastend.js'
+import 'codemirror/keymap/vim.js'
+import 'codemirror/keymap/emacs.js'
 import { syncPreview } from './sync_scroll'
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
