@@ -90,6 +90,7 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 - sync scroll past end, not perfect
 - CodeMirror syntax highlight mermaid charts
     - remove indentation, issue disappears
-- keyboard shortcuts, such as Cmd-B
 - Vim commands, such as :wq
 - Load editor refs, such as keybinding, theme, font-size
+- Support Sublime keyMap
+- Go through all CodeMirror addons

@@ -17,53 +17,39 @@ import 'codemirror/addon/search/matchesonscrollbar.js'
 
 import { syncPreview } from './sync_scroll'
 
+const mac = CodeMirror.keyMap['default'] === CodeMirror.keyMap.macDefault
+const ctrl = mac ? 'Cmd' : 'Ctrl'
+
 const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   lineNumbers: true,
   mode: 'markdown',
   theme: 'monokai',
   lineWrapping: true,
   scrollPastEnd: true,
-  autofocus: true,
-  extraKeys: {'Alt-F': 'findPersistent'}
+  autofocus: true
 })
 
 editor.on('scroll', (instance) => {
   syncPreview()
 })
 
-export default editor
+// custom keyboard shortcuts
+const extraKeys = { 'Alt-F': 'findPersistent' }
+extraKeys[`${ctrl}-B`] = (cm) => {
+  document.querySelector('i.fa-bold').click()
+}
+extraKeys[`${ctrl}-I`] = (cm) => {
+  document.querySelector('i.fa-italic').click()
+}
+extraKeys[`${ctrl}-U`] = (cm) => {
+  document.querySelector('i.fa-underline').click()
+}
+extraKeys[`${ctrl}-,`] = (cm) => {
+  document.querySelector('i.fa-cog').click()
+}
+editor.setOption('extraKeys', extraKeys)
 
-// // overwrite some ACE editor keyboard shortcuts
-// editor.commands.addCommands([
-//   {
-//     name: 'preferences',
-//     bindKey: { win: 'Ctrl-,', mac: 'Command-,' },
-//     exec: (editor) => {
-//       $('i.fa-cog').click() // show preferences modal
-//     }
-//   },
-//   {
-//     name: 'bold',
-//     bindKey: { win: 'Ctrl-B', mac: 'Command-B' },
-//     exec: (editor) => {
-//       $('i.fa-bold').click()
-//     }
-//   },
-//   {
-//     name: 'italic',
-//     bindKey: { win: 'Ctrl-I', mac: 'Command-I' },
-//     exec: (editor) => {
-//       $('i.fa-italic').click()
-//     }
-//   },
-//   {
-//     name: 'underline',
-//     bindKey: { win: 'Ctrl-U', mac: 'Command-U' },
-//     exec: (editor) => {
-//       $('i.fa-underline').click()
-//     }
-//   }
-// ])
+export default editor
 
 // // default implementation of vim commands
 // const Vim = ace.require('ace/keyboard/vim').CodeMirror.Vim
