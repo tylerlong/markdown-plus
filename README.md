@@ -89,3 +89,9 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 
 - sync scroll past end, not perfect
 - CodeMirror syntax highlight mermaid charts
+    - remove indentation, issue disappears
+- editor smartRange
+- keyboard shortcuts, such as Cmd-B
+- Vim commands, such as :wq
+- Keybinding, such as Vim, Emacs
+- Loader editor refs, such as keybinding, theme, font-size
