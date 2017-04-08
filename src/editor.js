@@ -1,8 +1,15 @@
 import 'codemirror/lib/codemirror.css'
+import 'codemirror/theme/monokai.css'
 
 import CodeMirror from 'codemirror'
+import 'codemirror/mode/markdown/markdown.js'
 
-const editor = CodeMirror.fromTextArea(document.getElementById('editor'))
+const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+  lineNumbers: true,
+  mode: 'markdown',
+  theme: 'monokai',
+  lineWrapping: true
+})
 
 export default editor
 
