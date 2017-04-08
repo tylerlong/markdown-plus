@@ -134,6 +134,7 @@ const registerToolBarEvents = () => {
 
   $('#code-icon').click(() => {
     editor.replaceSelection(`\n\`\`\`\n${editor.getSelection()}\n\`\`\`\n`)
+    editor.focus()
     // const text = editor.session.getTextRange(editor.selection.getRange()).trim()
     // editor.insert('\n```\n' + text + '\n```\n')
     // editor.focus()
@@ -143,15 +144,22 @@ const registerToolBarEvents = () => {
 
   $('#table-icon').click((event) => {
     const sample = $(event.currentTarget).data('sample')
-    editor.insert('') // delete selected
-    const p = editor.getCursorPosition()
-    if (p.column === 0) { // cursor is at line start
-      editor.selection.clearSelection()
-      editor.insert('\n' + sample + '\n\n')
+    const cursor = editor.getCursor()
+    if (cursor.ch === 0) { // cursor is at line start
+      editor.replaceSelection(`\n${sample}\n\n`)
     } else {
-      editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE)
-      editor.insert('\n\n' + sample + '\n')
+      editor.setCursor({line: cursor.line}) // navigate to line end
+      editor.replaceSelection(`\n\n${sample}\n`)
     }
+    // editor.insert('') // delete selected
+    // const p = editor.getCursorPosition()
+    // if (p.column === 0) { // cursor is at line start
+    //   editor.selection.clearSelection()
+    //   editor.insert('\n' + sample + '\n\n')
+    // } else {
+    //   editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE)
+    //   editor.insert('\n\n' + sample + '\n')
+    // }
     editor.focus()
   })
 
