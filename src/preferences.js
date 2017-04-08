@@ -34,7 +34,7 @@ const loadPreferences = () => {
     fontSize = '14'
   }
   $('select#editor-font-size').val(fontSize)
-  // editor.setFontSize(fontSize + 'px')
+  document.querySelector('.CodeMirror').style.fontSize = `${fontSize}px`
 
   let editorTheme = Cookies.get('editor-theme')
   if (editorTheme === undefined) {
