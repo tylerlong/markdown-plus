@@ -133,11 +133,12 @@ const registerToolBarEvents = () => {
   })
 
   $('#code-icon').click(() => {
-    const text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    editor.insert('\n```\n' + text + '\n```\n')
-    editor.focus()
-    editor.navigateUp(2)
-    editor.navigateLineEnd()
+    editor.replaceSelection(`\n\`\`\`\n${editor.getSelection()}\n\`\`\`\n`)
+    // const text = editor.session.getTextRange(editor.selection.getRange()).trim()
+    // editor.insert('\n```\n' + text + '\n```\n')
+    // editor.focus()
+    // editor.navigateUp(2)
+    // editor.navigateLineEnd()
   })
 
   $('#table-icon').click((event) => {
