@@ -54,20 +54,19 @@ extraKeys[`${ctrl}-,`] = (cm) => {
 }
 editor.setOption('extraKeys', extraKeys)
 
-export default editor
+// default implementation of vim commands
+CodeMirror.Vim.defineEx('w', 'w', (cm, input) => {
+  console.log('write')
+})
+CodeMirror.Vim.defineEx('q', 'q', (cm, input) => {
+  if (input.input === 'q') {
+    console.log('quit')
+  } else if (input.input === 'q!') {
+    console.log('force quit')
+  }
+})
+CodeMirror.Vim.defineEx('wq', 'wq', (cm, input) => {
+  console.log('write then quit')
+})
 
-// // default implementation of vim commands
-// const Vim = ace.require('ace/keyboard/vim').CodeMirror.Vim
-// Vim.defineEx('write', 'w', (cm, input) => {
-//   console.log('write')
-// })
-// Vim.defineEx('quit', 'q', (cm, input) => {
-//   if (input.input === 'q') {
-//     console.log('quit')
-//   } else if (input.input === 'q!') {
-//     console.log('quit without warning')
-//   }
-// })
-// Vim.defineEx('wq', 'wq', (cm, input) => {
-//   console.log('write then quit')
-// })
+export default editor
