@@ -98,13 +98,21 @@ const registerToolBarEvents = () => {
   })
 
   $('#link-icon').click((event) => {
-    const range = editor.selection.smartRange()
-    let text = editor.session.getTextRange(range)
-    if (text.trim().length === 0) {
+    let text = editor.getSelection()
+    if (text.trim() === '') {
       text = $(event.currentTarget).data('sample-text')
     }
     const url = $(event.currentTarget).data('sample-url')
-    editor.session.replace(range, '[' + text + '](' + url + ')')
+    editor.replaceSelection(`[${text}](${url})`)
+
+    // const range = editor.selection.smartRange()
+    // let text = editor.session.getTextRange(range)
+    // if (text.trim().length === 0) {
+    //   text = $(event.currentTarget).data('sample-text')
+    // }
+    // const url = $(event.currentTarget).data('sample-url')
+    // editor.session.replace(range, '[' + text + '](' + url + ')')
+
     editor.focus()
   })
 
