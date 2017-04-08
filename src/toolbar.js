@@ -168,7 +168,8 @@ const registerToolBarEvents = () => {
     if (/^:.+:$/.test(value)) {
       value = /^:(.+):$/.exec(value)[1]
     }
-    editor.insert(':' + value + ':')
+    editor.replaceSelection(`:${value}:`)
+    // editor.insert(':' + value + ':')
   })
 
   // Font Awesome icon
@@ -176,7 +177,8 @@ const registerToolBarEvents = () => {
     if (value.substring(0, 3) === 'fa-') {
       value = value.substring(3)
     }
-    editor.insert(':fa-' + value + ':')
+    editor.replaceSelection(`:fa-${value}:`)
+    // editor.insert(':fa-' + value + ':')
   })
 
   $('#math-icon').click((event) => {
