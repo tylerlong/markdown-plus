@@ -58,14 +58,21 @@ const registerToolBarEvents = () => {
 
   // <hr/>
   $('#horizontal-rule').click(() => {
-    const p = editor.getCursorPosition()
-    if (p.column === 0) { // cursor is at line start
-      editor.selection.clearSelection()
-      editor.insert('\n---\n')
+    const cursor = editor.getCursor()
+    if (cursor.ch === 0) { // cursor is at line start
+      editor.replaceSelection('\n---\n\n')
     } else {
-      editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE) // navigateLineEnd has issue when there is wrap
-      editor.insert('\n\n---\n')
+      editor.setCursor({ line: cursor.line }) // navigate to end of line
+      editor.replaceSelection('\n\n---\n\n')
     }
+    // const p = editor.getCursorPosition()
+    // if (p.column === 0) { // cursor is at line start
+    //   editor.selection.clearSelection()
+    //   editor.insert('\n---\n')
+    // } else {
+    //   editor.navigateTo(editor.getSelectionRange().start.row, Number.MAX_VALUE) // navigateLineEnd has issue when there is wrap
+    //   editor.insert('\n\n---\n')
+    // }
     editor.focus()
   })
 
