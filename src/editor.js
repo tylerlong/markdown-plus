@@ -10,7 +10,8 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   mode: 'markdown',
   theme: 'monokai',
   lineWrapping: true,
-  scrollPastEnd: true
+  scrollPastEnd: true,
+  autofocus: true
 })
 
 export default editor
