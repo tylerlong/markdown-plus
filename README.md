@@ -86,3 +86,6 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 
 
 ## Todo
+
+- sync scroll past end, not perfect
+- CodeMirror syntax highlight mermaid charts

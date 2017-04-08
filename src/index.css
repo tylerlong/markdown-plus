@@ -95,6 +95,10 @@ span.hint {
   font-size: 80%;
 }
 
+.CodeMirror {
+  font-size: 110%;
+}
+
 
 /*************************/
 /* below is for printing */

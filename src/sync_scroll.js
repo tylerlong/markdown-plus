@@ -158,7 +158,6 @@ const getPreviewScroll = () => {
 }
 
 const setEditorScroll = (previewScroll) => {
-  console.log(previewScroll)
   let last = 0
   let next = editor.heightAtLine(editor.getValue().split('\n').length - 1, 'local')
   if (previewScroll.lastMarker) {
