@@ -79,14 +79,21 @@ const registerToolBarEvents = () => {
   // list icons
   $('.list-icon').click((event) => {
     const prefix = $(event.currentTarget).data('prefix')
-    const p = editor.getCursorPosition()
-    p.column += prefix.length // cursor offset
-    const range = editor.selection.getRange()
-    for (let i = range.start.row + 1; i < range.end.row + 2; i++) {
-      editor.gotoLine(i)
-      editor.insert(prefix)
+    const selection = editor.listSelections()[0]
+    const minLine = Math.min(selection.head.line, selection.anchor.line)
+    const maxLine = Math.max(selection.head.line, selection.anchor.line)
+    for (let i = minLine; i <= maxLine; i++) {
+      editor.setCursor(i, 0)
+      editor.replaceSelection(prefix)
     }
-    editor.moveCursorToPosition(p) // restore cursor position
+    // const p = editor.getCursorPosition()
+    // p.column += prefix.length // cursor offset
+    // const range = editor.selection.getRange()
+    // for (let i = range.start.row + 1; i < range.end.row + 2; i++) {
+    //   editor.gotoLine(i)
+    //   editor.insert(prefix)
+    // }
+    // editor.moveCursorToPosition(p) // restore cursor position
     editor.focus()
   })
 
