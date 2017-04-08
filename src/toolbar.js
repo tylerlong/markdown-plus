@@ -40,12 +40,19 @@ const registerToolBarEvents = () => {
   // styling icons
   $('.styling-icon').click((event) => {
     const modifier = $(event.currentTarget).data('modifier')
-    const range = editor.selection.smartRange()
-    const p = editor.getCursorPosition()
-    p.column += modifier.length // cursor offset
-    editor.session.replace(range, modifier + editor.session.getTextRange(range) + modifier)
-    editor.moveCursorToPosition(p) // restore cursor position
-    editor.selection.clearSelection() // don't know why statement above selects some text
+    if (!editor.somethingSelected()) {
+      const word = editor.findWordAt(editor.getCursor())
+      editor.setSelection(word.anchor, word.head)
+    }
+    editor.replaceSelection(modifier + editor.getSelection() + modifier)
+
+    // const range = editor.selection.smartRange()
+    // const p = editor.getCursorPosition()
+    // p.column += modifier.length // cursor offset
+    // editor.session.replace(range, modifier + editor.session.getTextRange(range) + modifier)
+    // editor.moveCursorToPosition(p) // restore cursor position
+    // editor.selection.clearSelection() // don't know why statement above selects some text
+
     editor.focus()
   })
 
