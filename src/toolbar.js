@@ -117,12 +117,18 @@ const registerToolBarEvents = () => {
   })
 
   $('#image-icon').click((event) => {
-    let text = editor.session.getTextRange(editor.selection.getRange()).trim()
-    if (text.length === 0) {
+    let text = editor.getSelection()
+    if (text.trim() === '') {
       text = $(event.currentTarget).data('sample-text')
     }
     const url = $(event.currentTarget).data('sample-url')
-    editor.insert('![' + text + '](' + url + ')')
+    editor.replaceSelection(`![${text}](${url})`)
+    // let text = editor.session.getTextRange(editor.selection.getRange()).trim()
+    // if (text.length === 0) {
+    //   text = $(event.currentTarget).data('sample-text')
+    // }
+    // const url = $(event.currentTarget).data('sample-url')
+    // editor.insert('![' + text + '](' + url + ')')
     editor.focus()
   })
 
