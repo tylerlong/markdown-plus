@@ -10,7 +10,7 @@ const layout = $('#mdp-container').layout({ // create 3-panels layout
   north: {
     togglerLength_open: 128,
     togglerLength_closed: 128,
-    size: 'auto',
+    size: 22,
     togglerTip_open: 'Hide toolbar',
     togglerTip_closed: 'Show toolbar',
     onopen: () => {
