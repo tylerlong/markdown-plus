@@ -72,4 +72,12 @@ CodeMirror.Vim.defineEx('wq', 'wq', (cm, input) => {
   console.log('write then quit')
 })
 
+// custom commands
+CodeMirror.commands.toUpperCase = (cm) => {
+  cm.replaceSelection(cm.getSelection().toUpperCase())
+}
+CodeMirror.commands.toLowerCase = (cm) => {
+  cm.replaceSelection(cm.getSelection().toLowerCase())
+}
+
 export default editor
