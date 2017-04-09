@@ -80,35 +80,33 @@ const setPreviewScroll = (editorScroll) => {
 
 const getPreviewScroll = () => {
   const scroll = $('.ui-layout-east').scrollTop()
-  let lastMarker
-  let nextMarker
+  let lastLine = 0
+  let lastScroll = 0
+  let nextLine = editor.getValue().split('\n').length // number of lines of markdown
+  let nextScroll = $('article#preview').outerHeight() - $('.ui-layout-east').height()  // maximum scroll
   const lineMarkers = $('article#preview > [data-source-line]')
   for (let i = 0; i < lineMarkers.length; i++) {
     const lineMarker = lineMarkers[i]
     if (lineMarker.offsetTop < scroll) {
-      lastMarker = lineMarker
+      lastLine = parseInt(lineMarker.getAttribute('data-source-line'))
+      lastScroll = lineMarker.offsetTop
     } else {
-      nextMarker = lineMarker
+      nextLine = parseInt(lineMarker.getAttribute('data-source-line'))
+      nextScroll = lineMarker.offsetTop
       break
     }
   }
   let percentage = 0
-  if (lastMarker && nextMarker && lastMarker !== nextMarker) {
-    percentage = (scroll - lastMarker.offsetTop) / (nextMarker.offsetTop - lastMarker.offsetTop)
+  if (lastScroll !== nextScroll) {
+    percentage = (scroll - lastScroll) / (nextScroll - lastScroll)
   }
-  // returns two neighboring markers $(element), and current scroll percentage between two markers
-  return { lastMarker: lastMarker, nextMarker: nextMarker, percentage: percentage }
+  // returns two neighboring marker lines, and current scroll percentage between two markers
+  return { lastMarker: lastLine, nextMarker: nextLine, percentage: percentage }
 }
 
 const setEditorScroll = (previewScroll) => {
-  let last = 0
-  let next = editor.heightAtLine(editor.getValue().split('\n').length - 1, 'local')
-  if (previewScroll.lastMarker) {
-    last = editor.heightAtLine(parseInt(previewScroll.lastMarker.getAttribute('data-source-line')) - 1, 'local')
-  }
-  if (previewScroll.nextMarker) {
-    next = editor.heightAtLine(parseInt(previewScroll.nextMarker.getAttribute('data-source-line')) - 1, 'local')
-  }
+  const last = editor.heightAtLine(previewScroll.lastMarker - 1, 'local')
+  const next = editor.heightAtLine(previewScroll.nextMarker - 1, 'local')
   scrollLeft((next - last) * previewScroll.percentage + last)
 }
 
