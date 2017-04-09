@@ -4,7 +4,7 @@ import mdc from 'markdown-core/src/index-browser'
 
 import layout from './layout'
 import { getPreviewWidth, lazyChange } from './util'
-import editor from './editor'
+import editor, { themes } from './editor'
 
 const loadPreferences = () => {
   let showToolbar = Cookies.get('show-toolbar')
@@ -37,7 +37,7 @@ const loadPreferences = () => {
   document.querySelector('.CodeMirror').style.fontSize = `${fontSize}px`
 
   let editorTheme = Cookies.get('editor-theme')
-  if (editorTheme === undefined || editorTheme === 'tomorrow_night_eighties') {
+  if (!themes.includes(editorTheme)) {
     editorTheme = 'blackboard'
   }
   $('select#editor-theme').val(editorTheme)
