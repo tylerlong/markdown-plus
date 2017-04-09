@@ -1,6 +1,6 @@
 {
   "name": "markdown-plus",
-  "version": "2.2.3",
+  "version": "2.4.0",
   "description": "Markdown editor with extra features",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,10 @@
     "markdown plus",
     "mdp",
     "tylingsoft"
+  ],
+  "files": [
+    "src",
+    "dist"
   ],
   "author": "Tyler Long",
   "license": "MIT",

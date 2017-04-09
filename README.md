@@ -87,4 +87,4 @@ Copyright © 2015 - 2017 [Tylingsoft](http://tylingsoft.com/)
 
 ## Todo
 
-- Go through all CodeMirror addons
+- Get rid of jQuery
