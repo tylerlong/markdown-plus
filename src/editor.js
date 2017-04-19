@@ -35,7 +35,8 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   scrollPastEnd: true,
   autofocus: true,
   styleActiveLine: { nonEmpty: true },
-  tabSize: 8
+  tabSize: 8,
+  indentUnit: 4
 })
 
 editor.on('scroll', (instance) => {
