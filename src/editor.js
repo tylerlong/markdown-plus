@@ -57,6 +57,9 @@ extraKeys[`${ctrl}-U`] = (cm) => {
 extraKeys[`${ctrl}-,`] = (cm) => {
   document.querySelector('i.fa-cog').click()
 }
+extraKeys['Tab'] = (cm) => {
+  cm.execCommand('indentMore')
+}
 editor.setOption('extraKeys', extraKeys)
 
 // default implementation of vim commands
