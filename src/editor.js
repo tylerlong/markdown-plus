@@ -3,7 +3,28 @@ import 'codemirror/addon/dialog/dialog.css'
 import 'codemirror/addon/search/matchesonscrollbar.css'
 
 import CodeMirror from 'codemirror'
-import 'codemirror/mode/markdown/markdown.js'
+
+import 'codemirror/mode/gfm/gfm.js'
+import 'codemirror/mode/javascript/javascript.js'
+import 'codemirror/mode/clike/clike.js'
+import 'codemirror/mode/python/python.js'
+import 'codemirror/mode/css/css.js'
+import 'codemirror/mode/php/php.js'
+import 'codemirror/mode/ruby/ruby.js'
+import 'codemirror/mode/shell/shell.js'
+import 'codemirror/mode/r/r.js'
+import 'codemirror/mode/go/go.js'
+import 'codemirror/mode/perl/perl.js'
+import 'codemirror/mode/coffeescript/coffeescript.js'
+import 'codemirror/mode/swift/swift.js'
+import 'codemirror/mode/commonlisp/commonlisp.js'
+import 'codemirror/mode/haskell/haskell.js'
+import 'codemirror/mode/lua/lua.js'
+import 'codemirror/mode/clojure/clojure.js'
+import 'codemirror/mode/groovy/groovy.js'
+import 'codemirror/mode/rust/rust.js'
+import 'codemirror/mode/powershell/powershell.js'
+
 import 'codemirror/addon/scroll/scrollpastend.js'
 import 'codemirror/keymap/vim.js'
 import 'codemirror/keymap/emacs.js'
@@ -29,7 +50,7 @@ const ctrl = mac ? 'Cmd' : 'Ctrl'
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
   lineNumbers: true,
-  mode: 'markdown',
+  mode: 'gfm',
   theme: 'blackboard',
   lineWrapping: true,
   scrollPastEnd: true,
