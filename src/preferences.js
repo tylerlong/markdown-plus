@@ -37,8 +37,8 @@ const loadPreferences = () => {
   document.querySelector('.CodeMirror').style.fontSize = `${fontSize}px`
 
   let editorTheme = Cookies.get('editor-theme')
-  if (!(themes.includes(editorTheme) || editorTheme === 'default')) {
-    editorTheme = 'blackboard'
+  if (!themes.includes(editorTheme)) {
+    editorTheme = 'default'
   }
   $('select#editor-theme').val(editorTheme)
   editor.setOption('theme', editorTheme)
