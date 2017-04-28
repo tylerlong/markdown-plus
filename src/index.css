@@ -14,7 +14,7 @@ html, body, .CodeMirror {
   background-color: #eee;
 }
 .ui-layout-resizer-north-hover {
-  background: #ddd !important; /* same color as non-hover */
+  background: #ddd; /* same color as non-hover */
 }
 
 

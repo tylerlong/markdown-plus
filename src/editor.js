@@ -42,7 +42,7 @@ import { syncPreview } from './sync_scroll'
 // load all the themes
 export const themes = ['3024-day', '3024-night', 'abcdef', 'ambiance-mobile', 'ambiance', 'base16-dark', 'base16-light', 'bespin', 'blackboard', 'cobalt', 'colorforth', 'dracula', 'duotone-dark', 'duotone-light', 'eclipse', 'elegant', 'erlang-dark', 'hopscotch', 'icecoder', 'isotope', 'lesser-dark', 'liquibyte', 'material', 'mbo', 'mdn-like', 'midnight', 'monokai', 'neat', 'neo', 'night', 'panda-syntax', 'paraiso-dark', 'paraiso-light', 'pastel-on-dark', 'railscasts', 'rubyblue', 'seti', 'solarized', 'the-matrix', 'tomorrow-night-bright', 'tomorrow-night-eighties', 'ttcn', 'twilight', 'vibrant-ink', 'xq-dark', 'xq-light', 'yeti', 'zenburn']
 themes.forEach((theme) => {
-  require(`codemirror/theme/${theme}.css`)
+  require(`codemirror/theme/${theme}.css`) // eslint-disable-line global-require
 })
 
 const mac = CodeMirror.keyMap['default'] === CodeMirror.keyMap.macDefault
@@ -66,18 +66,12 @@ editor.on('scroll', (instance) => {
 
 // custom keyboard shortcuts
 const extraKeys = { 'Alt-F': 'findPersistent' }
-extraKeys[`${ctrl}-B`] = (cm) => {
-  document.querySelector('i.fa-bold').click()
-}
-extraKeys[`${ctrl}-I`] = (cm) => {
-  document.querySelector('i.fa-italic').click()
-}
-extraKeys[`${ctrl}-U`] = (cm) => {
-  document.querySelector('i.fa-underline').click()
-}
-extraKeys[`${ctrl}-,`] = (cm) => {
-  document.querySelector('i.fa-cog').click()
-}
+const items = [[`${ctrl}-B`, 'i.fa-bold'], [`${ctrl}-I`, 'i.fa-italic'], [`${ctrl}-U`, 'i.fa-underline'], [`${ctrl}-,`, 'i.fa-cog']]
+items.forEach((item) => {
+  extraKeys[item[0]] = (cm) => {
+    document.querySelector(item[1]).click()
+  }
+})
 extraKeys['Tab'] = (cm) => {
   cm.execCommand('indentMore')
 }
