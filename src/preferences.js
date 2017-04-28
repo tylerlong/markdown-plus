@@ -6,28 +6,30 @@ import layout from './layout'
 import { getPreviewWidth, lazyChange } from './util'
 import editor, { themes } from './editor'
 
-const loadPreferences = () => {
-  let showToolbar = Cookies.get('show-toolbar')
-  if (showToolbar === undefined) {
-    showToolbar = 'yes'
-  }
+const loadShowToolbar = () => {
+  const showToolbar = Cookies.get('show-toolbar') || 'yes'
   $('select#show-toolbar').val(showToolbar)
   if (showToolbar === 'yes') {
     layout.open('north')
   } else {
     layout.close('north')
   }
+}
+
+const loadKeyBinding = () => {
+  const keyBinding = Cookies.get('key-binding') || 'default'
+  $('select#key-binding').val(keyBinding)
+  editor.setOption('keyMap', keyBinding)
+}
+
+const loadPreferences = () => {
+  loadShowToolbar()
 
   const previewWidth = getPreviewWidth()
   $('select#editor-versus-preview').val(previewWidth)
   layout.sizePane('east', previewWidth)
 
-  let keyBinding = Cookies.get('key-binding')
-  if (keyBinding === undefined) {
-    keyBinding = 'default'
-  }
-  $('select#key-binding').val(keyBinding)
-  editor.setOption('keyMap', keyBinding)
+  loadKeyBinding()
 
   let fontSize = Cookies.get('editor-font-size')
   if (fontSize === undefined) {
