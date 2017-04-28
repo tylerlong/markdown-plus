@@ -1,5 +1,7 @@
 # Markdown Plus
 
+[![Code Climate](https://codeclimate.com/github/tylingsoft/markdown-plus.png)](https://codeclimate.com/github/tylingsoft/markdown-plus)
+
 Markdown Plus ("M+" or "mdp" for short) is a markdown editor with extra features.
 
 
