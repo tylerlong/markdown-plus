@@ -27,7 +27,7 @@ const layout = $('#mdp-container').layout({ // create 3-panels layout
     onresize: () => {
       lazyChange()
       editor.focus()
-      $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px') // scroll past end
+      $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height'), 10) + 1) + 'px') // scroll past end
     }
   }
 })

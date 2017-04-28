@@ -7,7 +7,7 @@ import layout from './layout'
 let scrollingSide = null
 let timeoutHandle = null
 const scrollSide = (side, howToScroll) => {
-  if (scrollingSide != null && scrollingSide !== side) {
+  if (scrollingSide !== null && scrollingSide !== side) {
     return // the other side hasn't finished scrolling
   }
   scrollingSide = side
@@ -88,10 +88,10 @@ const getPreviewScroll = () => {
   for (let i = 0; i < lineMarkers.length; i++) {
     const lineMarker = lineMarkers[i]
     if (lineMarker.offsetTop < scroll) {
-      lastLine = parseInt(lineMarker.getAttribute('data-source-line'))
+      lastLine = parseInt(lineMarker.getAttribute('data-source-line'), 10)
       lastScroll = lineMarker.offsetTop
     } else {
-      nextLine = parseInt(lineMarker.getAttribute('data-source-line'))
+      nextLine = parseInt(lineMarker.getAttribute('data-source-line'), 10)
       nextScroll = lineMarker.offsetTop
       break
     }

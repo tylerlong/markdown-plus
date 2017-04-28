@@ -45,7 +45,7 @@ $(() => {
   })
 
   // scroll past end
-  $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height')) + 1) + 'px')
+  $('article#preview').css('padding-bottom', ($('.ui-layout-east').height() - parseInt($('article#preview').css('line-height'), 10) + 1) + 'px')
 
   // left scroll with right
   $('.ui-layout-east').scroll(() => {
