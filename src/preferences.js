@@ -22,6 +22,29 @@ const loadKeyBinding = () => {
   editor.setOption('keyMap', keyBinding)
 }
 
+const loadEditorFontSize = () => {
+  const fontSize = Cookies.get('editor-font-size') || '14'
+  $('select#editor-font-size').val(fontSize)
+  document.querySelector('.CodeMirror').style.fontSize = `${fontSize}px`
+}
+
+const loadEditorTheme = () => {
+  let editorTheme = Cookies.get('editor-theme')
+  if (!themes.includes(editorTheme)) {
+    editorTheme = 'default'
+  }
+  $('select#editor-theme').val(editorTheme)
+  editor.setOption('theme', editorTheme)
+}
+
+const loadCustomFiles = () => {
+  const customCssFiles = Cookies.get('custom-css-files') || ''
+  $('textarea#custom-css-files').val(customCssFiles)
+
+  const customJsFiles = Cookies.get('custom-js-files') || ''
+  $('textarea#custom-js-files').val(customJsFiles)
+}
+
 const loadPreferences = () => {
   loadShowToolbar()
 
@@ -31,34 +54,14 @@ const loadPreferences = () => {
 
   loadKeyBinding()
 
-  let fontSize = Cookies.get('editor-font-size')
-  if (fontSize === undefined) {
-    fontSize = '14'
-  }
-  $('select#editor-font-size').val(fontSize)
-  document.querySelector('.CodeMirror').style.fontSize = `${fontSize}px`
+  loadEditorFontSize()
 
-  let editorTheme = Cookies.get('editor-theme')
-  if (!themes.includes(editorTheme)) {
-    editorTheme = 'default'
-  }
-  $('select#editor-theme').val(editorTheme)
-  editor.setOption('theme', editorTheme)
+  loadEditorTheme()
 
   const mdcPreferences = mdc.loadPreferences()
   $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format'])
 
-  let customCssFiles = Cookies.get('custom-css-files')
-  if (customCssFiles === undefined) {
-    customCssFiles = ''
-  }
-  $('textarea#custom-css-files').val(customCssFiles)
-
-  let customJsFiles = Cookies.get('custom-js-files')
-  if (customJsFiles === undefined) {
-    customJsFiles = ''
-  }
-  $('textarea#custom-js-files').val(customJsFiles)
+  loadCustomFiles()
 }
 
 const preferencesChanged = () => {
