@@ -4,6 +4,14 @@ import editor from './editor'
 import { getNormalPreviewWidth } from './util'
 import layout from './layout'
 
+const getSampleText = (event) => {
+  let text = editor.getSelection()
+  if (text.trim() === '') {
+    text = $(event.currentTarget).data('sample')
+  }
+  return text
+}
+
 const promptForValue = (key, action) => {
   $(document).on('opened', '#' + key + '-modal', () => {
     $('#' + key + '-code').focus()
@@ -69,20 +77,14 @@ const registerToolBarEvents = () => {
   })
 
   $('#link-icon').click((event) => {
-    let text = editor.getSelection()
-    if (text.trim() === '') {
-      text = $(event.currentTarget).data('sample-text')
-    }
+    let text = getSampleText(event)
     const url = $(event.currentTarget).data('sample-url')
     editor.replaceSelection(`[${text}](${url})`)
     editor.focus()
   })
 
   $('#image-icon').click((event) => {
-    let text = editor.getSelection()
-    if (text.trim() === '') {
-      text = $(event.currentTarget).data('sample-text')
-    }
+    let text = getSampleText(event)
     const url = $(event.currentTarget).data('sample-url')
     editor.replaceSelection(`![${text}](${url})`)
     editor.focus()
@@ -122,19 +124,13 @@ const registerToolBarEvents = () => {
   })
 
   $('#math-icon').click((event) => {
-    let text = editor.getSelection()
-    if (text.trim() === '') {
-      text = $(event.currentTarget).data('sample')
-    }
+    let text = getSampleText(event)
     editor.replaceSelection(`\n\`\`\`katex\n${text}\n\`\`\`\n`)
     editor.focus()
   })
 
   $('.mermaid-icon').click((event) => {
-    let text = editor.getSelection()
-    if (text.trim() === '') {
-      text = $(event.currentTarget).data('sample')
-    }
+    let text = getSampleText(event)
     editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`)
     editor.focus()
   })
