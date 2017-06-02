@@ -41,6 +41,7 @@
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-remove-strict-mode": "^0.0.2",
     "babel-preset-env": "^1.5.1",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.0",

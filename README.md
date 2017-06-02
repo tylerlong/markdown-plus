@@ -40,7 +40,7 @@ The best way to support our development is to buy our apps.
 - Definition list
 - Emoji, Font Awesome icon
 - Mathematical formula, AsciiMath
-- Mermaid: Flowchart, Sequence diagram, Gantt diagram
+- Mermaid: Flowchart, Sequence diagram, Gantt diagram, Class diagram
 - Vim mode, Emacs mode
 - [Themes](https://github.com/tylingsoft/markdown-plus-themes)
 - [Plugins](https://github.com/tylingsoft/markdown-plus-plugins)
@@ -55,7 +55,7 @@ Optionally :star: this project, then:
 fork it
 git clone to your local
 yarn install
-yarn build
+yarn watch
 open dist/index.html in your browser
 ```
 

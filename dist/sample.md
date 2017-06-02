@@ -187,7 +187,9 @@ phi_n(kappa) = 1/(4pi^2 kappa^2)
 [AsciiMath Documentation](http://asciimath.org/)
 
 
-## Flowchart
+## mermaid charts
+
+### Flowchart
 
 ```mermaid
 graph TD
@@ -204,8 +206,7 @@ C -->|Three| F[Car]
 Adding many flowcharts will slow down the editor.
 :::
 
-
-## Sequence diagram
+### Sequence diagram
 
 ```mermaid
 sequenceDiagram
@@ -221,8 +222,7 @@ end
 Adding many sequence diagrams will slow down the editor.
 :::
 
-
-## Gantt diagram
+### Gantt diagram
 
 ```mermaid
 gantt
@@ -258,6 +258,31 @@ Add another diagram to demo page    : 48h
 
 ::: warning
 Adding many gantt diagrams will slow down the editor.
+:::
+
+### Class diagram
+
+```mermaid
+classDiagram
+Class01 <|-- AveryLongClass : Cool
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 --> C2 : Where am i?
+Class09 --* C3
+Class09 --|> Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 <--> C2: Cool label
+```
+
+Class diagram is powered by [mermaid](https://github.com/knsv/mermaid).
+
+::: warning
+Adding many class diagrams will slow down the editor.
 :::
 
 
