@@ -4,7 +4,7 @@
   "description": "Markdown editor with extra features",
   "main": "index.js",
   "scripts": {
-    "upgrade": "node_modules/.bin/yarn-upgrade-all && yarn remove jquery && yarn add jquery@2.2.4",
+    "upgrade": "node_modules/.bin/yarn-upgrade-all && yarn remove jquery && yarn add jquery@3.0.0",
     "build": "node -r babel-register node_modules/.bin/webpack --progress --colors",
     "watch": "yarn build -- --watch",
     "dist": "yarn build -- -p"
@@ -12,7 +12,7 @@
   "dependencies": {
     "chart.js": "^2.6.0",
     "codemirror": "^5.26.0",
-    "jquery": "2.2.4",
+    "jquery": "3.0.0",
     "js-cookie": "^2.1.4",
     "lodash": "^4.17.4",
     "markdown-core": "^1.1.0"
