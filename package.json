@@ -1,10 +1,10 @@
 {
   "name": "markdown-plus",
-  "version": "2.5.2",
+  "version": "2.7.2",
   "description": "Markdown editor with extra features",
   "main": "index.js",
   "scripts": {
-    "upgrade": "node_modules/.bin/yarn-upgrade-all && yarn remove jquery && yarn add jquery@2.2.4",
+    "upgrade": "node_modules/.bin/yarn-upgrade-all && yarn remove jquery && yarn add jquery@3.0.0",
     "build": "node -r babel-register node_modules/.bin/webpack --progress --colors",
     "watch": "yarn build -- --watch",
     "dist": "yarn build -- -p"
