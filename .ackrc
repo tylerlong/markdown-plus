@@ -1,4 +1,5 @@
 --ignore-dir=node_modules
+--ignore-dir=dist
 --ignore-file=match:/\.bundle\.js$/
 --ignore-file=match:/\.bundle\.css$/
 --ignore-file=match:/^yarn\.lock$/

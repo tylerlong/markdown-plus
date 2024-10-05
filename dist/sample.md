@@ -3,27 +3,6 @@
 Markdown Plus ("M+" or "mdp" for short) is a markdown editor with extra features.
 
 
-## Apps
-
-We currently ***don't*** accept donations.
-The best way to support our development is to buy our apps.
-
-### Markdown Plus
-
-<a href="http://tylingsoft.com/markdown-plus/"><img src="http://tylingsoft.com/img/mdp/icon.png" height="64px"/></a>
-[Markdown Plus](http://tylingsoft.com/markdown-plus/) is available for both OS X and Windows. You get every feature of the web version plus lots of advanced features.
-
-### Markdown Mate
-
-<a href="http://tylingsoft.com/markdown-mate/"><img src="http://tylingsoft.com/img/mdm/icon.png" height="64px"/></a>
-[Markdown Mate](http://tylingsoft.com/markdown-mate/) is a markdown previewer, it's not going to replace your favorite editor but handles everything about markdown.
-
-::: success
-We provide email support to those who have purchased the apps: **service@tylingsoft.com**
-:::
-
----
-
 # Table of Contents
 
 [toc]
@@ -317,7 +296,7 @@ If you find the markdown syntax too limited, you can try some <span style="color
 
 <p style="text-align:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/120px-HTML5_logo_and_wordmark.svg.png"/></p>
 
-<a href="https://github.com/tylingsoft/markdown-plus" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-green.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/tylerlong/markdown-plus" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-green.png" alt="Fork me on GitHub"></a>
 
 
 ## Charts

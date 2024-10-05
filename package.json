@@ -6,8 +6,8 @@
   "scripts": {
     "upgrade": "node_modules/.bin/yarn-upgrade-all && yarn remove jquery && yarn add jquery@2.2.4",
     "build": "node -r babel-register node_modules/.bin/webpack --progress --colors",
-    "watch": "yarn build -- --watch",
-    "dist": "yarn build -- -p"
+    "watch": "yarn build --watch",
+    "dist": "yarn build -p"
   },
   "dependencies": {
     "chart.js": "^2.6.0",
@@ -21,8 +21,7 @@
     "markdown",
     "editor",
     "markdown plus",
-    "mdp",
-    "tylingsoft"
+    "mdp"
   ],
   "files": [
     "src",
@@ -32,12 +31,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tylingsoft/markdown-plus.git"
+    "url": "git+https://github.com/tylerlong/markdown-plus.git"
   },
   "bugs": {
-    "url": "https://github.com/tylingsoft/markdown-plus/issues"
+    "url": "https://github.com/tylerlong/markdown-plus/issues"
   },
-  "homepage": "https://github.com/tylingsoft/markdown-plus#readme",
+  "homepage": "https://github.com/tylerlong/markdown-plus#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
