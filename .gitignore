@@ -1,6 +1,2 @@
 node_modules/
-todo.md
 .DS_Store
-*.bundle.js
-*.log
-*.bundle.css

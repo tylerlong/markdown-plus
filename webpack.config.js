@@ -39,7 +39,7 @@ const config = {
   },
   externals: 'fs', // in order to make mermaid work
   output: {
-    path: path.join(__dirname, './dist/'),
+    path: path.join(__dirname, './docs/'),
     filename: '[name].bundle.js'
   },
   module: { rules },
