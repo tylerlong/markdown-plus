@@ -32,15 +32,13 @@ Optionally :star: this project, then:
 ```
 fork it
 git clone to your local
-yarn install
-yarn watch
-open dist/index.html in your browser
+open docs/index.html in your browser
 ```
 
 
 ## How to use Markdown Plus in your projects
 
-Please take `dist/index.html` as example.
+Please take `docs/index.html` as example.
 
 
 ## License
