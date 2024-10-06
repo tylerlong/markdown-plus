@@ -1,0 +1,63 @@
+{
+  "formKey": "yhDMK3BwTMOvqHSMhBuUrA/12",
+  "elements": [
+    {
+      "id": "yhDMK3BwTMOvqHSMhBuUrA/11",
+      "adjustX": 0,
+      "adjustY": 1,
+      "hidden": false,
+      "color": "#B0B0B0",
+      "type": "Circle",
+      "diameter": 362,
+      "__type": "Circle"
+    },
+    {
+      "id": "yhDMK3BwTMOvqHSMhBuUrA/9",
+      "adjustX": 0,
+      "adjustY": 0,
+      "hidden": false,
+      "color": "#D3D3D3",
+      "type": "Circle",
+      "diameter": 362,
+      "__type": "Circle"
+    },
+    {
+      "id": "yhDMK3BwTMOvqHSMhBuUrA/1",
+      "adjustX": 0,
+      "adjustY": 0,
+      "hidden": false,
+      "color": "white",
+      "type": "Circle",
+      "diameter": 360,
+      "__type": "Circle"
+    },
+    {
+      "id": "yhDMK3BwTMOvqHSMhBuUrA/5",
+      "adjustX": 0,
+      "adjustY": 0,
+      "hidden": false,
+      "color": "#FF6384",
+      "type": "Text",
+      "content": "M",
+      "fontSize": 320,
+      "fontFamily": "Arial, Helvetica, Sans-Serif",
+      "fontWeight": 700,
+      "italic": false,
+      "__type": "Text"
+    },
+    {
+      "id": "yhDMK3BwTMOvqHSMhBuUrA/7",
+      "adjustX": 0,
+      "adjustY": -100,
+      "hidden": false,
+      "color": "#36A2EB",
+      "type": "Text",
+      "content": "+",
+      "fontSize": 120,
+      "fontFamily": "Arial, Helvetica, Sans-Serif",
+      "fontWeight": 700,
+      "italic": false,
+      "__type": "Text"
+    }
+  ]
+}

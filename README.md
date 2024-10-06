@@ -1,8 +1,15 @@
 # Markdown Plus
 
+![icon](docs/icon.png)
+
 Markdown Plus ("M+" or "mdp" for short) is a markdown editor with extra features.
 
 ![Markdown Plus](screenshot.png)
+
+
+## Online Demo
+
+[Markdown Plus](https://chuntaoliu.com/markdown-plus/)
 
 
 ## Features
