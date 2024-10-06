@@ -1,6 +1,6 @@
 # Markdown Plus
 
-<img src="docs/icon.png" alt="icon" width="256" height="256"/>
+<img src="docs/icon.svg" alt="icon" width="256" height="256"/>
 
 Markdown Plus ("M+" or "mdp" for short) is a markdown editor with extra features.
 
