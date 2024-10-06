@@ -8,7 +8,7 @@
       "hidden": false,
       "color": "#B0B0B0",
       "type": "Circle",
-      "diameter": 362,
+      "diameter": 412,
       "__type": "Circle"
     },
     {
@@ -18,7 +18,7 @@
       "hidden": false,
       "color": "#D3D3D3",
       "type": "Circle",
-      "diameter": 362,
+      "diameter": 412,
       "__type": "Circle"
     },
     {
@@ -28,7 +28,7 @@
       "hidden": false,
       "color": "white",
       "type": "Circle",
-      "diameter": 360,
+      "diameter": 410,
       "__type": "Circle"
     },
     {
@@ -39,9 +39,9 @@
       "color": "#FF6384",
       "type": "Text",
       "content": "M",
-      "fontSize": 320,
+      "fontSize": 360,
       "fontFamily": "Arial, Helvetica, Sans-Serif",
-      "fontWeight": 700,
+      "fontWeight": 900,
       "italic": false,
       "__type": "Text"
     },
@@ -55,7 +55,7 @@
       "content": "+",
       "fontSize": 120,
       "fontFamily": "Arial, Helvetica, Sans-Serif",
-      "fontWeight": 700,
+      "fontWeight": 100,
       "italic": false,
       "__type": "Text"
     }
