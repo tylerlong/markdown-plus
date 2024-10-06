@@ -2,12 +2,28 @@
   "name": "markdown-plus",
   "version": "2.5.2",
   "description": "Markdown editor with extra features",
+  "keywords": [
+    "markdown",
+    "editor",
+    "markdown plus",
+    "mdp"
+  ],
+  "homepage": "https://github.com/tylerlong/markdown-plus#readme",
+  "bugs": {
+    "url": "https://github.com/tylerlong/markdown-plus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerlong/markdown-plus.git"
+  },
+  "license": "MIT",
+  "author": "Tyler Liu",
   "main": "index.js",
   "scripts": {
-    "upgrade": "node_modules/.bin/yarn-upgrade-all && yarn remove jquery && yarn add jquery@2.2.4",
     "build": "node -r babel-register node_modules/.bin/webpack --progress --colors",
-    "watch": "yarn build --watch",
-    "release": "yarn build -p"
+    "release": "yarn build -p",
+    "upgrade": "node_modules/.bin/yarn-upgrade-all && yarn remove jquery && yarn add jquery@2.2.4",
+    "watch": "yarn build --watch"
   },
   "dependencies": {
     "chart.js": "^2.6.0",
@@ -17,22 +33,6 @@
     "lodash": "^4.17.4",
     "markdown-core": "^1.1.0"
   },
-  "keywords": [
-    "markdown",
-    "editor",
-    "markdown plus",
-    "mdp"
-  ],
-  "author": "Tyler Liu",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tylerlong/markdown-plus.git"
-  },
-  "bugs": {
-    "url": "https://github.com/tylerlong/markdown-plus/issues"
-  },
-  "homepage": "https://github.com/tylerlong/markdown-plus#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
@@ -40,6 +40,7 @@
     "babel-preset-env": "^1.5.1",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.0",
+    "sort-package-json": "^2.10.1",
     "standard": "^10.0.2",
     "style-loader": "^0.18.1",
     "webpack": "^2.6.1",
