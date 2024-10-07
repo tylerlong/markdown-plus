@@ -20,9 +20,9 @@
   "author": "Tyler Liu",
   "main": "index.js",
   "scripts": {
-    "build": "node -r @babel/register node_modules/.bin/webpack --mode production",
+    "build": "tsx node_modules/.bin/webpack --mode production",
     "lint": "eslint . --fix && prettier --write . && sort-package-json",
-    "serve": "node -r @babel/register node_modules/.bin/webpack serve"
+    "serve": "tsx node_modules/.bin/webpack serve"
   },
   "dependencies": {
     "chart.js": "2.6.0",
@@ -35,7 +35,6 @@
   "devDependencies": {
     "@babel/core": "^7.25.7",
     "@babel/preset-env": "^7.25.7",
-    "@babel/register": "^7.25.7",
     "babel-loader": "^9.2.1",
     "babel-plugin-transform-remove-strict-mode": "^0.0.2",
     "css-loader": "^7.1.2",
@@ -45,6 +44,7 @@
     "mini-css-extract-plugin": "^2.9.1",
     "path-browserify": "^1.0.1",
     "sort-package-json": "^2.10.1",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.2",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",

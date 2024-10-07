@@ -59,3 +59,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - bug: scroll by url hash, source code position is not accurate
 - use TypeScript
 - Replace jQeury Layout with split-grid
+- Use parcel instead of webpack
