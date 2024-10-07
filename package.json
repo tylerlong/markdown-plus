@@ -1,6 +1,7 @@
 {
   "name": "markdown-plus",
   "version": "2.5.2",
+  "private": true,
   "description": "Markdown editor with extra features",
   "keywords": [
     "markdown",
@@ -18,10 +19,9 @@
   },
   "license": "MIT",
   "author": "Tyler Liu",
-  "main": "index.js",
   "scripts": {
-    "build": "rm -rf .parcel-cache && tsx src/before-build.ts && parcel build src/index.html --dist-dir docs --public-url ./",
     "lint": "eslint . --fix && prettier --write . && sort-package-json",
+    "release": "rm -rf .parcel-cache && rm -rf docs && tsx src/before-build.ts && parcel build src/index.html --dist-dir docs --public-url ./ --no-source-maps",
     "serve": "rm -rf .parcel-cache && tsx src/before-build.ts && parcel src/index.html --dist-dir temp"
   },
   "dependencies": {
@@ -39,14 +39,17 @@
     "eslint-config-tyler": "^0.1.4",
     "globals": "^15.10.0",
     "parcel": "^2.12.0",
-    "path-browserify": "^1.0.0",
+    "path-browserify": "^1.0.1",
     "process": "^0.11.10",
-    "punycode": "^1.4.1",
+    "punycode": "^2.3.1",
     "shell-commands": "^0.4.2",
     "sort-package-json": "^2.10.1",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",
     "yarn-upgrade-all": "^0.7.4"
+  },
+  "@parcel/runtime-js": {
+    "splitManifestThreshold": 100000000
   },
   "yarn-upgrade-all": {
     "ignore": [
