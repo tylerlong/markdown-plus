@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import { getNormalPreviewWidth } from './util';
+import { getNormalPreviewWidth } from './utils';
 import store from './store';
 
 const getSampleText = (event) => {

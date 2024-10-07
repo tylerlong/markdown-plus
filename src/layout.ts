@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import { getPreviewWidth, lazyChange } from './util';
+import { getPreviewWidth, lazyChange } from './utils';
 import store from './store';
 
 export const createLayout = () => {

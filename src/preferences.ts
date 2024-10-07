@@ -2,8 +2,7 @@ import Cookies from 'js-cookie';
 import $ from 'jquery';
 import mdc from 'markdown-core/src/index-browser';
 
-import { getPreviewWidth, lazyChange } from './util';
-import { themes } from './consts';
+import { getPreviewWidth, lazyChange, themes } from './utils';
 import store from './store';
 
 const loadShowToolbar = () => {

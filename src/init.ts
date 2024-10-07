@@ -2,7 +2,7 @@ import $ from 'jquery';
 import Cookies from 'js-cookie';
 
 import { syncEditor } from './sync_scroll';
-import { lazyChange, lazyResize } from './util';
+import { lazyChange, lazyResize } from './utils';
 import { registerToolBarEvents } from './toolbar';
 import store from './store';
 
