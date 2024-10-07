@@ -57,6 +57,7 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 
 - Get rid of jQuery
 - bug: scroll by url hash, source code position is not accurate
+  - issue disappeared after replacing babel with ts
 - use TypeScript
 - Replace jQeury Layout with split-grid
 - Use parcel instead of webpack
