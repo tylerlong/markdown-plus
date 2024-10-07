@@ -20,9 +20,9 @@
   "author": "Tyler Liu",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf .parcel-cache && tsx scripts/before-build.ts && parcel build src/index.html --dist-dir docs --public-url ./",
+    "build": "rm -rf .parcel-cache && tsx src/before-build.ts && parcel build src/index.html --dist-dir docs --public-url ./",
     "lint": "eslint . --fix && prettier --write . && sort-package-json",
-    "serve": "rm -rf .parcel-cache && tsx scripts/before-build.ts && parcel src/index.html --dist-dir temp"
+    "serve": "rm -rf .parcel-cache && tsx src/before-build.ts && parcel src/index.html --dist-dir temp"
   },
   "dependencies": {
     "chart.js": "2.6.0",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@parcel/resolver-glob": "^2.12.0",
     "@parcel/transformer-typescript-tsc": "^2.12.0",
+    "@types/node": "^22.7.4",
     "eslint-config-tyler": "^0.1.4",
     "globals": "^15.10.0",
     "parcel": "^2.12.0",

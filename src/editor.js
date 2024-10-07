@@ -90,10 +90,6 @@ export const themes = [
   'yeti',
   'zenburn',
 ];
-themes.forEach((theme) => {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  require(`codemirror/theme/${theme}.css`);
-});
 
 const mac = CodeMirror.keyMap['default'] === CodeMirror.keyMap.macDefault;
 const ctrl = mac ? 'Cmd' : 'Ctrl';

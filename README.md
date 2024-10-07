@@ -68,3 +68,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Rewrite markdown-core, a mono repo for all the plugins
 - bug: scroll by url hash, source code position is not accurate
   - issue disappeared after replacing babel with ts
+- Remove all `eslint-disable`
