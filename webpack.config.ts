@@ -2,27 +2,9 @@ import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import { Configuration } from 'webpack';
 
-const rules = [
-  {
-    test: /\.css$/,
-    use: [MiniCssExtractPlugin.loader, 'css-loader'],
-  },
-  {
-    test: /\.js$/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env'],
-        plugins: [
-          'transform-remove-strict-mode', // in order to make mermaid work
-        ],
-      },
-    },
-  },
-];
-
-const config = {
+const config: Configuration = {
   mode: 'development',
   target: 'web',
   entry: {
@@ -32,7 +14,26 @@ const config = {
   output: {
     path: path.join(__dirname, './docs/'),
   },
-  module: { rules },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: [
+              'transform-remove-strict-mode', // in order to make mermaid work
+            ],
+          },
+        },
+      },
+    ],
+  },
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
