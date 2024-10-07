@@ -11,5 +11,6 @@
   "resolvers": [
     "@parcel/resolver-glob",
     "..."
-  ]
+  ],
+  "namers": [ "parcel-namer-hashless" ]
 }
