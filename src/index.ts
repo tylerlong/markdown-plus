@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import $ from 'jquery';
-window.$ = window.jQuery = $;
+global.$ = global.jQuery = $;
 
 // load sample text and get anchor links correct
 $(() => {

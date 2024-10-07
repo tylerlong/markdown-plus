@@ -8,7 +8,7 @@ const config: Configuration = {
   mode: 'development',
   target: 'web',
   entry: {
-    index: './src/index.js',
+    index: './src/index.ts',
   },
   externals: 'fs', // in order to make mermaid work
   output: {
@@ -21,16 +21,9 @@ const config: Configuration = {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.js$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: [
-              'transform-remove-strict-mode', // in order to make mermaid work
-            ],
-          },
-        },
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
@@ -43,13 +36,9 @@ const config: Configuration = {
     }),
   ],
   resolve: {
+    extensions: ['.ts', '.js'],
     fallback: {
       path: require.resolve('path-browserify'),
-    },
-  },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'docs'), // Directory to serve static files from
     },
   },
   optimization: {
@@ -59,6 +48,13 @@ const config: Configuration = {
         extractComments: false,
       }),
     ],
+  },
+};
+
+// workaround a TS compile issue: devServer is not in the webpack types
+config['devServer'] = {
+  static: {
+    directory: path.join(__dirname, 'docs'), // Directory to serve static files from
   },
 };
 
