@@ -1,4 +1,5 @@
 import $ from 'jquery';
+global.$ = global.jQuery = $;
 
 import markdownUrl from './sample.md';
 import { createEditor } from './editor';
@@ -9,10 +10,9 @@ import { initPreferences } from './preferences';
 import store from './store';
 import { loadScript } from './utils';
 
-global.$ = global.jQuery = $;
-
 // load sample text and get anchor links correct
-$(async () => {
+const main = async () => {
+  document.removeEventListener('DOMContentLoaded', main);
   await loadScript(
     'https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal.min.js',
   );
@@ -42,7 +42,12 @@ $(async () => {
   setTimeout(() => {
     // scroll to hash element
     if (window.location.hash.length > 0) {
-      $('.ui-layout-east').scrollTop($(window.location.hash).offset().top - 30);
+      const previewPanel = document.querySelector('.ui-layout-east');
+      const linkElement = document.querySelector(window.location.hash);
+      if (previewPanel && linkElement) {
+        previewPanel.scrollTop = (linkElement as HTMLElement).offsetTop;
+      }
     }
   }, 3000);
-});
+};
+document.addEventListener('DOMContentLoaded', main);
