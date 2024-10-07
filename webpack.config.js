@@ -1,6 +1,7 @@
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 
 const rules = [
   {
@@ -45,7 +46,7 @@ const config = {
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
     new HtmlWebpackPlugin({
-      template: './docs/index.html',
+      template: './src/index.html',
       inject: 'head',
       scriptLoading: 'blocking',
     }),
@@ -59,6 +60,13 @@ const config = {
     static: {
       directory: path.join(__dirname, 'docs'), // Directory to serve static files from
     },
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false, // omit license file when build for prod
+      }),
+    ],
   },
 };
 
