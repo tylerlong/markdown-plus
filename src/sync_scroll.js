@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 
 import editor from './editor';
 import layout from './layout';
@@ -136,7 +136,7 @@ const syncPreview = debounce(
     }
   },
   256,
-  false,
+  { leading: false, trailing: true },
 );
 
 const syncEditor = debounce(
@@ -150,7 +150,7 @@ const syncEditor = debounce(
     }
   },
   256,
-  false,
+  { leading: false, trailing: true },
 );
 
 export { syncPreview, syncEditor };

@@ -29,7 +29,7 @@
     "codemirror": "^5.26.0",
     "jquery": "2.2.4",
     "js-cookie": "^2.1.4",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "markdown-core": "^1.1.0"
   },
   "devDependencies": {

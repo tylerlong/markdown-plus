@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import mdc from 'markdown-core/src/index-browser';
 
 import layout from './layout';
@@ -32,7 +32,7 @@ const lazyChange = debounce(
     mdc.init(editor.getValue()); // realtime preview
   },
   1024,
-  false,
+  { leading: false, trailing: true },
 );
 
 // adjust layout according to percentage configuration
@@ -41,7 +41,7 @@ const lazyResize = debounce(
     layout.sizePane('east', getPreviewWidth());
   },
   1024,
-  false,
+  { leading: false, trailing: true },
 );
 
 export { getPreviewWidth, getNormalPreviewWidth, lazyChange, lazyResize };
