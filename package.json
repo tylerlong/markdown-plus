@@ -25,10 +25,10 @@
     "serve": "node -r babel-register node_modules/.bin/webpack serve"
   },
   "dependencies": {
-    "chart.js": "^2.6.0",
+    "chart.js": "2.6.0",
     "codemirror": "^5.26.0",
     "jquery": "2.2.4",
-    "js-cookie": "^2.1.4",
+    "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
     "markdown-core": "^1.1.0"
   },
@@ -54,7 +54,9 @@
   },
   "yarn-upgrade-all": {
     "ignore": [
-      "jquery"
+      "jquery",
+      "markdown-core",
+      "chart.js"
     ]
   }
 }
