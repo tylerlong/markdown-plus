@@ -81,14 +81,14 @@ const registerToolBarEvents = () => {
   });
 
   $('#link-icon').click((event) => {
-    let text = getSampleText(event);
+    const text = getSampleText(event);
     const url = $(event.currentTarget).data('sample-url');
     editor.replaceSelection(`[${text}](${url})`);
     editor.focus();
   });
 
   $('#image-icon').click((event) => {
-    let text = getSampleText(event);
+    const text = getSampleText(event);
     const url = $(event.currentTarget).data('sample-url');
     editor.replaceSelection(`![${text}](${url})`);
     editor.focus();
@@ -129,13 +129,13 @@ const registerToolBarEvents = () => {
   });
 
   $('#math-icon').click((event) => {
-    let text = getSampleText(event);
+    const text = getSampleText(event);
     editor.replaceSelection(`\n\`\`\`katex\n${text}\n\`\`\`\n`);
     editor.focus();
   });
 
   $('.mermaid-icon').click((event) => {
-    let text = getSampleText(event);
+    const text = getSampleText(event);
     editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`);
     editor.focus();
   });

@@ -53,8 +53,7 @@
   "@parcel/runtime-js": {
     "splitManifestThreshold": 100000000
   },
-  "parcel-namer-hashless": {
-  },
+  "parcel-namer-hashless": {},
   "yarn-upgrade-all": {
     "ignore": [
       "jquery",

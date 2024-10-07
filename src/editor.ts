@@ -120,7 +120,7 @@ const items = [
 ];
 items.forEach((item) => {
   extraKeys[item[0]] = () => {
-    document.querySelector(item[1]).click();
+    (document.querySelector(item[1]) as HTMLElement).click();
   };
 });
 extraKeys['Tab'] = (cm) => {

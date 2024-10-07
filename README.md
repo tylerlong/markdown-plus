@@ -57,7 +57,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 
 - Replace jQeury Layout with split-grid
 - Get rid of jQuery
-- Use TypeScript
 - Convert to React
 - Write Playwright tests
 - Support mobile devices
@@ -67,3 +66,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Make an app for ebook authoring
 - Rewrite markdown-core, a mono repo for all the plugins
 - bug: scroll by url hash, source code position is not accurate
+- Replace js-cookie with localforage
