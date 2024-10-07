@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import $ from 'jquery';
 
 import markdownUrl from './sample.md';
@@ -31,9 +30,9 @@ $(async () => {
     'https://cdn.jsdelivr.net/jquery.layout/1.4.3/jquery.layout.min.js',
   );
 
-  const editor = require('./editor').default;
-  require('./init');
-  require('./preferences');
+  const editor = (await import('./editor')).default;
+  await import('./init');
+  await import('./preferences');
   $.get(markdownUrl, (data) => {
     editor.setValue(data);
     setTimeout(() => {
@@ -50,5 +49,4 @@ $(async () => {
       }
     }, 3000);
   });
-  require('./index.css');
 });
