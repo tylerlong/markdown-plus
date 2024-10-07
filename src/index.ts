@@ -7,22 +7,9 @@ import { createLayout } from './layout';
 import { init } from './init';
 import { initPreferences } from './preferences';
 import store from './store';
+import { loadScript } from './utils';
 
 global.$ = global.jQuery = $;
-
-const loadScript = (url: string): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = url;
-    script.onload = () => {
-      resolve();
-    };
-    script.onerror = () => {
-      reject();
-    };
-    document.head.appendChild(script);
-  });
-};
 
 // load sample text and get anchor links correct
 $(async () => {
@@ -49,20 +36,18 @@ $(async () => {
 
   init();
   initPreferences();
-  $.get(markdownUrl, (data) => {
-    editor.setValue(data);
-    setTimeout(() => {
-      // a little gap to top
-      window.addEventListener('hashchange', () => {
-        $('.ui-layout-east').scrollTop($('.ui-layout-east').scrollTop() - 6);
-      });
+  const r = await fetch(markdownUrl);
+  const data = await r.text();
+  editor.setValue(data);
+  setTimeout(() => {
+    // a little gap to top
+    window.addEventListener('hashchange', () => {
+      $('.ui-layout-east').scrollTop($('.ui-layout-east').scrollTop() - 6);
+    });
 
-      // scroll to hash element
-      if (window.location.hash.length > 0) {
-        $('.ui-layout-east').scrollTop(
-          $(window.location.hash).offset().top - 30,
-        );
-      }
-    }, 3000);
-  });
+    // scroll to hash element
+    if (window.location.hash.length > 0) {
+      $('.ui-layout-east').scrollTop($(window.location.hash).offset().top - 30);
+    }
+  }, 3000);
 });

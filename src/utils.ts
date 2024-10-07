@@ -92,3 +92,17 @@ export const themes = [
   'yeti',
   'zenburn',
 ];
+
+export const loadScript = (url: string): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = url;
+    script.onload = () => {
+      resolve();
+    };
+    script.onerror = () => {
+      reject();
+    };
+    document.head.appendChild(script);
+  });
+};

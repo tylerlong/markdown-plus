@@ -44,12 +44,15 @@ You can also use inline math: `$29^{th}$`
       item * 2
     end
 
-```javascript
-$(document).ready(() => {
-  $('pre code').each((i, block) => {
-    hljs.highlightBlock(block);
-  });
-});
+```ts
+async function fetchItems<T>(url: string): Promise<T[]> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Error fetching data: ${response.statusText}`);
+  }
+  const data: T[] = await response.json();
+  return data;
+}
 ```
 
 [Code Formatting](https://help.github.com/articles/markdown-basics/#code-formatting)
