@@ -20,9 +20,9 @@
   "author": "Tyler Liu",
   "main": "index.js",
   "scripts": {
-    "build": "tsx node_modules/.bin/webpack --mode production",
+    "build": "rm -rf .parcel-cache && tsx scripts/before-build.ts && parcel build src/index.html --dist-dir docs --public-url ./",
     "lint": "eslint . --fix && prettier --write . && sort-package-json",
-    "serve": "tsx node_modules/.bin/webpack serve"
+    "serve": "rm -rf .parcel-cache && tsx scripts/before-build.ts && parcel src/index.html --dist-dir temp"
   },
   "dependencies": {
     "chart.js": "2.6.0",
@@ -33,19 +33,18 @@
     "markdown-core": "^1.1.0"
   },
   "devDependencies": {
-    "css-loader": "^7.1.2",
+    "@parcel/resolver-glob": "^2.12.0",
+    "@parcel/transformer-typescript-tsc": "^2.12.0",
     "eslint-config-tyler": "^0.1.4",
     "globals": "^15.10.0",
-    "html-webpack-plugin": "^5.6.0",
-    "mini-css-extract-plugin": "^2.9.1",
-    "path-browserify": "^1.0.1",
+    "parcel": "^2.12.0",
+    "path-browserify": "^1.0.0",
+    "process": "^0.11.10",
+    "punycode": "^1.4.1",
+    "shell-commands": "^0.4.2",
     "sort-package-json": "^2.10.1",
-    "ts-loader": "^9.5.1",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2",
-    "webpack": "^5.95.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.1.0",
     "yarn-upgrade-all": "^0.7.4"
   },
   "yarn-upgrade-all": {

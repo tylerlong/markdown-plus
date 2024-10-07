@@ -58,7 +58,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Replace jQeury Layout with split-grid
 - Get rid of jQuery
 - Use TypeScript
-- Use parcel instead of webpack
 - Convert to React
 - Write Playwright tests
 - Support mobile devices

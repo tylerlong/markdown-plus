@@ -1,4 +1,3 @@
 --ignore-dir=docs
---ignore-file=match:/\.bundle\.js$/
---ignore-file=match:/\.bundle\.css$/
+--ignore-dir=temp
 --ignore-file=match:/^yarn\.lock$/
