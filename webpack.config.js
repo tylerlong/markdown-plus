@@ -13,16 +13,7 @@ const rules = [
     use: {
       loader: 'babel-loader',
       options: {
-        presets: [
-          [
-            'env',
-            {
-              targets: {
-                browsers: ['last 2 versions'],
-              },
-            },
-          ],
-        ],
+        presets: ['@babel/preset-env'],
         plugins: [
           'transform-remove-strict-mode', // in order to make mermaid work
         ],
