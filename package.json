@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "chart.js": "2.6.0",
-    "codemirror": "^5.26.0",
+    "codemirror": "5.26.0",
     "jquery": "2.2.4",
     "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
@@ -39,13 +39,11 @@
     "babel-preset-env": "^1.5.1",
     "css-loader": "^0.28.4",
     "eslint-config-tyler": "^0.1.4",
-    "extract-text-webpack-plugin": "^2.1.0",
     "globals": "^15.10.0",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.1",
     "path-browserify": "^1.0.1",
     "sort-package-json": "^2.10.1",
-    "style-loader": "^0.18.1",
     "typescript": "^5.6.2",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
@@ -56,7 +54,8 @@
     "ignore": [
       "jquery",
       "markdown-core",
-      "chart.js"
+      "chart.js",
+      "codemirror"
     ]
   }
 }
