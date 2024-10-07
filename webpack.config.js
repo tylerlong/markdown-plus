@@ -40,11 +40,10 @@ const config = {
   externals: 'fs', // in order to make mermaid work
   output: {
     path: path.join(__dirname, './docs/'),
-    filename: '[name].bundle.js',
   },
   module: { rules },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       inject: 'head',
@@ -64,10 +63,11 @@ const config = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        extractComments: false, // omit license file when build for prod
+        // omit generating a separate license file when building for production
+        extractComments: false,
       }),
     ],
   },
 };
 
-export default [config];
+export default config;

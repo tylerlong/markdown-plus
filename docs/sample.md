@@ -46,9 +46,9 @@ You can also use inline math: `$29^{th}$`
 
 ```javascript
 $(document).ready(() => {
-    $('pre code').each((i, block) => {
-        hljs.highlightBlock(block);
-    });
+  $('pre code').each((i, block) => {
+    hljs.highlightBlock(block);
+  });
 });
 ```
 
@@ -70,11 +70,11 @@ $(document).ready(() => {
 
 ## Task list
 
--   [ ] a bigger project
-    -   [x] first subtask
-    -   [x] follow up subtask
-    -   [ ] final subtask
--   [ ] a separate task
+- [ ] a bigger project
+  - [x] first subtask
+  - [x] follow up subtask
+  - [ ] final subtask
+- [ ] a separate task
 
 [Task List Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
 
