@@ -55,9 +55,17 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 
 ## Todo
 
+- Replace jQeury Layout with split-grid
 - Get rid of jQuery
+- Use TypeScript
+- Use parcel instead of webpack
+- Convert to React
+- Write Playwright tests
+- Support mobile devices
+- Make it an easy-to-embed library
+- Replace mermaid with lightweight alternatives
+  - elk.js + dynamically render to get element size
+- Make an app for ebook authoring
+- Rewrite markdown-core, a mono repo for all the plugins
 - bug: scroll by url hash, source code position is not accurate
   - issue disappeared after replacing babel with ts
-- use TypeScript
-- Replace jQeury Layout with split-grid
-- Use parcel instead of webpack
