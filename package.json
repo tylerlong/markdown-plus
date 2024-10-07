@@ -20,9 +20,10 @@
   "author": "Tyler Liu",
   "main": "index.js",
   "scripts": {
-    "upgrade": "node_modules/.bin/yarn-upgrade-all && yarn remove jquery && yarn add jquery@2.2.4",
+    "build": "node -r babel-register node_modules/.bin/webpack -p",
+    "lint": "eslint . --fix && prettier --write . && sort-package-json",
     "serve": "node -r babel-register node_modules/.bin/webpack serve",
-    "build": "node -r babel-register node_modules/.bin/webpack -p"
+    "upgrade": "node_modules/.bin/yarn-upgrade-all && yarn remove jquery && yarn add jquery@2.2.4"
   },
   "dependencies": {
     "chart.js": "^2.6.0",
@@ -38,13 +39,15 @@
     "babel-plugin-transform-remove-strict-mode": "^0.0.2",
     "babel-preset-env": "^1.5.1",
     "css-loader": "^0.28.4",
+    "eslint-config-tyler": "^0.1.4",
     "extract-text-webpack-plugin": "^2.1.0",
+    "globals": "^15.10.0",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.1",
     "path-browserify": "^1.0.1",
     "sort-package-json": "^2.10.1",
-    "standard": "^10.0.2",
     "style-loader": "^0.18.1",
+    "typescript": "^5.6.2",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0",

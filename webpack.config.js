@@ -1,29 +1,29 @@
-import path from "path";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from 'path';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const rules = [
   {
     test: /\.css$/,
-    use: [MiniCssExtractPlugin.loader, "css-loader"],
+    use: [MiniCssExtractPlugin.loader, 'css-loader'],
   },
   {
     test: /\.js$/,
     use: {
-      loader: "babel-loader",
+      loader: 'babel-loader',
       options: {
         presets: [
           [
-            "env",
+            'env',
             {
               targets: {
-                browsers: ["last 2 versions"],
+                browsers: ['last 2 versions'],
               },
             },
           ],
         ],
         plugins: [
-          "transform-remove-strict-mode", // in order to make mermaid work
+          'transform-remove-strict-mode', // in order to make mermaid work
         ],
       },
     },
@@ -31,33 +31,33 @@ const rules = [
 ];
 
 const config = {
-  mode: "development",
-  target: "web",
+  mode: 'development',
+  target: 'web',
   entry: {
-    index: "./src/index.js",
+    index: './src/index.js',
   },
-  externals: "fs", // in order to make mermaid work
+  externals: 'fs', // in order to make mermaid work
   output: {
-    path: path.join(__dirname, "./docs/"),
-    filename: "[name].bundle.js",
+    path: path.join(__dirname, './docs/'),
+    filename: '[name].bundle.js',
   },
   module: { rules },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "[name].bundle.css" }),
+    new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
     new HtmlWebpackPlugin({
-      template: "./docs/index.html",
-      inject: "head",
-      scriptLoading: "blocking",
+      template: './docs/index.html',
+      inject: 'head',
+      scriptLoading: 'blocking',
     }),
   ],
   resolve: {
     fallback: {
-      path: require.resolve("path-browserify"),
+      path: require.resolve('path-browserify'),
     },
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "docs"), // Directory to serve static files from
+      directory: path.join(__dirname, 'docs'), // Directory to serve static files from
     },
   },
 };

@@ -1,22 +1,23 @@
-html, body, .CodeMirror {
+html,
+body,
+.CodeMirror {
   margin: 0;
   padding: 0;
-  height:100%;
+  height: 100%;
 }
-
 
 .ui-layout-pane {
   border-width: 0;
   padding: 0;
   margin: 0;
 }
-.ui-layout-north { /* toolbar background color */
+.ui-layout-north {
+  /* toolbar background color */
   background-color: #eee;
 }
 .ui-layout-resizer-north-hover {
   background: #ddd; /* same color as non-hover */
 }
-
 
 #toolbar {
   padding-left: 16px;
@@ -30,12 +31,12 @@ html, body, .CodeMirror {
   padding: 0 2px;
   border: 1px solid transparent;
 }
-#toolbar .fa:hover, #toolbar .icon:hover {
+#toolbar .fa:hover,
+#toolbar .icon:hover {
   background-color: #ddd;
   border-color: #ccc;
   cursor: pointer;
 }
-
 
 #editor {
   position: absolute;
@@ -47,13 +48,15 @@ html, body, .CodeMirror {
   font-weight: bold;
 }
 
-.dividor { /* dividor on toolbar */
+.dividor {
+  /* dividor on toolbar */
   font-style: normal;
   color: #ddd;
   margin: 0 6px;
 }
 
-.noselect { /* icons toolbar shouldn't be selectable */
+.noselect {
+  /* icons toolbar shouldn't be selectable */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -79,16 +82,25 @@ html, body, .CodeMirror {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  -moz-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition:
+    border-color ease-in-out 0.15s,
+    -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition:
+    border-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
+  -moz-transition:
+    border-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
+  transition:
+    border-color ease-in-out 0.15s,
+    box-shadow ease-in-out 0.15s;
 }
 
-#custom-css-files, #custom-js-files {
+#custom-css-files,
+#custom-js-files {
   width: 256px;
   height: 64px;
 }
@@ -97,13 +109,15 @@ html, body, .CodeMirror {
   font-size: 80%;
 }
 
-
 /*************************/
 /* below is for printing */
 /*************************/
 
 @media print {
-  .ui-layout-pane-north, .ui-layout-pane-center, .ui-layout-resizer, .ui-layout-toggler {
+  .ui-layout-pane-north,
+  .ui-layout-pane-center,
+  .ui-layout-resizer,
+  .ui-layout-toggler {
     display: none !important;
   }
 }
