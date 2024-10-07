@@ -37,44 +37,8 @@ import 'codemirror/addon/search/match-highlighter.js';
 import 'codemirror/addon/search/matchesonscrollbar.js';
 import 'codemirror/addon/selection/active-line.js';
 
-import { syncPreview } from './sync_scroll';
-
 const mac = CodeMirror.keyMap['default'] === CodeMirror.keyMap.macDefault;
 const ctrl = mac ? 'Cmd' : 'Ctrl';
-
-const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-  lineNumbers: true,
-  mode: 'gfm',
-  theme: 'default',
-  lineWrapping: true,
-  scrollPastEnd: true,
-  autofocus: true,
-  styleActiveLine: { nonEmpty: true },
-  tabSize: 8,
-  indentUnit: 4,
-});
-
-editor.on('scroll', () => {
-  syncPreview();
-});
-
-// custom keyboard shortcuts
-const extraKeys = { 'Alt-F': 'findPersistent' };
-const items = [
-  [`${ctrl}-B`, 'i.fa-bold'],
-  [`${ctrl}-I`, 'i.fa-italic'],
-  [`${ctrl}-U`, 'i.fa-underline'],
-  [`${ctrl}-,`, 'i.fa-cog'],
-];
-items.forEach((item) => {
-  extraKeys[item[0]] = () => {
-    (document.querySelector(item[1]) as HTMLElement).click();
-  };
-});
-extraKeys['Tab'] = (cm) => {
-  cm.execCommand('indentMore');
-};
-editor.setOption('extraKeys', extraKeys);
 
 // default implementation of vim commands
 CodeMirror.Vim.defineEx('w', 'w', () => {
@@ -99,4 +63,35 @@ CodeMirror.commands.toLowerCase = (cm) => {
   cm.replaceSelection(cm.getSelection().toLowerCase());
 };
 
-export default editor;
+export const createEditor = () => {
+  const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+    lineNumbers: true,
+    mode: 'gfm',
+    theme: 'default',
+    lineWrapping: true,
+    scrollPastEnd: true,
+    autofocus: true,
+    styleActiveLine: { nonEmpty: true },
+    tabSize: 8,
+    indentUnit: 4,
+  });
+
+  // custom keyboard shortcuts
+  const extraKeys = { 'Alt-F': 'findPersistent' };
+  const items = [
+    [`${ctrl}-B`, 'i.fa-bold'],
+    [`${ctrl}-I`, 'i.fa-italic'],
+    [`${ctrl}-U`, 'i.fa-underline'],
+    [`${ctrl}-,`, 'i.fa-cog'],
+  ];
+  items.forEach((item) => {
+    extraKeys[item[0]] = () => {
+      (document.querySelector(item[1]) as HTMLElement).click();
+    };
+  });
+  extraKeys['Tab'] = (cm) => {
+    cm.execCommand('indentMore');
+  };
+  editor.setOption('extraKeys', extraKeys);
+  return editor;
+};

@@ -1,9 +1,7 @@
 import Cookies from 'js-cookie';
 import debounce from 'lodash/debounce';
 import mdc from 'markdown-core/src/index-browser';
-
-import layout from './layout';
-import editor from './editor';
+import store from './store';
 
 export const getPreviewWidth = () => {
   let previewWidth = Cookies.get('editor-versus-preview');
@@ -25,11 +23,11 @@ export const getNormalPreviewWidth = () => {
 // user changes markdown text
 export const lazyChange = debounce(
   () => {
-    if (layout.panes.east.outerWidth() < 8) {
+    if (store.layout.panes.east.outerWidth() < 8) {
       // preview is hidden
       return; // no need to update preview if it's hidden
     }
-    mdc.init(editor.getValue()); // realtime preview
+    mdc.init(store.editor.getValue()); // realtime preview
   },
   1024,
   { leading: false, trailing: true },
@@ -38,7 +36,7 @@ export const lazyChange = debounce(
 // adjust layout according to percentage configuration
 export const lazyResize = debounce(
   () => {
-    layout.sizePane('east', getPreviewWidth());
+    store.layout.sizePane('east', getPreviewWidth());
   },
   1024,
   { leading: false, trailing: true },

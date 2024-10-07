@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import debounce from 'lodash/debounce';
-
-import editor from './editor';
-import layout from './layout';
+import store from './store';
 
 let scrollingSide = null;
 let timeoutHandle = null;
@@ -20,12 +18,12 @@ const scrollSide = (side, howToScroll) => {
 
 const scrollEditor = (scrollTop, when) => {
   setTimeout(() => {
-    editor.scrollTo(null, scrollTop);
+    store.editor.scrollTo(null, scrollTop);
   }, when);
 };
 const scrollLeft = (scrollTop) => {
   scrollSide('left', () => {
-    const current = editor.getScrollInfo().top;
+    const current = store.editor.getScrollInfo().top;
     const step = (scrollTop - current) / 8;
     for (let i = 1; i < 8; i++) {
       // to create some animation
@@ -47,12 +45,12 @@ const getEditorScroll = () => {
   lineMarkers.each((index, element) => {
     lines.push($(element).data('source-line'));
   });
-  const currentPosition = editor.getScrollInfo().top;
+  const currentPosition = store.editor.getScrollInfo().top;
   let lastMarker;
   let nextMarker;
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    const height = editor.heightAtLine(line - 1, 'local');
+    const height = store.editor.heightAtLine(line - 1, 'local');
     if (height < currentPosition) {
       lastMarker = line;
     } else {
@@ -63,9 +61,9 @@ const getEditorScroll = () => {
   let percentage = 0;
   if (lastMarker && nextMarker && lastMarker !== nextMarker) {
     percentage =
-      (currentPosition - editor.heightAtLine(lastMarker - 1, 'local')) /
-      (editor.heightAtLine(nextMarker - 1, 'local') -
-        editor.heightAtLine(lastMarker - 1, 'local'));
+      (currentPosition - store.editor.heightAtLine(lastMarker - 1, 'local')) /
+      (store.editor.heightAtLine(nextMarker - 1, 'local') -
+        store.editor.heightAtLine(lastMarker - 1, 'local'));
   }
   // returns two neighboring markers' lines, and current scroll percentage between two markers
   return { lastMarker: lastMarker, nextMarker: nextMarker, percentage };
@@ -96,7 +94,7 @@ const getPreviewScroll = () => {
   const scroll = $('.ui-layout-east').scrollTop();
   let lastLine = 0;
   let lastScroll = 0;
-  let nextLine = editor.getValue().split('\n').length; // number of lines of markdown
+  let nextLine = store.editor.getValue().split('\n').length; // number of lines of markdown
   let nextScroll =
     $('article#preview').outerHeight() - $('.ui-layout-east').height(); // maximum scroll
   const lineMarkers = $('article#preview > [data-source-line]');
@@ -120,15 +118,15 @@ const getPreviewScroll = () => {
 };
 
 const setEditorScroll = (previewScroll) => {
-  const last = editor.heightAtLine(previewScroll.lastMarker - 1, 'local');
-  const next = editor.heightAtLine(previewScroll.nextMarker - 1, 'local');
+  const last = store.editor.heightAtLine(previewScroll.lastMarker - 1, 'local');
+  const next = store.editor.heightAtLine(previewScroll.nextMarker - 1, 'local');
   scrollLeft((next - last) * previewScroll.percentage + last);
 };
 
 export const syncPreview = debounce(
   () => {
     // sync right with left
-    if (layout.panes.east.outerWidth() < 8) {
+    if (store.layout.panes.east.outerWidth() < 8) {
       return; // no need to sync if panel closed
     }
     if (scrollingSide !== 'left') {
@@ -142,7 +140,7 @@ export const syncPreview = debounce(
 export const syncEditor = debounce(
   () => {
     // sync left with right
-    if (layout.panes.east.outerWidth() < 8) {
+    if (store.layout.panes.east.outerWidth() < 8) {
       return; // no need to sync if panel closed
     }
     if (scrollingSide !== 'right') {

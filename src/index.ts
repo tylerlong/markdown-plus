@@ -1,6 +1,12 @@
 import $ from 'jquery';
 
 import markdownUrl from './sample.md';
+import { createEditor } from './editor';
+import { syncPreview } from './sync_scroll';
+import { createLayout } from './layout';
+import { init } from './init';
+import { initPreferences } from './preferences';
+import store from './store';
 
 global.$ = global.jQuery = $;
 
@@ -30,9 +36,19 @@ $(async () => {
     'https://cdn.jsdelivr.net/jquery.layout/1.4.3/jquery.layout.min.js',
   );
 
-  const editor = (await import('./editor')).default;
-  await import('./init');
-  await import('./preferences');
+  // create editor
+  const editor = createEditor();
+  store.editor = editor;
+  editor.on('scroll', () => {
+    syncPreview();
+  });
+
+  // create layout
+  const layout = createLayout();
+  store.layout = layout;
+
+  init();
+  initPreferences();
   $.get(markdownUrl, (data) => {
     editor.setValue(data);
     setTimeout(() => {

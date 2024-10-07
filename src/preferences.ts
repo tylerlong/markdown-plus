@@ -2,25 +2,24 @@ import Cookies from 'js-cookie';
 import $ from 'jquery';
 import mdc from 'markdown-core/src/index-browser';
 
-import layout from './layout';
 import { getPreviewWidth, lazyChange } from './util';
-import editor from './editor';
 import { themes } from './consts';
+import store from './store';
 
 const loadShowToolbar = () => {
   const showToolbar = Cookies.get('show-toolbar') || 'yes';
   $('select#show-toolbar').val(showToolbar);
   if (showToolbar === 'yes') {
-    layout.open('north');
+    store.layout.open('north');
   } else {
-    layout.close('north');
+    store.layout.close('north');
   }
 };
 
 const loadKeyBinding = () => {
   const keyBinding = Cookies.get('key-binding') || 'default';
   $('select#key-binding').val(keyBinding);
-  editor.setOption('keyMap', keyBinding);
+  store.editor.setOption('keyMap', keyBinding);
 };
 
 const loadEditorFontSize = () => {
@@ -36,7 +35,7 @@ const loadEditorTheme = () => {
     editorTheme = 'default';
   }
   $('select#editor-theme').val(editorTheme);
-  editor.setOption('theme', editorTheme);
+  store.editor.setOption('theme', editorTheme);
 };
 
 const loadCustomFiles = () => {
@@ -52,7 +51,7 @@ const loadPreferences = () => {
 
   const previewWidth = getPreviewWidth();
   $('select#editor-versus-preview').val(previewWidth);
-  layout.sizePane('east', previewWidth);
+  store.layout.sizePane('east', previewWidth);
 
   loadKeyBinding();
 
@@ -70,7 +69,7 @@ const preferencesChanged = () => {};
 
 const mdp = { preferencesChanged, loadPreferences };
 
-$(() => {
+export const initPreferences = () => {
   // load preferences
   mdp.loadPreferences();
 
@@ -98,4 +97,4 @@ $(() => {
     lazyChange(); // trigger re-render
     mdp.preferencesChanged();
   });
-});
+};
