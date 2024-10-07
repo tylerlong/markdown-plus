@@ -69,3 +69,5 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Replace js-cookie with localforage
 - Remove support for class diagram since it is not stable
 - Upgrade all dependencies to latest version, no exception
+- Must have a render finished event
+  - mdc.init must be a Promise

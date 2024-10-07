@@ -40,11 +40,6 @@ $(async () => {
   const data = await r.text();
   editor.setValue(data);
   setTimeout(() => {
-    // a little gap to top
-    window.addEventListener('hashchange', () => {
-      $('.ui-layout-east').scrollTop($('.ui-layout-east').scrollTop() - 6);
-    });
-
     // scroll to hash element
     if (window.location.hash.length > 0) {
       $('.ui-layout-east').scrollTop($(window.location.hash).offset().top - 30);
