@@ -125,7 +125,7 @@ const setEditorScroll = (previewScroll) => {
   scrollLeft((next - last) * previewScroll.percentage + last);
 };
 
-const syncPreview = debounce(
+export const syncPreview = debounce(
   () => {
     // sync right with left
     if (layout.panes.east.outerWidth() < 8) {
@@ -139,7 +139,7 @@ const syncPreview = debounce(
   { leading: false, trailing: true },
 );
 
-const syncEditor = debounce(
+export const syncEditor = debounce(
   () => {
     // sync left with right
     if (layout.panes.east.outerWidth() < 8) {
@@ -152,5 +152,3 @@ const syncEditor = debounce(
   256,
   { leading: false, trailing: true },
 );
-
-export { syncPreview, syncEditor };

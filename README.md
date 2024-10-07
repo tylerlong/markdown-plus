@@ -68,3 +68,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - bug: scroll by url hash, source code position is not accurate
 - Replace js-cookie with localforage
 - Remove dynamic import
+- Remove support for class diagram since it is not stable

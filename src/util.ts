@@ -5,7 +5,7 @@ import mdc from 'markdown-core/src/index-browser';
 import layout from './layout';
 import editor from './editor';
 
-const getPreviewWidth = () => {
+export const getPreviewWidth = () => {
   let previewWidth = Cookies.get('editor-versus-preview');
   if (previewWidth === undefined) {
     previewWidth = '50%';
@@ -14,7 +14,7 @@ const getPreviewWidth = () => {
 };
 
 // neither editor or preview is hidden
-const getNormalPreviewWidth = () => {
+export const getNormalPreviewWidth = () => {
   let previewWidth = getPreviewWidth();
   if (previewWidth === '1' || previewWidth === '100%') {
     previewWidth = '50%';
@@ -23,7 +23,7 @@ const getNormalPreviewWidth = () => {
 };
 
 // user changes markdown text
-const lazyChange = debounce(
+export const lazyChange = debounce(
   () => {
     if (layout.panes.east.outerWidth() < 8) {
       // preview is hidden
@@ -36,12 +36,10 @@ const lazyChange = debounce(
 );
 
 // adjust layout according to percentage configuration
-const lazyResize = debounce(
+export const lazyResize = debounce(
   () => {
     layout.sizePane('east', getPreviewWidth());
   },
   1024,
   { leading: false, trailing: true },
 );
-
-export { getPreviewWidth, getNormalPreviewWidth, lazyChange, lazyResize };

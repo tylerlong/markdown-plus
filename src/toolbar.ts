@@ -33,7 +33,7 @@ const promptForValue = (key, action) => {
   });
 };
 
-const registerToolBarEvents = () => {
+export const registerToolBarEvents = () => {
   // h1 - h6 heading
   $('.heading-icon').click((event) => {
     const level = $(event.currentTarget).data('level');
@@ -162,5 +162,3 @@ const registerToolBarEvents = () => {
     }
   });
 };
-
-export { registerToolBarEvents };
