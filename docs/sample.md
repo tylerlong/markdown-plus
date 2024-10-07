@@ -46,7 +46,7 @@ You can also use inline math: `$29^{th}$`
 
 ```javascript
 $(document).ready(() => {
-    $("pre code").each((i, block) => {
+    $('pre code').each((i, block) => {
         hljs.highlightBlock(block);
     });
 });
@@ -92,6 +92,7 @@ is maintained by the W3C.
 Here is a footnote reference,[^1] and another.[^longnote]
 
 [^1]: Here is the footnote.
+
 [^longnote]: Here's one with multiple blocks.
 
     Subsequent paragraphs are indented to show that they
