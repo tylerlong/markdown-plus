@@ -4,7 +4,8 @@ import mdc from 'markdown-core/src/index-browser';
 
 import layout from './layout';
 import { getPreviewWidth, lazyChange } from './util';
-import editor, { themes } from './editor';
+import editor from './editor';
+import { themes } from './consts';
 
 const loadShowToolbar = () => {
   const showToolbar = Cookies.get('show-toolbar') || 'yes';
@@ -25,7 +26,8 @@ const loadKeyBinding = () => {
 const loadEditorFontSize = () => {
   const fontSize = Cookies.get('editor-font-size') || '14';
   $('select#editor-font-size').val(fontSize);
-  document.querySelector('.CodeMirror').style.fontSize = `${fontSize}px`;
+  (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
+    `${fontSize}px`;
 };
 
 const loadEditorTheme = () => {
@@ -97,5 +99,3 @@ $(() => {
     mdp.preferencesChanged();
   });
 });
-
-window.mdp = mdp;

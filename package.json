@@ -20,7 +20,7 @@
   "license": "MIT",
   "author": "Tyler Liu",
   "scripts": {
-    "lint": "eslint . --fix && prettier --write . && sort-package-json",
+    "lint": "tsc --jsx react --skipLibCheck --noEmit --target ESNext --moduleResolution NodeNext --module NodeNext ./src/*.ts && eslint . --fix && prettier --write . && sort-package-json",
     "release": "rm -rf .parcel-cache && rm -rf docs && tsx src/before-build.ts && parcel build src/index.html --dist-dir docs --public-url ./ --no-source-maps --no-scope-hoist && http-server docs -c-1",
     "serve": "rm -rf .parcel-cache && rm -rf temp && tsx src/before-build.ts && parcel src/index.html --dist-dir temp"
   },
