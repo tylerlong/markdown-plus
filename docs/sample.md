@@ -4,13 +4,11 @@ Markdown Plus ("M+" or "mdp" for short) is a markdown editor with extra features
 
 <img src="https://chuntaoliu.com/markdown-plus/icon.svg" alt="icon" width="256" height="256"/>
 
-
 # Table of Contents
 
 [toc]
 
 Note: Only `h2` and `h3` are shown in toc.
-
 
 ## Mastering Markdown
 
@@ -18,35 +16,27 @@ Markdown allows you to write using an easy-to-read, easy-to-write plain text for
 
 [Mastering Markdown Guide](https://guides.github.com/features/mastering-markdown/).
 
-
 ## ~~strikethrough~~
-
 
 ## ++insert++
 
-
 ## ==mark==
-
 
 ## Subscript: H~2~O
 
 You can also use inline math: `$H_2O$`
 
-
 ## Superscript: 29^th^
 
 You can also use inline math: `$29^{th}$`
-
 
 ## Emoji: :panda_face: :sparkles: :camel: :boom: :pig:
 
 [Emoji Cheat Sheet](http://www.emoji-cheat-sheet.com/)
 
-
 ## Fontawesome: :fa-cab: :fa-flag: :fa-bicycle: :fa-leaf: :fa-heart:
 
 [All the Font Awesome icons](http://fontawesome.io/icons/)
-
 
 ## `print 'hello code'`
 
@@ -56,69 +46,62 @@ You can also use inline math: `$29^{th}$`
 
 ```javascript
 $(document).ready(() => {
-  $('pre code').each((i, block) => {
-    hljs.highlightBlock(block);
-  });
+    $("pre code").each((i, block) => {
+        hljs.highlightBlock(block);
+    });
 });
 ```
 
 [Code Formatting](https://help.github.com/articles/markdown-basics/#code-formatting)
 
-
 ## Tables and alignment
 
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+| First Header                | Second Header                |
+| --------------------------- | ---------------------------- |
+| Content from cell 1         | Content from cell 2          |
+| Content in the first column | Content in the second column |
 
-| Left-Aligned  | Center Aligned  | Right Aligned |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
+| Left-Aligned | Center Aligned  | Right Aligned |
+| :----------- | :-------------: | ------------: |
+| col 3 is     | some wordy text |         $1600 |
+| col 2 is     |    centered     |           $12 |
 
 [Table Syntax](https://help.github.com/articles/github-flavored-markdown/#tables)
 
-
 ## Task list
 
-- [ ] a bigger project
-  - [x] first subtask
-  - [x] follow up subtask
-  - [ ] final subtask
-- [ ] a separate task
+-   [ ] a bigger project
+    -   [x] first subtask
+    -   [x] follow up subtask
+    -   [ ] final subtask
+-   [ ] a separate task
 
 [Task List Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
-
 
 ## Abbreviation
 
 Markup is based on [php markdown extra](https://michelf.ca/projects/php-markdown/extra/#abbr) definition, but without multiline support:
 
-*[HTML]: Hyper Text Markup Language
-*[W3C]:  World Wide Web Consortium
+_[HTML]: Hyper Text Markup Language
+_[W3C]: World Wide Web Consortium
 The HTML specification
 is maintained by the W3C.
-
 
 ## Footnote
 
 Here is a footnote reference,[^1] and another.[^longnote]
 
 [^1]: Here is the footnote.
-
 [^longnote]: Here's one with multiple blocks.
 
     Subsequent paragraphs are indented to show that they
-belong to the previous footnote.
-
+    belong to the previous footnote.
 
 Here is an inline note.^[Inlines notes are easier to write, since
 you don't have to pick an identifier and move down to type the
 note.]
 
 [Footnote Syntax](http://pandoc.org/README.html#footnotes)
-
 
 ## Mathematical formula `$y = x^2$`
 
@@ -145,7 +128,6 @@ Math block:
 
 [Mathematical Formula Syntax](http://meta.wikimedia.org/wiki/Help:Displaying_a_formula)
 
-
 ## AsciiMath
 
 Inline AsciiMath: `@(1/2[1-(1/2)^n])/(1-(1/2))=s_n@`
@@ -166,7 +148,6 @@ phi_n(kappa) = 1/(4pi^2 kappa^2)
 ```
 
 [AsciiMath Documentation](http://asciimath.org/)
-
 
 ## mermaid charts
 
@@ -266,7 +247,6 @@ Class diagram is powered by [mermaid](https://github.com/knsv/mermaid).
 Adding many class diagrams will slow down the editor.
 :::
 
-
 ## Custom Container
 
 Markup is similar to fenced code blocks. Valid container types are `success`, `info`, `warning` and `danger`.
@@ -279,18 +259,16 @@ You have new mail.
 Staying up all night is bad for health.
 :::
 
-
 ## Definition list
 
 Term 1
-  ~ Definition 1
+~ Definition 1
 
 Term 2
-  ~ Definition 2a
-  ~ Definition 2b
+~ Definition 2a
+~ Definition 2b
 
 [Definition List Syntax](http://pandoc.org/README.html#definition-lists)
-
 
 ## HTML
 
@@ -298,8 +276,7 @@ If you find the markdown syntax too limited, you can try some <span style="color
 
 <p style="text-align:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/120px-HTML5_logo_and_wordmark.svg.png"/></p>
 
-<a href="https://github.com/tylerlong/markdown-plus" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-green.png" alt="Fork me on GitHub"></a>
-
+<a href="https://github.com/tylerlong/markdown-plus" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
 ## Charts
 
