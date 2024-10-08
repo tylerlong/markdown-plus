@@ -41,10 +41,6 @@ yarn serve
 open http://localhost:1234/ in your browser
 ```
 
-## How to use Markdown Plus in your projects
-
-Please take `src/index.html` as example.
-
 ## License
 
 MIT
@@ -74,3 +70,5 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
   - without 99%, jQuery Layout will display nothing
 - Creat a VS Code extension
 - No `eslint-disable`
+- Enable react strict mode
+  - only after we could properly dispose all side effects

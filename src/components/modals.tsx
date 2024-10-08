@@ -1,8 +1,13 @@
 import React from 'react';
+import { Button, Modal } from 'antd';
+import { auto } from 'manate/react';
 
 import iconUrl from '../icon.svg';
+import { Store } from '../store';
 
-const Modals = () => {
+const Modals = auto((props: { store: Store }) => {
+  console.log('render modals');
+  const { store } = props;
   return (
     <>
       <div className="remodal" id="emoji-modal" data-remodal-id="emoji-modal">
@@ -276,39 +281,54 @@ const Modals = () => {
           OK
         </a>
       </div>
-      <div className="remodal" data-remodal-id="about-modal">
-        {/* <!-- about modal --> */}
-        <img src={iconUrl} width="64" />
-        <h2>Markdown Plus</h2>
-        Version 3.x
-        <p>Markdown editor with extra features.</p>
-        <p>
-          Copyright © 2015 - 2024{' '}
-          <a
-            href="https://github.com/tylerlong"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Tyler Liu
-          </a>
-        </p>
-        <p>
-          Home page:{' '}
-          <a
-            href="https://github.com/tylerlong/markdown-plus"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Home page
-          </a>
-        </p>
-        <br />
-        <a data-remodal-action="confirm" className="remodal-confirm">
-          OK
-        </a>
-      </div>
+      <Modal
+        open={store.modals.about.isOpen}
+        footer={
+          <div style={{ textAlign: 'center' }}>
+            <Button
+              type="primary"
+              size="large"
+              onClick={() => store.modals.about.close()}
+            >
+              Close
+            </Button>
+          </div>
+        }
+        onCancel={() => store.modals.about.close()}
+        maskClosable={true}
+        centered={true}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <p>
+            <img src={iconUrl} width="64" />
+          </p>
+          <h2>Markdown Plus</h2>
+          <p>Version 3.x</p>
+          <p>Markdown editor with extra features</p>
+          <p>
+            Copyright © 2015 - 2024{' '}
+            <a
+              href="https://github.com/tylerlong"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Tyler Liu
+            </a>
+          </p>
+          <p>
+            Home page:{' '}
+            <a
+              href="https://github.com/tylerlong/markdown-plus"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Home page
+            </a>
+          </p>
+        </div>
+      </Modal>
     </>
   );
-};
+});
 
 export default Modals;

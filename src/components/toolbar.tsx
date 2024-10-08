@@ -1,6 +1,11 @@
+import { auto } from 'manate/react';
 import React from 'react';
 
-const Toolbar = () => {
+import { Store } from '../store';
+
+const Toolbar = auto((props: { store: Store }) => {
+  console.log('render toolbar');
+  const { store } = props;
   return (
     <div id="toolbar" className="noselect">
       <i
@@ -176,10 +181,10 @@ T3: 2014-01-02, 9d"
       <i
         title="About"
         className="fa fa-info-circle"
-        data-remodal-target="about-modal"
+        onClick={() => store.modals.about.open()}
       ></i>
     </div>
   );
-};
+});
 
 export default Toolbar;

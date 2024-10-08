@@ -1,3 +1,5 @@
+@import '../node_modules/antd/dist/reset.css';
+
 @import 'npm:codemirror/theme/*.css';
 
 @import 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css';

@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { exclude } from 'manate';
+import { auto } from 'manate/react';
 
 import markdownUrl from '../sample.md';
 import { createEditor } from '../editor';
@@ -6,11 +8,10 @@ import { syncPreview } from '../sync_scroll';
 import { createLayout } from '../layout';
 import { init } from '../init';
 import { initPreferences } from '../preferences';
-import store from '../store';
+import store, { Store } from '../store';
 import { loadScript } from '../utils';
 import Modals from './modals';
 import Toolbar from './toolbar';
-import { exclude } from 'manate';
 
 const main = async () => {
   await loadScript(
@@ -60,24 +61,26 @@ const main = async () => {
   }, 3000);
 };
 
-const App = () => {
+const App = auto((props: { store: Store }) => {
+  console.log('render app');
+  const { store } = props;
   useEffect(() => {
     main();
   }, []);
   return (
     <div id="mdp-container" style={{ height: '99%' }}>
       <div className="ui-layout-north">
-        <Toolbar />
+        <Toolbar store={store} />
       </div>
       <div className="ui-layout-center">
         <textarea id="editor"></textarea>
-        <Modals />
+        <Modals store={store} />
       </div>
       <div className="ui-layout-east">
         <article className="markdown-body" id="preview"></article>
       </div>
     </div>
   );
-};
+});
 
 export default App;
