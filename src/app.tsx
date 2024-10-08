@@ -10,7 +10,6 @@ import store from './store';
 import { loadScript } from './utils';
 
 const main = async () => {
-  document.removeEventListener('DOMContentLoaded', main);
   await loadScript(
     'https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal.min.js',
   );
@@ -250,12 +249,16 @@ T3: 2014-01-02, 9d"
           {/* <!-- emoji modal --> */}
           <h2>Please enter an emoji code:</h2>
           <p>
-            Examples: "smile", "whale", "santa", "panda_face", "dog", "truck"
-            ...
+            {`Examples: "smile", "whale", "santa", "panda_face", "dog", "truck"
+            ...`}
           </p>
           <p>
             For a complete list, please check
-            <a href="http://www.emoji-cheat-sheet.com/" target="_blank">
+            <a
+              href="http://www.emoji-cheat-sheet.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
               Emoji Cheat Sheet
             </a>
             .
@@ -283,11 +286,15 @@ T3: 2014-01-02, 9d"
           {/* <!-- Font Awesome modal --> */}
           <h2>Please enter a Font Awesome code:</h2>
           <p>
-            Examples: "cloud", "flag", "car", "truck", "heart", "dollar" ...
+            {`Examples: "cloud", "flag", "car", "truck", "heart", "dollar" ...`}
           </p>
           <p>
             For a complete list, please check
-            <a href="http://fontawesome.io/icons/" target="_blank">
+            <a
+              href="http://fontawesome.io/icons/"
+              target="_blank"
+              rel="noreferrer"
+            >
               Font Awesome Icons
             </a>
             .
@@ -427,6 +434,7 @@ T3: 2014-01-02, 9d"
             <a
               href="https://github.com/mbostock/d3/wiki/Time-Formatting"
               target="_blank"
+              rel="noreferrer"
             >
               Time formatting reference
             </a>
@@ -447,6 +455,7 @@ T3: 2014-01-02, 9d"
             <a
               href="https://github.com/tylingsoft/markdown-plus-themes"
               target="_blank"
+              rel="noreferrer"
             >
               Markdown Plus themes
             </a>
@@ -467,6 +476,7 @@ T3: 2014-01-02, 9d"
             <a
               href="https://github.com/tylingsoft/markdown-plus-plugins"
               target="_blank"
+              rel="noreferrer"
             >
               Markdown Plus plugins
             </a>
@@ -481,7 +491,11 @@ T3: 2014-01-02, 9d"
           <img src="icon.svg" width="64" />
           <h2>Markdown Plus help</h2>
           <p>
-            <a href="https://chuntaoliu.com/markdown-plus/" target="_blank">
+            <a
+              href="https://chuntaoliu.com/markdown-plus/"
+              target="_blank"
+              rel="noreferrer"
+            >
               Online Sample
             </a>
           </p>
@@ -489,6 +503,7 @@ T3: 2014-01-02, 9d"
             <a
               href="https://guides.github.com/features/mastering-markdown/"
               target="_blank"
+              rel="noreferrer"
             >
               Markdown Basics
             </a>
@@ -497,6 +512,7 @@ T3: 2014-01-02, 9d"
             <a
               href="https://help.github.com/articles/github-flavored-markdown/"
               target="_blank"
+              rel="noreferrer"
             >
               GitHub Flavored Markdown
             </a>
@@ -514,7 +530,11 @@ T3: 2014-01-02, 9d"
           <p>Markdown editor with extra features.</p>
           <p>
             Copyright © 2015 - 2024
-            <a href="https://github.com/tylerlong" target="_blank">
+            <a
+              href="https://github.com/tylerlong"
+              target="_blank"
+              rel="noreferrer"
+            >
               Tyler Liu
             </a>
             .
@@ -524,6 +544,7 @@ T3: 2014-01-02, 9d"
             <a
               href="https://github.com/tylerlong/markdown-plus"
               target="_blank"
+              rel="noreferrer"
             >
               Home page
             </a>

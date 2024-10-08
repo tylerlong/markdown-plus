@@ -56,6 +56,7 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 ## Todo
 
 - Replace jQeury Layout with split-grid
+- Replace remodal with antd modal
 - Get rid of jQuery
 - Write Playwright tests
 - Support mobile devices
