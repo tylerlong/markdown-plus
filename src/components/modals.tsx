@@ -1,5 +1,7 @@
 import React from 'react';
 
+import iconUrl from '../icon.svg';
+
 const Modals = () => {
   return (
     <>
@@ -75,7 +77,7 @@ const Modals = () => {
         data-remodal-options="closeOnEscape: false, closeOnCancel: false, closeOnOutsideClick: false"
       >
         {/* <!-- Preferences modal --> */}
-        <img src="icon.svg" width="64" />
+        <img src={iconUrl} width="64" />
         <h2>Markdown Plus Preferences</h2>
         <p>
           Show toolbar:
@@ -240,7 +242,7 @@ const Modals = () => {
       </div>
       <div className="remodal" data-remodal-id="help-modal">
         {/* <!-- help modal --> */}
-        <img src="icon.svg" width="64" />
+        <img src={iconUrl} width="64" />
         <h2>Markdown Plus help</h2>
         <p>
           <a
@@ -276,12 +278,12 @@ const Modals = () => {
       </div>
       <div className="remodal" data-remodal-id="about-modal">
         {/* <!-- about modal --> */}
-        <img src="icon.svg" width="64" />
+        <img src={iconUrl} width="64" />
         <h2>Markdown Plus</h2>
-        Version 2.x
+        Version 3.x
         <p>Markdown editor with extra features.</p>
         <p>
-          Copyright © 2015 - 2024
+          Copyright © 2015 - 2024{' '}
           <a
             href="https://github.com/tylerlong"
             target="_blank"
@@ -289,10 +291,9 @@ const Modals = () => {
           >
             Tyler Liu
           </a>
-          .
         </p>
         <p>
-          Home page:
+          Home page:{' '}
           <a
             href="https://github.com/tylerlong/markdown-plus"
             target="_blank"
@@ -300,7 +301,6 @@ const Modals = () => {
           >
             Home page
           </a>
-          .
         </p>
         <br />
         <a data-remodal-action="confirm" className="remodal-confirm">
