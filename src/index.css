@@ -13,6 +13,11 @@ body,
   height: 100% !important;
 }
 
+/* react root container */
+body > div {
+  height: 100%;
+}
+
 .ui-layout-pane {
   border-width: 0;
   padding: 0;

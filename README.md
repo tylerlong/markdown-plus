@@ -57,7 +57,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 
 - Replace jQeury Layout with split-grid
 - Get rid of jQuery
-- Convert to React
 - Write Playwright tests
 - Support mobile devices
 - Make it an easy-to-embed library
@@ -65,9 +64,10 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
   - elk.js + dynamically render to get element size
 - Make an app for ebook authoring
 - Rewrite markdown-core, a mono repo for all the plugins
-- bug: scroll by url hash, source code position is not accurate
 - Replace js-cookie with localforage
 - Remove support for class diagram since it is not stable
 - Upgrade all dependencies to latest version, no exception
 - Must have a render finished event
   - mdc.init must be a Promise
+- bug: <div id="mdp-container" style={{ height: '99%' }}>
+  - without 99%, jQuery Layout will display nothing
