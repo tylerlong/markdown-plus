@@ -2,9 +2,15 @@ import $ from 'jquery';
 import debounce from 'lodash/debounce';
 import store from './store';
 
+type IScroll = {
+  lastMarker: number;
+  nextMarker: number;
+  percentage: number;
+};
+
 let scrollingSide = null;
 let timeoutHandle = null;
-const scrollSide = (side, howToScroll) => {
+const scrollSide = (side: 'left' | 'right', howToScroll): void => {
   if (scrollingSide !== null && scrollingSide !== side) {
     return; // the other side hasn't finished scrolling
   }
@@ -16,12 +22,12 @@ const scrollSide = (side, howToScroll) => {
   howToScroll();
 };
 
-const scrollEditor = (scrollTop, when) => {
+const scrollEditor = (scrollTop: number, when: number): void => {
   setTimeout(() => {
     store.editor.scrollTo(null, scrollTop);
   }, when);
 };
-const scrollLeft = (scrollTop) => {
+const scrollLeft = (scrollTop: number): void => {
   scrollSide('left', () => {
     const current = store.editor.getScrollInfo().top;
     const step = (scrollTop - current) / 8;
@@ -33,13 +39,13 @@ const scrollLeft = (scrollTop) => {
   });
 };
 
-const scrollRight = (scrollTop) => {
+const scrollRight = (scrollTop: number): void => {
   scrollSide('right', () => {
     $('.ui-layout-east').animate({ scrollTop: scrollTop }, 128);
   });
 };
 
-const getEditorScroll = () => {
+const getEditorScroll = (): IScroll => {
   const lineMarkers = $('article#preview > [data-source-line]');
   const lines = [];
   lineMarkers.each((index, element) => {
@@ -66,10 +72,11 @@ const getEditorScroll = () => {
         store.editor.heightAtLine(lastMarker - 1, 'local'));
   }
   // returns two neighboring markers' lines, and current scroll percentage between two markers
-  return { lastMarker: lastMarker, nextMarker: nextMarker, percentage };
+  const r = { lastMarker: lastMarker, nextMarker: nextMarker, percentage };
+  return r;
 };
 
-const setPreviewScroll = (editorScroll) => {
+const setPreviewScroll = (editorScroll: IScroll) => {
   let lastPosition = 0;
   let nextPosition =
     $('article#preview').outerHeight() - $('.ui-layout-east').height(); // maximum scroll
@@ -90,8 +97,8 @@ const setPreviewScroll = (editorScroll) => {
   scrollRight(scrollTop);
 };
 
-const getPreviewScroll = () => {
-  const scroll = $('.ui-layout-east').scrollTop();
+const getPreviewScroll = (): IScroll => {
+  const scroll = document.querySelector('.ui-layout-east').scrollTop;
   let lastLine = 0;
   let lastScroll = 0;
   let nextLine = store.editor.getValue().split('\n').length; // number of lines of markdown
@@ -114,10 +121,15 @@ const getPreviewScroll = () => {
     percentage = (scroll - lastScroll) / (nextScroll - lastScroll);
   }
   // returns two neighboring marker lines, and current scroll percentage between two markers
-  return { lastMarker: lastLine, nextMarker: nextLine, percentage: percentage };
+  const r = {
+    lastMarker: lastLine,
+    nextMarker: nextLine,
+    percentage: percentage,
+  };
+  return r;
 };
 
-const setEditorScroll = (previewScroll) => {
+const setEditorScroll = (previewScroll: IScroll) => {
   const last = store.editor.heightAtLine(previewScroll.lastMarker - 1, 'local');
   const next = store.editor.heightAtLine(previewScroll.nextMarker - 1, 'local');
   scrollLeft((next - last) * previewScroll.percentage + last);

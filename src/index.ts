@@ -43,9 +43,18 @@ const main = async () => {
     // scroll to hash element
     if (window.location.hash.length > 0) {
       const previewPanel = document.querySelector('.ui-layout-east');
-      const linkElement = document.querySelector(window.location.hash);
-      if (previewPanel && linkElement) {
-        previewPanel.scrollTop = (linkElement as HTMLElement).offsetTop;
+      const linkElement = document.querySelector(
+        window.location.hash,
+      ) as HTMLElement;
+      if (linkElement) {
+        previewPanel.scrollTop = linkElement.offsetTop;
+        // first time scroll `store.editor.heightAtLine(xxx, 'local')` value is wrong
+        // trigger again after 300ms
+        // it is a codemirror bug, maybe latest version has fixed this issue
+        setTimeout(() => {
+          previewPanel.scrollTop = linkElement.offsetTop - 1;
+          previewPanel.scrollTop = linkElement.offsetTop;
+        }, 300);
       }
     }
   }, 3000);
