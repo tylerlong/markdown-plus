@@ -10,6 +10,7 @@ import store from '../store';
 import { loadScript } from '../utils';
 import Modals from './modals';
 import Toolbar from './toolbar';
+import { exclude } from 'manate';
 
 const main = async () => {
   await loadScript(
@@ -24,14 +25,14 @@ const main = async () => {
 
   // create editor
   const editor = createEditor();
-  store.editor = editor;
+  store.editor = exclude(editor);
   editor.on('scroll', () => {
     syncPreview();
   });
 
   // create layout
   const layout = createLayout();
-  store.layout = layout;
+  store.layout = exclude(layout);
 
   init();
   initPreferences();

@@ -2924,6 +2924,11 @@ loose-envify@^1.1.0, loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+manate@^0.9.8:
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/manate/-/manate-0.9.8.tgz#5a2b97f832a36389d7903cadef161692a67ff1b6"
+  integrity sha512-kFQ1APK53tG4o07+8SUuJYOzBzYMIwa7FnIN3Z8Czlo9C+g5OJ0RBy9wlV7q8Sw2uUojTfH72y8oSz8G2jFhSA==
+
 markdown-core@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/markdown-core/-/markdown-core-1.1.0.tgz#0984720fb1f9d01e79a5893abe6af8346be51c04"

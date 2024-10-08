@@ -1,4 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-const store = {} as { editor: any; layout: any };
+import { manage } from 'manate';
+
+class Store {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public editor: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public layout: any;
+}
+
+const store = manage(new Store());
 
 export default store;
