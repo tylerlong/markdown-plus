@@ -176,7 +176,7 @@ T3: 2014-01-02, 9d"
       <i
         title="Help"
         className="fa fa-question-circle"
-        data-remodal-target="help-modal"
+        onClick={() => store.modals.help.open()}
       ></i>
       <i
         title="About"

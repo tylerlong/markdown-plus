@@ -245,42 +245,61 @@ const Modals = auto((props: { store: Store }) => {
           OK
         </a>
       </div>
-      <div className="remodal" data-remodal-id="help-modal">
-        {/* <!-- help modal --> */}
-        <img src={iconUrl} width="64" />
-        <h2>Markdown Plus help</h2>
-        <p>
-          <a
-            href="https://chuntaoliu.com/markdown-plus/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Online Sample
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://guides.github.com/features/mastering-markdown/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Markdown Basics
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://help.github.com/articles/github-flavored-markdown/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub Flavored Markdown
-          </a>
-        </p>
-        <br />
-        <a data-remodal-action="confirm" className="remodal-confirm">
-          OK
-        </a>
-      </div>
+
+      {/* help modal */}
+      <Modal
+        open={store.modals.help.isOpen}
+        footer={
+          <div style={{ textAlign: 'center' }}>
+            <Button
+              type="primary"
+              size="large"
+              onClick={() => store.modals.help.close()}
+            >
+              Close
+            </Button>
+          </div>
+        }
+        onCancel={() => store.modals.help.close()}
+        maskClosable={true}
+        centered={true}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <p>
+            <img src={iconUrl} width="64" />
+          </p>
+          <h2>Markdown Plus help</h2>
+          <p>
+            <a
+              href="https://chuntaoliu.com/markdown-plus/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Online Sample
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://guides.github.com/features/mastering-markdown/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Markdown Basics
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://help.github.com/articles/github-flavored-markdown/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub Flavored Markdown
+            </a>
+          </p>
+        </div>
+      </Modal>
+
+      {/* about modal */}
       <Modal
         open={store.modals.about.isOpen}
         footer={
