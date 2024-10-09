@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { exclude } from 'manate';
+import { autoRun, exclude } from 'manate';
 import { auto } from 'manate/react';
+import localforage from 'localforage';
 
 import markdownUrl from '../sample.md';
 import { createEditor } from '../editor';
@@ -34,6 +35,20 @@ const main = async () => {
   // create layout
   const layout = createLayout();
   store.layout = exclude(layout);
+
+  // new load preferences
+  // we don't need to apply preferences to editor or layout, it's done in modals.tsx useEffect
+  const savedPreferences = await localforage.getItem<string>('mdp-preferences');
+  if (savedPreferences) {
+    Object.assign(store.preferences, JSON.parse(savedPreferences));
+  }
+  // auto save preferences to localforage
+  // we can't start it until the first load, otherwise it will save the default preferences
+  const preferencesSaver = autoRun(store.preferences, () => {
+    console.log('save preferences to localforage');
+    localforage.setItem('mdp-preferences', JSON.stringify(store.preferences));
+  });
+  preferencesSaver.start();
 
   init();
   loadPreferences();

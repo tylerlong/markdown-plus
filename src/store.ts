@@ -10,6 +10,17 @@ class Modal {
   }
 }
 
+export class Preferences {
+  public showToolbar = true;
+  public editorVersusPreview = 0.5;
+  public editorTheme = 'default';
+  public editorFontSize = 14;
+  public keyBinding = 'default';
+  public ganttAxisFormat = '';
+  public customCssFiles = '';
+  public customJsFiles = '';
+}
+
 export class Store {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public editor: any;
@@ -21,6 +32,8 @@ export class Store {
     help: new Modal(),
     preferences: new Modal(),
   };
+
+  public preferences = new Preferences();
 }
 
 const store = manage(new Store());

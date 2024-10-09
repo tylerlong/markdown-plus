@@ -1,6 +1,7 @@
-import React from 'react';
-import { Button, Modal } from 'antd';
+import React, { useEffect } from 'react';
+import { Button, Modal, Select } from 'antd';
 import { auto } from 'manate/react';
+import { autoRun } from 'manate';
 
 import iconUrl from '../icon.svg';
 import { Store } from '../store';
@@ -9,6 +10,23 @@ import { savePreferences } from '../preferences';
 const Modals = auto((props: { store: Store }) => {
   console.log('render modals');
   const { store } = props;
+  const { preferences } = store;
+  useEffect(() => {
+    const preferencesApplier = autoRun(store, () => {
+      if (!store.editor || !store.layout) {
+        return;
+      }
+      if (preferences.showToolbar) {
+        store.layout.open('north');
+      } else {
+        store.layout.close('north');
+      }
+    });
+    preferencesApplier.start();
+    return () => {
+      preferencesApplier.stop();
+    };
+  }, []);
   return (
     <>
       <div className="remodal" id="emoji-modal" data-remodal-id="emoji-modal">
@@ -102,14 +120,18 @@ const Modals = auto((props: { store: Store }) => {
             <img src={iconUrl} width="64" />
           </p>
           <h2>Markdown Plus Preferences</h2>
-          <p>
+          <div>
             Show toolbar:{' '}
-            <select id="show-toolbar">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-          </p>
-          <p>
+            <Select
+              value={store.preferences.showToolbar}
+              options={[
+                { value: true, label: 'Yes' },
+                { value: false, label: 'No' },
+              ]}
+              onChange={(value) => (preferences.showToolbar = value)}
+            />
+          </div>
+          <div>
             Editor : Preview{' '}
             <select id="editor-versus-preview">
               <option value="100%">0 : 1</option>
@@ -118,8 +140,8 @@ const Modals = auto((props: { store: Store }) => {
               <option value="33.3%">2 : 1</option>
               <option value="1">1 : 0</option>
             </select>
-          </p>
-          <p>
+          </div>
+          <div>
             Editor theme:{' '}
             <select id="editor-theme">
               <option value="3024-day">3024-day</option>
@@ -176,8 +198,8 @@ const Modals = auto((props: { store: Store }) => {
               <option value="yeti">yeti</option>
               <option value="zenburn">zenburn</option>
             </select>
-          </p>
-          <p>
+          </div>
+          <div>
             Editor font size:{' '}
             <select id="editor-font-size">
               <option value="8">8px</option>
@@ -197,8 +219,8 @@ const Modals = auto((props: { store: Store }) => {
               <option value="48">48px</option>
               <option value="64">64px</option>
             </select>
-          </p>
-          <p>
+          </div>
+          <div>
             Key binding:{' '}
             <select id="key-binding">
               <option value="default">Default</option>
@@ -206,8 +228,8 @@ const Modals = auto((props: { store: Store }) => {
               <option value="vim">Vim</option>
               <option value="emacs">Emacs</option>
             </select>
-          </p>
-          <p>
+          </div>
+          <div>
             Gantt diagram axis format:{' '}
             <input id="gantt-axis-format" placeholder="%Y-%m-%d" /> <br />
             <a
@@ -217,8 +239,8 @@ const Modals = auto((props: { store: Store }) => {
             >
               Time formatting reference
             </a>
-          </p>
-          <p>
+          </div>
+          <div>
             Custom CSS files:{' '}
             <textarea
               id="custom-css-files"
@@ -238,8 +260,8 @@ const Modals = auto((props: { store: Store }) => {
             >
               Markdown Plus themes
             </a>
-          </p>
-          <p>
+          </div>
+          <div>
             Custom JS files:{' '}
             <textarea
               id="custom-js-files"
@@ -259,7 +281,7 @@ const Modals = auto((props: { store: Store }) => {
             >
               Markdown Plus plugins
             </a>
-          </p>
+          </div>
         </div>
       </Modal>
 

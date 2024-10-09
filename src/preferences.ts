@@ -5,16 +5,6 @@ import mdc from 'markdown-core/src/index-browser';
 import { getPreviewWidth, lazyChange, themes } from './utils';
 import store from './store';
 
-const loadShowToolbar = () => {
-  const showToolbar = Cookies.get('show-toolbar') || 'yes';
-  $('select#show-toolbar').val(showToolbar);
-  if (showToolbar === 'yes') {
-    store.layout.open('north');
-  } else {
-    store.layout.close('north');
-  }
-};
-
 const loadKeyBinding = () => {
   const keyBinding = Cookies.get('key-binding') || 'default';
   $('select#key-binding').val(keyBinding);
@@ -46,8 +36,6 @@ const loadCustomFiles = () => {
 };
 
 export const loadPreferences = () => {
-  loadShowToolbar();
-
   const previewWidth = getPreviewWidth();
   $('select#editor-versus-preview').val(previewWidth);
   store.layout.sizePane('east', previewWidth);
