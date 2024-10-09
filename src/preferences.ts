@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import $ from 'jquery';
 import mdc from 'markdown-core/src/index-browser';
 
-import { lazyChange, themes } from './utils';
+import { lazyChange } from './utils';
 import store from './store';
 
 const loadKeyBinding = () => {
@@ -18,15 +18,6 @@ const loadEditorFontSize = () => {
     `${fontSize}px`;
 };
 
-const loadEditorTheme = () => {
-  let editorTheme = Cookies.get('editor-theme');
-  if (!themes.includes(editorTheme)) {
-    editorTheme = 'default';
-  }
-  $('select#editor-theme').val(editorTheme);
-  store.editor.setOption('theme', editorTheme);
-};
-
 const loadCustomFiles = () => {
   const customCssFiles = Cookies.get('custom-css-files') || '';
   $('textarea#custom-css-files').val(customCssFiles);
@@ -39,8 +30,6 @@ export const loadPreferences = () => {
   loadKeyBinding();
 
   loadEditorFontSize();
-
-  loadEditorTheme();
 
   const mdcPreferences = mdc.loadPreferences();
   $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format']);
