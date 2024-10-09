@@ -26,6 +26,7 @@ const Modals = auto((props: { store: Store }) => {
       store.editor.setOption('theme', preferences.editorTheme);
       (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
         `${preferences.editorFontSize}px`;
+      store.editor.setOption('keyMap', preferences.keyBinding);
     });
     preferencesApplier.start();
     return () => {
@@ -172,12 +173,16 @@ const Modals = auto((props: { store: Store }) => {
           </div>
           <div>
             Key binding:{' '}
-            <select id="key-binding">
-              <option value="default">Default</option>
-              <option value="sublime">Sublime</option>
-              <option value="vim">Vim</option>
-              <option value="emacs">Emacs</option>
-            </select>
+            <Select
+              value={preferences.keyBinding}
+              options={[
+                { value: 'default', label: 'Default' },
+                { value: 'sublime', label: 'Sublime' },
+                { value: 'vim', label: 'Vim' },
+                { value: 'emacs', label: 'Emacs' },
+              ]}
+              onChange={(value) => (preferences.keyBinding = value)}
+            />
           </div>
           <div>
             Gantt diagram axis format:{' '}

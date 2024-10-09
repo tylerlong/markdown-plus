@@ -3,13 +3,6 @@ import $ from 'jquery';
 import mdc from 'markdown-core/src/index-browser';
 
 import { lazyChange } from './utils';
-import store from './store';
-
-const loadKeyBinding = () => {
-  const keyBinding = Cookies.get('key-binding') || 'default';
-  $('select#key-binding').val(keyBinding);
-  store.editor.setOption('keyMap', keyBinding);
-};
 
 const loadCustomFiles = () => {
   const customCssFiles = Cookies.get('custom-css-files') || '';
@@ -20,8 +13,6 @@ const loadCustomFiles = () => {
 };
 
 export const loadPreferences = () => {
-  loadKeyBinding();
-
   const mdcPreferences = mdc.loadPreferences();
   $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format']);
 
