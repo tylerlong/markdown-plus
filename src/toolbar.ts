@@ -1,6 +1,5 @@
 import $ from 'jquery';
 
-import { getNormalPreviewWidth } from './utils';
 import store from './store';
 
 const getSampleText = (event) => {
@@ -150,7 +149,7 @@ export const registerToolBarEvents = () => {
   $('#toggle-editor').click(() => {
     if (store.layout.panes.center.outerWidth() < 8) {
       // editor is hidden
-      store.layout.sizePane('east', getNormalPreviewWidth());
+      store.layout.sizePane('east', store.preferences.normalWidth);
     } else {
       store.layout.sizePane('east', '100%');
     }
@@ -159,7 +158,7 @@ export const registerToolBarEvents = () => {
   $('#toggle-preview').click(() => {
     if (store.layout.panes.east.outerWidth() < 8) {
       // preview is hidden
-      store.layout.sizePane('east', getNormalPreviewWidth());
+      store.layout.sizePane('east', store.preferences.normalWidth);
     } else {
       store.layout.sizePane('east', 1);
     }

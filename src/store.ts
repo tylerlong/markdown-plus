@@ -12,13 +12,21 @@ class Modal {
 
 export class Preferences {
   public showToolbar = true;
-  public editorVersusPreview = 0.5;
+  public editorVersusPreview = '50%';
   public editorTheme = 'default';
   public editorFontSize = 14;
   public keyBinding = 'default';
   public ganttAxisFormat = '';
   public customCssFiles = '';
   public customJsFiles = '';
+
+  // neither editor or preview is hidden
+  public get normalWidth() {
+    return this.editorVersusPreview === '100%' ||
+      this.editorVersusPreview === '1'
+      ? '50%'
+      : this.editorVersusPreview;
+  }
 }
 
 export class Store {

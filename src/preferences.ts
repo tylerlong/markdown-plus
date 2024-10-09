@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import $ from 'jquery';
 import mdc from 'markdown-core/src/index-browser';
 
-import { getPreviewWidth, lazyChange, themes } from './utils';
+import { lazyChange, themes } from './utils';
 import store from './store';
 
 const loadKeyBinding = () => {
@@ -36,10 +36,6 @@ const loadCustomFiles = () => {
 };
 
 export const loadPreferences = () => {
-  const previewWidth = getPreviewWidth();
-  $('select#editor-versus-preview').val(previewWidth);
-  store.layout.sizePane('east', previewWidth);
-
   loadKeyBinding();
 
   loadEditorFontSize();

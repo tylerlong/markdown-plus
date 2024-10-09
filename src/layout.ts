@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import { getPreviewWidth, lazyChange } from './utils';
+import { lazyChange } from './utils';
 import store from './store';
 
 export const createLayout = () => {
@@ -25,7 +25,7 @@ export const createLayout = () => {
     east: {
       resizable: true,
       togglerLength_open: 0,
-      size: getPreviewWidth(),
+      size: store.preferences.editorVersusPreview,
       onresize: () => {
         lazyChange();
         store.editor.focus();

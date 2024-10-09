@@ -21,6 +21,7 @@ const Modals = auto((props: { store: Store }) => {
       } else {
         store.layout.close('north');
       }
+      store.layout.sizePane('east', preferences.editorVersusPreview);
     });
     preferencesApplier.start();
     return () => {
@@ -123,7 +124,7 @@ const Modals = auto((props: { store: Store }) => {
           <div>
             Show toolbar:{' '}
             <Select
-              value={store.preferences.showToolbar}
+              value={preferences.showToolbar}
               options={[
                 { value: true, label: 'Yes' },
                 { value: false, label: 'No' },
@@ -133,13 +134,19 @@ const Modals = auto((props: { store: Store }) => {
           </div>
           <div>
             Editor : Preview{' '}
-            <select id="editor-versus-preview">
-              <option value="100%">0 : 1</option>
-              <option value="66.6%">1 : 2</option>
-              <option value="50%">1 : 1</option>
-              <option value="33.3%">2 : 1</option>
-              <option value="1">1 : 0</option>
-            </select>
+            <Select
+              value={preferences.editorVersusPreview}
+              options={[
+                { value: '100%', label: '0 : 1' },
+                { value: '66%', label: '1 : 2' },
+                { value: '50%', label: '1 : 1' },
+                { value: '33%', label: '2 : 1' },
+
+                // jQuery Layout bug. set preview width to "1" to hide it
+                { value: '1', label: '1 : 0' },
+              ]}
+              onChange={(value) => (preferences.editorVersusPreview = value)}
+            />
           </div>
           <div>
             Editor theme:{' '}
