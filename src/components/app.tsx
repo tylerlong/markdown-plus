@@ -8,7 +8,6 @@ import { createEditor } from '../editor';
 import { syncPreview } from '../sync_scroll';
 import { createLayout } from '../layout';
 import { init } from '../init';
-import { loadPreferences } from '../preferences';
 import store, { Store } from '../store';
 import { loadScript } from '../utils';
 import Modals from './modals';
@@ -51,7 +50,6 @@ const main = async () => {
   preferencesSaver.start();
 
   init();
-  loadPreferences();
   const r = await fetch(markdownUrl);
   const data = await r.text();
   editor.setValue(data);

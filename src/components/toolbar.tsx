@@ -2,7 +2,6 @@ import { auto } from 'manate/react';
 import React from 'react';
 
 import { Store } from '../store';
-import { loadPreferences } from '../preferences';
 
 const Toolbar = auto((props: { store: Store }) => {
   console.log('render toolbar');
@@ -174,11 +173,6 @@ T3: 2014-01-02, 9d"
         className="fa fa-cog"
         onClick={() => {
           store.modals.preferences.open();
-
-          // todo: loading preferences doesn't update the form before model is open
-          setTimeout(() => {
-            loadPreferences();
-          }, 500);
         }}
       ></i>
       <i

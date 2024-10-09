@@ -6,8 +6,7 @@ import mdc from 'markdown-core/src/index-browser';
 
 import iconUrl from '../icon.svg';
 import { Store } from '../store';
-import { savePreferences } from '../preferences';
-import { themes } from '../utils';
+import { lazyChange, themes } from '../utils';
 
 const Modals = auto((props: { store: Store }) => {
   console.log('render modals');
@@ -28,7 +27,9 @@ const Modals = auto((props: { store: Store }) => {
       (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
         `${preferences.editorFontSize}px`;
       store.editor.setOption('keyMap', preferences.keyBinding);
+
       mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
+      lazyChange(); // trigger re-render, mermaid needs this to apply the new axis format
     });
     preferencesApplier.start();
     return () => {
@@ -113,7 +114,6 @@ const Modals = auto((props: { store: Store }) => {
               type="primary"
               size="large"
               onClick={() => {
-                savePreferences();
                 store.modals.preferences.close();
               }}
             >
@@ -203,13 +203,13 @@ const Modals = auto((props: { store: Store }) => {
           </div>
           <div>
             Custom CSS files:{' '}
-            <textarea
-              id="custom-css-files"
+            <Input.TextArea
+              value={preferences.customCssFiles}
+              onChange={(e) => (preferences.customCssFiles = e.target.value)}
               wrap="off"
-              placeholder="https://cdn.example.com/file.css"
-              title="Multiple files should be separated by line breaks"
-            ></textarea>
-            <br />
+              placeholder="https://cdn.example.com/file.css
+Please enter each link on a new line."
+            />
             <span className="hint">
               (You need to restart the editor to apply the CSS files)
             </span>
@@ -224,13 +224,13 @@ const Modals = auto((props: { store: Store }) => {
           </div>
           <div>
             Custom JS files:{' '}
-            <textarea
-              id="custom-js-files"
+            <Input.TextArea
+              value={preferences.customJsFiles}
+              onChange={(e) => (preferences.customJsFiles = e.target.value)}
               wrap="off"
-              placeholder="https://cdn.example.com/file.js"
-              title="Multiple files should be separated by line breaks"
-            ></textarea>
-            <br />
+              placeholder="https://cdn.example.com/file.js
+Please enter each link on a new line."
+            />
             <span className="hint">
               (You need to restart the editor to apply the JS files)
             </span>

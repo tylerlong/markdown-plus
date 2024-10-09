@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import Cookies from 'js-cookie';
 import debounce from 'lodash/debounce';
 
 import { syncEditor } from './sync_scroll';
@@ -28,24 +27,16 @@ export const init = () => {
   // setup toolbar
   registerToolBarEvents();
 
-  // load themes
-  let customCssFiles = Cookies.get('custom-css-files');
-  if (customCssFiles === undefined) {
-    customCssFiles = '';
-  }
-  customCssFiles.split('\n').forEach((cssfile) => {
+  // apply themes
+  store.preferences.customCssFiles.split('\n').forEach((cssfile) => {
     cssfile = cssfile.trim();
     if (cssfile.length > 0) {
       $('head').append('<link rel="stylesheet" href="' + cssfile + '"/>');
     }
   });
 
-  // load plugins
-  let customJsFiles = Cookies.get('custom-js-files');
-  if (customJsFiles === undefined) {
-    customJsFiles = '';
-  }
-  customJsFiles.split('\n').forEach((jsFile) => {
+  // apply plugins
+  store.preferences.customJsFiles.split('\n').forEach((jsFile) => {
     jsFile = jsFile.trim();
     if (jsFile.length > 0) {
       $('head').append('<script src="' + jsFile + '"></script>');
