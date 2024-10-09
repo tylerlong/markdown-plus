@@ -72,3 +72,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - No `eslint-disable`
 - Enable react strict mode
   - only after we could properly dispose all side effects
+- Update modal forms UI
+- Rewrite markdown-core
+- gantt diagram x-axis format should be part of the diagram code

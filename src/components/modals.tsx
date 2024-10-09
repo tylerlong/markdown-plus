@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Button, Modal, Select } from 'antd';
+import { Button, Input, Modal, Select } from 'antd';
 import { auto } from 'manate/react';
 import { autoRun } from 'manate';
+import mdc from 'markdown-core/src/index-browser';
 
 import iconUrl from '../icon.svg';
 import { Store } from '../store';
@@ -27,6 +28,7 @@ const Modals = auto((props: { store: Store }) => {
       (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
         `${preferences.editorFontSize}px`;
       store.editor.setOption('keyMap', preferences.keyBinding);
+      mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
     });
     preferencesApplier.start();
     return () => {
@@ -186,7 +188,11 @@ const Modals = auto((props: { store: Store }) => {
           </div>
           <div>
             Gantt diagram axis format:{' '}
-            <input id="gantt-axis-format" placeholder="%Y-%m-%d" /> <br />
+            <Input
+              placeholder="%Y-%m-%d"
+              value={preferences.ganttAxisFormat}
+              onChange={(e) => (preferences.ganttAxisFormat = e.target.value)}
+            />
             <a
               href="https://github.com/mbostock/d3/wiki/Time-Formatting"
               target="_blank"

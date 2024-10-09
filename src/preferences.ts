@@ -1,6 +1,5 @@
 import Cookies from 'js-cookie';
 import $ from 'jquery';
-import mdc from 'markdown-core/src/index-browser';
 
 import { lazyChange } from './utils';
 
@@ -13,27 +12,10 @@ const loadCustomFiles = () => {
 };
 
 export const loadPreferences = () => {
-  const mdcPreferences = mdc.loadPreferences();
-  $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format']);
-
   loadCustomFiles();
 };
 
 export const savePreferences = () => {
-  [
-    'show-toolbar',
-    'editor-versus-preview',
-    'key-binding',
-    'editor-font-size',
-    'editor-theme',
-  ].forEach((key) => {
-    Cookies.set(key, $('select#' + key).val(), { expires: 10000 });
-  });
-  let ganttAxisFormat = $('#gantt-axis-format').val().trim();
-  if (ganttAxisFormat === '') {
-    ganttAxisFormat = '%Y-%m-%d';
-  }
-  Cookies.set('gantt-axis-format', ganttAxisFormat, { expires: 10000 });
   const customCssFiles = $('#custom-css-files').val().trim();
   Cookies.set('custom-css-files', customCssFiles, { expires: 10000 });
   const customJsFiles = $('#custom-js-files').val().trim();
