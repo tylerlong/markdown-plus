@@ -24,6 +24,8 @@ const Modals = auto((props: { store: Store }) => {
       }
       store.layout.sizePane('east', preferences.editorVersusPreview);
       store.editor.setOption('theme', preferences.editorTheme);
+      (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
+        `${preferences.editorFontSize}px`;
     });
     preferencesApplier.start();
     return () => {
@@ -160,24 +162,13 @@ const Modals = auto((props: { store: Store }) => {
           </div>
           <div>
             Editor font size:{' '}
-            <select id="editor-font-size">
-              <option value="8">8px</option>
-              <option value="9">9px</option>
-              <option value="10">10px</option>
-              <option value="11">11px</option>
-              <option value="12">12px</option>
-              <option value="13">13px</option>
-              <option value="14">14px</option>
-              <option value="15">15px</option>
-              <option value="16">16px</option>
-              <option value="17">17px</option>
-              <option value="18">18px</option>
-              <option value="20">20px</option>
-              <option value="24">24px</option>
-              <option value="32">32px</option>
-              <option value="48">48px</option>
-              <option value="64">64px</option>
-            </select>
+            <Select
+              value={preferences.editorFontSize}
+              options={[
+                8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 24, 32, 48, 64,
+              ].map((i) => ({ value: i, label: `${i}px` }))}
+              onChange={(value) => (preferences.editorFontSize = value)}
+            />
           </div>
           <div>
             Key binding:{' '}

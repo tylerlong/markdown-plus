@@ -11,13 +11,6 @@ const loadKeyBinding = () => {
   store.editor.setOption('keyMap', keyBinding);
 };
 
-const loadEditorFontSize = () => {
-  const fontSize = Cookies.get('editor-font-size') || '14';
-  $('select#editor-font-size').val(fontSize);
-  (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
-    `${fontSize}px`;
-};
-
 const loadCustomFiles = () => {
   const customCssFiles = Cookies.get('custom-css-files') || '';
   $('textarea#custom-css-files').val(customCssFiles);
@@ -28,8 +21,6 @@ const loadCustomFiles = () => {
 
 export const loadPreferences = () => {
   loadKeyBinding();
-
-  loadEditorFontSize();
 
   const mdcPreferences = mdc.loadPreferences();
   $('input#gantt-axis-format').val(mdcPreferences['gantt-axis-format']);
