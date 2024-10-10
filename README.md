@@ -61,7 +61,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
   - elk.js + dynamically render to get element size
 - Make an app for ebook authoring
 - Rewrite markdown-core, a mono repo for all the plugins
-- Replace js-cookie with localforage
 - Remove support for class diagram since it is not stable
 - Upgrade all dependencies to latest version, no exception
 - Must have a render finished event
@@ -75,3 +74,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Update modal forms UI
 - Rewrite markdown-core
 - gantt diagram x-axis format should be part of the diagram code
+- bug: no more default theme for editor
