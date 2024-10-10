@@ -75,3 +75,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
   - only after we could properly dispose all side effects
 - Update modal forms UI
 - gantt diagram x-axis format should be part of the diagram code, not a settings
+- simplify css file
