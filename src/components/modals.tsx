@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Input, Modal, Select } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button, Divider, Input, InputRef, Modal, Select } from 'antd';
 import { auto } from 'manate/react';
 import { autoRun } from 'manate';
 import mdc from 'markdown-core/src/index-browser';
 
 import iconUrl from '../icon.svg';
 import { Store } from '../store';
-import { lazyChange, themes } from '../utils';
+import { themes } from '../utils';
 
 const Modals = auto((props: { store: Store }) => {
   console.log('render modals');
   const { store } = props;
   const { preferences, modals, editor, layout } = store;
+  const emojiInput = useRef<InputRef>(null);
+  const faInput = useRef<InputRef>(null);
   useEffect(() => {
     const preferencesApplier = autoRun(store, () => {
       if (!editor || !layout) {
@@ -29,7 +31,6 @@ const Modals = auto((props: { store: Store }) => {
       editor.setOption('keyMap', preferences.keyBinding);
 
       mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
-      lazyChange(); // trigger re-render, mermaid needs this to apply the new axis format
     });
     preferencesApplier.start();
     return () => {
@@ -63,6 +64,11 @@ const Modals = auto((props: { store: Store }) => {
         onOk={() => handleEmojiOK()}
         maskClosable={true}
         centered={true}
+        afterOpenChange={(open) => {
+          if (open) {
+            emojiInput.current?.focus();
+          }
+        }}
       >
         <div style={{ textAlign: 'center' }}>
           <h2>Please enter an emoji code:</h2>
@@ -83,6 +89,7 @@ const Modals = auto((props: { store: Store }) => {
           </p>
           <div>
             <Input
+              ref={emojiInput}
               value={emojiValue}
               onChange={(e) => setEmojiValue(e.target.value)}
               placeholder="smile"
@@ -103,6 +110,11 @@ const Modals = auto((props: { store: Store }) => {
         onOk={() => handleFaOK()}
         maskClosable={true}
         centered={true}
+        afterOpenChange={(open) => {
+          if (open) {
+            faInput.current?.focus();
+          }
+        }}
       >
         <div style={{ textAlign: 'center' }}>
           <h2>Please enter a Font Awesome code:</h2>
@@ -122,6 +134,7 @@ const Modals = auto((props: { store: Store }) => {
           </p>
           <div>
             <Input
+              ref={faInput}
               placeholder="heart"
               value={faValue}
               onChange={(e) => setFaValue(e.target.value)}
@@ -218,6 +231,9 @@ const Modals = auto((props: { store: Store }) => {
               onChange={(value) => (preferences.keyBinding = value)}
             />
           </div>
+          <Divider plain>
+            You need to restart the editor to apply settings below
+          </Divider>
           <div>
             Gantt diagram axis format:{' '}
             <Input
@@ -242,10 +258,6 @@ const Modals = auto((props: { store: Store }) => {
               placeholder="https://cdn.example.com/file.css
 Please enter each link on a new line."
             />
-            <span className="hint">
-              (You need to restart the editor to apply the CSS files)
-            </span>
-            <br />
             <a
               href="https://github.com/tylingsoft/markdown-plus-themes"
               target="_blank"
@@ -263,10 +275,6 @@ Please enter each link on a new line."
               placeholder="https://cdn.example.com/file.js
 Please enter each link on a new line."
             />
-            <span className="hint">
-              (You need to restart the editor to apply the JS files)
-            </span>
-            <br />
             <a
               href="https://github.com/tylingsoft/markdown-plus-plugins"
               target="_blank"
