@@ -52,9 +52,11 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 ## Todo
 
 - Replace jQeury Layout with split-grid
+  - ant design splitter may be better
 - Get rid of jQuery
 - Write Playwright tests
 - Support mobile devices
+  - codemirror support mobile devices
 - Make it an easy-to-embed library
 - Replace mermaid with lightweight alternatives
   - elk.js + dynamically render to get element size
@@ -66,10 +68,10 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
   - mdc.init must be a Promise
 - bug: <div id="mdp-container" style={{ height: '99%' }}>
   - without 99%, jQuery Layout will display nothing
+- bug: click anchor link, toolbar becomes invisible
 - Creat a VS Code extension
 - No `eslint-disable`
 - Enable react strict mode
   - only after we could properly dispose all side effects
 - Update modal forms UI
-- Rewrite markdown-core
-- gantt diagram x-axis format should be part of the diagram code
+- gantt diagram x-axis format should be part of the diagram code, not a settings
