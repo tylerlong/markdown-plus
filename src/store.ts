@@ -7,6 +7,7 @@ class Modal {
   }
   public close() {
     this.isOpen = false;
+    store.editor?.focus();
   }
 }
 
@@ -39,6 +40,8 @@ export class Store {
     about: new Modal(),
     help: new Modal(),
     preferences: new Modal(),
+    emoji: new Modal(),
+    fontAwesome: new Modal(),
   };
 
   public preferences = new Preferences();

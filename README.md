@@ -74,4 +74,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Update modal forms UI
 - Rewrite markdown-core
 - gantt diagram x-axis format should be part of the diagram code
-- bug: no more default theme for editor
+- auto focus <Input/> when emoji and font awesome modals open

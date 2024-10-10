@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Input, Modal, Select } from 'antd';
 import { auto } from 'manate/react';
 import { autoRun } from 'manate';
@@ -36,73 +36,104 @@ const Modals = auto((props: { store: Store }) => {
       preferencesApplier.stop();
     };
   }, []);
+  const [emojiValue, setEmojiValue] = useState('');
+  const [faValue, setFaValue] = useState('');
+  const handleEmojiOK = () => {
+    modals.emoji.close();
+    const value = emojiValue.trim();
+    if (value.length > 0) {
+      editor.replaceSelection(`:${value}:`);
+    }
+    setEmojiValue('');
+  };
+  const handleFaOK = () => {
+    modals.fontAwesome.close();
+    const value = faValue.trim();
+    if (value.length > 0) {
+      editor.replaceSelection(`:fa-${value}:`);
+    }
+    setFaValue('');
+  };
   return (
     <>
-      <div className="remodal" id="emoji-modal" data-remodal-id="emoji-modal">
-        {/* <!-- emoji modal --> */}
-        <h2>Please enter an emoji code:</h2>
-        <p>
-          {`Examples: "smile", "whale", "santa", "panda_face", "dog", "truck"
+      {/* emoji modal */}
+      <Modal
+        open={modals.emoji.isOpen}
+        onCancel={() => modals.emoji.close()}
+        onOk={() => handleEmojiOK()}
+        maskClosable={true}
+        centered={true}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <h2>Please enter an emoji code:</h2>
+          <p>
+            {`Examples: "smile", "whale", "santa", "panda_face", "dog", "truck"
     ...`}
-        </p>
-        <p>
-          For a complete list, please check
-          <a
-            href="http://www.emoji-cheat-sheet.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Emoji Cheat Sheet
-          </a>
-          .
-        </p>
-        <p>
-          <input className="form-control" id="emoji-code" placeholder="smile" />
-        </p>
-        <br />
-        <a data-remodal-action="cancel" className="remodal-cancel">
-          Cancel
-        </a>
-        <a
-          data-remodal-action="confirm"
-          className="remodal-confirm"
-          id="emoji-confirm"
-        >
-          OK
-        </a>
-      </div>
-      <div className="remodal" id="fa-modal" data-remodal-id="fa-modal">
-        {/* <!-- Font Awesome modal --> */}
-        <h2>Please enter a Font Awesome code:</h2>
-        <p>
-          {`Examples: "cloud", "flag", "car", "truck", "heart", "dollar" ...`}
-        </p>
-        <p>
-          For a complete list, please check
-          <a
-            href="http://fontawesome.io/icons/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Font Awesome Icons
-          </a>
-          .
-        </p>
-        <p>
-          <input className="form-control" id="fa-code" placeholder="heart" />
-        </p>
-        <br />
-        <a data-remodal-action="cancel" className="remodal-cancel">
-          Cancel
-        </a>
-        <a
-          data-remodal-action="confirm"
-          className="remodal-confirm"
-          id="fa-confirm"
-        >
-          OK
-        </a>
-      </div>
+          </p>
+          <p>
+            For a complete list, please check
+            <a
+              href="http://www.emoji-cheat-sheet.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Emoji Cheat Sheet
+            </a>
+            .
+          </p>
+          <div>
+            <Input
+              value={emojiValue}
+              onChange={(e) => setEmojiValue(e.target.value)}
+              placeholder="smile"
+              onKeyUp={(e) => {
+                if (e.key === 'Enter') {
+                  handleEmojiOK();
+                }
+              }}
+            />
+          </div>
+        </div>
+      </Modal>
+
+      {/* font awesome modal */}
+      <Modal
+        open={modals.fontAwesome.isOpen}
+        onCancel={() => modals.fontAwesome.close()}
+        onOk={() => handleFaOK()}
+        maskClosable={true}
+        centered={true}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <h2>Please enter a Font Awesome code:</h2>
+          <p>
+            {`Examples: "cloud", "flag", "car", "truck", "heart", "dollar" ...`}
+          </p>
+          <p>
+            For a complete list, please check
+            <a
+              href="http://fontawesome.io/icons/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Font Awesome Icons
+            </a>
+            .
+          </p>
+          <div>
+            <Input
+              placeholder="heart"
+              value={faValue}
+              onChange={(e) => setFaValue(e.target.value)}
+              onKeyUp={(e) => {
+                if (e.key === 'Enter') {
+                  handleFaOK();
+                }
+              }}
+            />
+          </div>
+        </div>
+      </Modal>
 
       {/* preferences modal */}
       <Modal
@@ -116,7 +147,7 @@ const Modals = auto((props: { store: Store }) => {
                 modals.preferences.close();
               }}
             >
-              Close
+              Save
             </Button>
           </div>
         }

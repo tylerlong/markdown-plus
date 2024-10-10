@@ -6,6 +6,7 @@ import { Store } from '../store';
 const Toolbar = auto((props: { store: Store }) => {
   console.log('render toolbar');
   const { store } = props;
+  const { modals } = store;
   return (
     <div id="toolbar" className="noselect">
       <i
@@ -112,12 +113,12 @@ row 2 col 1 | row 2 col 2"
       <i
         title="Emoji"
         className="fa fa-smile-o"
-        data-remodal-target="emoji-modal"
+        onClick={() => modals.emoji.open()}
       ></i>
       <i
         title="Font awesome"
         className="fa fa-flag-o"
-        data-remodal-target="fa-modal"
+        onClick={() => modals.fontAwesome.open()}
       ></i>
       <i className="dividor">|</i>
       <i
@@ -171,19 +172,17 @@ T3: 2014-01-02, 9d"
       <i
         title="Preferences"
         className="fa fa-cog"
-        onClick={() => {
-          store.modals.preferences.open();
-        }}
+        onClick={() => modals.preferences.open()}
       ></i>
       <i
         title="Help"
         className="fa fa-question-circle"
-        onClick={() => store.modals.help.open()}
+        onClick={() => modals.help.open()}
       ></i>
       <i
         title="About"
         className="fa fa-info-circle"
-        onClick={() => store.modals.about.open()}
+        onClick={() => modals.about.open()}
       ></i>
     </div>
   );

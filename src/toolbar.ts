@@ -10,27 +10,6 @@ const getSampleText = (event) => {
   return text;
 };
 
-const promptForValue = (key, action) => {
-  $(document).on('opened', '#' + key + '-modal', () => {
-    $('#' + key + '-code').focus();
-  });
-  $('#' + key + '-code').keyup((e) => {
-    if (e.which === 13) {
-      // press enter to confirm
-      $('#' + key + '-confirm').click();
-    }
-  });
-  $(document).on('confirmation', '#' + key + '-modal', () => {
-    const value = $('#' + key + '-code')
-      .val()
-      .trim();
-    if (value.length > 0) {
-      action(value);
-      $('#' + key + '-code').val('');
-    }
-  });
-};
-
 export const registerToolBarEvents = () => {
   // h1 - h6 heading
   $('.heading-icon').click((event) => {
@@ -112,22 +91,6 @@ export const registerToolBarEvents = () => {
       store.editor.replaceSelection(`\n\n${sample}\n`);
     }
     store.editor.focus();
-  });
-
-  // emoji icon
-  promptForValue('emoji', (value) => {
-    if (/^:.+:$/.test(value)) {
-      value = /^:(.+):$/.exec(value)[1];
-    }
-    store.editor.replaceSelection(`:${value}:`);
-  });
-
-  // Font Awesome icon
-  promptForValue('fa', (value) => {
-    if (value.substring(0, 3) === 'fa-') {
-      value = value.substring(3);
-    }
-    store.editor.replaceSelection(`:fa-${value}:`);
   });
 
   $('#math-icon').click((event) => {
