@@ -11,22 +11,22 @@ import { lazyChange, themes } from '../utils';
 const Modals = auto((props: { store: Store }) => {
   console.log('render modals');
   const { store } = props;
-  const { preferences } = store;
+  const { preferences, modals, editor, layout } = store;
   useEffect(() => {
     const preferencesApplier = autoRun(store, () => {
-      if (!store.editor || !store.layout) {
+      if (!editor || !layout) {
         return;
       }
       if (preferences.showToolbar) {
-        store.layout.open('north');
+        layout.open('north');
       } else {
-        store.layout.close('north');
+        layout.close('north');
       }
-      store.layout.sizePane('east', preferences.editorVersusPreview);
-      store.editor.setOption('theme', preferences.editorTheme);
+      layout.sizePane('east', preferences.editorVersusPreview);
+      editor.setOption('theme', preferences.editorTheme);
       (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
         `${preferences.editorFontSize}px`;
-      store.editor.setOption('keyMap', preferences.keyBinding);
+      editor.setOption('keyMap', preferences.keyBinding);
 
       mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
       lazyChange(); // trigger re-render, mermaid needs this to apply the new axis format
@@ -106,21 +106,22 @@ const Modals = auto((props: { store: Store }) => {
 
       {/* preferences modal */}
       <Modal
-        open={store.modals.preferences.isOpen}
-        closable={false}
+        open={modals.preferences.isOpen}
         footer={
           <div style={{ textAlign: 'center' }}>
             <Button
               type="primary"
               size="large"
               onClick={() => {
-                store.modals.preferences.close();
+                modals.preferences.close();
               }}
             >
-              OK
+              Close
             </Button>
           </div>
         }
+        onCancel={() => modals.preferences.close()}
+        maskClosable={true}
         centered={true}
       >
         <div style={{ textAlign: 'center' }}>
@@ -248,19 +249,19 @@ Please enter each link on a new line."
 
       {/* help modal */}
       <Modal
-        open={store.modals.help.isOpen}
+        open={modals.help.isOpen}
         footer={
           <div style={{ textAlign: 'center' }}>
             <Button
               type="primary"
               size="large"
-              onClick={() => store.modals.help.close()}
+              onClick={() => modals.help.close()}
             >
               Close
             </Button>
           </div>
         }
-        onCancel={() => store.modals.help.close()}
+        onCancel={() => modals.help.close()}
         maskClosable={true}
         centered={true}
       >
@@ -301,19 +302,19 @@ Please enter each link on a new line."
 
       {/* about modal */}
       <Modal
-        open={store.modals.about.isOpen}
+        open={modals.about.isOpen}
         footer={
           <div style={{ textAlign: 'center' }}>
             <Button
               type="primary"
               size="large"
-              onClick={() => store.modals.about.close()}
+              onClick={() => modals.about.close()}
             >
               Close
             </Button>
           </div>
         }
-        onCancel={() => store.modals.about.close()}
+        onCancel={() => modals.about.close()}
         maskClosable={true}
         centered={true}
       >

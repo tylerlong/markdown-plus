@@ -27,6 +27,7 @@ export const themes = [
   'blackboard',
   'cobalt',
   'colorforth',
+  'default',
   'dracula',
   'duotone-dark',
   'duotone-light',
