@@ -15,9 +15,6 @@ import Toolbar from './toolbar';
 
 const main = async () => {
   await loadScript(
-    'https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal.min.js',
-  );
-  await loadScript(
     'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js',
   );
   await loadScript(

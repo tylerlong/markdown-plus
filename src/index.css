@@ -2,8 +2,6 @@
 
 @import 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css';
 @import 'https://cdn.jsdelivr.net/jquery.layout/1.4.3/layout-default.css';
-@import 'https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal.min.css';
-@import 'https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.1/remodal-default-theme.min.css';
 
 html,
 body,
@@ -75,10 +73,6 @@ body > div {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.remodal-overlay {
-  background: rgba(33, 36, 46, 0.6) !important;
 }
 
 .form-control {

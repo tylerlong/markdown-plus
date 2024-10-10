@@ -7,11 +7,6 @@ import { registerToolBarEvents } from './toolbar';
 import store from './store';
 
 export const init = () => {
-  // modals
-  $(document).on('closed', '.remodal', () => {
-    store.editor.focus();
-  });
-
   // keep layout percentage after window resizing
   const lazyAdjustLayout = debounce(
     () => {
