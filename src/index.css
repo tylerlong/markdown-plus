@@ -1,29 +1,20 @@
 @import 'npm:codemirror/theme/*.css';
 
-html,
-body,
 .CodeMirror {
   margin: 0;
   padding: 0;
   height: 100% !important;
 }
 
-/* react root container */
-body > div {
-  /*
-  below will make whole page freeze after open and close a modal
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  */
-  height: 100vh;
-}
-
 #rows-grid {
   display: grid;
   grid-template-rows: 20px 6px 1fr;
   height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  left: 0;
 }
 #row-gutter {
   grid-column: 1/-1;
