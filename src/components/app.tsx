@@ -12,6 +12,7 @@ import store, { Store } from '../store';
 import { loadScript } from '../utils';
 import Modals from './modals';
 import Toolbar from './toolbar';
+import { Splitter } from 'antd';
 
 const main = async () => {
   await loadScript(
@@ -78,18 +79,40 @@ const App = auto((props: { store: Store }) => {
     main();
   }, []);
   return (
-    <div id="mdp-container" style={{ height: '99%' }}>
-      <div className="ui-layout-north">
-        <Toolbar store={store} />
+    <>
+      <Splitter
+        layout="vertical"
+        onResize={(sizes) => {
+          store.preferences.showToolbar = sizes[0] >= 12;
+        }}
+      >
+        <Splitter.Panel
+          size={store.preferences.showToolbar ? 24 : 0}
+          max={24}
+          min={0}
+        >
+          <Toolbar store={store} />
+        </Splitter.Panel>
+        <Splitter.Panel>
+          <Splitter>
+            <Splitter.Panel>
+              <textarea id="editor"></textarea>
+              <Modals store={store} />
+            </Splitter.Panel>
+            <Splitter.Panel>
+              <article className="markdown-body" id="preview"></article>
+            </Splitter.Panel>
+          </Splitter>
+        </Splitter.Panel>
+      </Splitter>
+
+      {/* we keep below as a dummy placeholder because lots of code depends on it */}
+      <div id="mdp-container" style={{ height: '1%' }}>
+        <div className="ui-layout-north"></div>
+        <div className="ui-layout-center"></div>
+        <div className="ui-layout-east"></div>
       </div>
-      <div className="ui-layout-center">
-        <textarea id="editor"></textarea>
-        <Modals store={store} />
-      </div>
-      <div className="ui-layout-east">
-        <article className="markdown-body" id="preview"></article>
-      </div>
-    </div>
+    </>
   );
 });
 
