@@ -16,15 +16,9 @@ const Modals = auto((props: { store: Store }) => {
   const faInput = useRef<InputRef>(null);
   useEffect(() => {
     const preferencesApplier = autoRun(store, () => {
-      if (!store.editor || !store.layout) {
+      if (!store.editor) {
         return;
       }
-      if (preferences.showToolbar) {
-        store.layout.open('north');
-      } else {
-        store.layout.close('north');
-      }
-      store.layout.sizePane('east', preferences.editorVsPreview);
       store.editor.setOption('theme', preferences.editorTheme);
       (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
         `${preferences.editorFontSize}px`;

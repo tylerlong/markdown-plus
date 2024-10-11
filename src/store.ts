@@ -22,9 +22,10 @@ export class Preferences {
   public customJsFiles = '';
 
   // neither editor or preview is hidden
-  public get normalWidth() {
-    return this.editorVsPreview === '100%' || this.editorVsPreview === '1'
-      ? '50%'
+  public get normalEvsP() {
+    return this.editorVsPreview.startsWith('0fr ') ||
+      this.editorVsPreview.endsWith(' 0fr')
+      ? '1fr 6px 1fr'
       : this.editorVsPreview;
   }
 }
