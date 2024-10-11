@@ -37,7 +37,7 @@
     "eslint-config-tyler": "^0.1.5",
     "globals": "^15.11.0",
     "http-server": "^14.1.1",
-    "jquery": "2.2.4",
+    "jquery": "^3.7.1",
     "localforage": "^1.10.0",
     "lodash": "^4.17.21",
     "manate": "^0.9.8",
@@ -62,7 +62,6 @@
   "parcel-namer-hashless": {},
   "yarn-upgrade-all": {
     "ignore": [
-      "jquery",
       "markdown-core",
       "chart.js",
       "codemirror"
