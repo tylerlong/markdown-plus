@@ -33,8 +33,6 @@ export class Preferences {
 export class Store {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public editor: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public layout: any;
 
   public modals = {
     about: new Modal(),

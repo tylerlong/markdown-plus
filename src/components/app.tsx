@@ -7,21 +7,12 @@ import Split from 'split-grid';
 import markdownUrl from '../sample.md';
 import { createEditor } from '../editor';
 import { syncPreview } from '../sync_scroll';
-import { createLayout } from '../layout';
 import { init } from '../init';
 import store, { Store } from '../store';
-import { loadScript } from '../utils';
 import Modals from './modals';
 import Toolbar from './toolbar';
 
 const main = async () => {
-  await loadScript(
-    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js',
-  );
-  await loadScript(
-    'https://cdn.jsdelivr.net/jquery.layout/1.4.3/jquery.layout.min.js',
-  );
-
   // create editor
   const editor = createEditor();
   store.editor = exclude(editor);
@@ -29,12 +20,8 @@ const main = async () => {
     syncPreview();
   });
 
-  // create layout
-  const layout = createLayout();
-  store.layout = exclude(layout);
-
   // new load preferences
-  // we don't need to apply preferences to editor or layout, it's done in modals.tsx useEffect
+  // we don't need to apply preferences here, it's done in modals.tsx useEffect
   const savedPreferences = await localforage.getItem<string>('mdp-preferences');
   if (savedPreferences) {
     Object.assign(store.preferences, JSON.parse(savedPreferences));
@@ -42,7 +29,6 @@ const main = async () => {
   // auto save preferences to localforage
   // we can't start it until the first load, otherwise it will save the default preferences
   const preferencesSaver = autoRun(store.preferences, () => {
-    console.log('save preferences to localforage');
     localforage.setItem('mdp-preferences', JSON.stringify(store.preferences));
   });
   preferencesSaver.start();
@@ -125,13 +111,6 @@ const App = auto((props: { store: Store }) => {
             <article className="markdown-body" id="preview"></article>
           </div>
         </div>
-      </div>
-
-      {/* we keep below as a dummy placeholder because lots of code depends on it */}
-      <div id="mdp-container" style={{ height: '1%' }}>
-        <div className="ui-layout-north"></div>
-        <div className="ui-layout-center"></div>
-        <div className="ui-layout-east"></div>
       </div>
     </>
   );

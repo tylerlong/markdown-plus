@@ -1,8 +1,5 @@
 @import 'npm:codemirror/theme/*.css';
 
-@import 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css';
-@import 'https://cdn.jsdelivr.net/jquery.layout/1.4.3/layout-default.css';
-
 html,
 body,
 .CodeMirror {
@@ -59,19 +56,6 @@ body > div {
 #left-panel,
 #right-panel {
   overflow: scroll;
-}
-
-.ui-layout-pane {
-  border-width: 0;
-  padding: 0;
-  margin: 0;
-}
-.ui-layout-north {
-  /* toolbar background color */
-  background-color: #eee;
-}
-.ui-layout-resizer-north-hover {
-  background: #ddd; /* same color as non-hover */
 }
 
 #toolbar {
@@ -165,10 +149,10 @@ body > div {
 /*************************/
 
 @media print {
-  .ui-layout-pane-north,
-  .ui-layout-pane-center,
-  .ui-layout-resizer,
-  .ui-layout-toggler {
+  #toolbar,
+  #row-gutter,
+  #left-panel,
+  #col-gutter {
     display: none !important;
   }
 }

@@ -104,26 +104,4 @@ export const registerToolBarEvents = () => {
     store.editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`);
     store.editor.focus();
   });
-
-  // $('#toggle-toolbar').click(() => {
-  //   store.layout.toggle('north');
-  // });
-
-  // $('#toggle-editor').click(() => {
-  //   if (store.layout.panes.center.outerWidth() < 8) {
-  //     // editor is hidden
-  //     store.layout.sizePane('east', store.preferences.normalWidth);
-  //   } else {
-  //     store.layout.sizePane('east', '100%');
-  //   }
-  // });
-
-  // $('#toggle-preview').click(() => {
-  //   if (store.layout.panes.east.outerWidth() < 8) {
-  //     // preview is hidden
-  //     store.layout.sizePane('east', store.preferences.normalWidth);
-  //   } else {
-  //     store.layout.sizePane('east', 1);
-  //   }
-  // });
 };

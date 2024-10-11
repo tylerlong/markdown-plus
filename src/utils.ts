@@ -5,10 +5,6 @@ import store from './store';
 // user changes markdown text
 export const lazyChange = debounce(
   () => {
-    if (store.layout.panes.east.outerWidth() < 8) {
-      // preview is hidden
-      return; // no need to update preview if it's hidden
-    }
     mdc.init(store.editor.getValue()); // realtime preview
   },
   1024,
@@ -66,17 +62,3 @@ export const themes = [
   'yeti',
   'zenburn',
 ];
-
-export const loadScript = (url: string): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = url;
-    script.onload = () => {
-      resolve();
-    };
-    script.onerror = () => {
-      reject();
-    };
-    document.head.appendChild(script);
-  });
-};
