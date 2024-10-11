@@ -41,7 +41,7 @@ const scrollLeft = (scrollTop: number): void => {
 
 const scrollRight = (scrollTop: number): void => {
   scrollSide('right', () => {
-    $('.ui-layout-east').animate({ scrollTop: scrollTop }, 128);
+    $('#right-panel').animate({ scrollTop: scrollTop }, 128);
   });
 };
 
@@ -79,7 +79,7 @@ const getEditorScroll = (): IScroll => {
 const setPreviewScroll = (editorScroll: IScroll) => {
   let lastPosition = 0;
   let nextPosition =
-    $('article#preview').outerHeight() - $('.ui-layout-east').height(); // maximum scroll
+    $('article#preview').outerHeight() - $('#right-panel').height(); // maximum scroll
   if (editorScroll.lastMarker) {
     // no marker at very start
     lastPosition = $('article#preview')
@@ -98,12 +98,12 @@ const setPreviewScroll = (editorScroll: IScroll) => {
 };
 
 const getPreviewScroll = (): IScroll => {
-  const scroll = document.querySelector('.ui-layout-east').scrollTop;
+  const scroll = document.querySelector('#right-panel').scrollTop;
   let lastLine = 0;
   let lastScroll = 0;
   let nextLine = store.editor.getValue().split('\n').length; // number of lines of markdown
   let nextScroll =
-    $('article#preview').outerHeight() - $('.ui-layout-east').height(); // maximum scroll
+    $('article#preview').outerHeight() - $('#right-panel').height(); // maximum scroll
   const lineMarkers = $('article#preview > [data-source-line]');
   for (let i = 0; i < lineMarkers.length; i++) {
     const lineMarker = lineMarkers[i];
@@ -138,9 +138,6 @@ const setEditorScroll = (previewScroll: IScroll) => {
 export const syncPreview = debounce(
   () => {
     // sync right with left
-    if (store.layout.panes.east.outerWidth() < 8) {
-      return; // no need to sync if panel closed
-    }
     if (scrollingSide !== 'left') {
       setPreviewScroll(getEditorScroll());
     }
@@ -152,9 +149,6 @@ export const syncPreview = debounce(
 export const syncEditor = debounce(
   () => {
     // sync left with right
-    if (store.layout.panes.east.outerWidth() < 8) {
-      return; // no need to sync if panel closed
-    }
     if (scrollingSide !== 'right') {
       setEditorScroll(getPreviewScroll());
     }
