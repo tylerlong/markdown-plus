@@ -20,7 +20,45 @@ body > div {
   left: 0;
   width: 100%;
   */
+  height: 100vh;
+}
+
+#rows-grid {
+  display: grid;
+  grid-template-rows: 24px 6px 1fr;
+  height: 100vh;
+}
+#row-gutter {
+  grid-column: 1/-1;
+  grid-row: 2;
+  cursor: pointer;
+}
+
+#cols-grid {
+  display: grid;
+  grid-template-columns: 1fr 6px 1fr;
   height: 100%;
+  overflow: hidden;
+}
+#col-gutter {
+  grid-row: 1/-1;
+  grid-column: 2;
+  cursor: col-resize;
+}
+
+.gutter {
+  background-color: #dddddd;
+}
+.gutter:hover {
+  background-color: #c4e1a4;
+}
+
+#toolbar {
+  overflow: hidden;
+}
+#left-panel,
+#right-panel {
+  overflow: scroll;
 }
 
 .ui-layout-pane {

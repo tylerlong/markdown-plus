@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { autoRun, exclude } from 'manate';
 import { auto } from 'manate/react';
 import localforage from 'localforage';
+import Split from 'split-grid';
 
 import markdownUrl from '../sample.md';
 import { createEditor } from '../editor';
@@ -12,7 +13,6 @@ import store, { Store } from '../store';
 import { loadScript } from '../utils';
 import Modals from './modals';
 import Toolbar from './toolbar';
-import { Splitter } from 'antd';
 
 const main = async () => {
   await loadScript(
@@ -76,36 +76,53 @@ const main = async () => {
 const App = auto((props: { store: Store }) => {
   console.log('render app');
   const { store } = props;
+  const { preferences } = store;
   useEffect(() => {
     main();
   }, []);
+
+  useEffect(() => {
+    Split({
+      columnGutters: [
+        {
+          track: 1,
+          element: document.querySelector('#col-gutter')!,
+        },
+      ],
+      snapOffset: 128,
+    });
+  }, []);
   return (
     <>
-      <Splitter
-        layout="vertical"
-        onResize={(sizes) => {
-          store.preferences.showToolbar = sizes[0] >= 12;
+      <div
+        id="rows-grid"
+        style={{
+          gridTemplateRows: preferences.showToolbar
+            ? '24px 6px 1fr'
+            : '0px 6px 1fr',
         }}
       >
-        <Splitter.Panel
-          size={store.preferences.showToolbar ? 24 : 0}
-          max={24}
-          min={0}
-        >
+        <div id="toolbar">
           <Toolbar store={store} />
-        </Splitter.Panel>
-        <Splitter.Panel>
-          <Splitter>
-            <Splitter.Panel>
-              <textarea id="editor"></textarea>
-              <Modals store={store} />
-            </Splitter.Panel>
-            <Splitter.Panel>
-              <article className="markdown-body" id="preview"></article>
-            </Splitter.Panel>
-          </Splitter>
-        </Splitter.Panel>
-      </Splitter>
+        </div>
+        <div
+          id="row-gutter"
+          className="gutter"
+          title={preferences.showToolbar ? 'Hide toolbar' : 'Show toolbar'}
+          onClick={() => (preferences.showToolbar = !preferences.showToolbar)}
+        ></div>
+        <div id="cols-grid">
+          <div id="left-panel">
+            <textarea id="editor"></textarea>
+            <Modals store={store} />
+          </div>
+          <div id="col-gutter" className="gutter" title="Resize"></div>
+          <div id="right-panel">
+            {' '}
+            <article className="markdown-body" id="preview"></article>
+          </div>
+        </div>
+      </div>
 
       {/* we keep below as a dummy placeholder because lots of code depends on it */}
       <div id="mdp-container" style={{ height: '1%' }}>
