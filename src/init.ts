@@ -10,7 +10,7 @@ export const init = () => {
   // keep layout percentage after window resizing
   const lazyAdjustLayout = debounce(
     () => {
-      store.layout.sizePane('east', store.preferences.editorVersusPreview);
+      store.layout.sizePane('east', store.preferences.editorVsPreview);
     },
     1024,
     { leading: false, trailing: true },

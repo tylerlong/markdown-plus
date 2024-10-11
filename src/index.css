@@ -25,7 +25,7 @@ body > div {
 
 #rows-grid {
   display: grid;
-  grid-template-rows: 24px 6px 1fr;
+  grid-template-rows: 20px 6px 1fr;
   height: 100vh;
 }
 #row-gutter {

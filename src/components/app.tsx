@@ -98,8 +98,8 @@ const App = auto((props: { store: Store }) => {
         id="rows-grid"
         style={{
           gridTemplateRows: preferences.showToolbar
-            ? '24px 6px 1fr'
-            : '0px 6px 1fr',
+            ? '20px 6px 1fr'
+            : '0fr 6px 1fr',
         }}
       >
         <div id="toolbar">
@@ -111,7 +111,10 @@ const App = auto((props: { store: Store }) => {
           title={preferences.showToolbar ? 'Hide toolbar' : 'Show toolbar'}
           onClick={() => (preferences.showToolbar = !preferences.showToolbar)}
         ></div>
-        <div id="cols-grid">
+        <div
+          id="cols-grid"
+          style={{ gridTemplateColumns: preferences.editorVsPreview }}
+        >
           <div id="left-panel">
             <textarea id="editor"></textarea>
             <Modals store={store} />

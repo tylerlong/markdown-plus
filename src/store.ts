@@ -13,7 +13,7 @@ class Modal {
 
 export class Preferences {
   public showToolbar = true;
-  public editorVersusPreview = '50%';
+  public editorVsPreview = '1fr 6px 1fr';
   public editorTheme = 'default';
   public editorFontSize = 14;
   public keyBinding = 'default';
@@ -23,10 +23,9 @@ export class Preferences {
 
   // neither editor or preview is hidden
   public get normalWidth() {
-    return this.editorVersusPreview === '100%' ||
-      this.editorVersusPreview === '1'
+    return this.editorVsPreview === '100%' || this.editorVsPreview === '1'
       ? '50%'
-      : this.editorVersusPreview;
+      : this.editorVsPreview;
   }
 }
 

@@ -24,7 +24,7 @@ const Modals = auto((props: { store: Store }) => {
       } else {
         store.layout.close('north');
       }
-      store.layout.sizePane('east', preferences.editorVersusPreview);
+      store.layout.sizePane('east', preferences.editorVsPreview);
       store.editor.setOption('theme', preferences.editorTheme);
       (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
         `${preferences.editorFontSize}px`;
@@ -187,17 +187,15 @@ const Modals = auto((props: { store: Store }) => {
           <div>
             Editor : Preview{' '}
             <Select
-              value={preferences.editorVersusPreview}
+              value={preferences.editorVsPreview}
               options={[
-                { value: '100%', label: '0 : 1' },
-                { value: '66%', label: '1 : 2' },
-                { value: '50%', label: '1 : 1' },
-                { value: '33%', label: '2 : 1' },
-
-                // jQuery Layout bug. set preview width to "1" to hide it
-                { value: '1', label: '1 : 0' },
+                { value: '0fr 6px 1fr', label: '0 : 1' },
+                { value: '1fr 6px 2fr', label: '1 : 2' },
+                { value: '1fr 6px 1fr', label: '1 : 1' },
+                { value: '2fr 6px 1fr', label: '2 : 1' },
+                { value: '1fr 6px 0fr', label: '1 : 0' },
               ]}
-              onChange={(value) => (preferences.editorVersusPreview = value)}
+              onChange={(value) => (preferences.editorVsPreview = value)}
             />
           </div>
           <div>
