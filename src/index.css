@@ -1,33 +1,48 @@
 @import 'npm:codemirror/theme/*.css';
 
-.CodeMirror {
+/* main layout */
+html,
+body {
   margin: 0;
   padding: 0;
-  height: 100% !important;
+  height: 100vh;
+  overflow: hidden;
 }
-
+body > div {
+  height: 100vh;
+  overflow: hidden;
+}
 #rows-grid {
   display: grid;
   grid-template-rows: 20px 6px 1fr;
   height: 100vh;
   overflow: hidden;
-  position: absolute;
-  width: 100vw;
-  top: 0;
-  left: 0;
 }
-#row-gutter {
-  grid-column: 1/-1;
-  grid-row: 2;
-  cursor: pointer;
-}
-
 #cols-grid {
   display: grid;
   grid-template-columns: 1fr 6px 1fr;
   height: 100%;
   overflow: hidden;
 }
+#left-panel {
+  height: 100%;
+  overflow: hidden;
+}
+#right-panel {
+  height: 100%;
+  overflow: hidden;
+}
+#preview {
+  height: 100%;
+  overflow: auto;
+}
+
+#row-gutter {
+  grid-column: 1/-1;
+  grid-row: 2;
+  cursor: pointer;
+}
+
 #col-gutter {
   grid-row: 1/-1;
   grid-column: 2;
@@ -43,10 +58,6 @@
 
 #toolbar {
   overflow: hidden;
-}
-#left-panel,
-#right-panel {
-  overflow: scroll;
 }
 
 #toolbar {
@@ -93,6 +104,12 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.CodeMirror {
+  margin: 0;
+  padding: 0;
+  height: 100% !important;
 }
 
 /*************************/
