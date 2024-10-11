@@ -11,24 +11,24 @@ import { themes } from '../utils';
 const Modals = auto((props: { store: Store }) => {
   console.log('render modals');
   const { store } = props;
-  const { preferences, modals, editor, layout } = store;
+  const { preferences, modals } = store;
   const emojiInput = useRef<InputRef>(null);
   const faInput = useRef<InputRef>(null);
   useEffect(() => {
     const preferencesApplier = autoRun(store, () => {
-      if (!editor || !layout) {
+      if (!store.editor || !store.layout) {
         return;
       }
       if (preferences.showToolbar) {
-        layout.open('north');
+        store.layout.open('north');
       } else {
-        layout.close('north');
+        store.layout.close('north');
       }
-      layout.sizePane('east', preferences.editorVersusPreview);
-      editor.setOption('theme', preferences.editorTheme);
+      store.layout.sizePane('east', preferences.editorVersusPreview);
+      store.editor.setOption('theme', preferences.editorTheme);
       (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
         `${preferences.editorFontSize}px`;
-      editor.setOption('keyMap', preferences.keyBinding);
+      store.editor.setOption('keyMap', preferences.keyBinding);
 
       mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
     });
@@ -43,7 +43,7 @@ const Modals = auto((props: { store: Store }) => {
     modals.emoji.close();
     const value = emojiValue.trim();
     if (value.length > 0) {
-      editor.replaceSelection(`:${value}:`);
+      store.editor.replaceSelection(`:${value}:`);
     }
     setEmojiValue('');
   };
@@ -51,7 +51,7 @@ const Modals = auto((props: { store: Store }) => {
     modals.fontAwesome.close();
     const value = faValue.trim();
     if (value.length > 0) {
-      editor.replaceSelection(`:fa-${value}:`);
+      store.editor.replaceSelection(`:fa-${value}:`);
     }
     setFaValue('');
   };
