@@ -89,7 +89,7 @@ const App = auto((props: { store: Store }) => {
           element: document.querySelector('#col-gutter')!,
         },
       ],
-      snapOffset: 128,
+      snapOffset: 64,
     });
   }, []);
   return (

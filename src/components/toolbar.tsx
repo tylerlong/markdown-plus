@@ -6,7 +6,7 @@ import { Store } from '../store';
 const Toolbar = auto((props: { store: Store }) => {
   console.log('render toolbar');
   const { store } = props;
-  const { modals, preferences } = store;
+  const { modals } = store;
   return (
     <div id="toolbar" className="noselect">
       <i
@@ -151,36 +151,6 @@ section S2
 T2: 2014-01-11, 9d
 section S3
 T3: 2014-01-02, 9d"
-      ></i>
-      <i className="dividor">|</i>
-      <i
-        title="Hide toolbar"
-        className="fa fa-long-arrow-up"
-        onClick={() => (preferences.showToolbar = false)}
-      ></i>
-      <i
-        title="Toggle editor"
-        className="fa fa-long-arrow-left"
-        onClick={() => {
-          if (document.getElementById('left-panel')!.offsetWidth < 8) {
-            // editor is hidden
-            preferences.editorVsPreview = preferences.normalEvsP;
-          } else {
-            preferences.editorVsPreview = '0fr 6px 1fr';
-          }
-        }}
-      ></i>
-      <i
-        title="Toggle preview"
-        className="fa fa-long-arrow-right"
-        onClick={() => {
-          if (document.getElementById('right-panel')!.offsetWidth < 8) {
-            // preview is hidden
-            preferences.editorVsPreview = preferences.normalEvsP;
-          } else {
-            preferences.editorVsPreview = '1fr 6px 0fr';
-          }
-        }}
       ></i>
       <i className="dividor">|</i>
       <i
