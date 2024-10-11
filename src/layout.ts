@@ -25,7 +25,7 @@ export const createLayout = () => {
     east: {
       resizable: true,
       togglerLength_open: 0,
-      size: store.preferences.editorVsPreview,
+      size: '50%',
       onresize: () => {
         lazyChange();
         store.editor.focus();

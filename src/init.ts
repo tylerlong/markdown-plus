@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import debounce from 'lodash/debounce';
 
 import { syncEditor } from './sync_scroll';
 import { lazyChange } from './utils';
@@ -7,18 +6,6 @@ import { registerToolBarEvents } from './toolbar';
 import store from './store';
 
 export const init = () => {
-  // keep layout percentage after window resizing
-  const lazyAdjustLayout = debounce(
-    () => {
-      store.layout.sizePane('east', store.preferences.editorVsPreview);
-    },
-    1024,
-    { leading: false, trailing: true },
-  );
-  $(window).resize(() => {
-    lazyAdjustLayout();
-  });
-
   // setup toolbar
   registerToolBarEvents();
 
