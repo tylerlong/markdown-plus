@@ -57,4 +57,3 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Download as pdf/png/html/html code
 - show icon as the first item in toolbar, clicked to show the about modal
 - modals should go to separate files in src/components/modals folder
-- auto editor.focus() after editor.replaceSelection()

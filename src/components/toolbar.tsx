@@ -27,19 +27,16 @@ const Toolbar = auto((props: { store: Store }) => {
         store.editor.setCursor({ line: cursor.line }); // navigate to line end
         store.editor.replaceSelection(`\n\n${sample}\n`);
       }
-      store.editor.focus();
     });
 
     $('#math-icon').click((event) => {
       const text = getSampleText(event);
       store.editor.replaceSelection(`\n\`\`\`katex\n${text}\n\`\`\`\n`);
-      store.editor.focus();
     });
 
     $('.mermaid-icon').click((event) => {
       const text = getSampleText(event);
       store.editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`);
-      store.editor.focus();
     });
   }, []);
   const stylingClicked = (modifier: string) => {
@@ -50,13 +47,11 @@ const Toolbar = auto((props: { store: Store }) => {
     store.editor.replaceSelection(
       modifier + store.editor.getSelection() + modifier,
     );
-    store.editor.focus();
   };
   const headingClicked = (level: number) => {
     const cursor = store.editor.getCursor();
     store.editor.setCursor(cursor.line, 0);
     store.editor.replaceSelection('#'.repeat(level) + ' ');
-    store.editor.focus();
   };
   const hrClicked = () => {
     const cursor = store.editor.getCursor();
@@ -67,7 +62,6 @@ const Toolbar = auto((props: { store: Store }) => {
       store.editor.setCursor({ line: cursor.line }); // navigate to end of line
       store.editor.replaceSelection('\n\n---\n\n');
     }
-    store.editor.focus();
   };
   const listClicked = (prefix: string) => {
     const selection = store.editor.listSelections()[0];
@@ -77,7 +71,6 @@ const Toolbar = auto((props: { store: Store }) => {
       store.editor.setCursor(i, 0);
       store.editor.replaceSelection(prefix);
     }
-    store.editor.focus();
   };
   return (
     <div id="toolbar" className="noselect">
@@ -139,7 +132,6 @@ const Toolbar = auto((props: { store: Store }) => {
           store.editor.replaceSelection(
             `[${text}](https://github.com/tylerlong/markdown-plus)`,
           );
-          store.editor.focus();
         }}
       ></i>
       <i
@@ -150,7 +142,6 @@ const Toolbar = auto((props: { store: Store }) => {
           store.editor.replaceSelection(
             `![${text}](https://chuntaoliu.com/markdown-plus/icon.svg)`,
           );
-          store.editor.focus();
         }}
       ></i>
       <i
@@ -160,7 +151,6 @@ const Toolbar = auto((props: { store: Store }) => {
           store.editor.replaceSelection(
             `\n\`\`\`\n${store.editor.getSelection()}\n\`\`\`\n`,
           );
-          store.editor.focus();
         }}
       ></i>
       <i

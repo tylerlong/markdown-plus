@@ -56,6 +56,7 @@ CodeMirror.Vim.defineEx('wq', 'wq', () => {
 });
 
 // custom commands
+// todo: we didn't use these commands in the app
 CodeMirror.commands.toUpperCase = (cm) => {
   cm.replaceSelection(cm.getSelection().toUpperCase());
 };
@@ -93,5 +94,14 @@ export const createEditor = () => {
     cm.execCommand('indentMore');
   };
   editor.setOption('extraKeys', extraKeys);
+
+  // we always want to focus on the editor after replaceSelection
+  // todo: maybe latest version of codemirror doesn't need this
+  const replaceSelection = editor.replaceSelection.bind(editor);
+  editor.replaceSelection = (...args) => {
+    replaceSelection(...args);
+    editor.focus();
+  };
+
   return editor;
 };
