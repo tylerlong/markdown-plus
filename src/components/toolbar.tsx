@@ -27,7 +27,10 @@ const Toolbar = auto((props: { store: Store }) => {
       // cursor is at line start
       store.editor.replaceSelection('\n---\n\n');
     } else {
-      store.editor.setCursor({ line: cursor.line }); // navigate to end of line
+      store.editor.setCursor({
+        line: cursor.line,
+        ch: store.editor.getLine(cursor.line).length,
+      }); // navigate to end of line
       store.editor.replaceSelection('\n\n---\n\n');
     }
   };
@@ -139,7 +142,10 @@ row 2 col 1 | row 2 col 2`.trim();
             // cursor is at line start
             store.editor.replaceSelection(`\n${sample}\n\n`);
           } else {
-            store.editor.setCursor({ line: cursor.line }); // navigate to line end
+            store.editor.setCursor({
+              line: cursor.line,
+              ch: store.editor.getLine(cursor.line).length,
+            }); // navigate to line end
             store.editor.replaceSelection(`\n\n${sample}\n`);
           }
         }}

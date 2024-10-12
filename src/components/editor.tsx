@@ -4,7 +4,7 @@ import { auto } from 'manate/react';
 import mdc from 'markdown-core/src/index-browser';
 import React, { useEffect } from 'react';
 
-import { createEditor } from '../editor';
+import { createEditor } from '../codemirror';
 import markdownUrl from '../sample.md';
 import { Store } from '../store';
 import { syncEditor, syncPreview } from '../sync_scroll';
@@ -13,7 +13,9 @@ const Editor = auto((props: { store: Store }) => {
   const { store } = props;
   useEffect(() => {
     // init editor
-    const editor = createEditor();
+    const editor = createEditor(
+      document.getElementById('editor') as HTMLTextAreaElement,
+    );
     store.editor = exclude(editor);
     editor.on('scroll', () => {
       syncPreview();

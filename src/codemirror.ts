@@ -41,21 +41,18 @@ vim.defineEx('w', 'w', () => {});
 vim.defineEx('q', 'q', () => {});
 vim.defineEx('wq', 'wq', () => {});
 
-export const createEditor = () => {
-  const editor = CodeMirror.fromTextArea(
-    document.getElementById('editor') as HTMLTextAreaElement,
-    {
-      lineNumbers: true,
-      mode: 'gfm',
-      theme: 'default',
-      lineWrapping: true,
-      scrollPastEnd: true,
-      autofocus: true,
-      styleActiveLine: { nonEmpty: true },
-      tabSize: 8,
-      indentUnit: 4,
-    },
-  );
+export const createEditor = (textAreaElement: HTMLTextAreaElement) => {
+  const editor = CodeMirror.fromTextArea(textAreaElement, {
+    lineNumbers: true,
+    mode: 'gfm',
+    theme: 'default',
+    lineWrapping: true,
+    scrollPastEnd: true,
+    autofocus: true,
+    styleActiveLine: { nonEmpty: true },
+    tabSize: 8,
+    indentUnit: 4,
+  });
 
   // custom keyboard shortcuts
   const keyMap = CodeMirror['keyMap'];
@@ -78,7 +75,7 @@ export const createEditor = () => {
   editor.setOption('extraKeys', extraKeys);
 
   // we always want to focus on the editor after replaceSelection
-  // todo: maybe latest version of codemirror doesn't need this
+  // todo: maybe codemirror 6 doesn't need this
   const replaceSelection = editor.replaceSelection.bind(editor);
   editor.replaceSelection = (...args) => {
     replaceSelection(...args);
