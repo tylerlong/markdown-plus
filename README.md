@@ -42,7 +42,7 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Upgrade all dependencies to latest version, no exception
 - Must have a render finished event
   - mdc.init must be a Promise
-- Creat a VS Code extension
+- Create a VS Code extension
 - No `eslint-disable`
 - Enable react strict mode
   - only after we could properly dispose all side effects
@@ -57,3 +57,5 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Add explict typings to most code
 - Make it support node.js, means it could run without browser
 - Close most GitHub issues
+- Replace codemirror with ACE?
+  - codemirror 6 released 2 years ago, codemirror 5 is actively maintained

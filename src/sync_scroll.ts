@@ -23,6 +23,7 @@ const scrollSide = (side: 'left' | 'right', howToScroll): void => {
   howToScroll();
 };
 
+// todo: better way to handle scroll animation
 const scrollEditor = (scrollTop: number, when: number): void => {
   setTimeout(() => {
     store.editor.scrollTo(null, scrollTop);
