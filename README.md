@@ -41,7 +41,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
   - elk.js + dynamically render to get element size
 - Make an app for ebook authoring
 - Rewrite markdown-core, a mono repo for all the plugins
-- Remove support for class diagram since it is not stable
 - Upgrade all dependencies to latest version, no exception
 - Must have a render finished event
   - mdc.init must be a Promise
