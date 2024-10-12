@@ -17,27 +17,6 @@ const Toolbar = auto((props: { store: Store }) => {
       return text;
     };
 
-    $('#link-icon').click((event) => {
-      const text = getSampleText(event);
-      const url = $(event.currentTarget).data('sample-url');
-      store.editor.replaceSelection(`[${text}](${url})`);
-      store.editor.focus();
-    });
-
-    $('#image-icon').click((event) => {
-      const text = getSampleText(event);
-      const url = $(event.currentTarget).data('sample-url');
-      store.editor.replaceSelection(`![${text}](${url})`);
-      store.editor.focus();
-    });
-
-    $('#code-icon').click(() => {
-      store.editor.replaceSelection(
-        `\n\`\`\`\n${store.editor.getSelection()}\n\`\`\`\n`,
-      );
-      store.editor.focus();
-    });
-
     $('#table-icon').click((event) => {
       const sample = $(event.currentTarget).data('sample');
       const cursor = store.editor.getCursor();
@@ -155,18 +134,35 @@ const Toolbar = auto((props: { store: Store }) => {
       <i
         title="Link"
         className="fa fa-link"
-        id="link-icon"
-        data-sample="link"
-        data-sample-url="https://github.com/tylerlong/markdown-plus"
+        onClick={() => {
+          const text = store.editor.getSelection().trim() || 'link';
+          store.editor.replaceSelection(
+            `[${text}](https://github.com/tylerlong/markdown-plus)`,
+          );
+          store.editor.focus();
+        }}
       ></i>
       <i
         title="Image"
         className="fa fa-image"
-        id="image-icon"
-        data-sample="image"
-        data-sample-url="https://chuntaoliu.com/markdown-plus/icon.svg"
+        onClick={() => {
+          const text = store.editor.getSelection().trim() || 'image';
+          store.editor.replaceSelection(
+            `![${text}](https://chuntaoliu.com/markdown-plus/icon.svg)`,
+          );
+          store.editor.focus();
+        }}
       ></i>
-      <i title="Code" className="fa fa-code" id="code-icon"></i>
+      <i
+        title="Code"
+        className="fa fa-code"
+        onClick={() => {
+          store.editor.replaceSelection(
+            `\n\`\`\`\n${store.editor.getSelection()}\n\`\`\`\n`,
+          );
+          store.editor.focus();
+        }}
+      ></i>
       <i
         title="Table"
         className="fa fa-table"
