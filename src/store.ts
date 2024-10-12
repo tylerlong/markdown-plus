@@ -31,8 +31,7 @@ export class Preferences {
 }
 
 export class Store {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public editor: any;
+  public editor: CodeMirror.Editor;
 
   public modals = {
     about: new Modal(),

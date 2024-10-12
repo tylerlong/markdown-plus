@@ -35,47 +35,31 @@ import 'codemirror/mode/rust/rust.js';
 import 'codemirror/mode/shell/shell.js';
 import 'codemirror/mode/swift/swift.js';
 
-const mac = CodeMirror.keyMap['default'] === CodeMirror.keyMap.macDefault;
-const ctrl = mac ? 'Cmd' : 'Ctrl';
-
-// default implementation of vim commands
-CodeMirror.Vim.defineEx('w', 'w', () => {
-  console.log('write');
-});
-CodeMirror.Vim.defineEx('q', 'q', (cm, input) => {
-  if (input.input === 'q') {
-    console.log('quit');
-  } else if (input.input === 'q!') {
-    console.log('force quit');
-  }
-});
-CodeMirror.Vim.defineEx('wq', 'wq', () => {
-  console.log('write then quit');
-});
-
-// custom commands
-// todo: we didn't use these commands in the app
-CodeMirror.commands.toUpperCase = (cm) => {
-  cm.replaceSelection(cm.getSelection().toUpperCase());
-};
-CodeMirror.commands.toLowerCase = (cm) => {
-  cm.replaceSelection(cm.getSelection().toLowerCase());
-};
+// dummy implementation of vim commands
+const vim = CodeMirror['Vim'];
+vim.defineEx('w', 'w', () => {});
+vim.defineEx('q', 'q', () => {});
+vim.defineEx('wq', 'wq', () => {});
 
 export const createEditor = () => {
-  const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
-    lineNumbers: true,
-    mode: 'gfm',
-    theme: 'default',
-    lineWrapping: true,
-    scrollPastEnd: true,
-    autofocus: true,
-    styleActiveLine: { nonEmpty: true },
-    tabSize: 8,
-    indentUnit: 4,
-  });
+  const editor = CodeMirror.fromTextArea(
+    document.getElementById('editor') as HTMLTextAreaElement,
+    {
+      lineNumbers: true,
+      mode: 'gfm',
+      theme: 'default',
+      lineWrapping: true,
+      scrollPastEnd: true,
+      autofocus: true,
+      styleActiveLine: { nonEmpty: true },
+      tabSize: 8,
+      indentUnit: 4,
+    },
+  );
 
   // custom keyboard shortcuts
+  const keyMap = CodeMirror['keyMap'];
+  const ctrl = keyMap.default === keyMap.macDefault ? 'Cmd' : 'Ctrl';
   const extraKeys = { 'Alt-F': 'findPersistent' };
   const items = [
     [`${ctrl}-B`, 'i.fa-bold'],
@@ -88,7 +72,7 @@ export const createEditor = () => {
       (document.querySelector(item[1]) as HTMLElement).click();
     };
   });
-  extraKeys['Tab'] = (cm) => {
+  extraKeys['Tab'] = (cm: CodeMirror.Editor) => {
     cm.execCommand('indentMore');
   };
   editor.setOption('extraKeys', extraKeys);

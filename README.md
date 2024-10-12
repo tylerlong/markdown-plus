@@ -43,7 +43,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Must have a render finished event
   - mdc.init must be a Promise
 - Create a VS Code extension
-- No `eslint-disable`
 - Enable react strict mode
   - only after we could properly dispose all side effects
 - Update modal forms UI
