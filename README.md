@@ -52,3 +52,5 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Update modal forms UI
 - gantt diagram x-axis format should be part of the diagram code, not a settings
 - Release a React library so that every can use it easily
+- Download as pdf/png/html/html code
+- show icon as the first item in toolbar, clicked to show the about modal

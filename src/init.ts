@@ -3,13 +3,9 @@ import debounce from 'lodash/debounce';
 import mdc from 'markdown-core/src/index-browser';
 
 import { syncEditor } from './sync_scroll';
-import { registerToolBarEvents } from './toolbar';
 import store from './store';
 
 export const init = () => {
-  // setup toolbar
-  registerToolBarEvents();
-
   // apply themes
   store.preferences.customCssFiles.split('\n').forEach((cssfile) => {
     cssfile = cssfile.trim();
