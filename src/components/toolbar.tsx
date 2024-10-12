@@ -17,32 +17,6 @@ const Toolbar = auto((props: { store: Store }) => {
       return text;
     };
 
-    // <hr/>
-    $('#horizontal-rule').click(() => {
-      const cursor = store.editor.getCursor();
-      if (cursor.ch === 0) {
-        // cursor is at line start
-        store.editor.replaceSelection('\n---\n\n');
-      } else {
-        store.editor.setCursor({ line: cursor.line }); // navigate to end of line
-        store.editor.replaceSelection('\n\n---\n\n');
-      }
-      store.editor.focus();
-    });
-
-    // list icons
-    $('.list-icon').click((event) => {
-      const prefix = $(event.currentTarget).data('prefix');
-      const selection = store.editor.listSelections()[0];
-      const minLine = Math.min(selection.head.line, selection.anchor.line);
-      const maxLine = Math.max(selection.head.line, selection.anchor.line);
-      for (let i = minLine; i <= maxLine; i++) {
-        store.editor.setCursor(i, 0);
-        store.editor.replaceSelection(prefix);
-      }
-      store.editor.focus();
-    });
-
     $('#link-icon').click((event) => {
       const text = getSampleText(event);
       const url = $(event.currentTarget).data('sample-url');
@@ -105,6 +79,27 @@ const Toolbar = auto((props: { store: Store }) => {
     store.editor.replaceSelection('#'.repeat(level) + ' ');
     store.editor.focus();
   };
+  const hrClicked = () => {
+    const cursor = store.editor.getCursor();
+    if (cursor.ch === 0) {
+      // cursor is at line start
+      store.editor.replaceSelection('\n---\n\n');
+    } else {
+      store.editor.setCursor({ line: cursor.line }); // navigate to end of line
+      store.editor.replaceSelection('\n\n---\n\n');
+    }
+    store.editor.focus();
+  };
+  const listClicked = (prefix: string) => {
+    const selection = store.editor.listSelections()[0];
+    const minLine = Math.min(selection.head.line, selection.anchor.line);
+    const maxLine = Math.max(selection.head.line, selection.anchor.line);
+    for (let i = minLine; i <= maxLine; i++) {
+      store.editor.setCursor(i, 0);
+      store.editor.replaceSelection(prefix);
+    }
+    store.editor.focus();
+  };
   return (
     <div id="toolbar" className="noselect">
       {[
@@ -135,34 +130,27 @@ const Toolbar = auto((props: { store: Store }) => {
       <i className="dividor">|</i>
       <i
         title="Horizontal rule"
-        id="horizontal-rule"
         className="fa fa-minus"
+        onClick={() => hrClicked()}
       ></i>
-      <i
-        title="Quote"
-        className="fa fa-quote-left list-icon"
-        data-prefix="> "
-      ></i>
-      <i
-        title="Unordered list"
-        className="fa fa-list-ul list-icon"
-        data-prefix="- "
-      ></i>
-      <i
-        title="Ordered list"
-        className="fa fa-list-ol list-icon"
-        data-prefix="1. "
-      ></i>
-      <i
-        title="Incomplete task list"
-        className="fa fa-square-o list-icon"
-        data-prefix="- [ ] "
-      ></i>
-      <i
-        title="Complete task list"
-        className="fa fa-check-square-o list-icon"
-        data-prefix="- [x] "
-      ></i>
+      {[
+        { name: 'Quote', icon: 'fa-quote-left', prefix: '> ' },
+        { name: 'Unordered list', icon: 'fa-list-ul', prefix: '- ' },
+        { name: 'Ordered list', icon: 'fa-list-ol', prefix: '1. ' },
+        { name: 'Incomplete task list', icon: 'fa-square-o', prefix: '- [ ] ' },
+        {
+          name: 'Complete task list',
+          icon: 'fa-check-square-o',
+          prefix: '- [x] ',
+        },
+      ].map(({ name, icon, prefix }) => (
+        <i
+          key={name}
+          title={name}
+          className={`fa ${icon}`}
+          onClick={() => listClicked(prefix)}
+        ></i>
+      ))}
       <i className="dividor">|</i>
       <i
         title="Link"
