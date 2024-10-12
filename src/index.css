@@ -26,6 +26,7 @@
 #right-panel {
   height: 100%;
   overflow: scroll;
+  position: relative;
 }
 
 #row-gutter {
