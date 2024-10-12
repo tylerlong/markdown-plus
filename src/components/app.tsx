@@ -9,6 +9,7 @@ import store, { Store } from '../store';
 import Editor from './editor';
 import Modals from './modals';
 import Toolbar from './toolbar';
+import Preview from './preview';
 
 const main = async () => {
   // load preferences
@@ -39,34 +40,6 @@ const main = async () => {
       $('head').append('<script src="' + jsFile + '"></script>');
     }
   });
-
-  // scroll past end
-  $('article#preview').css(
-    'padding-bottom',
-    $('#left-panel').height() -
-      parseInt($('article#preview').css('line-height'), 10) +
-      'px',
-  );
-
-  setTimeout(() => {
-    // scroll to hash element
-    if (window.location.hash.length > 0) {
-      const previewPanel = document.querySelector('#preview').parentElement;
-      const linkElement = document.querySelector(
-        window.location.hash,
-      ) as HTMLElement;
-      if (linkElement) {
-        previewPanel.scrollTop = linkElement.offsetTop;
-        // first time scroll `store.editor.heightAtLine(xxx, 'local')` value is wrong
-        // trigger again after 300ms
-        // it is a codemirror bug, maybe latest version has fixed this issue
-        setTimeout(() => {
-          previewPanel.scrollTop = linkElement.offsetTop - 1;
-          previewPanel.scrollTop = linkElement.offsetTop;
-        }, 300);
-      }
-    }
-  }, 3000);
 };
 
 const App = auto((props: { store: Store }) => {
@@ -116,7 +89,7 @@ const App = auto((props: { store: Store }) => {
           </div>
           <div id="col-gutter" className="gutter" title="Resize"></div>
           <div id="right-panel">
-            <article className="markdown-body" id="preview"></article>
+            <Preview />
           </div>
         </div>
       </div>
