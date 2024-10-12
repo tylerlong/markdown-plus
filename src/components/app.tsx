@@ -45,14 +45,13 @@ const main = async () => {
         window.location.hash,
       ) as HTMLElement;
       if (linkElement) {
-        const toScroll = linkElement.offsetTop - 24; // 24 is toolbar height
-        previewPanel.scrollTop = toScroll;
+        previewPanel.scrollTop = linkElement.offsetTop;
         // first time scroll `store.editor.heightAtLine(xxx, 'local')` value is wrong
         // trigger again after 300ms
         // it is a codemirror bug, maybe latest version has fixed this issue
         setTimeout(() => {
-          previewPanel.scrollTop = toScroll - 1;
-          previewPanel.scrollTop = toScroll;
+          previewPanel.scrollTop = linkElement.offsetTop - 1;
+          previewPanel.scrollTop = linkElement.offsetTop;
         }, 300);
       }
     }
