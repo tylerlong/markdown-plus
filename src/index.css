@@ -12,7 +12,6 @@
   display: grid;
   grid-template-rows: 20px 6px 1fr;
   height: 100vh;
-  overflow: hidden;
 }
 #cols-grid {
   display: grid;
@@ -22,15 +21,11 @@
 }
 #left-panel {
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
 }
 #right-panel {
   height: 100%;
-  overflow: hidden;
-}
-#preview {
-  height: 100%;
-  overflow: auto;
+  overflow: scroll;
 }
 
 #row-gutter {
@@ -73,12 +68,6 @@
   background-color: #ddd;
   border-color: #ccc;
   cursor: pointer;
-}
-
-#editor {
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
 
 .heading-icon {
