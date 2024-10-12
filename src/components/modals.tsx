@@ -292,40 +292,6 @@ const Modals = auto((props: { store: Store }) => {
               Time formatting reference
             </a>
           </div>
-          <div>
-            Custom CSS files:{' '}
-            <Input.TextArea
-              value={preferences.customCssFiles}
-              onChange={(e) => (preferences.customCssFiles = e.target.value)}
-              wrap="off"
-              placeholder="https://cdn.example.com/file.css
-Please enter each link on a new line."
-            />
-            <a
-              href="https://github.com/tylingsoft/markdown-plus-themes"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Markdown Plus themes
-            </a>
-          </div>
-          <div>
-            Custom JS files:{' '}
-            <Input.TextArea
-              value={preferences.customJsFiles}
-              onChange={(e) => (preferences.customJsFiles = e.target.value)}
-              wrap="off"
-              placeholder="https://cdn.example.com/file.js
-Please enter each link on a new line."
-            />
-            <a
-              href="https://github.com/tylingsoft/markdown-plus-plugins"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Markdown Plus plugins
-            </a>
-          </div>
         </div>
       </Modal>
 

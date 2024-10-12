@@ -18,8 +18,6 @@ export class Preferences {
   public editorFontSize = 14;
   public keyBinding = 'default';
   public ganttAxisFormat = '%Y-%m-%d';
-  public customCssFiles = '';
-  public customJsFiles = '';
 
   // neither editor or preview is hidden
   public get normalEvsP() {

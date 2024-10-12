@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import localforage from 'localforage';
 import { autoRun } from 'manate';
 import { auto } from 'manate/react';
@@ -24,22 +23,6 @@ const main = async () => {
     localforage.setItem('mdp-preferences', JSON.stringify(store.preferences));
   });
   preferencesSaver.start();
-
-  // apply themes
-  store.preferences.customCssFiles.split('\n').forEach((cssfile) => {
-    cssfile = cssfile.trim();
-    if (cssfile.length > 0) {
-      $('head').append('<link rel="stylesheet" href="' + cssfile + '"/>');
-    }
-  });
-
-  // apply plugins
-  store.preferences.customJsFiles.split('\n').forEach((jsFile) => {
-    jsFile = jsFile.trim();
-    if (jsFile.length > 0) {
-      $('head').append('<script src="' + jsFile + '"></script>');
-    }
-  });
 };
 
 const App = auto((props: { store: Store }) => {
