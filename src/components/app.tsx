@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import $ from 'jquery';
+import localforage from 'localforage';
 import { autoRun } from 'manate';
 import { auto } from 'manate/react';
-import localforage from 'localforage';
+import React, { useEffect } from 'react';
 import Split from 'split-grid';
-import $ from 'jquery';
 
 import store, { Store } from '../store';
+import Editor from './editor';
 import Modals from './modals';
 import Toolbar from './toolbar';
-import Editor from './editor';
-import { syncEditor } from '../sync_scroll';
 
 const main = async () => {
   // load preferences
@@ -48,11 +47,6 @@ const main = async () => {
       parseInt($('article#preview').css('line-height'), 10) +
       'px',
   );
-
-  // left scroll with right
-  $('#right-panel').scroll(() => {
-    syncEditor();
-  });
 
   setTimeout(() => {
     // scroll to hash element
@@ -122,7 +116,6 @@ const App = auto((props: { store: Store }) => {
           </div>
           <div id="col-gutter" className="gutter" title="Resize"></div>
           <div id="right-panel">
-            {' '}
             <article className="markdown-body" id="preview"></article>
           </div>
         </div>

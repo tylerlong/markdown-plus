@@ -56,3 +56,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - modals should go to separate files in src/components/modals folder
 - Add explict typings to most code
 - Make it support node.js, means it could run without browser
+- Close most GitHub issues

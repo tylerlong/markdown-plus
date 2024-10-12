@@ -1,13 +1,13 @@
-import { auto } from 'manate/react';
 import debounce from 'lodash/debounce';
-import mdc from 'markdown-core/src/index-browser';
 import { exclude } from 'manate';
+import { auto } from 'manate/react';
+import mdc from 'markdown-core/src/index-browser';
 import React, { useEffect } from 'react';
 
-import { Store } from '../store';
 import { createEditor } from '../editor';
-import { syncPreview } from '../sync_scroll';
 import markdownUrl from '../sample.md';
+import { Store } from '../store';
+import { syncEditor, syncPreview } from '../sync_scroll';
 
 const Editor = auto((props: { store: Store }) => {
   const { store } = props;
@@ -17,6 +17,9 @@ const Editor = auto((props: { store: Store }) => {
     store.editor = exclude(editor);
     editor.on('scroll', () => {
       syncPreview();
+    });
+    document.getElementById('right-panel').addEventListener('scroll', () => {
+      syncEditor();
     });
 
     // whenever user changes markdown

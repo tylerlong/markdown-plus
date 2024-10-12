@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
 import { Button, Divider, Input, InputRef, Modal, Select } from 'antd';
-import { auto } from 'manate/react';
 import { autoRun } from 'manate';
+import { auto } from 'manate/react';
 import mdc from 'markdown-core/src/index-browser';
+import React, { useEffect, useRef, useState } from 'react';
 
 import iconUrl from '../icon.svg';
 import { Store } from '../store';

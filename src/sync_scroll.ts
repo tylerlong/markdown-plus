@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import debounce from 'lodash/debounce';
+
 import store from './store';
 
 type IScroll = {
