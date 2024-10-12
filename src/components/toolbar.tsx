@@ -17,23 +17,6 @@ const Toolbar = auto((props: { store: Store }) => {
       return text;
     };
 
-    $('#table-icon').click((event) => {
-      const sample = $(event.currentTarget).data('sample');
-      const cursor = store.editor.getCursor();
-      if (cursor.ch === 0) {
-        // cursor is at line start
-        store.editor.replaceSelection(`\n${sample}\n\n`);
-      } else {
-        store.editor.setCursor({ line: cursor.line }); // navigate to line end
-        store.editor.replaceSelection(`\n\n${sample}\n`);
-      }
-    });
-
-    $('#math-icon').click((event) => {
-      const text = getSampleText(event);
-      store.editor.replaceSelection(`\n\`\`\`katex\n${text}\n\`\`\`\n`);
-    });
-
     $('.mermaid-icon').click((event) => {
       const text = getSampleText(event);
       store.editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`);
@@ -156,11 +139,21 @@ const Toolbar = auto((props: { store: Store }) => {
       <i
         title="Table"
         className="fa fa-table"
-        id="table-icon"
-        data-sample="header 1 | header 2
+        onClick={() => {
+          const sample = `
+          header 1 | header 2
 ---|---
 row 1 col 1 | row 1 col 2
-row 2 col 1 | row 2 col 2"
+row 2 col 1 | row 2 col 2`.trim();
+          const cursor = store.editor.getCursor();
+          if (cursor.ch === 0) {
+            // cursor is at line start
+            store.editor.replaceSelection(`\n${sample}\n\n`);
+          } else {
+            store.editor.setCursor({ line: cursor.line }); // navigate to line end
+            store.editor.replaceSelection(`\n\n${sample}\n`);
+          }
+        }}
       ></i>
       <i className="dividor">|</i>
       <i
@@ -177,8 +170,10 @@ row 2 col 1 | row 2 col 2"
       <i
         title="Mathematical formula"
         className="fa fa-superscript"
-        id="math-icon"
-        data-sample="E = mc^2"
+        onClick={() => {
+          const text = store.editor.getSelection().trim() || 'E = mc^2';
+          store.editor.replaceSelection(`\n\`\`\`katex\n${text}\n\`\`\`\n`);
+        }}
       ></i>
       <i
         title="Flowchart"
