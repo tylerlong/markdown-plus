@@ -50,7 +50,10 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Enable react strict mode
   - only after we could properly dispose all side effects
 - Update modal forms UI
+  - the preferences modal
 - gantt diagram x-axis format should be part of the diagram code, not a settings
 - Release a React library so that every can use it easily
+  - a few lines of code to embed mdp to their own app
 - Download as pdf/png/html/html code
 - show icon as the first item in toolbar, clicked to show the about modal
+- modals should go to separate files in src/components/modals folder

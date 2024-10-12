@@ -17,28 +17,6 @@ const Toolbar = auto((props: { store: Store }) => {
       return text;
     };
 
-    // h1 - h6 heading
-    $('.heading-icon').click((event) => {
-      const level = $(event.currentTarget).data('level');
-      const cursor = store.editor.getCursor();
-      store.editor.setCursor(cursor.line, 0);
-      store.editor.replaceSelection('#'.repeat(level) + ' ');
-      store.editor.focus();
-    });
-
-    // styling icons
-    $('.styling-icon').click((event) => {
-      const modifier = $(event.currentTarget).data('modifier');
-      if (!store.editor.somethingSelected()) {
-        const word = store.editor.findWordAt(store.editor.getCursor());
-        store.editor.setSelection(word.anchor, word.head);
-      }
-      store.editor.replaceSelection(
-        modifier + store.editor.getSelection() + modifier,
-      );
-      store.editor.focus();
-    });
-
     // <hr/>
     $('#horizontal-rule').click(() => {
       const cursor = store.editor.getCursor();
@@ -111,52 +89,49 @@ const Toolbar = auto((props: { store: Store }) => {
       store.editor.focus();
     });
   }, []);
+  const stylingClicked = (modifier: string) => {
+    if (!store.editor.somethingSelected()) {
+      const word = store.editor.findWordAt(store.editor.getCursor());
+      store.editor.setSelection(word.anchor, word.head);
+    }
+    store.editor.replaceSelection(
+      modifier + store.editor.getSelection() + modifier,
+    );
+    store.editor.focus();
+  };
+  const headingClicked = (level: number) => {
+    const cursor = store.editor.getCursor();
+    store.editor.setCursor(cursor.line, 0);
+    store.editor.replaceSelection('#'.repeat(level) + ' ');
+    store.editor.focus();
+  };
   return (
     <div id="toolbar" className="noselect">
-      <i
-        title="Bold"
-        className="fa fa-bold styling-icon"
-        data-modifier="**"
-      ></i>
-      <i
-        title="Italic"
-        className="fa fa-italic styling-icon"
-        data-modifier="*"
-      ></i>
-      <i
-        title="Strikethrough"
-        className="fa fa-strikethrough styling-icon"
-        data-modifier="~~"
-      ></i>
-      <i
-        title="Underline"
-        className="fa fa-underline styling-icon"
-        data-modifier="++"
-      ></i>
-      <i
-        title="Mark"
-        className="fa fa-pencil styling-icon"
-        data-modifier="=="
-      ></i>
+      {[
+        { title: 'Bold', icon: 'fa-bold', modifier: '**' },
+        { title: 'Italic', icon: 'fa-italic', modifier: '*' },
+        { title: 'Strikethrough', icon: 'fa-strikethrough', modifier: '~~' },
+        { title: 'Underline', icon: 'fa-underline', modifier: '++' },
+        { title: 'Mark', icon: 'fa-pencil', modifier: '==' },
+      ].map(({ title, icon, modifier }) => (
+        <i
+          key={title}
+          title={title}
+          className={`fa ${icon}`}
+          onClick={() => stylingClicked(modifier)}
+        ></i>
+      ))}
       <i className="dividor">|</i>
-      <i title="Heading 1" className="fa heading-icon" data-level="1">
-        h1
-      </i>
-      <i title="Heading 2" className="fa heading-icon" data-level="2">
-        h2
-      </i>
-      <i title="Heading 3" className="fa heading-icon" data-level="3">
-        h3
-      </i>
-      <i title="Heading 4" className="fa heading-icon" data-level="4">
-        h4
-      </i>
-      <i title="Heading 5" className="fa heading-icon" data-level="5">
-        h5
-      </i>
-      <i title="Heading 6" className="fa heading-icon" data-level="6">
-        h6
-      </i>
+      {[1, 2, 3, 4, 5, 6].map((level) => (
+        <i
+          key={level}
+          title={`Heading ${level}`}
+          className="fa heading-icon"
+          onClick={() => headingClicked(level)}
+        >
+          h{level}
+        </i>
+      ))}
       <i className="dividor">|</i>
       <i
         title="Horizontal rule"
