@@ -30,7 +30,7 @@
     "@parcel/transformer-typescript-tsc": "^2.12.0",
     "@types/node": "^22.7.5",
     "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
+    "@types/react-dom": "^18.3.1",
     "antd": "^5.21.3",
     "chart.js": "2.6.0",
     "codemirror": "5.26.0",

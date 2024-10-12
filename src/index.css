@@ -1,16 +1,12 @@
 @import 'npm:codemirror/theme/*.css';
 
 /* main layout */
-html,
-body {
-  margin: 0;
-  padding: 0;
+#root {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
   height: 100vh;
-  overflow: hidden;
-}
-body > div {
-  height: 100vh;
-  overflow: hidden;
 }
 #rows-grid {
   display: grid;

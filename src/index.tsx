@@ -8,9 +8,7 @@ import store from './store';
 
 global.$ = global.jQuery = $;
 
-const container = document.createElement('div');
-document.body.appendChild(container);
-const root = createRoot(container);
+const root = createRoot(document.getElementById('root'));
 root.render(
   <ConfigProvider
     theme={{
