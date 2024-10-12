@@ -8,8 +8,8 @@ import Split from 'split-grid';
 import store, { Store } from '../store';
 import Editor from './editor';
 import Modals from './modals';
-import Toolbar from './toolbar';
 import Preview from './preview';
+import Toolbar from './toolbar';
 
 const main = async () => {
   // load preferences

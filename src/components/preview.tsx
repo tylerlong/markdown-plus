@@ -1,16 +1,13 @@
 import { auto } from 'manate/react';
 import React, { useEffect } from 'react';
-import $ from 'jquery';
 
 const Preview = auto(() => {
   useEffect(() => {
     // scroll past end
-    $('article#preview').css(
-      'padding-bottom',
-      $('#left-panel').height() -
-        parseInt($('article#preview').css('line-height'), 10) +
-        'px',
-    );
+    const preview = document.querySelector('#preview') as HTMLElement;
+    const leftPanel = document.querySelector('#left-panel') as HTMLElement;
+    const lineHeight = parseInt(getComputedStyle(preview).lineHeight, 10);
+    preview.style.paddingBottom = `${leftPanel.offsetHeight - lineHeight}px`;
 
     // todo: precisely set the timing
     setTimeout(() => {
