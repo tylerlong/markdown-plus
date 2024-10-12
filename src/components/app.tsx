@@ -1,25 +1,16 @@
 import React, { useEffect } from 'react';
-import { autoRun, exclude } from 'manate';
+import { autoRun } from 'manate';
 import { auto } from 'manate/react';
 import localforage from 'localforage';
 import Split from 'split-grid';
 
-import markdownUrl from '../sample.md';
-import { createEditor } from '../editor';
-import { syncPreview } from '../sync_scroll';
 import { init } from '../init';
 import store, { Store } from '../store';
 import Modals from './modals';
 import Toolbar from './toolbar';
+import Editor from './editor';
 
 const main = async () => {
-  // create editor
-  const editor = createEditor();
-  store.editor = exclude(editor);
-  editor.on('scroll', () => {
-    syncPreview();
-  });
-
   // new load preferences
   // we don't need to apply preferences here, it's done in modals.tsx useEffect
   const savedPreferences = await localforage.getItem<string>('mdp-preferences');
@@ -34,9 +25,7 @@ const main = async () => {
   preferencesSaver.start();
 
   init();
-  const r = await fetch(markdownUrl);
-  const data = await r.text();
-  editor.setValue(data);
+
   setTimeout(() => {
     // scroll to hash element
     if (window.location.hash.length > 0) {
@@ -101,8 +90,7 @@ const App = auto((props: { store: Store }) => {
           style={{ gridTemplateColumns: preferences.editorVsPreview }}
         >
           <div id="left-panel">
-            <textarea id="editor"></textarea>
-            <Modals store={store} />
+            <Editor store={store} />
           </div>
           <div id="col-gutter" className="gutter" title="Resize"></div>
           <div id="right-panel">
@@ -111,6 +99,7 @@ const App = auto((props: { store: Store }) => {
           </div>
         </div>
       </div>
+      <Modals store={store} />
     </>
   );
 });

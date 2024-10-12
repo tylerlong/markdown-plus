@@ -1,6 +1,4 @@
 import $ from 'jquery';
-import debounce from 'lodash/debounce';
-import mdc from 'markdown-core/src/index-browser';
 
 import { syncEditor } from './sync_scroll';
 import store from './store';
@@ -33,17 +31,5 @@ export const init = () => {
   // left scroll with right
   $('#right-panel').scroll(() => {
     syncEditor();
-  });
-
-  // whenever user changes markdown...
-  const lazyChange = debounce(
-    () => {
-      mdc.init(store.editor.getValue()); // realtime preview
-    },
-    1024,
-    { leading: false, trailing: true },
-  );
-  store.editor.on('changes', () => {
-    lazyChange();
   });
 };
