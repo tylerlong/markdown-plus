@@ -4,11 +4,9 @@
 
 Markdown Plus ("M+" or "mdp" for short) is a markdown editor with extra features.
 
+## [Online Demo](https://chuntaoliu.com/markdown-plus/)
+
 ![Markdown Plus](screenshot.png)
-
-## Online Demo
-
-[Markdown Plus](https://chuntaoliu.com/markdown-plus/)
 
 ## Setup & Run
 
@@ -56,3 +54,5 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Download as pdf/png/html/html code
 - show icon as the first item in toolbar, clicked to show the about modal
 - modals should go to separate files in src/components/modals folder
+- Add explict typings to most code
+- Make it support node.js, means it could run without browser

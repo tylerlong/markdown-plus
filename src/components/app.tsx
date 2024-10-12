@@ -3,15 +3,16 @@ import { autoRun } from 'manate';
 import { auto } from 'manate/react';
 import localforage from 'localforage';
 import Split from 'split-grid';
+import $ from 'jquery';
 
-import { init } from '../init';
 import store, { Store } from '../store';
 import Modals from './modals';
 import Toolbar from './toolbar';
 import Editor from './editor';
+import { syncEditor } from '../sync_scroll';
 
 const main = async () => {
-  // new load preferences
+  // load preferences
   // we don't need to apply preferences here, it's done in modals.tsx useEffect
   const savedPreferences = await localforage.getItem<string>('mdp-preferences');
   if (savedPreferences) {
@@ -24,7 +25,34 @@ const main = async () => {
   });
   preferencesSaver.start();
 
-  init();
+  // apply themes
+  store.preferences.customCssFiles.split('\n').forEach((cssfile) => {
+    cssfile = cssfile.trim();
+    if (cssfile.length > 0) {
+      $('head').append('<link rel="stylesheet" href="' + cssfile + '"/>');
+    }
+  });
+
+  // apply plugins
+  store.preferences.customJsFiles.split('\n').forEach((jsFile) => {
+    jsFile = jsFile.trim();
+    if (jsFile.length > 0) {
+      $('head').append('<script src="' + jsFile + '"></script>');
+    }
+  });
+
+  // scroll past end
+  $('article#preview').css(
+    'padding-bottom',
+    $('#left-panel').height() -
+      parseInt($('article#preview').css('line-height'), 10) +
+      'px',
+  );
+
+  // left scroll with right
+  $('#right-panel').scroll(() => {
+    syncEditor();
+  });
 
   setTimeout(() => {
     // scroll to hash element
