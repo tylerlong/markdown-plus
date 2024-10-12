@@ -1,6 +1,5 @@
 import { auto } from 'manate/react';
-import React, { useEffect } from 'react';
-import $ from 'jquery';
+import React from 'react';
 
 import { Store } from '../store';
 
@@ -8,20 +7,6 @@ const Toolbar = auto((props: { store: Store }) => {
   console.log('render toolbar');
   const { store } = props;
   const { modals } = store;
-  useEffect(() => {
-    const getSampleText = (event) => {
-      let text = store.editor.getSelection();
-      if (text.trim() === '') {
-        text = $(event.currentTarget).data('sample');
-      }
-      return text;
-    };
-
-    $('.mermaid-icon').click((event) => {
-      const text = getSampleText(event);
-      store.editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`);
-    });
-  }, []);
   const stylingClicked = (modifier: string) => {
     if (!store.editor.somethingSelected()) {
       const word = store.editor.findWordAt(store.editor.getCursor());
@@ -54,6 +39,10 @@ const Toolbar = auto((props: { store: Store }) => {
       store.editor.setCursor(i, 0);
       store.editor.replaceSelection(prefix);
     }
+  };
+  const mermaidClicked = (sample: string) => {
+    const text = store.editor.getSelection().trim() || sample;
+    store.editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`);
   };
   return (
     <div id="toolbar" className="noselect">
@@ -177,28 +166,31 @@ row 2 col 1 | row 2 col 2`.trim();
       ></i>
       <i
         title="Flowchart"
-        className="fa fa-long-arrow-right mermaid-icon"
-        data-sample="graph LR
-A-->B"
+        className="fa fa-long-arrow-right"
+        onClick={() => mermaidClicked('graph LR\nA-->B')}
       ></i>
       <i
         title="Sequence diagram"
-        className="fa fa-exchange mermaid-icon"
-        data-sample="sequenceDiagram
-A->>B: How are you?
-B->>A: Great!"
+        className="fa fa-exchange"
+        onClick={() =>
+          mermaidClicked('sequenceDiagram\nA->>B: How are you?\nB->>A: Great!')
+        }
       ></i>
       <i
         title="Gantt diagram"
-        className="fa fa-sliders mermaid-icon"
-        data-sample="gantt
+        className="fa fa-sliders"
+        onClick={() =>
+          mermaidClicked(
+            `gantt
 dateFormat YYYY-MM-DD
 section S1
 T1: 2014-01-01, 9d
 section S2
 T2: 2014-01-11, 9d
 section S3
-T3: 2014-01-02, 9d"
+T3: 2014-01-02, 9d`,
+          )
+        }
       ></i>
       <i className="dividor">|</i>
       <i

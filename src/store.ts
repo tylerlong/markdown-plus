@@ -17,7 +17,7 @@ export class Preferences {
   public editorTheme = 'default';
   public editorFontSize = 14;
   public keyBinding = 'default';
-  public ganttAxisFormat = '';
+  public ganttAxisFormat = '%Y-%m-%d';
   public customCssFiles = '';
   public customJsFiles = '';
 
