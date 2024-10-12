@@ -1,12 +1,9 @@
-import $ from 'jquery';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ConfigProvider } from 'antd';
 
 import App from './components/app';
 import store from './store';
-
-global.$ = global.jQuery = $;
 
 const root = createRoot(document.getElementById('root'));
 root.render(
