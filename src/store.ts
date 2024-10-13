@@ -1,6 +1,6 @@
 import { manage } from 'manate';
 
-class Modal {
+export class Modal {
   public isOpen = false;
   public open() {
     this.isOpen = true;
