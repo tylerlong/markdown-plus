@@ -2,7 +2,7 @@ import debounce from 'debounce';
 import $ from 'jquery';
 
 import store from './store';
-import { animateScroll } from './utils';
+import { animate } from './utils';
 
 type IScroll = {
   lastMarker: number;
@@ -26,14 +26,25 @@ const scrollSide = (side: 'left' | 'right', howToScroll): void => {
 
 const scrollLeft = (scrollTop: number): void => {
   scrollSide('left', () => {
-    animateScroll(store.editor, scrollTop, 128);
+    animate(
+      (i) => {
+        store.editor.scrollTo(null, i);
+      },
+      store.editor.getScrollInfo().top,
+      scrollTop,
+      128,
+    );
   });
 };
 
 const scrollRight = (scrollTop: number): void => {
   scrollSide('right', () => {
-    animateScroll(
-      document.getElementById('right-panel') as HTMLDivElement,
+    const element = document.getElementById('right-panel');
+    animate(
+      (i) => {
+        element.scrollTop = i;
+      },
+      element.scrollTop,
       scrollTop,
       128,
     );
