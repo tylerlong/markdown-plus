@@ -24,7 +24,7 @@ open http://localhost:1234/ in your browser
 
 MIT
 
-Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
+Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong/)
 
 ---
 
@@ -54,3 +54,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Replace codemirror with ACE?
   - codemirror 6 released 2 years ago, codemirror 5 is actively maintained
 - preview dark mode
+- https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting
