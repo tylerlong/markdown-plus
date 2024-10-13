@@ -27,9 +27,7 @@ const scrollSide = (side: 'left' | 'right', howToScroll): void => {
 const scrollLeft = (scrollTop: number): void => {
   scrollSide('left', () => {
     animate(
-      (i) => {
-        store.editor.scrollTo(null, i);
-      },
+      (i) => store.editor.scrollTo(null, i),
       store.editor.getScrollInfo().top,
       scrollTop,
       128,
@@ -40,14 +38,7 @@ const scrollLeft = (scrollTop: number): void => {
 const scrollRight = (scrollTop: number): void => {
   scrollSide('right', () => {
     const element = document.getElementById('right-panel');
-    animate(
-      (i) => {
-        element.scrollTop = i;
-      },
-      element.scrollTop,
-      scrollTop,
-      128,
-    );
+    animate((i) => (element.scrollTop = i), element.scrollTop, scrollTop, 128);
   });
 };
 
