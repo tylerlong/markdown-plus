@@ -50,15 +50,6 @@ const StaticModals = auto((props: { modals: typeof store.modals }) => {
               Markdown Basics
             </a>
           </p>
-          <p>
-            <a
-              href="https://help.github.com/articles/github-flavored-markdown/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub Flavored Markdown
-            </a>
-          </p>
         </div>
       </Modal>
 
@@ -90,7 +81,7 @@ const StaticModals = auto((props: { modals: typeof store.modals }) => {
           <p>
             Copyright © 2015 - 2024{' '}
             <a
-              href="https://github.com/tylerlong"
+              href="https://github.com/tylerlong/"
               target="_blank"
               rel="noreferrer"
             >
@@ -100,7 +91,7 @@ const StaticModals = auto((props: { modals: typeof store.modals }) => {
           <p>
             Home page:{' '}
             <a
-              href="https://github.com/tylerlong/markdown-plus"
+              href="https://github.com/tylerlong/markdown-plus/"
               target="_blank"
               rel="noreferrer"
             >

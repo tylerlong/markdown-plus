@@ -32,11 +32,11 @@ You can also use inline math: `$29^{th}$`
 
 ## Emoji: :panda_face: :sparkles: :camel: :boom: :pig:
 
-[Emoji Cheat Sheet](http://www.emoji-cheat-sheet.com/)
+[Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
 
 ## Fontawesome: :fa-cab: :fa-flag: :fa-bicycle: :fa-leaf: :fa-heart:
 
-[All the Font Awesome icons](http://fontawesome.io/icons/)
+[All the Font Awesome icons](https://github.com/gluons/Font-Awesome-Icon-Chars/blob/master/character-list/character-list.yaml)
 
 ## `print 'hello code'`
 
@@ -55,7 +55,7 @@ async function fetchItems<T>(url: string): Promise<T[]> {
 }
 ```
 
-[Code Formatting](https://help.github.com/articles/markdown-basics/#code-formatting)
+[Code Formatting](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks)
 
 ## Tables and alignment
 
@@ -69,7 +69,7 @@ async function fetchItems<T>(url: string): Promise<T[]> {
 | col 3 is     | some wordy text |         $1600 |
 | col 2 is     |    centered     |           $12 |
 
-[Table Syntax](https://help.github.com/articles/github-flavored-markdown/#tables)
+[Table Syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables)
 
 ## Task list
 
@@ -79,7 +79,7 @@ async function fetchItems<T>(url: string): Promise<T[]> {
   - [ ] final subtask
 - [ ] a separate task
 
-[Task List Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
+[Task List Syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#task-lists)
 
 ## Abbreviation
 
@@ -105,7 +105,7 @@ Here is an inline note.^[Inlines notes are easier to write, since
 you don't have to pick an identifier and move down to type the
 note.]
 
-[Footnote Syntax](http://pandoc.org/README.html#footnotes)
+[Footnote Syntax](https://pandoc.org/MANUAL.html#footnotes)
 
 ## Mathematical formula `$y = x^2$`
 
@@ -130,7 +130,7 @@ Math block:
  \left[R^2\frac{\partial D_n(R)}{\partial R}\right]\,dR
 ```
 
-[Mathematical Formula Syntax](http://meta.wikimedia.org/wiki/Help:Displaying_a_formula)
+[Mathematical Formula Syntax](https://www.mediawiki.org/wiki/Extension:Math/Syntax)
 
 ## AsciiMath
 
@@ -151,7 +151,7 @@ phi_n(kappa) = 1/(4pi^2 kappa^2)
 [R^2 (del D_n (R))/(del R)] del R
 ```
 
-[AsciiMath Documentation](http://asciimath.org/)
+[AsciiMath Documentation](https://asciimath.org/)
 
 ## mermaid charts
 
@@ -247,7 +247,7 @@ Term 2
 ~ Definition 2a
 ~ Definition 2b
 
-[Definition List Syntax](http://pandoc.org/README.html#definition-lists)
+[Definition List Syntax](https://pandoc.org/MANUAL.html#definition-lists)
 
 ## HTML
 
@@ -255,11 +255,11 @@ If you find the markdown syntax too limited, you can try some <span style="color
 
 <p style="text-align:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/120px-HTML5_logo_and_wordmark.svg.png"/></p>
 
-<a href="https://github.com/tylerlong/markdown-plus" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1000;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/tylerlong/markdown-plus/" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1000;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
 ## Chart.js
 
-[Documentation for charts](http://www.chartjs.org/docs/)
+[Documentation for charts](https://www.chartjs.org/docs/latest/)
 
 ```chart
 {

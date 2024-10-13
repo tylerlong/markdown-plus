@@ -113,7 +113,7 @@ const Toolbar = auto((props: { store: Store }) => {
         onClick={() => {
           const text = store.editor.getSelection().trim() || 'link';
           store.editor.replaceSelection(
-            `[${text}](https://github.com/tylerlong/markdown-plus)`,
+            `[${text}](https://github.com/tylerlong/markdown-plus/)`,
           );
         }}
       ></i>

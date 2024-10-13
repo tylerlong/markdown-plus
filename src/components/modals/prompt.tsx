@@ -52,7 +52,7 @@ const promptModals = auto((props: { store: Store }) => {
           <p>
             For a complete list, please check
             <a
-              href="http://www.emoji-cheat-sheet.com/"
+              href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md"
               target="_blank"
               rel="noreferrer"
             >
@@ -97,7 +97,7 @@ const promptModals = auto((props: { store: Store }) => {
           <p>
             For a complete list, please check
             <a
-              href="http://fontawesome.io/icons/"
+              href="https://github.com/gluons/Font-Awesome-Icon-Chars/blob/master/character-list/character-list.yaml"
               target="_blank"
               rel="noreferrer"
             >
