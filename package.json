@@ -39,7 +39,6 @@
     "eslint-config-tyler": "^0.1.7",
     "globals": "^15.11.0",
     "http-server": "^14.1.1",
-    "jquery": "^3.7.1",
     "localforage": "^1.10.0",
     "manate": "^0.9.8",
     "markdown-core": "1.1.2",

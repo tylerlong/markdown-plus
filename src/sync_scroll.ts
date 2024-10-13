@@ -1,5 +1,4 @@
 import debounce from 'debounce';
-import $ from 'jquery';
 
 import store from './store';
 import { animate } from './utils';
@@ -43,14 +42,16 @@ const scrollRight = (scrollTop: number): void => {
 };
 
 const getEditorScroll = (): IScroll => {
-  const lineMarkers = $('article#preview > [data-source-line]');
+  const lineMarkers = document.querySelectorAll(
+    '#preview > [data-source-line]',
+  );
   const lines = [];
-  lineMarkers.each((index, element) => {
-    lines.push($(element).data('source-line'));
+  lineMarkers.forEach((element: HTMLElement) => {
+    lines.push(element.dataset.sourceLine);
   });
   const currentPosition = store.editor.getScrollInfo().top;
-  let lastMarker;
-  let nextMarker;
+  let lastMarker: number;
+  let nextMarker: number;
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     const height = store.editor.heightAtLine(line - 1, 'local');
@@ -76,18 +77,27 @@ const getEditorScroll = (): IScroll => {
 const setPreviewScroll = (editorScroll: IScroll) => {
   let lastPosition = 0;
   let nextPosition =
-    $('article#preview').outerHeight() - $('#right-panel').height(); // maximum scroll
+    document.querySelector<HTMLElement>('#preview').offsetHeight -
+    document.getElementById('right-panel').offsetHeight; // maximum scroll
+
   if (editorScroll.lastMarker) {
     // no marker at very start
-    lastPosition = $('article#preview')
-      .find('>[data-source-line="' + editorScroll.lastMarker + '"]')
-      .get(0).offsetTop;
+    const lastMarkerElement = document.querySelector<HTMLElement>(
+      `#preview > [data-source-line="${editorScroll.lastMarker}"]`,
+    );
+    if (lastMarkerElement) {
+      lastPosition = lastMarkerElement.offsetTop;
+    }
   }
+
   if (editorScroll.nextMarker) {
     // no marker at very end
-    nextPosition = $('article#preview')
-      .find('>[data-source-line="' + editorScroll.nextMarker + '"]')
-      .get(0).offsetTop;
+    const nextMarkerElement = document.querySelector<HTMLElement>(
+      `#preview > [data-source-line="${editorScroll.nextMarker}"]`,
+    );
+    if (nextMarkerElement) {
+      nextPosition = nextMarkerElement.offsetTop;
+    }
   }
   const scrollTop =
     lastPosition + (nextPosition - lastPosition) * editorScroll.percentage; // right scroll according to left percentage
@@ -100,8 +110,11 @@ const getPreviewScroll = (): IScroll => {
   let lastScroll = 0;
   let nextLine = store.editor.getValue().split('\n').length; // number of lines of markdown
   let nextScroll =
-    $('article#preview').outerHeight() - $('#right-panel').height(); // maximum scroll
-  const lineMarkers = $('article#preview > [data-source-line]');
+    document.getElementById('preview').offsetHeight -
+    document.getElementById('right-panel').offsetHeight; // maximum scroll
+  const lineMarkers = document.querySelectorAll<HTMLElement>(
+    '#preview > [data-source-line]',
+  );
   for (let i = 0; i < lineMarkers.length; i++) {
     const lineMarker = lineMarkers[i];
     if (lineMarker.offsetTop < scroll) {
