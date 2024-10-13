@@ -1,4 +1,4 @@
-import { Button, Divider, Form, Input, Modal, Select } from 'antd';
+import { Button, Form, Input, Modal, Select } from 'antd';
 import { autoRun } from 'manate';
 import { auto } from 'manate/react';
 import mdc from 'markdown-core/src/index-browser';
@@ -103,7 +103,7 @@ const PreferencesModal = auto((props: { store: Store }) => {
           <img src={iconUrl} width="64" />
         </p>
         <h2>Markdown Plus Preferences</h2>
-        <Form labelCol={{ span: 12 }} wrapperCol={{ span: 8 }}>
+        <Form labelCol={{ span: 8 }} wrapperCol={{ span: 12 }} labelWrap>
           <Form.Item label="Show toolbar">
             <Select
               value={preferences.showToolbar}
@@ -155,23 +155,28 @@ const PreferencesModal = auto((props: { store: Store }) => {
               onChange={(value) => (preferences.keyBinding = value)}
             />
           </Form.Item>
-          <Divider plain>
-            You need to restart the editor to apply settings below
-          </Divider>
-          <Form.Item label="Gantt diagram axis format">
+          <Form.Item
+            label="Gantt diagram axis format"
+            extra={
+              <>
+                <a
+                  href="https://pubs.opengroup.org/onlinepubs/007908799/xsh/strftime.html"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Time formatting reference
+                </a>
+                <br />
+                You need to restart the editor to apply this setting
+              </>
+            }
+          >
             <Input
               placeholder="%Y-%m-%d"
               value={preferences.ganttAxisFormat}
               onChange={(e) => (preferences.ganttAxisFormat = e.target.value)}
             />
           </Form.Item>
-          <a
-            href="https://github.com/mbostock/d3/wiki/Time-Formatting"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Time formatting reference
-          </a>
         </Form>
       </div>
     </Modal>
