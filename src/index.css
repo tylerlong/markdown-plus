@@ -52,8 +52,18 @@
   overflow: hidden;
 }
 
+#about-icon {
+  height: 20px;
+  vertical-align: top;
+}
+#about-icon:hover {
+  background-color: #ddd;
+  border-color: #ccc;
+  cursor: pointer;
+}
+
 #toolbar {
-  padding-left: 16px;
+  padding-left: 3px;
   color: #666;
 }
 #toolbar .fa {

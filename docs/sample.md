@@ -44,12 +44,15 @@ You can also use inline math: `$29^{th}$`
       item * 2
     end
 
-```javascript
-$(document).ready(() => {
-  $('pre code').each((i, block) => {
-    hljs.highlightBlock(block);
-  });
-});
+```ts
+async function fetchItems<T>(url: string): Promise<T[]> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Error fetching data: ${response.statusText}`);
+  }
+  const data: T[] = await response.json();
+  return data;
+}
 ```
 
 [Code Formatting](https://help.github.com/articles/markdown-basics/#code-formatting)
@@ -223,31 +226,6 @@ Add another diagram to demo page    : 48h
 Adding many gantt diagrams will slow down the editor.
 :::
 
-### Class diagram
-
-```mermaid
-classDiagram
-Class01 <|-- AveryLongClass : Cool
-Class03 *-- Class04
-Class05 o-- Class06
-Class07 .. Class08
-Class09 --> C2 : Where am i?
-Class09 --* C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-Class08 <--> C2: Cool label
-```
-
-Class diagram is powered by [mermaid](https://github.com/knsv/mermaid).
-
-::: warning
-Adding many class diagrams will slow down the editor.
-:::
-
 ## Custom Container
 
 Markup is similar to fenced code blocks. Valid container types are `success`, `info`, `warning` and `danger`.
@@ -277,7 +255,7 @@ If you find the markdown syntax too limited, you can try some <span style="color
 
 <p style="text-align:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/120px-HTML5_logo_and_wordmark.svg.png"/></p>
 
-<a href="https://github.com/tylerlong/markdown-plus" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/tylerlong/markdown-plus" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1000;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
 ## Charts
 

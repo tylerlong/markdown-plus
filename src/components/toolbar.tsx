@@ -1,6 +1,7 @@
 import { auto } from 'manate/react';
 import React from 'react';
 
+import iconUrl from '../icon.svg';
 import { Store } from '../store';
 
 const Toolbar = auto((props: { store: Store }) => {
@@ -49,6 +50,13 @@ const Toolbar = auto((props: { store: Store }) => {
   };
   return (
     <div id="toolbar" className="noselect">
+      <img
+        src={iconUrl}
+        id="about-icon"
+        onClick={() => modals.about.open()}
+        title="About"
+      />
+      <i className="dividor">|</i>
       {[
         { title: 'Bold', icon: 'fa-bold', modifier: '**' },
         { title: 'Italic', icon: 'fa-italic', modifier: '*' },
@@ -208,11 +216,6 @@ T3: 2014-01-02, 9d`,
         title="Help"
         className="fa fa-question-circle"
         onClick={() => modals.help.open()}
-      ></i>
-      <i
-        title="About"
-        className="fa fa-info-circle"
-        onClick={() => modals.about.open()}
       ></i>
     </div>
   );
