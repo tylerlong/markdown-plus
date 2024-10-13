@@ -1,4 +1,4 @@
-import debounce from 'lodash/debounce';
+import debounce from 'debounce';
 import { exclude } from 'manate';
 import { auto } from 'manate/react';
 import mdc from 'markdown-core/src/index-browser';
@@ -25,13 +25,9 @@ const Editor = auto((props: { store: Store }) => {
     });
 
     // whenever user changes markdown
-    const lazyChange = debounce(
-      () => {
-        mdc.init(store.editor.getValue()); // realtime preview
-      },
-      1024,
-      { leading: false, trailing: true },
-    );
+    const lazyChange = debounce(() => {
+      mdc.init(store.editor.getValue()); // realtime preview
+    }, 512);
     editor.on('changes', () => {
       lazyChange();
     });

@@ -1,5 +1,5 @@
+import debounce from 'debounce';
 import $ from 'jquery';
-import debounce from 'lodash/debounce';
 
 import store from './store';
 
@@ -137,24 +137,16 @@ const setEditorScroll = (previewScroll: IScroll) => {
   scrollLeft((next - last) * previewScroll.percentage + last);
 };
 
-export const syncPreview = debounce(
-  () => {
-    // sync right with left
-    if (scrollingSide !== 'left') {
-      setPreviewScroll(getEditorScroll());
-    }
-  },
-  256,
-  { leading: false, trailing: true },
-);
+export const syncPreview = debounce(() => {
+  // sync right with left
+  if (scrollingSide !== 'left') {
+    setPreviewScroll(getEditorScroll());
+  }
+}, 256);
 
-export const syncEditor = debounce(
-  () => {
-    // sync left with right
-    if (scrollingSide !== 'right') {
-      setEditorScroll(getPreviewScroll());
-    }
-  },
-  256,
-  { leading: false, trailing: true },
-);
+export const syncEditor = debounce(() => {
+  // sync left with right
+  if (scrollingSide !== 'right') {
+    setEditorScroll(getPreviewScroll());
+  }
+}, 256);
