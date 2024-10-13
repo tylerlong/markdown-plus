@@ -45,9 +45,9 @@ const getEditorScroll = (): IScroll => {
   const lineMarkers = document.querySelectorAll(
     '#preview > [data-source-line]',
   );
-  const lines = [];
+  const lines: number[] = [];
   lineMarkers.forEach((element: HTMLElement) => {
-    lines.push(element.dataset.sourceLine);
+    lines.push(parseInt(element.dataset.sourceLine, 10));
   });
   const currentPosition = store.editor.getScrollInfo().top;
   let lastMarker: number;
@@ -118,10 +118,10 @@ const getPreviewScroll = (): IScroll => {
   for (let i = 0; i < lineMarkers.length; i++) {
     const lineMarker = lineMarkers[i];
     if (lineMarker.offsetTop < scroll) {
-      lastLine = parseInt(lineMarker.getAttribute('data-source-line'), 10);
+      lastLine = parseInt(lineMarker.dataset.sourceLine, 10);
       lastScroll = lineMarker.offsetTop;
     } else {
-      nextLine = parseInt(lineMarker.getAttribute('data-source-line'), 10);
+      nextLine = parseInt(lineMarker.dataset.sourceLine, 10);
       nextScroll = lineMarker.offsetTop;
       break;
     }

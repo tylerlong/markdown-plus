@@ -30,7 +30,7 @@ const Preview = auto(() => {
 
       // first time scroll `store.editor.heightAtLine(xxx, 'local')` value is wrong
       // trigger again after 300ms
-      // it is a codemirror bug, maybe latest version has fixed this issue
+      // todo: it is a codemirror bug, maybe latest version has fixed this issue
       setTimeout(() => {
         rightPanel.scrollTop = linkElement.offsetTop - 1;
         rightPanel.scrollTop = linkElement.offsetTop;
