@@ -1,4 +1,4 @@
-import { Button, Divider, Input, Modal, Select } from 'antd';
+import { Button, Divider, Form, Input, Modal, Select } from 'antd';
 import { autoRun } from 'manate';
 import { auto } from 'manate/react';
 import mdc from 'markdown-core/src/index-browser';
@@ -103,72 +103,68 @@ const PreferencesModal = auto((props: { store: Store }) => {
           <img src={iconUrl} width="64" />
         </p>
         <h2>Markdown Plus Preferences</h2>
-        <div>
-          Show toolbar:{' '}
-          <Select
-            value={preferences.showToolbar}
-            options={[
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-            ]}
-            onChange={(value) => (preferences.showToolbar = value)}
-          />
-        </div>
-        <div>
-          Editor : Preview{' '}
-          <Select
-            value={preferences.editorVsPreview}
-            options={[
-              { value: '0fr 6px 1fr', label: '0 : 1' },
-              { value: '1fr 6px 2fr', label: '1 : 2' },
-              { value: '1fr 6px 1fr', label: '1 : 1' },
-              { value: '2fr 6px 1fr', label: '2 : 1' },
-              { value: '1fr 6px 0fr', label: '1 : 0' },
-            ]}
-            onChange={(value) => (preferences.editorVsPreview = value)}
-          />
-        </div>
-        <div>
-          Editor theme:{' '}
-          <Select
-            value={preferences.editorTheme}
-            options={themes.map((theme) => ({ value: theme, label: theme }))}
-            onChange={(value) => (preferences.editorTheme = value)}
-          />
-        </div>
-        <div>
-          Editor font size:{' '}
-          <Select
-            value={preferences.editorFontSize}
-            options={[
-              8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 24, 32, 48, 64,
-            ].map((i) => ({ value: i, label: `${i}px` }))}
-            onChange={(value) => (preferences.editorFontSize = value)}
-          />
-        </div>
-        <div>
-          Key binding:{' '}
-          <Select
-            value={preferences.keyBinding}
-            options={[
-              { value: 'default', label: 'Default' },
-              { value: 'sublime', label: 'Sublime' },
-              { value: 'vim', label: 'Vim' },
-              { value: 'emacs', label: 'Emacs' },
-            ]}
-            onChange={(value) => (preferences.keyBinding = value)}
-          />
-        </div>
-        <Divider plain>
-          You need to restart the editor to apply settings below
-        </Divider>
-        <div>
-          Gantt diagram axis format:{' '}
-          <Input
-            placeholder="%Y-%m-%d"
-            value={preferences.ganttAxisFormat}
-            onChange={(e) => (preferences.ganttAxisFormat = e.target.value)}
-          />
+        <Form labelCol={{ span: 12 }} wrapperCol={{ span: 8 }}>
+          <Form.Item label="Show toolbar">
+            <Select
+              value={preferences.showToolbar}
+              options={[
+                { value: true, label: 'Yes' },
+                { value: false, label: 'No' },
+              ]}
+              onChange={(value) => (preferences.showToolbar = value)}
+            />
+          </Form.Item>
+          <Form.Item label="Editor vs. Preview">
+            <Select
+              value={preferences.editorVsPreview}
+              options={[
+                { value: '0fr 6px 1fr', label: '0 : 1' },
+                { value: '1fr 6px 2fr', label: '1 : 2' },
+                { value: '1fr 6px 1fr', label: '1 : 1' },
+                { value: '2fr 6px 1fr', label: '2 : 1' },
+                { value: '1fr 6px 0fr', label: '1 : 0' },
+              ]}
+              onChange={(value) => (preferences.editorVsPreview = value)}
+            />
+          </Form.Item>
+          <Form.Item label="Editor theme">
+            <Select
+              value={preferences.editorTheme}
+              options={themes.map((theme) => ({ value: theme, label: theme }))}
+              onChange={(value) => (preferences.editorTheme = value)}
+            />
+          </Form.Item>
+          <Form.Item label="Editor font size">
+            <Select
+              value={preferences.editorFontSize}
+              options={[
+                8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 24, 32, 48, 64,
+              ].map((i) => ({ value: i, label: `${i}px` }))}
+              onChange={(value) => (preferences.editorFontSize = value)}
+            />
+          </Form.Item>
+          <Form.Item label="Key binding">
+            <Select
+              value={preferences.keyBinding}
+              options={[
+                { value: 'default', label: 'Default' },
+                { value: 'sublime', label: 'Sublime' },
+                { value: 'vim', label: 'Vim' },
+                { value: 'emacs', label: 'Emacs' },
+              ]}
+              onChange={(value) => (preferences.keyBinding = value)}
+            />
+          </Form.Item>
+          <Divider plain>
+            You need to restart the editor to apply settings below
+          </Divider>
+          <Form.Item label="Gantt diagram axis format">
+            <Input
+              placeholder="%Y-%m-%d"
+              value={preferences.ganttAxisFormat}
+              onChange={(e) => (preferences.ganttAxisFormat = e.target.value)}
+            />
+          </Form.Item>
           <a
             href="https://github.com/mbostock/d3/wiki/Time-Formatting"
             target="_blank"
@@ -176,7 +172,7 @@ const PreferencesModal = auto((props: { store: Store }) => {
           >
             Time formatting reference
           </a>
-        </div>
+        </Form>
       </div>
     </Modal>
   );

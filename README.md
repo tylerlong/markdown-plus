@@ -44,8 +44,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Create a VS Code extension
 - Enable react strict mode
   - only after we could properly dispose all side effects
-- Update modal forms UI
-  - the preferences modal
 - gantt diagram x-axis format should be part of the diagram code, not a settings
 - Release a React library so that everyone can use it easily
   - a few lines of code to embed mdp to their own app
