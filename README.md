@@ -50,7 +50,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong)
 - Release a React library so that everyone can use it easily
   - a few lines of code to embed mdp to their own app
 - Download as pdf/png/html/html code
-- modals should go to separate files in src/components/modals folder
 - Add explict typings to most code
 - Make it support node.js, means it could run without browser
 - Close most GitHub issues
