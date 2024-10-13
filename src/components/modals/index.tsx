@@ -1,8 +1,6 @@
 import { Button, Input, InputRef, Modal } from 'antd';
-import { autoRun } from 'manate';
 import { auto } from 'manate/react';
-import mdc from 'markdown-core/src/index-browser';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import iconUrl from '../../icon.svg';
 import { Store } from '../../store';
@@ -11,26 +9,9 @@ import PreferencesModal from './preferences';
 const Modals = auto((props: { store: Store }) => {
   console.log('render modals');
   const { store } = props;
-  const { preferences, modals } = store;
+  const { modals } = store;
   const emojiInput = useRef<InputRef>(null);
   const faInput = useRef<InputRef>(null);
-  useEffect(() => {
-    const preferencesApplier = autoRun(store, () => {
-      if (!store.editor) {
-        return;
-      }
-      store.editor.setOption('theme', preferences.editorTheme);
-      (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
-        `${preferences.editorFontSize}px`;
-      store.editor.setOption('keyMap', preferences.keyBinding);
-
-      mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
-    });
-    preferencesApplier.start();
-    return () => {
-      preferencesApplier.stop();
-    };
-  }, []);
   const [emojiValue, setEmojiValue] = useState('');
   const [faValue, setFaValue] = useState('');
   const handleEmojiOK = () => {
@@ -142,10 +123,7 @@ const Modals = auto((props: { store: Store }) => {
         </div>
       </Modal>
 
-      <PreferencesModal
-        modal={store.modals.preferences}
-        preferences={store.preferences}
-      />
+      <PreferencesModal store={store} />
 
       {/* help modal */}
       <Modal

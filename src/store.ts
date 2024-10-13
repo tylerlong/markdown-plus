@@ -1,6 +1,6 @@
 import { manage } from 'manate';
 
-export class Modal {
+class Modal {
   public isOpen = false;
   public open() {
     this.isOpen = true;
@@ -11,7 +11,7 @@ export class Modal {
   }
 }
 
-export class Preferences {
+class Preferences {
   public showToolbar = true;
   public editorVsPreview = '1fr 6px 1fr';
   public editorTheme = 'default';
