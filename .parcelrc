@@ -8,9 +8,7 @@
       "@parcel/transformer-raw"
     ]
   },
-  "resolvers": [
-    "@parcel/resolver-glob",
-    "..."
-  ],
-  "namers": [ "parcel-namer-hashless" ]
+  "namers": [
+    "parcel-namer-hashless"
+  ]
 }

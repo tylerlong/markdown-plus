@@ -1,46 +1,70 @@
+import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
+import { markdown } from '@codemirror/lang-markdown';
+import {
+  defaultHighlightStyle,
+  syntaxHighlighting,
+} from '@codemirror/language';
+import {
+  EditorView,
+  keymap,
+  lineNumbers,
+  scrollPastEnd,
+  ViewUpdate,
+} from '@codemirror/view';
 import debounce from 'debounce';
 import { exclude } from 'manate';
 import { auto } from 'manate/react';
 import mdc from 'markdown-core/src/index-browser';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-import { createEditor } from '../codemirror';
 import markdownUrl from '../sample.md';
 import { Store } from '../store';
-import { syncEditor, syncPreview } from '../sync_scroll';
 
 const Editor = auto((props: { store: Store }) => {
   const { store } = props;
+  const editorDiv = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    // init editor
-    const editor = createEditor(
-      document.getElementById('editor') as HTMLTextAreaElement,
+    const contentChangeListener = EditorView.updateListener.of(
+      (update: ViewUpdate) => {
+        if (update.docChanged) {
+          lazyChange();
+        }
+      },
     );
-    store.editor = exclude(editor);
-    editor.on('scroll', () => {
-      syncPreview();
+    const cm = new EditorView({
+      extensions: [
+        lineNumbers(),
+        scrollPastEnd(),
+        history(),
+        keymap.of([...defaultKeymap, ...historyKeymap]),
+        markdown(),
+        syntaxHighlighting(defaultHighlightStyle),
+        contentChangeListener,
+      ],
+      parent: editorDiv.current!,
     });
-    document.getElementById('right-panel').addEventListener('scroll', () => {
-      syncEditor();
-    });
+    store.editor = exclude(cm);
 
     // whenever user changes markdown
     const lazyChange = debounce(() => {
-      mdc.init(store.editor.getValue()); // realtime preview
+      mdc.init(store.editor.state.doc.toString()); // realtime preview
     }, 512);
-    editor.on('changes', () => {
-      lazyChange();
-    });
 
     // load sample markdown
     const loadSample = async () => {
       const r = await fetch(markdownUrl);
       const data = await r.text();
-      editor.setValue(data);
+      store.editor.dispatch({
+        changes: {
+          from: 0,
+          to: store.editor.state.doc.length,
+          insert: data,
+        },
+      });
     };
     loadSample();
   }, []);
-  return <textarea id="editor"></textarea>;
+  return <div id="editor" ref={editorDiv}></div>;
 });
 
 export default Editor;

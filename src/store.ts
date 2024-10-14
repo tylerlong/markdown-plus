@@ -1,3 +1,4 @@
+import { EditorView } from '@codemirror/view';
 import { manage } from 'manate';
 
 class Modal {
@@ -29,7 +30,7 @@ class Preferences {
 }
 
 export class Store {
-  public editor: CodeMirror.Editor;
+  public editor: EditorView;
 
   public modals = {
     about: new Modal(),

@@ -26,15 +26,17 @@
     "serve": "rm -rf .parcel-cache && rm -rf temp && tsx src/before-build.ts && parcel src/index.html --dist-dir temp"
   },
   "devDependencies": {
+    "@codemirror/commands": "^6.7.0",
+    "@codemirror/lang-markdown": "^6.3.0",
+    "@codemirror/language": "^6.10.3",
+    "@codemirror/view": "^6.34.1",
     "@parcel/resolver-glob": "^2.12.0",
     "@parcel/transformer-typescript-tsc": "^2.12.0",
-    "@types/codemirror": "^5.60.15",
     "@types/node": "^22.7.5",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "antd": "^5.21.3",
     "chart.js": "2.6.0",
-    "codemirror": "5.65.18",
     "debounce": "^2.1.1",
     "eslint-config-tyler": "^0.1.7",
     "globals": "^15.11.0",
@@ -64,8 +66,7 @@
   "yarn-upgrade-all": {
     "ignore": [
       "markdown-core",
-      "chart.js",
-      "codemirror"
+      "chart.js"
     ]
   }
 }

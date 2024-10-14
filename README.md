@@ -51,7 +51,17 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong/)
 - Add explict typings to most code
 - Make it support node.js, means it could run without browser
 - Close most GitHub issues
-- Replace codemirror with ACE?
-  - codemirror 6 released 2 years ago, codemirror 5 is actively maintained
 - preview dark mode
 - Just copy its example: https://docs.github.com/en/get-started/writing-on-github
+- codemirror 6 issues:
+  - themes
+    - 2 themes are enough: light and dark
+  - key bindings
+    - vim/emacs/sublime
+  - scroll sync
+  - highlight active line
+  - line wrap
+  - editor.setOption('extraKeys', extraKeys);
+  - auto focus after editor.replaceSelection
+  - Make preferences work
+- Evaluate latest version of mermaid

@@ -69,10 +69,6 @@ const PreferencesModal = auto((props: { store: Store }) => {
       if (!store.editor) {
         return;
       }
-      store.editor.setOption('theme', preferences.editorTheme);
-      (document.querySelector('.CodeMirror') as HTMLDivElement).style.fontSize =
-        `${preferences.editorFontSize}px`;
-      store.editor.setOption('keyMap', preferences.keyBinding);
       mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
     });
     start();

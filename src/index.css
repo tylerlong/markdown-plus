@@ -1,5 +1,3 @@
-@import 'npm:codemirror/theme/*.css';
-
 /* main layout */
 #root {
   position: fixed;
@@ -39,6 +37,11 @@
   grid-row: 1/-1;
   grid-column: 2;
   cursor: col-resize;
+}
+
+#editor,
+.cm-editor {
+  height: 100%;
 }
 
 .gutter {
