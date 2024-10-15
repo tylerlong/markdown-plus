@@ -10,7 +10,7 @@ const Toolbar = auto((props: { store: Store }) => {
   const { modals } = store;
   const stylingClicked = (modifier: string) => {
     const editor = store.editor;
-    if (editor.state.selection.ranges.every((range) => range.empty)) {
+    if (editor.state.selection.main.empty) {
       const word = editor.state.wordAt(editor.state.selection.main.head);
       if (word) {
         editor.dispatch({
@@ -48,25 +48,42 @@ const Toolbar = auto((props: { store: Store }) => {
     editor.focus();
   };
   const hrClicked = () => {
-    const cursor = store.editor.getCursor();
-    if (cursor.ch === 0) {
-      // cursor is at line start
-      store.editor.replaceSelection('\n---\n\n');
+    const editor = store.editor;
+    const cursorPos = editor.state.selection.main.head;
+    const currentLine = editor.state.doc.lineAt(cursorPos);
+    const isAtLineStart = cursorPos === currentLine.from;
+    if (isAtLineStart) {
+      editor.dispatch({
+        changes: {
+          from: currentLine.from,
+          to: currentLine.from,
+          insert: '\n---\n\n',
+        },
+      });
     } else {
-      store.editor.setCursor({
-        line: cursor.line,
-        ch: store.editor.getLine(cursor.line).length,
-      }); // navigate to end of line
-      store.editor.replaceSelection('\n\n---\n\n');
+      editor.dispatch({
+        changes: {
+          from: currentLine.to,
+          to: currentLine.to,
+          insert: '\n\n---\n\n',
+        },
+      });
     }
+    editor.focus();
   };
   const listClicked = (prefix: string) => {
-    const selection = store.editor.listSelections()[0];
-    const minLine = Math.min(selection.head.line, selection.anchor.line);
-    const maxLine = Math.max(selection.head.line, selection.anchor.line);
-    for (let i = minLine; i <= maxLine; i++) {
-      store.editor.setCursor(i, 0);
-      store.editor.replaceSelection(prefix);
+    const editor = store.editor;
+    const startLine = editor.state.doc.lineAt(editor.state.selection.main.from);
+    const endLine = editor.state.doc.lineAt(editor.state.selection.main.to);
+    for (let i = startLine.number; i <= endLine.number; i++) {
+      const line = editor.state.doc.line(i);
+      editor.dispatch({
+        changes: {
+          from: line.from,
+          to: line.from,
+          insert: prefix,
+        },
+      });
     }
   };
   const mermaidClicked = (sample: string) => {
