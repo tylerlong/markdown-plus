@@ -10,26 +10,25 @@ const Toolbar = auto((props: { store: Store }) => {
   const { modals } = store;
   const stylingClicked = (modifier: string) => {
     const editor = store.editor;
-    if (editor.state.selection.main.empty) {
-      const word = editor.state.wordAt(editor.state.selection.main.head);
+    let mainSelection = editor.state.selection.main;
+    if (mainSelection.empty) {
+      const word = editor.state.wordAt(mainSelection.head);
       if (word) {
         editor.dispatch({
           selection: { anchor: word.from, head: word.to },
         });
       }
     }
+    mainSelection = editor.state.selection.main; // don't forget to update this variable
     editor.dispatch({
       changes: {
-        from: editor.state.selection.main.from,
-        to: editor.state.selection.main.to,
+        from: mainSelection.from,
+        to: mainSelection.to,
         insert: `${modifier}${editor.state.sliceDoc(
-          editor.state.selection.main.from,
-          editor.state.selection.main.to,
+          mainSelection.from,
+          mainSelection.to,
         )}${modifier}`,
       },
-    });
-    editor.dispatch({
-      selection: { anchor: editor.state.selection.main.to },
     });
     editor.focus();
   };
@@ -84,11 +83,22 @@ const Toolbar = auto((props: { store: Store }) => {
           insert: prefix,
         },
       });
+      editor.focus();
     }
   };
   const mermaidClicked = (sample: string) => {
-    const text = store.editor.getSelection().trim() || sample;
-    store.editor.replaceSelection(`\n\`\`\`mermaid\n${text}\n\`\`\`\n`);
+    const editor = store.editor;
+    const mainSelection = editor.state.selection.main;
+    const text =
+      editor.state.sliceDoc(mainSelection.from, mainSelection.to) || sample;
+    editor.dispatch({
+      changes: {
+        from: mainSelection.from,
+        to: mainSelection.to,
+        insert: `\n\`\`\`mermaid\n${text}\n\`\`\`\n`,
+      },
+    });
+    editor.focus();
   };
   return (
     <div id="toolbar" className="noselect">
@@ -153,29 +163,57 @@ const Toolbar = auto((props: { store: Store }) => {
         title="Link"
         className="fa fa-link"
         onClick={() => {
-          const text = store.editor.getSelection().trim() || 'link';
-          store.editor.replaceSelection(
-            `[${text}](https://github.com/tylerlong/markdown-plus/)`,
-          );
+          const editor = store.editor;
+          const mainSelection = editor.state.selection.main;
+          const text =
+            editor.state.sliceDoc(mainSelection.from, mainSelection.to) ||
+            'link';
+          editor.dispatch({
+            changes: {
+              from: mainSelection.from,
+              to: mainSelection.to,
+              insert: `[${text}](https://github.com/tylerlong/markdown-plus/)`,
+            },
+          });
+          editor.focus();
         }}
       ></i>
       <i
         title="Image"
         className="fa fa-image"
         onClick={() => {
-          const text = store.editor.getSelection().trim() || 'image';
-          store.editor.replaceSelection(
-            `![${text}](https://chuntaoliu.com/markdown-plus/icon.svg)`,
-          );
+          const editor = store.editor;
+          const mainSelection = editor.state.selection.main;
+          const text =
+            editor.state.sliceDoc(mainSelection.from, mainSelection.to) ||
+            'image';
+          editor.dispatch({
+            changes: {
+              from: mainSelection.from,
+              to: mainSelection.to,
+              insert: `![${text}](https://chuntaoliu.com/markdown-plus/icon.svg)`,
+            },
+          });
+          editor.focus();
         }}
       ></i>
       <i
         title="Code"
         className="fa fa-code"
         onClick={() => {
-          store.editor.replaceSelection(
-            `\n\`\`\`\n${store.editor.getSelection()}\n\`\`\`\n`,
-          );
+          const editor = store.editor;
+          const mainSelection = editor.state.selection.main;
+          const text =
+            editor.state.sliceDoc(mainSelection.from, mainSelection.to) ||
+            "console.log('Hello, world!');";
+          editor.dispatch({
+            changes: {
+              from: mainSelection.from,
+              to: mainSelection.to,
+              insert: `\n\`\`\`\n${text}\n\`\`\`\n`,
+            },
+          });
+          editor.focus();
         }}
       ></i>
       <i
