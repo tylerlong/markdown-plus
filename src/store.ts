@@ -17,7 +17,6 @@ class Preferences {
   public editorVsPreview = '1fr 6px 1fr';
   public editorTheme = 'default';
   public editorFontSize = 14;
-  public keyBinding = 'default';
   public ganttAxisFormat = '%Y-%m-%d';
 
   // neither editor or preview is hidden

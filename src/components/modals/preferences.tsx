@@ -139,18 +139,6 @@ const PreferencesModal = auto((props: { store: Store }) => {
               onChange={(value) => (preferences.editorFontSize = value)}
             />
           </Form.Item>
-          <Form.Item label="Key binding">
-            <Select
-              value={preferences.keyBinding}
-              options={[
-                { value: 'default', label: 'Default' },
-                { value: 'sublime', label: 'Sublime' },
-                { value: 'vim', label: 'Vim' },
-                { value: 'emacs', label: 'Emacs' },
-              ]}
-              onChange={(value) => (preferences.keyBinding = value)}
-            />
-          </Form.Item>
           <Form.Item
             label="Gantt diagram axis format"
             extra={

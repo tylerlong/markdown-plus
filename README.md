@@ -56,8 +56,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong/)
 - codemirror 6 issues:
   - themes
     - 2 themes are enough: light and dark
-  - key bindings
-    - vim/emacs/sublime
   - editor.setOption('extraKeys', extraKeys);
   - Make preferences work
 - Evaluate latest version of mermaid

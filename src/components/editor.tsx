@@ -48,11 +48,11 @@ const Editor = auto((props: { store: Store }) => {
       parent: editorDiv.current!,
     });
 
-    // auto focus after change
+    // auto focus after change text
     const dispatch = cm.dispatch.bind(cm);
     cm.dispatch = (tr) => {
       dispatch(tr);
-      if (tr.changes) {
+      if (tr.changes && tr.changes.insert) {
         cm.focus();
       }
     };
