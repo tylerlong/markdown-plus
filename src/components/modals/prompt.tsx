@@ -16,7 +16,16 @@ const promptModals = auto((props: { store: Store }) => {
     modals.emoji.close();
     const value = emojiValue.trim();
     if (value.length > 0) {
-      store.editor.replaceSelection(`:${value}:`);
+      const editor = store.editor;
+      const mainSelection = editor.state.selection.main;
+      editor.dispatch({
+        changes: {
+          from: mainSelection.from,
+          to: mainSelection.to,
+          insert: `:${value}:`,
+        },
+        selection: { anchor: mainSelection.head + value.length + 2 },
+      });
     }
     setEmojiValue('');
   };
@@ -24,7 +33,16 @@ const promptModals = auto((props: { store: Store }) => {
     modals.fontAwesome.close();
     const value = faValue.trim();
     if (value.length > 0) {
-      store.editor.replaceSelection(`:fa-${value}:`);
+      const editor = store.editor;
+      const mainSelection = editor.state.selection.main;
+      editor.dispatch({
+        changes: {
+          from: mainSelection.from,
+          to: mainSelection.to,
+          insert: `:fa-${value}:`,
+        },
+        selection: { anchor: mainSelection.head + value.length + 5 },
+      });
     }
     setFaValue('');
   };
@@ -50,7 +68,7 @@ const promptModals = auto((props: { store: Store }) => {
 ...`}
           </p>
           <p>
-            For a complete list, please check
+            For a complete list, please check{' '}
             <a
               href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md"
               target="_blank"
@@ -95,7 +113,7 @@ const promptModals = auto((props: { store: Store }) => {
             {`Examples: "cloud", "flag", "car", "truck", "heart", "dollar" ...`}
           </p>
           <p>
-            For a complete list, please check
+            For a complete list, please check{' '}
             <a
               href="https://github.com/gluons/Font-Awesome-Icon-Chars/blob/master/character-list/character-list.yaml"
               target="_blank"

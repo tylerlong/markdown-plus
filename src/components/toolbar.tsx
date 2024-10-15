@@ -225,17 +225,28 @@ const Toolbar = auto((props: { store: Store }) => {
 ---|---
 row 1 col 1 | row 1 col 2
 row 2 col 1 | row 2 col 2`.trim();
-          const cursor = store.editor.getCursor();
-          if (cursor.ch === 0) {
-            // cursor is at line start
-            store.editor.replaceSelection(`\n${sample}\n\n`);
+          const editor = store.editor;
+          const cursorPos = editor.state.selection.main.head;
+          const currentLine = editor.state.doc.lineAt(cursorPos);
+          const isAtLineStart = cursorPos === currentLine.from;
+          if (isAtLineStart) {
+            editor.dispatch({
+              changes: {
+                from: currentLine.from,
+                to: currentLine.from,
+                insert: `\n${sample}\n\n`,
+              },
+            });
           } else {
-            store.editor.setCursor({
-              line: cursor.line,
-              ch: store.editor.getLine(cursor.line).length,
-            }); // navigate to line end
-            store.editor.replaceSelection(`\n\n${sample}\n`);
+            editor.dispatch({
+              changes: {
+                from: currentLine.to,
+                to: currentLine.to,
+                insert: `\n\n${sample}\n`,
+              },
+            });
           }
+          editor.focus();
         }}
       ></i>
       <i className="dividor">|</i>
@@ -254,8 +265,19 @@ row 2 col 1 | row 2 col 2`.trim();
         title="Mathematical formula"
         className="fa fa-superscript"
         onClick={() => {
-          const text = store.editor.getSelection().trim() || 'E = mc^2';
-          store.editor.replaceSelection(`\n\`\`\`katex\n${text}\n\`\`\`\n`);
+          const editor = store.editor;
+          const mainSelection = editor.state.selection.main;
+          const text =
+            editor.state.sliceDoc(mainSelection.from, mainSelection.to) ||
+            'E = mc^2';
+          editor.dispatch({
+            changes: {
+              from: mainSelection.from,
+              to: mainSelection.to,
+              insert: `\n\`\`\`katex\n${text}\n\`\`\`\n`,
+            },
+          });
+          editor.focus();
         }}
       ></i>
       <i
