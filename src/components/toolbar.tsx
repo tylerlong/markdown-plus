@@ -9,18 +9,43 @@ const Toolbar = auto((props: { store: Store }) => {
   const { store } = props;
   const { modals } = store;
   const stylingClicked = (modifier: string) => {
-    if (!store.editor.somethingSelected()) {
-      const word = store.editor.findWordAt(store.editor.getCursor());
-      store.editor.setSelection(word.anchor, word.head);
+    const editor = store.editor;
+    if (editor.state.selection.ranges.every((range) => range.empty)) {
+      const word = editor.state.wordAt(editor.state.selection.main.head);
+      if (word) {
+        editor.dispatch({
+          selection: { anchor: word.from, head: word.to },
+        });
+      }
     }
-    store.editor.replaceSelection(
-      modifier + store.editor.getSelection() + modifier,
-    );
+    editor.dispatch({
+      changes: {
+        from: editor.state.selection.main.from,
+        to: editor.state.selection.main.to,
+        insert: `${modifier}${editor.state.sliceDoc(
+          editor.state.selection.main.from,
+          editor.state.selection.main.to,
+        )}${modifier}`,
+      },
+    });
+    editor.dispatch({
+      selection: { anchor: editor.state.selection.main.to },
+    });
+    editor.focus();
   };
   const headingClicked = (level: number) => {
-    const cursor = store.editor.getCursor();
-    store.editor.setCursor(cursor.line, 0);
-    store.editor.replaceSelection('#'.repeat(level) + ' ');
+    const editor = store.editor;
+    const currentLine = editor.state.doc.lineAt(
+      editor.state.selection.main.head,
+    );
+    editor.dispatch({
+      changes: {
+        from: currentLine.from,
+        to: currentLine.from,
+        insert: `${'#'.repeat(level)} `,
+      },
+    });
+    editor.focus();
   };
   const hrClicked = () => {
     const cursor = store.editor.getCursor();
