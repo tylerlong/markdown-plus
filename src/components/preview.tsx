@@ -27,14 +27,6 @@ const Preview = auto(() => {
       ) as HTMLElement;
       const rightPanel = document.querySelector('#right-panel');
       rightPanel.scrollTop = linkElement.offsetTop;
-
-      // first time scroll `store.editor.heightAtLine(xxx, 'local')` value is wrong
-      // trigger again after 300ms
-      // todo: it is a codemirror bug, maybe latest version has fixed this issue
-      setTimeout(() => {
-        rightPanel.scrollTop = linkElement.offsetTop - 1;
-        rightPanel.scrollTop = linkElement.offsetTop;
-      }, 300);
     };
     scrollToHash();
   }, []);
