@@ -7,7 +7,11 @@ export const animate = (
   const startTime = performance.now();
   const animate = (currentTime: number) => {
     const timeElapsed = currentTime - startTime;
-    move(start + (end - start) * Math.min(timeElapsed / duration, 1));
+    // line number should be integer
+    const target = Math.round(
+      start + (end - start) * Math.min(timeElapsed / duration, 1),
+    );
+    move(target);
     if (timeElapsed < duration) {
       requestAnimationFrame(animate);
     }

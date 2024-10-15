@@ -1,3 +1,4 @@
+import { EditorView } from '@codemirror/view';
 import debounce from 'debounce';
 
 import store from './store';
@@ -23,18 +24,26 @@ const scrollSide = (side: 'left' | 'right', howToScroll): void => {
   howToScroll();
 };
 
-const scrollLeft = (scrollTop: number): void => {
+const scrollEditor = (targetLineNumber: number): void => {
   scrollSide('left', () => {
     animate(
-      (i) => store.editor.scrollTo(null, i),
-      store.editor.getScrollInfo().top,
-      scrollTop,
+      (lineNumber) =>
+        store.editor.dispatch({
+          effects: EditorView.scrollIntoView(
+            store.editor.state.doc.line(lineNumber).from,
+            { y: 'start' },
+          ),
+        }),
+      store.editor.state.doc.lineAt(
+        store.editor.lineBlockAtHeight(store.editor.scrollDOM.scrollTop).from,
+      ).number,
+      targetLineNumber,
       128,
     );
   });
 };
 
-const scrollRight = (scrollTop: number): void => {
+const scrollPreview = (scrollTop: number): void => {
   scrollSide('right', () => {
     const element = document.getElementById('right-panel');
     animate((i) => (element.scrollTop = i), element.scrollTop, scrollTop, 128);
@@ -49,25 +58,22 @@ const getEditorScroll = (): IScroll => {
   lineMarkers.forEach((element: HTMLElement) => {
     lines.push(parseInt(element.dataset.sourceLine, 10));
   });
-  const currentPosition = store.editor.getScrollInfo().top;
+  const currentLine = store.editor.state.doc.lineAt(
+    store.editor.lineBlockAtHeight(store.editor.scrollDOM.scrollTop).from,
+  ).number;
   let lastMarker: number;
   let nextMarker: number;
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    const height = store.editor.heightAtLine(line - 1, 'local');
-    if (height < currentPosition) {
-      lastMarker = line;
+    if (lines[i] < currentLine) {
+      lastMarker = lines[i];
     } else {
-      nextMarker = line;
+      nextMarker = lines[i];
       break;
     }
   }
   let percentage = 0;
   if (lastMarker && nextMarker && lastMarker !== nextMarker) {
-    percentage =
-      (currentPosition - store.editor.heightAtLine(lastMarker - 1, 'local')) /
-      (store.editor.heightAtLine(nextMarker - 1, 'local') -
-        store.editor.heightAtLine(lastMarker - 1, 'local'));
+    percentage = (currentLine - lastMarker) / (nextMarker - lastMarker);
   }
   // returns two neighboring markers' lines, and current scroll percentage between two markers
   const r = { lastMarker: lastMarker, nextMarker: nextMarker, percentage };
@@ -101,14 +107,14 @@ const setPreviewScroll = (editorScroll: IScroll) => {
   }
   const scrollTop =
     lastPosition + (nextPosition - lastPosition) * editorScroll.percentage; // right scroll according to left percentage
-  scrollRight(scrollTop);
+  scrollPreview(scrollTop);
 };
 
 const getPreviewScroll = (): IScroll => {
   const scroll = document.querySelector('#right-panel').scrollTop;
   let lastLine = 0;
   let lastScroll = 0;
-  let nextLine = store.editor.getValue().split('\n').length; // number of lines of markdown
+  let nextLine = store.editor.state.doc.toString().split('\n').length; // number of lines of markdown
   let nextScroll =
     document.getElementById('preview').offsetHeight -
     document.getElementById('right-panel').offsetHeight; // maximum scroll
@@ -140,9 +146,11 @@ const getPreviewScroll = (): IScroll => {
 };
 
 const setEditorScroll = (previewScroll: IScroll) => {
-  const last = store.editor.heightAtLine(previewScroll.lastMarker - 1, 'local');
-  const next = store.editor.heightAtLine(previewScroll.nextMarker - 1, 'local');
-  scrollLeft((next - last) * previewScroll.percentage + last);
+  const targetLineNumber =
+    (previewScroll.nextMarker - previewScroll.lastMarker) *
+      previewScroll.percentage +
+    previewScroll.lastMarker;
+  scrollEditor(targetLineNumber);
 };
 
 export const syncPreview = debounce(() => {

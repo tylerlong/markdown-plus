@@ -20,6 +20,7 @@ import React, { useEffect, useRef } from 'react';
 
 import markdownUrl from '../sample.md';
 import { Store } from '../store';
+import { syncEditor, syncPreview } from '../sync_scroll';
 
 const Editor = auto((props: { store: Store }) => {
   const { store } = props;
@@ -57,6 +58,13 @@ const Editor = auto((props: { store: Store }) => {
     };
 
     store.editor = exclude(cm);
+
+    store.editor.scrollDOM.addEventListener('scroll', () => {
+      syncPreview();
+    });
+    document.getElementById('right-panel').addEventListener('scroll', () => {
+      syncEditor();
+    });
 
     // whenever user changes markdown
     const lazyChange = debounce(() => {
