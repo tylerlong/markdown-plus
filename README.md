@@ -61,3 +61,4 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong/)
   - editor.setOption('extraKeys', extraKeys);
   - Make preferences work
 - Evaluate latest version of mermaid
+- Every useEffect should have a dispose method

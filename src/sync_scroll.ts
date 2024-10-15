@@ -87,7 +87,6 @@ const setPreviewScroll = (editorScroll: IScroll) => {
     document.getElementById('right-panel').offsetHeight; // maximum scroll
 
   if (editorScroll.lastMarker) {
-    // no marker at very start
     const lastMarkerElement = document.querySelector<HTMLElement>(
       `#preview > [data-source-line="${editorScroll.lastMarker}"]`,
     );
@@ -97,7 +96,6 @@ const setPreviewScroll = (editorScroll: IScroll) => {
   }
 
   if (editorScroll.nextMarker) {
-    // no marker at very end
     const nextMarkerElement = document.querySelector<HTMLElement>(
       `#preview > [data-source-line="${editorScroll.nextMarker}"]`,
     );
@@ -112,7 +110,7 @@ const setPreviewScroll = (editorScroll: IScroll) => {
 
 const getPreviewScroll = (): IScroll => {
   const scroll = document.querySelector('#right-panel').scrollTop;
-  let lastLine = 0;
+  let lastLine = 1; // editor line starts with 1
   let lastScroll = 0;
   let nextLine = store.editor.state.doc.toString().split('\n').length; // number of lines of markdown
   let nextScroll =
@@ -156,13 +154,15 @@ const setEditorScroll = (previewScroll: IScroll) => {
 export const syncPreview = debounce(() => {
   // sync right with left
   if (scrollingSide !== 'left') {
-    setPreviewScroll(getEditorScroll());
+    const editorScroll = getEditorScroll();
+    setPreviewScroll(editorScroll);
   }
 }, 256);
 
 export const syncEditor = debounce(() => {
   // sync left with right
   if (scrollingSide !== 'right') {
-    setEditorScroll(getPreviewScroll());
+    const previewScroll = getPreviewScroll();
+    setEditorScroll(previewScroll);
   }
 }, 256);
