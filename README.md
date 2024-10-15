@@ -60,6 +60,5 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong/)
     - vim/emacs/sublime
   - scroll sync
   - editor.setOption('extraKeys', extraKeys);
-  - auto focus after editor.replaceSelection
   - Make preferences work
 - Evaluate latest version of mermaid

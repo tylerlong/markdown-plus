@@ -46,6 +46,16 @@ const Editor = auto((props: { store: Store }) => {
       ],
       parent: editorDiv.current!,
     });
+
+    // auto focus after change
+    const dispatch = cm.dispatch.bind(cm);
+    cm.dispatch = (tr) => {
+      dispatch(tr);
+      if (tr.changes) {
+        cm.focus();
+      }
+    };
+
     store.editor = exclude(cm);
 
     // whenever user changes markdown

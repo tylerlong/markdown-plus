@@ -30,7 +30,6 @@ const Toolbar = auto((props: { store: Store }) => {
         )}${modifier}`,
       },
     });
-    editor.focus();
   };
   const headingClicked = (level: number) => {
     const editor = store.editor;
@@ -44,7 +43,6 @@ const Toolbar = auto((props: { store: Store }) => {
         insert: `${'#'.repeat(level)} `,
       },
     });
-    editor.focus();
   };
   const hrClicked = () => {
     const editor = store.editor;
@@ -68,7 +66,6 @@ const Toolbar = auto((props: { store: Store }) => {
         },
       });
     }
-    editor.focus();
   };
   const listClicked = (prefix: string) => {
     const editor = store.editor;
@@ -83,7 +80,6 @@ const Toolbar = auto((props: { store: Store }) => {
           insert: prefix,
         },
       });
-      editor.focus();
     }
   };
   const mermaidClicked = (sample: string) => {
@@ -98,7 +94,6 @@ const Toolbar = auto((props: { store: Store }) => {
         insert: `\n\`\`\`mermaid\n${text}\n\`\`\`\n`,
       },
     });
-    editor.focus();
   };
   return (
     <div id="toolbar" className="noselect">
@@ -175,7 +170,6 @@ const Toolbar = auto((props: { store: Store }) => {
               insert: `[${text}](https://github.com/tylerlong/markdown-plus/)`,
             },
           });
-          editor.focus();
         }}
       ></i>
       <i
@@ -194,7 +188,6 @@ const Toolbar = auto((props: { store: Store }) => {
               insert: `![${text}](https://chuntaoliu.com/markdown-plus/icon.svg)`,
             },
           });
-          editor.focus();
         }}
       ></i>
       <i
@@ -213,7 +206,6 @@ const Toolbar = auto((props: { store: Store }) => {
               insert: `\n\`\`\`\n${text}\n\`\`\`\n`,
             },
           });
-          editor.focus();
         }}
       ></i>
       <i
@@ -246,7 +238,6 @@ row 2 col 1 | row 2 col 2`.trim();
               },
             });
           }
-          editor.focus();
         }}
       ></i>
       <i className="dividor">|</i>
@@ -277,7 +268,6 @@ row 2 col 1 | row 2 col 2`.trim();
               insert: `\n\`\`\`katex\n${text}\n\`\`\`\n`,
             },
           });
-          editor.focus();
         }}
       ></i>
       <i
