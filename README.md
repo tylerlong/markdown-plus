@@ -59,8 +59,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong/)
   - key bindings
     - vim/emacs/sublime
   - scroll sync
-  - highlight active line
-  - line wrap
   - editor.setOption('extraKeys', extraKeys);
   - auto focus after editor.replaceSelection
   - Make preferences work

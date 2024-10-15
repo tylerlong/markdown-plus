@@ -6,6 +6,7 @@ import {
 } from '@codemirror/language';
 import {
   EditorView,
+  highlightActiveLine,
   keymap,
   lineNumbers,
   scrollPastEnd,
@@ -33,6 +34,8 @@ const Editor = auto((props: { store: Store }) => {
     );
     const cm = new EditorView({
       extensions: [
+        EditorView.lineWrapping,
+        highlightActiveLine(),
         lineNumbers(),
         scrollPastEnd(),
         history(),
