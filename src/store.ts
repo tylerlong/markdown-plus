@@ -34,6 +34,7 @@ class Preferences {
 export class Store {
   public editor: EditorView;
   public editorTheme = exclude(new Compartment());
+  public editorFontSize = exclude(new Compartment());
 
   public modals = {
     about: new Modal(),
@@ -53,6 +54,15 @@ export class Store {
     this.editor.dispatch({
       effects: this.editorTheme.reconfigure(
         darkTheme ? githubDark : githubLight,
+      ),
+    });
+    this.editor.dispatch({
+      effects: this.editorFontSize.reconfigure(
+        EditorView.theme({
+          '&': {
+            fontSize: this.preferences.editorFontSize + 'px',
+          },
+        }),
       ),
     });
   }

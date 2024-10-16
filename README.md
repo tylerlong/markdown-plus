@@ -55,7 +55,6 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong/)
 - Just copy its example: https://docs.github.com/en/get-started/writing-on-github
 - codemirror 6 issues:
   - editor.setOption('extraKeys', extraKeys);
-  - Make preferences work
 - Evaluate latest version of mermaid
 - Every useEffect should have a dispose method
 - Preview dark theme and light theme

@@ -87,7 +87,7 @@ const PreferencesModal = auto((props: { store: Store }) => {
             <Select
               value={preferences.editorFontSize}
               options={[
-                8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 24, 32, 48, 64,
+                8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 24, 32,
               ].map((i) => ({ value: i, label: `${i}px` }))}
               onChange={(value) => (preferences.editorFontSize = value)}
             />
