@@ -54,9 +54,8 @@ Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong/)
 - preview dark mode
 - Just copy its example: https://docs.github.com/en/get-started/writing-on-github
 - codemirror 6 issues:
-  - themes
-    - 2 themes are enough: light and dark
   - editor.setOption('extraKeys', extraKeys);
   - Make preferences work
 - Evaluate latest version of mermaid
 - Every useEffect should have a dispose method
+- Preview dark theme and light theme

@@ -1,5 +1,7 @@
+import { Compartment } from '@codemirror/state';
 import { EditorView } from '@codemirror/view';
-import { manage } from 'manate';
+import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
+import { exclude, manage } from 'manate';
 
 class Modal {
   public isOpen = false;
@@ -15,8 +17,8 @@ class Modal {
 class Preferences {
   public showToolbar = true;
   public editorVsPreview = '1fr 6px 1fr';
-  public darkTheme = false;
-  // public editorTheme = 'default';
+  public theme: 'light' | 'dark' | 'auto' = 'auto';
+
   public editorFontSize = 14;
   public ganttAxisFormat = '%Y-%m-%d';
 
@@ -30,9 +32,8 @@ class Preferences {
 }
 
 export class Store {
-  public editor:
-    | (EditorView & { toggleDarkTheme?: (isDark: boolean) => void })
-    | null = null;
+  public editor: EditorView;
+  public editorTheme = exclude(new Compartment());
 
   public modals = {
     about: new Modal(),
@@ -43,6 +44,18 @@ export class Store {
   };
 
   public preferences = new Preferences();
+
+  public applyTheme() {
+    const darkTheme =
+      this.preferences.theme === 'dark' ||
+      (this.preferences.theme === 'auto' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches);
+    this.editor.dispatch({
+      effects: this.editorTheme.reconfigure(
+        darkTheme ? githubDark : githubLight,
+      ),
+    });
+  }
 }
 
 const store = manage(new Store());

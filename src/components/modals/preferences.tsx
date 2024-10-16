@@ -17,7 +17,7 @@ const PreferencesModal = auto((props: { store: Store }) => {
       if (!store.editor) {
         return;
       }
-      store.editor.toggleDarkTheme?.(preferences.darkTheme);
+      store.applyTheme();
       mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
     });
     start();
@@ -72,14 +72,15 @@ const PreferencesModal = auto((props: { store: Store }) => {
               onChange={(value) => (preferences.editorVsPreview = value)}
             />
           </Form.Item>
-          <Form.Item label="Editor theme">
+          <Form.Item label="Theme">
             <Select
-              value={preferences.darkTheme}
+              value={preferences.theme}
               options={[
-                { value: false, label: 'Light' },
-                { value: true, label: 'Dark' },
+                { value: 'auto', label: 'Auto' },
+                { value: 'light', label: 'Light' },
+                { value: 'dark', label: 'Dark' },
               ]}
-              onChange={(value) => (preferences.darkTheme = value)}
+              onChange={(value) => (preferences.theme = value)}
             />
           </Form.Item>
           <Form.Item label="Editor font size">

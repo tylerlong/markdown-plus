@@ -4,7 +4,6 @@ import {
   defaultHighlightStyle,
   syntaxHighlighting,
 } from '@codemirror/language';
-import { Compartment } from '@codemirror/state';
 import {
   EditorView,
   highlightActiveLine,
@@ -13,7 +12,7 @@ import {
   scrollPastEnd,
   ViewUpdate,
 } from '@codemirror/view';
-import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
+import { githubLight } from '@uiw/codemirror-theme-github';
 import debounce from 'debounce';
 import { exclude } from 'manate';
 import { auto } from 'manate/react';
@@ -35,10 +34,9 @@ const Editor = auto((props: { store: Store }) => {
         }
       },
     );
-    const theme = new Compartment();
     const cm = new EditorView({
       extensions: [
-        theme.of(githubLight),
+        store.editorTheme.of(githubLight),
         EditorView.lineWrapping,
         highlightActiveLine(),
         lineNumbers(),
@@ -62,11 +60,6 @@ const Editor = auto((props: { store: Store }) => {
     };
 
     store.editor = exclude(cm);
-    store.editor.toggleDarkTheme = (isDark: boolean) => {
-      store.editor.dispatch({
-        effects: theme.reconfigure(isDark ? githubDark : githubLight),
-      });
-    };
 
     store.editor.scrollDOM.addEventListener('scroll', () => {
       syncPreview();
