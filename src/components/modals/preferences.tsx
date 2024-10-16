@@ -7,58 +7,6 @@ import React, { useEffect } from 'react';
 import iconUrl from '../../icon.svg';
 import { Store } from '../../store';
 
-const themes = [
-  '3024-day',
-  '3024-night',
-  'abcdef',
-  'ambiance-mobile',
-  'ambiance',
-  'base16-dark',
-  'base16-light',
-  'bespin',
-  'blackboard',
-  'cobalt',
-  'colorforth',
-  'default',
-  'dracula',
-  'duotone-dark',
-  'duotone-light',
-  'eclipse',
-  'elegant',
-  'erlang-dark',
-  'hopscotch',
-  'icecoder',
-  'isotope',
-  'lesser-dark',
-  'liquibyte',
-  'material',
-  'mbo',
-  'mdn-like',
-  'midnight',
-  'monokai',
-  'neat',
-  'neo',
-  'night',
-  'panda-syntax',
-  'paraiso-dark',
-  'paraiso-light',
-  'pastel-on-dark',
-  'railscasts',
-  'rubyblue',
-  'seti',
-  'solarized',
-  'the-matrix',
-  'tomorrow-night-bright',
-  'tomorrow-night-eighties',
-  'ttcn',
-  'twilight',
-  'vibrant-ink',
-  'xq-dark',
-  'xq-light',
-  'yeti',
-  'zenburn',
-];
-
 const PreferencesModal = auto((props: { store: Store }) => {
   console.log('render preferences modal');
   const { store } = props;
@@ -69,6 +17,7 @@ const PreferencesModal = auto((props: { store: Store }) => {
       if (!store.editor) {
         return;
       }
+      store.editor.toggleDarkTheme?.(preferences.darkTheme);
       mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
     });
     start();
@@ -125,9 +74,12 @@ const PreferencesModal = auto((props: { store: Store }) => {
           </Form.Item>
           <Form.Item label="Editor theme">
             <Select
-              value={preferences.editorTheme}
-              options={themes.map((theme) => ({ value: theme, label: theme }))}
-              onChange={(value) => (preferences.editorTheme = value)}
+              value={preferences.darkTheme}
+              options={[
+                { value: false, label: 'Light' },
+                { value: true, label: 'Dark' },
+              ]}
+              onChange={(value) => (preferences.darkTheme = value)}
             />
           </Form.Item>
           <Form.Item label="Editor font size">

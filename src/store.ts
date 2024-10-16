@@ -15,7 +15,8 @@ class Modal {
 class Preferences {
   public showToolbar = true;
   public editorVsPreview = '1fr 6px 1fr';
-  public editorTheme = 'default';
+  public darkTheme = false;
+  // public editorTheme = 'default';
   public editorFontSize = 14;
   public ganttAxisFormat = '%Y-%m-%d';
 
@@ -29,7 +30,9 @@ class Preferences {
 }
 
 export class Store {
-  public editor: EditorView;
+  public editor:
+    | (EditorView & { toggleDarkTheme?: (isDark: boolean) => void })
+    | null = null;
 
   public modals = {
     about: new Modal(),

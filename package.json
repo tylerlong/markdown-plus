@@ -35,6 +35,7 @@
     "@types/node": "^22.7.5",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
+    "@uiw/codemirror-theme-github": "^4.23.5",
     "antd": "^5.21.3",
     "chart.js": "2.6.0",
     "debounce": "^2.1.1",
