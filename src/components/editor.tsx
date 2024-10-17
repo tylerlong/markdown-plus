@@ -1,4 +1,9 @@
-import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
+import {
+  defaultKeymap,
+  history,
+  historyKeymap,
+  indentMore,
+} from '@codemirror/commands';
 import { markdown } from '@codemirror/lang-markdown';
 import {
   defaultHighlightStyle,
@@ -34,6 +39,14 @@ const Editor = auto((props: { store: Store }) => {
         }
       },
     );
+
+    // Define the custom key binding
+    const customKeymap = keymap.of([
+      {
+        key: 'Tab',
+        run: indentMore,
+      },
+    ]);
     const cm = new EditorView({
       extensions: [
         store.editorTheme.of(githubLight),
@@ -52,6 +65,7 @@ const Editor = auto((props: { store: Store }) => {
         keymap.of([...defaultKeymap, ...historyKeymap]),
         markdown(),
         syntaxHighlighting(defaultHighlightStyle),
+        customKeymap,
         contentChangeListener,
       ],
       parent: editorDiv.current!,
