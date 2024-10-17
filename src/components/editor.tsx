@@ -2,6 +2,7 @@ import {
   defaultKeymap,
   history,
   historyKeymap,
+  indentLess,
   indentMore,
 } from '@codemirror/commands';
 import { markdown } from '@codemirror/lang-markdown';
@@ -45,6 +46,10 @@ const Editor = auto((props: { store: Store }) => {
       {
         key: 'Tab',
         run: indentMore,
+      },
+      {
+        key: 'Shift-Tab',
+        run: indentLess,
       },
       {
         key: 'Mod-s',
