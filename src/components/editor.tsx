@@ -46,6 +46,24 @@ const Editor = auto((props: { store: Store }) => {
         key: 'Tab',
         run: indentMore,
       },
+      {
+        key: 'Mod-s',
+        run: () => true,
+      },
+      {
+        key: 'Mod-,',
+        run: () => {
+          (document.querySelector('i.fa-cog') as HTMLElement).click();
+          return true;
+        },
+      },
+      {
+        key: 'Mod-b',
+        run: () => {
+          (document.querySelector('i.fa-bold') as HTMLElement).click();
+          return true;
+        },
+      },
     ]);
     const cm = new EditorView({
       extensions: [
