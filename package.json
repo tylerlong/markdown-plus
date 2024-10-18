@@ -40,6 +40,7 @@
     "chart.js": "2.6.0",
     "debounce": "^2.2.0",
     "eslint-config-tyler": "^0.1.7",
+    "github-markdown-css": "^5.7.0",
     "globals": "^15.11.0",
     "localforage": "^1.10.0",
     "manate": "^0.9.8",

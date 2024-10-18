@@ -49,11 +49,24 @@ export class Store {
       this.preferences.theme === 'dark' ||
       (this.preferences.theme === 'auto' &&
         window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    // editor theme
     this.editor.dispatch({
       effects: this.editorTheme.reconfigure(
         darkTheme ? githubDark : githubLight,
       ),
     });
+
+    // preview theme
+    if (darkTheme) {
+      document.getElementById('dark-theme').removeAttribute('disabled');
+      document.getElementById('light-theme').setAttribute('disabled', 'true');
+    } else {
+      document.getElementById('light-theme').removeAttribute('disabled');
+      document.getElementById('dark-theme').setAttribute('disabled', 'true');
+    }
+
+    // editor font size
     this.editor.dispatch({
       effects: this.editorFontSize.reconfigure(
         EditorView.theme({
