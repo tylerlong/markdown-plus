@@ -51,12 +51,10 @@ const scrollPreview = (scrollTop: number): void => {
 };
 
 const getEditorScroll = (): IScroll => {
-  const lineMarkers = document.querySelectorAll(
-    '#preview > [data-source-line]',
-  );
+  const lineMarkers = document.querySelectorAll('#preview > [data-sl]');
   const lines: number[] = [];
   lineMarkers.forEach((element: HTMLElement) => {
-    lines.push(parseInt(element.dataset.sourceLine, 10));
+    lines.push(parseInt(element.dataset.sl, 10));
   });
   const currentLine = store.editor.state.doc.lineAt(
     store.editor.lineBlockAtHeight(store.editor.scrollDOM.scrollTop).from,
@@ -88,7 +86,7 @@ const setPreviewScroll = (editorScroll: IScroll) => {
 
   if (editorScroll.lastMarker) {
     const lastMarkerElement = document.querySelector<HTMLElement>(
-      `#preview > [data-source-line="${editorScroll.lastMarker}"]`,
+      `#preview > [data-sl="${editorScroll.lastMarker}"]`,
     );
     if (lastMarkerElement) {
       lastPosition = lastMarkerElement.offsetTop;
@@ -97,7 +95,7 @@ const setPreviewScroll = (editorScroll: IScroll) => {
 
   if (editorScroll.nextMarker) {
     const nextMarkerElement = document.querySelector<HTMLElement>(
-      `#preview > [data-source-line="${editorScroll.nextMarker}"]`,
+      `#preview > [data-sl="${editorScroll.nextMarker}"]`,
     );
     if (nextMarkerElement) {
       nextPosition = nextMarkerElement.offsetTop;
@@ -117,15 +115,15 @@ const getPreviewScroll = (): IScroll => {
     document.getElementById('preview').offsetHeight -
     document.getElementById('right-panel').offsetHeight; // maximum scroll
   const lineMarkers = document.querySelectorAll<HTMLElement>(
-    '#preview > [data-source-line]',
+    '#preview > [data-sl]',
   );
   for (let i = 0; i < lineMarkers.length; i++) {
     const lineMarker = lineMarkers[i];
     if (lineMarker.offsetTop < scroll) {
-      lastLine = parseInt(lineMarker.dataset.sourceLine, 10);
+      lastLine = parseInt(lineMarker.dataset.sl, 10);
       lastScroll = lineMarker.offsetTop;
     } else {
-      nextLine = parseInt(lineMarker.dataset.sourceLine, 10);
+      nextLine = parseInt(lineMarker.dataset.sl, 10);
       nextScroll = lineMarker.offsetTop;
       break;
     }
