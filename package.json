@@ -22,8 +22,8 @@
   "type": "module",
   "scripts": {
     "lint": "tsc --jsx react --skipLibCheck --noEmit && eslint . --fix && prettier --write . && sort-package-json",
-    "release": "rm -rf .parcel-cache && rm -rf docs && tsx src/before-build.ts && parcel build src/index.html --dist-dir docs --public-url ./ --no-source-maps --no-scope-hoist",
-    "serve": "rm -rf .parcel-cache && rm -rf temp && tsx src/before-build.ts && parcel src/index.html --dist-dir temp"
+    "release": "rm -rf .parcel-cache && rm -rf docs && parcel build src/index.html --dist-dir docs --public-url ./ --no-source-maps --no-scope-hoist",
+    "serve": "rm -rf .parcel-cache && rm -rf temp && parcel src/index.html --dist-dir temp"
   },
   "devDependencies": {
     "@codemirror/commands": "^6.7.0",
@@ -43,7 +43,7 @@
     "globals": "^15.11.0",
     "localforage": "^1.10.0",
     "manate": "^0.9.8",
-    "markdown-core": "1.1.2",
+    "markdown-extensible": "^0.1.0",
     "parcel": "^2.12.0",
     "parcel-namer-hashless": "^1.0.6",
     "path-browserify": "^1.0.1",
@@ -51,7 +51,6 @@
     "punycode": "^2.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "shell-commands": "^0.4.2",
     "sort-package-json": "^2.10.1",
     "split-grid": "^1.0.11",
     "tsx": "^4.19.1",
@@ -65,7 +64,6 @@
   "parcel-namer-hashless": {},
   "yarn-upgrade-all": {
     "ignore": [
-      "markdown-core",
       "chart.js"
     ]
   }

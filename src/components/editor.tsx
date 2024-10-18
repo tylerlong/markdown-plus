@@ -22,7 +22,7 @@ import { githubLight } from '@uiw/codemirror-theme-github';
 import debounce from 'debounce';
 import { exclude } from 'manate';
 import { auto } from 'manate/react';
-import mdc from 'markdown-core/src/index-browser';
+import mde from 'markdown-extensible';
 import React, { useEffect, useRef } from 'react';
 
 import markdownUrl from '../sample.md';
@@ -114,7 +114,9 @@ const Editor = auto((props: { store: Store }) => {
 
     // whenever user changes markdown
     const lazyChange = debounce(() => {
-      mdc.init(store.editor.state.doc.toString()); // realtime preview
+      document.getElementById('preview')!.innerHTML = mde.render(
+        store.editor.state.doc.toString(),
+      );
     }, 512);
 
     // load sample markdown

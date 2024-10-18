@@ -1,7 +1,6 @@
-import { Button, Form, Input, Modal, Select } from 'antd';
+import { Button, Form, Modal, Select } from 'antd';
 import { autoRun } from 'manate';
 import { auto } from 'manate/react';
-import mdc from 'markdown-core/src/index-browser';
 import React, { useEffect } from 'react';
 
 import iconUrl from '../../icon.svg';
@@ -18,7 +17,6 @@ const PreferencesModal = auto((props: { store: Store }) => {
         return;
       }
       store.applyTheme();
-      mdc.mermaid.gantt.axisFormat(preferences.ganttAxisFormat);
     });
     start();
     return () => stop();
@@ -90,28 +88,6 @@ const PreferencesModal = auto((props: { store: Store }) => {
                 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 24, 32,
               ].map((i) => ({ value: i, label: `${i}px` }))}
               onChange={(value) => (preferences.editorFontSize = value)}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Gantt diagram axis format"
-            extra={
-              <>
-                <a
-                  href="https://pubs.opengroup.org/onlinepubs/007908799/xsh/strftime.html"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Time formatting reference
-                </a>
-                <br />
-                You need to restart the editor to apply this setting
-              </>
-            }
-          >
-            <Input
-              placeholder="%Y-%m-%d"
-              value={preferences.ganttAxisFormat}
-              onChange={(e) => (preferences.ganttAxisFormat = e.target.value)}
             />
           </Form.Item>
         </Form>

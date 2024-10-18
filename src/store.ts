@@ -18,9 +18,7 @@ class Preferences {
   public showToolbar = true;
   public editorVsPreview = '1fr 6px 1fr';
   public theme: 'light' | 'dark' | 'auto' = 'auto';
-
   public editorFontSize = 14;
-  public ganttAxisFormat = '%Y-%m-%d';
 
   // neither editor or preview is hidden
   public get normalEvsP() {
