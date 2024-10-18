@@ -26,6 +26,10 @@ MIT
 
 Copyright © 2015 - 2024 [Tyler Liu](https://github.com/tylerlong/)
 
+## Notes
+
+- No [abbreviation](https://michelf.ca/projects/php-markdown/extra/#abbr) support, because prettier will replace "\*" with "\_" which will break abbreviation.
+
 ---
 
 ## Todo

@@ -81,15 +81,6 @@ async function fetchItems<T>(url: string): Promise<T[]> {
 
 [Task List Syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#task-lists)
 
-## Abbreviation
-
-Markup is based on [php markdown extra](https://michelf.ca/projects/php-markdown/extra/#abbr) definition, but without multiline support:
-
-_[HTML]: Hyper Text Markup Language
-_[W3C]: World Wide Web Consortium
-The HTML specification
-is maintained by the W3C.
-
 ## Footnote
 
 Here is a footnote reference,[^1] and another.[^longnote]
