@@ -44,7 +44,7 @@
     "globals": "^15.11.0",
     "localforage": "^1.10.0",
     "manate": "^0.9.8",
-    "markdown-extensible": "^0.1.4",
+    "markdown-extensible": "^0.1.5",
     "parcel": "^2.12.0",
     "parcel-namer-hashless": "^1.0.6",
     "path-browserify": "^1.0.1",

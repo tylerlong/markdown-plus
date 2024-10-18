@@ -16,29 +16,45 @@ Markdown allows you to write using an easy-to-read, easy-to-write plain text for
 
 [Mastering Markdown Guide](https://guides.github.com/features/mastering-markdown/).
 
-## ~~strikethrough~~
+## Strikethrough
 
-## ++insert++
+~~strikethrough~~
 
-## ==mark==
+## Underline
 
-## Subscript: H~2~O
+++insert++
+
+## Mark
+
+==mark==
+
+## Subscript
+
+H~2~O
 
 You can also use inline math: `$H_2O$`
 
-## Superscript: 29^th^
+## Superscript
+
+29^th^
 
 You can also use inline math: `$29^{th}$`
 
-## Emoji: :panda_face: :sparkles: :camel: :boom: :pig:
+## Emoji
+
+:panda_face: :sparkles: :camel: :boom: :pig:
 
 [Emoji Cheat Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
 
-## Fontawesome: :fa-cab: :fa-flag: :fa-bicycle: :fa-leaf: :fa-heart:
+## Fontawesome
+
+:fa-cab: :fa-flag: :fa-bicycle: :fa-leaf: :fa-heart:
 
 [All the Font Awesome icons](https://github.com/gluons/Font-Awesome-Icon-Chars/blob/master/character-list/character-list.yaml)
 
-## `print 'hello code'`
+## Code snippets
+
+Inline: `print 'hello code'`
 
     evens = [1, 2, 3, 4, 5].collect do |item|
       item * 2
@@ -98,7 +114,7 @@ note.]
 
 [Footnote Syntax](https://pandoc.org/MANUAL.html#footnotes)
 
-## Mathematical formula `$y = x^2$`
+## Mathematical formula
 
 Inline math: `$\dfrac{ \tfrac{1}{2}[1-(\tfrac{1}{2})^n] }{ 1-\tfrac{1}{2} } = s_n$`.
 
@@ -144,7 +160,7 @@ phi_n(kappa) = 1/(4pi^2 kappa^2)
 
 [AsciiMath Documentation](https://asciimath.org/)
 
-## mermaid charts
+## Mermaid charts
 
 ### Flowchart
 

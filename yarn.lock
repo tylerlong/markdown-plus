@@ -3407,10 +3407,10 @@ manate@^0.9.8:
   resolved "https://registry.yarnpkg.com/manate/-/manate-0.9.8.tgz#5a2b97f832a36389d7903cadef161692a67ff1b6"
   integrity sha512-kFQ1APK53tG4o07+8SUuJYOzBzYMIwa7FnIN3Z8Czlo9C+g5OJ0RBy9wlV7q8Sw2uUojTfH72y8oSz8G2jFhSA==
 
-markdown-extensible@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/markdown-extensible/-/markdown-extensible-0.1.4.tgz#81e045e2860b6cbf5870b96e505bc5e304c0c809"
-  integrity sha512-kn7wSPJN8SnRuYb6FNryI+m9N4gYLBsb9aH5+e/bCVKlOT1QjGRiozbN6S+A+U6lpK6ksmkH2iaWJWLm9DNaxA==
+markdown-extensible@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/markdown-extensible/-/markdown-extensible-0.1.5.tgz#6d139ff27221ec360098a8ea41170f91a8d590e8"
+  integrity sha512-eejAVbkjL+I+IZSR7VqFufGBgThqovf8FpYPywx6kbfbVRSPZNP4Nfhr9+XbskuLGUjaviAOpRKN42UUFdmOCg==
   dependencies:
     "@sindresorhus/slugify" "^2.2.1"
     markdown-it "^14.1.0"
