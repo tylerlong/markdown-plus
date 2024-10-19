@@ -139,10 +139,14 @@ const Toolbar = auto((props: { store: Store }) => {
         { name: 'Quote', icon: 'fa-quote-left', prefix: '> ' },
         { name: 'Unordered list', icon: 'fa-list-ul', prefix: '- ' },
         { name: 'Ordered list', icon: 'fa-list-ol', prefix: '1. ' },
-        { name: 'Incomplete task list', icon: 'fa-square-o', prefix: '- [ ] ' },
+        {
+          name: 'Incomplete task list',
+          icon: 'fa-regular fa-square',
+          prefix: '- [ ] ',
+        },
         {
           name: 'Complete task list',
-          icon: 'fa-check-square-o',
+          icon: 'fa-regular fa-check-square',
           prefix: '- [x] ',
         },
       ].map(({ name, icon, prefix }) => (
@@ -174,7 +178,7 @@ const Toolbar = auto((props: { store: Store }) => {
       ></i>
       <i
         title="Image"
-        className="fa fa-image"
+        className="fa fa-regular fa-image"
         onClick={() => {
           const editor = store.editor;
           const mainSelection = editor.state.selection.main;
@@ -243,12 +247,12 @@ row 2 col 1 | row 2 col 2`.trim();
       <i className="dividor">|</i>
       <i
         title="Emoji"
-        className="fa fa-smile-o"
+        className="fa fa-regular fa-smile"
         onClick={() => modals.emoji.open()}
       ></i>
       <i
         title="Font awesome"
-        className="fa fa-flag-o"
+        className="fa fa-regular fa-flag"
         onClick={() => modals.fontAwesome.open()}
       ></i>
       <i className="dividor">|</i>
@@ -306,7 +310,7 @@ T3: 2014-01-02, 9d`,
       ></i>
       <i
         title="Help"
-        className="fa fa-question-circle"
+        className="fa fa-regular fa-question-circle"
         onClick={() => modals.help.open()}
       ></i>
     </div>
