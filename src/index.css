@@ -85,7 +85,9 @@
 }
 
 .heading-icon {
-  font-weight: bold;
+  font-family: 'Helvetica', 'Arial', sans-serif !important;
+  font-size: 1.1rem;
+  font-weight: 100;
 }
 
 .dividor {
