@@ -66,6 +66,15 @@ export class Store {
       document.getElementById('dark-theme').setAttribute('disabled', 'true');
     }
 
+    // toolbar theme
+    if (darkTheme) {
+      document.getElementById('toolbar').style.backgroundColor = '#0d1117';
+      document.getElementById('toolbar').style.color = '#f0f6fc';
+    } else {
+      document.getElementById('toolbar').style.backgroundColor = 'white';
+      document.getElementById('toolbar').style.color = '#666';
+    }
+
     // editor font size
     this.editor.dispatch({
       effects: this.editorFontSize.reconfigure(

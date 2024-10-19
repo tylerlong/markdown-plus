@@ -60,14 +60,13 @@
   vertical-align: top;
 }
 #about-icon:hover {
-  background-color: #ddd;
+  background-color: #999;
   border-color: #ccc;
   cursor: pointer;
 }
 
 #toolbar {
   padding-left: 3px;
-  color: #666;
 }
 #toolbar .fa {
   padding: 2px 5px;
@@ -79,7 +78,7 @@
 }
 #toolbar .fa:hover,
 #toolbar .icon:hover {
-  background-color: #ddd;
+  background-color: #999;
   border-color: #ccc;
   cursor: pointer;
 }
