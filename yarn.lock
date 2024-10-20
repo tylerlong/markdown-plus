@@ -3412,10 +3412,10 @@ manate@^0.9.8:
   resolved "https://registry.yarnpkg.com/manate/-/manate-0.9.8.tgz#5a2b97f832a36389d7903cadef161692a67ff1b6"
   integrity sha512-kFQ1APK53tG4o07+8SUuJYOzBzYMIwa7FnIN3Z8Czlo9C+g5OJ0RBy9wlV7q8Sw2uUojTfH72y8oSz8G2jFhSA==
 
-markdown-extensible@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/markdown-extensible/-/markdown-extensible-0.1.7.tgz#c05463c06e25273e77eeb40f3378fd9081a21299"
-  integrity sha512-O7ZxdZDynv84o3F6S123VGfDDW5pfMwJi03GNWEkYHX2D5/iwoIOJSEpIvz+7JBg7hHZCt6mozXzlnOznS/dFA==
+markdown-extensible@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/markdown-extensible/-/markdown-extensible-0.1.9.tgz#3c9c019088b6a1f9faa48bf3dbce586ef21eab9c"
+  integrity sha512-QIf+zLi1yTsVhTuNNTC8dsOYrJlN8YujYt5jm0TFlQt9tZF9B5cL6UA1tW9Qo/w25aGzI0zHuHxzUUIGc740mQ==
   dependencies:
     "@sindresorhus/slugify" "^2.2.1"
     markdown-it "^14.1.0"
@@ -3427,6 +3427,7 @@ markdown-extensible@^0.1.7:
     markdown-it-footnote "^4.0.0"
     markdown-it-ins "^4.0.0"
     markdown-it-mark "^4.0.0"
+    markdown-it-regex "^0.2.0"
     markdown-it-sub "^2.0.0"
     markdown-it-sup "^2.0.0"
 
@@ -3471,6 +3472,11 @@ markdown-it-mark@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/markdown-it-mark/-/markdown-it-mark-4.0.0.tgz#c19cbc87d9cb9fd1a495e8fe31b740b6d9ebf8c8"
   integrity sha512-YLhzaOsU9THO/cal0lUjfMjrqSMPjjyjChYM7oyj4DnyaXEzA8gnW6cVJeyCrCVeyesrY2PlEdUYJSPFYL4Nkg==
+
+markdown-it-regex@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-regex/-/markdown-it-regex-0.2.0.tgz#e09ad2d75209720d591d3949e1142c75c0fbecf6"
+  integrity sha512-111UnMGJSt37gy+DlgcpQNwEfS2jvscOFSztzGhuXUHk7K1J5eAEj6C3jifmKb0cWtTuxdpHgIt4PyGQ+DtDjw==
 
 markdown-it-sub@^2.0.0:
   version "2.0.0"
@@ -3847,9 +3853,14 @@ punycode.js@^2.3.1:
   resolved "https://registry.yarnpkg.com/punycode.js/-/punycode.js-2.3.1.tgz#6b53e56ad75588234e79f4affa90972c7dd8cdb7"
   integrity sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==
 
-punycode@^2.1.0, punycode@^2.3.1:
+punycode@^2.1.0:
   version "2.3.1"
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
+  integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
+
+punycode@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
 queue-microtask@^1.2.2:

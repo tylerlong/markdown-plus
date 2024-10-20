@@ -22,7 +22,7 @@ Markdown allows you to write using an easy-to-read, easy-to-write plain text for
 
 ## Underline
 
-++insert++
+++underline++
 
 ## Mark
 
@@ -51,6 +51,10 @@ You can also use inline math: `$29^{th}$`
 :fa-cab: :fa-flag: :fa-bicycle: :fa-leaf: :fa-heart:
 
 [All the Font Awesome icons](https://github.com/gluons/Font-Awesome-Icon-Chars/blob/master/character-list/character-list.yaml)
+
+You may specify the font icon style like this :fa-regular fa-smile:.
+
+Please note that, this demo only includes free icons and styles.
 
 ## Code snippets
 
