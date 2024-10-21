@@ -82,17 +82,6 @@ export class Store {
       document.getElementById('toolbar').style.backgroundColor = 'white';
       document.getElementById('toolbar').style.color = '#666';
     }
-
-    // editor font size
-    this.editor.dispatch({
-      effects: this.editorFontSize.reconfigure(
-        EditorView.theme({
-          '&': {
-            fontSize: this.preferences.editorFontSize + 'px',
-          },
-        }),
-      ),
-    });
   }
 }
 

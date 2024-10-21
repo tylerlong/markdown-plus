@@ -1,3 +1,4 @@
+import { EditorView } from '@codemirror/view';
 import { Button, Form, Modal, Select } from 'antd';
 import { autoRun } from 'manate';
 import { auto } from 'manate/react';
@@ -16,7 +17,19 @@ const PreferencesModal = auto((props: { store: Store }) => {
       if (!store.editor) {
         return;
       }
+      // apply light/dark theme
       store.applyTheme();
+
+      // editor font size
+      store.editor.dispatch({
+        effects: store.editorFontSize.reconfigure(
+          EditorView.theme({
+            '&': {
+              fontSize: store.preferences.editorFontSize + 'px',
+            },
+          }),
+        ),
+      });
     });
     start();
     return () => stop();
