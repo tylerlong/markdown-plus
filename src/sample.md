@@ -30,13 +30,13 @@ Markdown allows you to write using an easy-to-read, easy-to-write plain text for
 
 ## Subscript
 
-H~2~O
+H~2~O or H<sub>2</sub>O
 
 You can also use inline math: `$H_2O$`
 
 ## Superscript
 
-29^th^
+29^th^ or 29<sup>th</sup>
 
 You can also use inline math: `$29^{th}$`
 
