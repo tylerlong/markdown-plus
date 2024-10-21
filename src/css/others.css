@@ -7,34 +7,22 @@
 
 #toolbar {
   overflow: hidden;
-}
-
-#about-icon {
-  height: 20px;
-  vertical-align: top;
-}
-#about-icon:hover {
-  background-color: #999;
-  border-color: #ccc;
-  cursor: pointer;
-}
-
-#toolbar {
   padding-left: 3px;
 }
 #toolbar .fa {
   padding: 2px 5px;
   border: 1px solid transparent;
 }
-#toolbar .icon {
-  padding: 0 2px;
-  border: 1px solid transparent;
-}
 #toolbar .fa:hover,
-#toolbar .icon:hover {
+#about-icon:hover {
   background-color: #999;
   border-color: #ccc;
   cursor: pointer;
+}
+
+#about-icon {
+  height: 20px;
+  vertical-align: top;
 }
 
 .heading-icon {
@@ -44,26 +32,18 @@
 }
 
 .dividor {
-  /* dividor on toolbar */
   font-style: normal;
   color: #ddd;
   margin: 0 6px;
 }
 
 .noselect {
-  /* icons toolbar shouldn't be selectable */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-@media (max-width: 767px) {
-  .markdown-body {
-    padding: 15px;
-  }
 }
 
 h1,
