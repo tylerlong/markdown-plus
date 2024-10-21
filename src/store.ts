@@ -57,31 +57,21 @@ export class Store {
       ),
     });
 
-    // preview theme
-    if (darkTheme) {
-      document
-        .querySelectorAll('[data-theme="dark"]')
-        .forEach((el) => el.removeAttribute('disabled'));
-      document
-        .querySelectorAll('[data-theme="light"]')
-        .forEach((el) => el.setAttribute('disabled', 'true'));
-    } else {
-      document
-        .querySelectorAll('[data-theme="light"]')
-        .forEach((el) => el.removeAttribute('disabled'));
-      document
-        .querySelectorAll('[data-theme="dark"]')
-        .forEach((el) => el.setAttribute('disabled', 'true'));
-    }
-
-    // toolbar theme
-    if (darkTheme) {
-      document.getElementById('toolbar').style.backgroundColor = '#0d1117';
-      document.getElementById('toolbar').style.color = '#f0f6fc';
-    } else {
-      document.getElementById('toolbar').style.backgroundColor = 'white';
-      document.getElementById('toolbar').style.color = '#666';
-    }
+    // preview and toolbar theme
+    document.querySelectorAll('[data-theme="light"]').forEach((el) => {
+      if (darkTheme) {
+        el.setAttribute('disabled', '');
+      } else {
+        el.removeAttribute('disabled');
+      }
+    });
+    document.querySelectorAll('[data-theme="dark"]').forEach((el) => {
+      if (darkTheme) {
+        el.removeAttribute('disabled');
+      } else {
+        el.setAttribute('disabled', '');
+      }
+    });
   }
 }
 

@@ -1,0 +1,20 @@
+#toolbar {
+  color: #f0f6fc;
+  background-color: #0d1117;
+}
+
+/* make scroll bar visible in dark mode */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(50, 50, 50, 0.8);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.6) rgba(50, 50, 50, 0.8);
+}
