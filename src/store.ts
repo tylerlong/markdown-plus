@@ -59,11 +59,19 @@ export class Store {
 
     // preview theme
     if (darkTheme) {
-      document.getElementById('dark-theme').removeAttribute('disabled');
-      document.getElementById('light-theme').setAttribute('disabled', 'true');
+      document
+        .querySelectorAll('[data-theme="dark"]')
+        .forEach((el) => el.removeAttribute('disabled'));
+      document
+        .querySelectorAll('[data-theme="light"]')
+        .forEach((el) => el.setAttribute('disabled', 'true'));
     } else {
-      document.getElementById('light-theme').removeAttribute('disabled');
-      document.getElementById('dark-theme').setAttribute('disabled', 'true');
+      document
+        .querySelectorAll('[data-theme="light"]')
+        .forEach((el) => el.removeAttribute('disabled'));
+      document
+        .querySelectorAll('[data-theme="dark"]')
+        .forEach((el) => el.setAttribute('disabled', 'true'));
     }
 
     // toolbar theme

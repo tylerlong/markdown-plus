@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Markdown Plus</title>
     <link rel="icon" type="image/svg+xml" href="icon.svg" />
-    <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="../node_modules/katex/dist/katex.css" />
     <link
       rel="stylesheet"
@@ -14,14 +13,26 @@
     <link
       rel="stylesheet"
       href="../node_modules/github-markdown-css/github-markdown-light.css"
-      id="light-theme"
+      data-theme="light"
     />
     <link
       rel="stylesheet"
       href="../node_modules/github-markdown-css/github-markdown-dark.css"
-      id="dark-theme"
+      data-theme="dark"
       disabled
     />
+    <link
+      rel="stylesheet"
+      href="../node_modules/highlight.js/styles/github.css"
+      data-theme="light"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/highlight.js/styles/github-dark.css"
+      data-theme="dark"
+      disabled
+    />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div id="root"></div>

@@ -2949,6 +2949,11 @@ hasown@^2.0.0, hasown@^2.0.1, hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
+highlight.js@^11.10.0:
+  version "11.10.0"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.10.0.tgz#6e3600dc4b33d6dc23d5bd94fbf72405f5892b92"
+  integrity sha512-SYVnVFswQER+zu1laSya563s+F8VDGt7o35d4utbamowvUNLLMovFqwCLSocpZTz3MgaSRA1IbqRWZv97dtErQ==
+
 htmlnano@^2.0.0:
   version "2.1.1"
   resolved "https://registry.npmjs.org/htmlnano/-/htmlnano-2.1.1.tgz#9ba84e145cd8b7cd4c783d9ab8ff46a80e79b59b"
@@ -3424,12 +3429,13 @@ manate@^0.9.8:
   resolved "https://registry.yarnpkg.com/manate/-/manate-0.9.8.tgz#5a2b97f832a36389d7903cadef161692a67ff1b6"
   integrity sha512-kFQ1APK53tG4o07+8SUuJYOzBzYMIwa7FnIN3Z8Czlo9C+g5OJ0RBy9wlV7q8Sw2uUojTfH72y8oSz8G2jFhSA==
 
-markdown-extensible@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/markdown-extensible/-/markdown-extensible-0.2.0.tgz#c8aac398567b4e8079cf8675d762a1f8a18a4b6f"
-  integrity sha512-MXbRNofRu2hnqKarWSUB/vePgWGYRUbkpGHZOelLY9vyPqERbKDixYFIgwiBMIy+gzrKNGk2ICNdZSvpEaqSkQ==
+markdown-extensible@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/markdown-extensible/-/markdown-extensible-0.2.1.tgz#0166ff05cb96dbd3f69af48ed062225c0cfc14da"
+  integrity sha512-bNPJ3vEKJyhewTm9Ha4w2t2izwRhdvCbfcvhfbbA9KeKiJX93DVxsqhkMx//00d/BFVk3V8FqQgATnuJqW8cIg==
   dependencies:
     "@sindresorhus/slugify" "^2.2.1"
+    highlight.js "^11.10.0"
     katex "^0.16.11"
     markdown-it "^14.1.0"
     markdown-it-anchor "^9.2.0"
@@ -3866,9 +3872,14 @@ punycode.js@^2.3.1:
   resolved "https://registry.yarnpkg.com/punycode.js/-/punycode.js-2.3.1.tgz#6b53e56ad75588234e79f4affa90972c7dd8cdb7"
   integrity sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA==
 
-punycode@^2.1.0, punycode@^2.3.1:
+punycode@^2.1.0:
   version "2.3.1"
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
+  integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
+
+punycode@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
 queue-microtask@^1.2.2:
