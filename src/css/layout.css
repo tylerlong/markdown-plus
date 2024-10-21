@@ -1,0 +1,56 @@
+#root {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#rows-grid {
+  display: grid;
+  grid-template-rows: 20px 6px 1fr;
+  height: 100vh;
+}
+
+#cols-grid {
+  display: grid;
+  grid-template-columns: 1fr 6px 1fr;
+  height: 100%;
+  overflow: hidden;
+}
+
+#left-panel {
+  height: 100%;
+  overflow: scroll;
+}
+
+#right-panel {
+  height: 100%;
+  overflow: scroll;
+  position: relative;
+}
+
+#row-gutter {
+  grid-column: 1/-1;
+  grid-row: 2;
+  cursor: pointer;
+}
+
+#col-gutter {
+  grid-row: 1/-1;
+  grid-column: 2;
+  cursor: col-resize;
+}
+
+#editor,
+.cm-editor {
+  height: 100%;
+}
+
+#preview {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
